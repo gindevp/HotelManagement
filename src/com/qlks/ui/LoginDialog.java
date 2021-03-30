@@ -398,7 +398,7 @@ public class LoginDialog extends javax.swing.JDialog {
         MsgBox.dialogAutoClose(this, "Vui lòng đợi trong giây lát!");
     }
     private void close() {
-        LoginDialog.this.close();
+        LoginDialog.this.setOpacity(0.4f);
     }
 
 }
