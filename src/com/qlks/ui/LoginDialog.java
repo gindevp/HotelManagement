@@ -14,6 +14,7 @@ import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Random;
@@ -44,8 +45,9 @@ public class LoginDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -57,44 +59,62 @@ public class LoginDialog extends javax.swing.JDialog {
         btnDangNhap = new javax.swing.JButton();
         lblQuenMatKhau = new javax.swing.JLabel();
         btnDangKy = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        chkShowPass = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 750));
-
         jPanel2.setBackground(new java.awt.Color(37, 49, 62));
         jPanel2.setPreferredSize(new java.awt.Dimension(600, 750));
 
+        jLabel5.setBackground(new java.awt.Color(37, 49, 62));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/closel_24px.png"))); // NOI18N
+        jLabel5.setToolTipText("Close");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+
+        jPanel3.setBackground(new java.awt.Color(37, 49, 62));
+
+        jLabel2.setBackground(new java.awt.Color(37, 49, 62));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/logo.jpg"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 195, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Startup Hotel-Khách sạn vjppro");
+        jLabel1.setText("STARUP HOTEL");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Tên đăng nhập:");
+        jLabel3.setText("Username:");
 
         edtTenDangNhap.setBackground(new java.awt.Color(37, 49, 62));
-        edtTenDangNhap.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        edtTenDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         edtTenDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         edtTenDangNhap.setBorder(null);
         edtTenDangNhap.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -108,10 +128,10 @@ public class LoginDialog extends javax.swing.JDialog {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Mật khẩu:");
+        jLabel4.setText("Password:");
 
         edtMatKhau.setBackground(new java.awt.Color(37, 49, 62));
-        edtMatKhau.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        edtMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         edtMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         edtMatKhau.setBorder(null);
         edtMatKhau.setCaretColor(new java.awt.Color(255, 255, 255));
@@ -126,7 +146,7 @@ public class LoginDialog extends javax.swing.JDialog {
         btnDangNhap.setBackground(new java.awt.Color(46, 62, 78));
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
-        btnDangNhap.setText("ĐĂNG NHẬP");
+        btnDangNhap.setText("SIGN IN");
         btnDangNhap.setToolTipText("");
         btnDangNhap.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
         btnDangNhap.setContentAreaFilled(false);
@@ -141,7 +161,7 @@ public class LoginDialog extends javax.swing.JDialog {
         lblQuenMatKhau.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblQuenMatKhau.setForeground(new java.awt.Color(255, 255, 255));
         lblQuenMatKhau.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblQuenMatKhau.setText("Quên mật khẩu?");
+        lblQuenMatKhau.setText("Forgot password?");
         lblQuenMatKhau.setToolTipText("");
         lblQuenMatKhau.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -152,9 +172,9 @@ public class LoginDialog extends javax.swing.JDialog {
         btnDangKy.setBackground(new java.awt.Color(255, 255, 255));
         btnDangKy.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDangKy.setForeground(new java.awt.Color(255, 255, 255));
-        btnDangKy.setText("ĐĂNG KÝ");
+        btnDangKy.setText("Create new account...");
         btnDangKy.setToolTipText("");
-        btnDangKy.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.white, java.awt.Color.white));
+        btnDangKy.setBorder(null);
         btnDangKy.setContentAreaFilled(false);
         btnDangKy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,11 +182,13 @@ public class LoginDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/closel_24px.png"))); // NOI18N
-        jLabel5.setToolTipText("Close");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+        chkShowPass.setBackground(new java.awt.Color(37, 49, 62));
+        chkShowPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        chkShowPass.setForeground(new java.awt.Color(255, 255, 255));
+        chkShowPass.setText("Show password");
+        chkShowPass.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                chkShowPassItemStateChanged(evt);
             }
         });
 
@@ -174,42 +196,35 @@ public class LoginDialog extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 417, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
-                            .addComponent(lblQuenMatKhau)))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(chkShowPass)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblQuenMatKhau))
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sptMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                        .addComponent(sptMatKhau)
                         .addComponent(edtTenDangNhap)
-                        .addComponent(sptTen, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-                        .addComponent(edtMatKhau)))
-                .addGap(93, 93, 93))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap())
+                        .addComponent(sptTen)
+                        .addComponent(edtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(73, 73, 73)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(edtTenDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,15 +237,17 @@ public class LoginDialog extends javax.swing.JDialog {
                 .addGap(1, 1, 1)
                 .addComponent(sptMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblQuenMatKhau)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblQuenMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chkShowPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addComponent(btnDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 610, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 790));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -262,6 +279,10 @@ public class LoginDialog extends javax.swing.JDialog {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         this.close();
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void chkShowPassItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkShowPassItemStateChanged
+        this.showPass(evt);
+    }//GEN-LAST:event_chkShowPassItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -308,6 +329,7 @@ public class LoginDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangKy;
     private javax.swing.JButton btnDangNhap;
+    private javax.swing.JCheckBox chkShowPass;
     private javax.swing.JPasswordField edtMatKhau;
     private javax.swing.JTextField edtTenDangNhap;
     private javax.swing.JLabel jLabel1;
@@ -315,8 +337,8 @@ public class LoginDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblQuenMatKhau;
     private javax.swing.JSeparator sptMatKhau;
     private javax.swing.JSeparator sptTen;
@@ -397,8 +419,19 @@ public class LoginDialog extends javax.swing.JDialog {
     private void register() {
         MsgBox.dialogAutoClose(this, "Vui lòng đợi trong giây lát!");
     }
+
     private void close() {
-        LoginDialog.this.setEnabled(false);
+        if (MsgBox.confirm(this, "Bạn có chắc muốn thoát?")) {
+            System.exit(0);
+        }
+    }
+
+    private void showPass(ItemEvent e) {
+        if (e.getStateChange() == ItemEvent.SELECTED) {
+            edtMatKhau.setEchoChar((char) 0);
+        } else {
+            edtMatKhau.setEchoChar('*');
+        }
     }
 
 }
