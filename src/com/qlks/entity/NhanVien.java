@@ -43,6 +43,7 @@ public class NhanVien {
         this.isActive = isActive;
         this.createAt = createAt;
         this.updateAt = updateAt;
+        sout    
     }
 
     public String getMa() {
