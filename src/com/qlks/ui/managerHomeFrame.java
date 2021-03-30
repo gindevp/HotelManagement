@@ -108,7 +108,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icon/logo1.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/logo.jpg"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 195, 51));
@@ -120,7 +120,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
 
         lblThoiGian.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblThoiGian.setForeground(new java.awt.Color(255, 255, 255));
-        lblThoiGian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/clock_24px.png"))); // NOI18N
+        lblThoiGian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/clock_24px.png"))); // NOI18N
 
         jSeparator1.setBackground(new java.awt.Color(37, 49, 62));
         jSeparator1.setForeground(new java.awt.Color(255, 0, 51));
@@ -129,7 +129,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnDoiMK.setBackground(new java.awt.Color(46, 62, 78));
         btnDoiMK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDoiMK.setForeground(new java.awt.Color(255, 255, 255));
-        btnDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/changePassword_24px.png"))); // NOI18N
+        btnDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/changePassword_24px.png"))); // NOI18N
         btnDoiMK.setText("Đổi mật khẩu");
         btnDoiMK.setBorder(null);
         btnDoiMK.setBorderPainted(false);
@@ -192,7 +192,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnPhong.setBackground(new java.awt.Color(46, 62, 78));
         btnPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnPhong.setForeground(new java.awt.Color(255, 255, 255));
-        btnPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/room_24px.png"))); // NOI18N
+        btnPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/room_24px.png"))); // NOI18N
         btnPhong.setText("Phòng");
         btnPhong.setBorder(null);
         btnPhong.setBorderPainted(false);
@@ -232,7 +232,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnNCC.setBackground(new java.awt.Color(46, 62, 78));
         btnNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnNCC.setForeground(new java.awt.Color(255, 255, 255));
-        btnNCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/supplier_24px.png"))); // NOI18N
+        btnNCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/supplier_24px.png"))); // NOI18N
         btnNCC.setText("Nhà Cung Cấp");
         btnNCC.setBorder(null);
         btnNCC.setBorderPainted(false);
@@ -271,7 +271,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnDV_TN.setBackground(new java.awt.Color(46, 62, 78));
         btnDV_TN.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDV_TN.setForeground(new java.awt.Color(255, 255, 255));
-        btnDV_TN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/foodService_24px.png"))); // NOI18N
+        btnDV_TN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/foodService_24px.png"))); // NOI18N
         btnDV_TN.setText("Dịch Vụ - Tiện Nghi");
         btnDV_TN.setBorder(null);
         btnDV_TN.setBorderPainted(false);
@@ -311,7 +311,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnNV.setBackground(new java.awt.Color(46, 62, 78));
         btnNV.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnNV.setForeground(new java.awt.Color(255, 255, 255));
-        btnNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/employee_24px.png"))); // NOI18N
+        btnNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/employee_24px.png"))); // NOI18N
         btnNV.setText("Nhân Viên");
         btnNV.setBorder(null);
         btnNV.setBorderPainted(false);
@@ -350,7 +350,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnKH.setBackground(new java.awt.Color(46, 62, 78));
         btnKH.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnKH.setForeground(new java.awt.Color(255, 255, 255));
-        btnKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/customer_24px.png"))); // NOI18N
+        btnKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/customer_24px.png"))); // NOI18N
         btnKH.setText("Khách Hàng");
         btnKH.setBorder(null);
         btnKH.setBorderPainted(false);
@@ -394,7 +394,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnHD.setBackground(new java.awt.Color(46, 62, 78));
         btnHD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnHD.setForeground(new java.awt.Color(255, 255, 255));
-        btnHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/purchaseOrder_24px.png"))); // NOI18N
+        btnHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/purchaseOrder_24px.png"))); // NOI18N
         btnHD.setText("Hóa Đơn");
         btnHD.setBorder(null);
         btnHD.setBorderPainted(false);
@@ -437,7 +437,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnTK.setBackground(new java.awt.Color(46, 62, 78));
         btnTK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnTK.setForeground(new java.awt.Color(255, 255, 255));
-        btnTK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/statistics_24px.png"))); // NOI18N
+        btnTK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/statistics_24px.png"))); // NOI18N
         btnTK.setText("Thống Kê");
         btnTK.setBorder(null);
         btnTK.setBorderPainted(false);
@@ -480,7 +480,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnThoat.setBackground(new java.awt.Color(46, 62, 78));
         btnThoat.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnThoat.setForeground(new java.awt.Color(255, 255, 255));
-        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/exit_24px.png"))); // NOI18N
+        btnThoat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/exit_24px.png"))); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.setBorder(null);
         btnThoat.setBorderPainted(false);
@@ -510,7 +510,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnDangXuat.setBackground(new java.awt.Color(46, 62, 78));
         btnDangXuat.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDangXuat.setForeground(new java.awt.Color(255, 255, 255));
-        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/logout_24px.png"))); // NOI18N
+        btnDangXuat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/logout_24px.png"))); // NOI18N
         btnDangXuat.setText("Đăng Xuất");
         btnDangXuat.setBorder(null);
         btnDangXuat.setBorderPainted(false);
@@ -591,7 +591,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/information_24px.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/information_24px.png"))); // NOI18N
         jLabel2.setText("Hệ Thống Quản Lý Khách Sạn");
 
         pnlDatPhong.setkEndColor(new java.awt.Color(51, 153, 255));
@@ -601,7 +601,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnDatPhong.setBackground(new java.awt.Color(46, 62, 78));
         btnDatPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDatPhong.setForeground(new java.awt.Color(255, 255, 255));
-        btnDatPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/icons8_key_24px.png"))); // NOI18N
+        btnDatPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/key_24px.png"))); // NOI18N
         btnDatPhong.setText("Đặt Phòng");
         btnDatPhong.setContentAreaFilled(false);
         btnDatPhong.setFocusable(false);
@@ -637,7 +637,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         jButton7.setBackground(new java.awt.Color(46, 62, 78));
         jButton7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/checkOut Hotel_24px.png"))); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/checkOut Hotel_24px.png"))); // NOI18N
         jButton7.setText("Trả Phòng");
         jButton7.setContentAreaFilled(false);
         jButton7.setFocusable(false);
@@ -669,7 +669,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(46, 62, 78));
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/foodService_24px.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/foodService_24px.png"))); // NOI18N
         jButton6.setText("Đặt Dịch Vụ");
         jButton6.setContentAreaFilled(false);
         jButton6.setFocusable(false);
@@ -700,7 +700,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         jButton8.setBackground(new java.awt.Color(46, 62, 78));
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/startuphotel/icons/convenientService_24px.png"))); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/convenientService_24px.png"))); // NOI18N
         jButton8.setText("Nhập Dịch Vụ - Tiện Nghi");
         jButton8.setContentAreaFilled(false);
         jButton8.setFocusable(false);
