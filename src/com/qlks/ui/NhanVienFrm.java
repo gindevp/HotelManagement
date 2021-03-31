@@ -9,6 +9,7 @@ import com.qlks.dao.BoPhanDAO;
 import com.qlks.dao.NhanVienDAO;
 import com.qlks.entity.BoPhan;
 import com.qlks.entity.NhanVien;
+import com.qlks.util.Auth;
 import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
 import com.qlks.util.XImage;
@@ -647,8 +648,7 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
                 && Validator.checkSelectedDob(jdcNgaySinh)
                 && Validator.checkSelectedBgr(bgrGioiTinh, "Giới tính")
                 && Validator.checkPhoneNum(txtSdt)
-                && Validator.checkEmail(txtEmail)
-                ) {
+                && Validator.checkEmail(txtEmail)) {
             BoPhan boPhan = (BoPhan) cboBoPhan.getSelectedItem();
             nhanVien = new NhanVien(
                     txtMa.getText().trim(),
@@ -716,9 +716,29 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
     }
 
     private void update() {
+        NhanVien nhanVien = getForm();
+        if (nhanVien != null) {
+            if (nvdao.update(nhanVien)) {
+                MsgBox.alert(this, "Sửa thành công!");
+                this.fillTbl();
+                this.clear();
+            } else {
+                MsgBox.alert(this, "Sửa thành công!");
+            }
+        }
     }
 
     private void delete() {
+        NhanVien nhanVien = getForm();
+        if (MsgBox.confirm(this, "Bạn có chắc muốn xóa?")) {
+            if (nvdao.delete(nhanVien.getMa())) {
+                MsgBox.alert(this, "Xóa thành công!");
+                this.fillTbl();
+                this.clear();
+            } else {
+                MsgBox.alert(this, "Xóa thành công!");
+            }
+        }
     }
 
     private void clear() {
