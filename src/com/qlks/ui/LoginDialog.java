@@ -10,8 +10,10 @@ import com.qlks.dao.MaXacNhanDAO;
 import com.qlks.dao.NhanVienDAO;
 import com.qlks.entity.MaXacNhan;
 import com.qlks.entity.NhanVien;
+import com.qlks.util.Auth;
 import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -47,7 +49,7 @@ public class LoginDialog extends javax.swing.JDialog {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        lblClose = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -71,12 +73,12 @@ public class LoginDialog extends javax.swing.JDialog {
         jPanel2.setBackground(new java.awt.Color(37, 49, 62));
         jPanel2.setPreferredSize(new java.awt.Dimension(600, 750));
 
-        jLabel5.setBackground(new java.awt.Color(37, 49, 62));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/closel_24px.png"))); // NOI18N
-        jLabel5.setToolTipText("Close");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblClose.setBackground(new java.awt.Color(37, 49, 62));
+        lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/closel_24px.png"))); // NOI18N
+        lblClose.setToolTipText("Close");
+        lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                lblCloseMouseClicked(evt);
             }
         });
 
@@ -215,15 +217,15 @@ public class LoginDialog extends javax.swing.JDialog {
                     .addComponent(sptTen, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(edtMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                     .addComponent(btnDangKy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblClose, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblClose, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
@@ -278,9 +280,9 @@ public class LoginDialog extends javax.swing.JDialog {
         this.register();
     }//GEN-LAST:event_btnDangKyActionPerformed
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
         this.close();
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_lblCloseMouseClicked
 
     private void chkShowPassItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkShowPassItemStateChanged
         this.showPass(evt);
@@ -339,9 +341,9 @@ public class LoginDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblQuenMatKhau;
     private javax.swing.JSeparator sptMatKhau;
     private javax.swing.JSeparator sptTen;
@@ -349,6 +351,7 @@ public class LoginDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
+        
     }
 
     private void login() {
@@ -363,6 +366,8 @@ public class LoginDialog extends javax.swing.JDialog {
                 if (nhanVien.getPass().equalsIgnoreCase(pass)) {
                     MsgBox.alert(this, "Đăng nhập thành công!");
                     //next code
+                    Auth.user = nhanVien;
+                    LoginDialog.this.dispose();
                 } else {
                     MsgBox.alert(this, "Sai mật khẩu!");
                 }
@@ -438,5 +443,6 @@ public class LoginDialog extends javax.swing.JDialog {
             edtMatKhau.setEchoChar('*');
         }
     }
+
 
 }
