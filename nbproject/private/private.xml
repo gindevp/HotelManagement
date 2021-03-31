@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/FPT/21/SP21/Block2/PRO104/QLKS/src/com/qlks/ui/SplashScreenDialog.java</file>
             <file>file:/D:/FPT/21/SP21/Block2/PRO104/QLKS/src/com/qlks/ui/LoginDialog.java</file>
             <file>file:/D:/FPT/21/SP21/Block2/PRO104/QLKS/src/com/qlks/ui/SpalshScreen.java</file>
+=======
+            <file>file:/D:/2021/Spring%202021/Block%202/PRO1041_DUAN1/PRJ/HotelManagement/src/com/qlks/util/Validator.java</file>
+            <file>file:/D:/2021/Spring%202021/Block%202/PRO1041_DUAN1/PRJ/HotelManagement/src/com/qlks/ui/managerHomeFrame.java</file>
+>>>>>>> a53bc3dcfeb75010314cf996944ac4467214f25f
         </group>
     </open-files>
 </project-private>
