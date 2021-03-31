@@ -5,6 +5,8 @@
  */
 package com.qlks.ui;
 
+import com.qlks.util.Auth;
+import com.qlks.util.MsgBox;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -13,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicToolBarUI;
 
@@ -20,7 +23,7 @@ import javax.swing.plaf.basic.BasicToolBarUI;
  *
  * @author markhyun
  */
-public class managerHomeFrame extends javax.swing.JFrame {
+public class HomeFrame extends javax.swing.JFrame {
 
     Color bgColor = new Color(46, 62, 78);
     Color changeColor = new Color(153, 204, 255);
@@ -28,9 +31,9 @@ public class managerHomeFrame extends javax.swing.JFrame {
     /**
      * Creates new form managerHome
      */
-    public managerHomeFrame() {
+    public HomeFrame() {
         initComponents();
-        this.inIt();
+        this.init();
     }
 
     /**
@@ -44,7 +47,6 @@ public class managerHomeFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         pnlDoiMK = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -52,6 +54,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnDoiMK = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
+        lblName = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         pnlPhong = new javax.swing.JPanel();
         btnPhong = new javax.swing.JButton();
@@ -72,7 +75,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
         pnlDangXuat = new javax.swing.JPanel();
         btnDangXuat = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
+        desMain = new javax.swing.JDesktopPane();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,21 +86,15 @@ public class managerHomeFrame extends javax.swing.JFrame {
         pnlDoiMK.setBackground(new java.awt.Color(37, 49, 62));
         pnlDoiMK.setPreferredSize(new java.awt.Dimension(300, 64));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Admin");
-
         javax.swing.GroupLayout pnlDoiMKLayout = new javax.swing.GroupLayout(pnlDoiMK);
         pnlDoiMK.setLayout(pnlDoiMKLayout);
         pnlDoiMKLayout.setHorizontalGroup(
             pnlDoiMKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDoiMKLayout.createSequentialGroup()
-                .addGap(0, 99, Short.MAX_VALUE)
-                .addComponent(jLabel5))
+            .addGap(0, 152, Short.MAX_VALUE)
         );
         pnlDoiMKLayout.setVerticalGroup(
             pnlDoiMKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/logo.jpg"))); // NOI18N
@@ -135,6 +132,11 @@ public class managerHomeFrame extends javax.swing.JFrame {
         jSeparator3.setForeground(new java.awt.Color(255, 0, 51));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblName.setText("Admin");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,12 +148,14 @@ public class managerHomeFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1051, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 810, Short.MAX_VALUE)
                 .addComponent(pnlDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -169,6 +173,7 @@ public class managerHomeFrame extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDoiMK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(jSeparator3)
+                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -320,6 +325,11 @@ public class managerHomeFrame extends javax.swing.JFrame {
         btnNV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnNVMouseExited(evt);
+            }
+        });
+        btnNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNVActionPerformed(evt);
             }
         });
 
@@ -577,42 +587,45 @@ public class managerHomeFrame extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 940));
 
-        jDesktopPane2.setPreferredSize(new java.awt.Dimension(1600, 940));
+        desMain.setPreferredSize(new java.awt.Dimension(1600, 940));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Hệ Thống Quản Lý Khách Sạn");
 
-        jDesktopPane2.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        desMain.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
-        jDesktopPane2.setLayout(jDesktopPane2Layout);
-        jDesktopPane2Layout.setHorizontalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+        javax.swing.GroupLayout desMainLayout = new javax.swing.GroupLayout(desMain);
+        desMain.setLayout(desMainLayout);
+        desMainLayout.setHorizontalGroup(
+            desMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desMainLayout.createSequentialGroup()
                 .addContainerGap(1383, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addContainerGap())
         );
-        jDesktopPane2Layout.setVerticalGroup(
-            jDesktopPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane2Layout.createSequentialGroup()
+        desMainLayout.setVerticalGroup(
+            desMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desMainLayout.createSequentialGroup()
                 .addContainerGap(895, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(23, 23, 23))
         );
 
-        getContentPane().add(jDesktopPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
+        getContentPane().add(desMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void inIt() {
+    private void init() {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        new LoginDialog(this, true).setVisible(true);
         this.showTime();
 //        this.changeBGToolBar();
+        this.showName();
+
     }
-    
+
     private void btnPhongMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPhongMouseMoved
         pnlPhong.setBackground(changeColor);
     }//GEN-LAST:event_btnPhongMouseMoved
@@ -673,6 +686,10 @@ public class managerHomeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnKHActionPerformed
 
+    private void btnNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNVActionPerformed
+        this.openBoPhan();
+    }//GEN-LAST:event_btnNVActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -690,21 +707,23 @@ public class managerHomeFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(managerHomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(managerHomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(managerHomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(managerHomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new managerHomeFrame().setVisible(true);
+                new HomeFrame().setVisible(true);
             }
         });
     }
@@ -720,17 +739,17 @@ public class managerHomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnPhong;
     private javax.swing.JButton btnTK;
     private javax.swing.JButton btnThoat;
-    private javax.swing.JDesktopPane jDesktopPane2;
+    private javax.swing.JDesktopPane desMain;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblThoiGian;
     private javax.swing.JPanel pnlDV_TN;
     private javax.swing.JPanel pnlDangXuat;
@@ -781,4 +800,40 @@ public class managerHomeFrame extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    private void openBoPhan() {
+        this.openChildFrm(new BoPhanFrm());
+    }
+
+    private void openChildFrm(JInternalFrame frm) {
+        if (!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        } else {
+            for (JInternalFrame frmItem : desMain.getAllFrames()) {
+                frmItem.dispose();
+            }
+            frm.setLocation((desMain.getWidth() - frm.getWidth()) / 2,
+                    (desMain.getHeight() - 20) / 2 - frm.getHeight() / 2 - 20);
+            desMain.add(frm);
+            frm.setVisible(true);
+        }
+    }
+
+    private void showName() {
+
+        Date dt = new Date();
+        int hours = dt.getHours();
+        int min = dt.getMinutes();
+        String mess = "";
+
+        if (hours >= 1 || hours <= 12) {
+            mess = "Good Morning";
+        } else if (hours >= 12 || hours <= 16) {
+            mess = "Good Afternoon";
+        } else if (hours >= 16 || hours <= 21) {
+            mess = "Good Evening";
+        } else if (hours >= 21 || hours <= 24) {
+            mess = "Good Night";
+        }
+        lblName.setText(mess);
+    }
 }

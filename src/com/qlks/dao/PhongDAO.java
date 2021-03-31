@@ -5,7 +5,6 @@
  */
 package com.qlks.dao;
 
-import java.util.List;
 import com.qlks.entity.Phong;
 import com.qlks.util.XJdbc;
 import java.sql.ResultSet;
