@@ -404,6 +404,8 @@ public class LoginDialog extends javax.swing.JDialog {
             email.setContent(con, "text/html");
             email.addRecipient(s);
             email.send();
+            MsgBox.dialogAutoClose(this, "Vui lòng đợi trong giây lát!");
+
             MsgBox.alert(this, "Hệ thống đã gửi mật khẩu mới đến Email của bạn!");
 
             MaXacNhan maXacNhan = new MaXacNhan(newPass + "", maNv);
