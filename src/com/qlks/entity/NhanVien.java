@@ -29,6 +29,19 @@ public class NhanVien {
     public NhanVien() {
     }
 
+    public NhanVien(String ma, String ten, String pass, Date ns, boolean gt, String diaChi, String sdt, String email, String anh, String maBoPhan) {
+        this.ma = ma;
+        this.ten = ten;
+        this.pass = pass;
+        this.ns = ns;
+        this.gt = gt;
+        this.diaChi = diaChi;
+        this.sdt = sdt;
+        this.email = email;
+        this.anh = anh;
+        this.maBoPhan = maBoPhan;
+    }
+
     public NhanVien(String ma, String ten, String pass, Date ns, boolean gt, String diaChi, String sdt, String email, String anh, String maBoPhan, boolean isActive, Date createAt, Date updateAt) {
         this.ma = ma;
         this.ten = ten;

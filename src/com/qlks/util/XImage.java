@@ -30,7 +30,7 @@ public class XImage {
     }
 
     public static void save(File src) {
-        File dst = new File("logos", src.getName());
+        File dst = new File("img", src.getName());
         if (!dst.getParentFile().exists()) {
             //tao thu muc logos neu chua ton tai
             dst.getParentFile().mkdirs();
@@ -48,7 +48,7 @@ public class XImage {
 
     public static ImageIcon read(String fileName, JLabel lbl) {
         try {
-            File path = new File("logos", fileName);
+            File path = new File("img", fileName);
             return new ImageIcon(new ImageIcon(path.getAbsolutePath())
                     .getImage()
                     .getScaledInstance(

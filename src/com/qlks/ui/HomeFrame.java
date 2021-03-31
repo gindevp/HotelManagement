@@ -7,12 +7,14 @@ package com.qlks.ui;
 
 import com.qlks.util.Auth;
 import com.qlks.util.MsgBox;
+import com.qlks.util.XImage;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -107,9 +109,10 @@ public class HomeFrame extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(173, 190, 206));
         jLabel4.setText("HOTEL");
 
-        lblThoiGian.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblThoiGian.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblThoiGian.setForeground(new java.awt.Color(255, 255, 255));
         lblThoiGian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/clock_24px.png"))); // NOI18N
+        lblThoiGian.setIconTextGap(8);
 
         jSeparator1.setBackground(new java.awt.Color(37, 49, 62));
         jSeparator1.setForeground(new java.awt.Color(255, 0, 51));
@@ -132,9 +135,9 @@ public class HomeFrame extends javax.swing.JFrame {
         jSeparator3.setForeground(new java.awt.Color(255, 0, 51));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        lblName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblName.setForeground(new java.awt.Color(255, 255, 255));
-        lblName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblName.setText("Admin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -148,19 +151,18 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 810, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 604, Short.MAX_VALUE)
                 .addComponent(pnlDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(btnDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(27, 27, 27)
+                .addComponent(lblThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,10 +175,8 @@ public class HomeFrame extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDoiMK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(jSeparator3)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -593,6 +593,7 @@ public class HomeFrame extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Hệ Thống Quản Lý Khách Sạn");
 
         desMain.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -602,8 +603,8 @@ public class HomeFrame extends javax.swing.JFrame {
         desMainLayout.setHorizontalGroup(
             desMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, desMainLayout.createSequentialGroup()
-                .addContainerGap(1383, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addContainerGap(1329, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         desMainLayout.setVerticalGroup(
@@ -689,7 +690,7 @@ public class HomeFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnKHActionPerformed
 
     private void btnNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNVActionPerformed
-        this.openBoPhan();
+        this.openNhanVien();
     }//GEN-LAST:event_btnNVActionPerformed
 
     /**
@@ -820,22 +821,30 @@ public class HomeFrame extends javax.swing.JFrame {
         }
     }
 
-    private void showName() {
-
-        Date dt = new Date();
-        int hours = dt.getHours();
-        int min = dt.getMinutes();
-        String mess = "";
-
-        if (hours >= 1 || hours <= 12) {
-            mess = "Good Morning";
-        } else if (hours >= 12 || hours <= 16) {
-            mess = "Good Afternoon";
-        } else if (hours >= 16 || hours <= 21) {
-            mess = "Good Evening";
-        } else if (hours >= 21 || hours <= 24) {
-            mess = "Good Night";
-        }
-        lblName.setText(mess);
+    private void openNhanVien() {
+        this.openChildFrm(new NhanVienFrm());
     }
+
+    private void showName() {
+        Date date = new Date();
+        int hour = date.getHours();
+        String mess = "";
+        String iconPath = "/com/qlks/icon/";
+        if (hour >= 1 && hour < 12) {
+            mess = "Good morning, ";
+            iconPath += "partly_cloudy_day_24px.png";
+        } else if (hour >= 12 && hour < 16) {
+            mess = "Good afternoon, ";
+            iconPath += "sun_24px.png";
+        } else if (hour >= 16 && hour < 21) {
+            mess = "Good evening, ";
+            iconPath += "sunset_24px.png";
+        } else {
+            mess = "Good night, ";
+            iconPath += "night_landscape_24px.png";
+        }
+        lblName.setText(mess + Auth.user.getTen());
+        lblName.setIcon(new ImageIcon(XImage.class.getResource(iconPath)));
+    }
+
 }

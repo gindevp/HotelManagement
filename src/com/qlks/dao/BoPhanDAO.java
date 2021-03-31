@@ -17,11 +17,13 @@ import java.util.List;
  */
 public class BoPhanDAO extends ManageDAO<BoPhan, String>{
 
-    private String insertSql = "insert bophan values (?, ?, default, default, default";
-    private String updateSql = "update bophan set tenbp = ?, updateat = default where mabp = ?";
-    private String deleteSql = "update bophan set isactive = 0, updateat = default where mabp = ?";
-    private String selectAll = "select * from bophan where isactive = 1";
-    private String selectById = "select * from bophan where mabp = ? and isactive = 1";
+    String insertSql = "insert bophan values (?, ?, default, default, default";
+    String updateSql = "update bophan set tenbp = ?, updateat = default where mabp = ?";
+    String deleteSql = "update bophan set isactive = 0, updateat = default where mabp = ?";
+    String selectAllSql = "select * from bophan where isactive = 1";
+    String selectByIdSql = "select * from bophan where mabp = ? and isactive = 1";
+    String selectNameByIdSql = "select tenbp from bophan where mabp = ? and isactive = 1";
+    
     
     @Override
     public boolean insert(BoPhan entity) {
@@ -40,13 +42,17 @@ public class BoPhanDAO extends ManageDAO<BoPhan, String>{
 
     @Override
     public List<BoPhan> selectAll() {
-        return selectBySql(selectAll);
+        return selectBySql(selectAllSql);
     }
 
     @Override
     public BoPhan selectByID(String key) {
-        List<BoPhan> list = selectBySql(selectById, key);
+        List<BoPhan> list = selectBySql(selectByIdSql, key);
         return list.size() > 0 ? list.get(0) : null;
+    }
+    
+    public String selectNameById(String id) {
+        return (String) XJdbc.value(selectNameByIdSql, id);
     }
 
     @Override
@@ -63,6 +69,7 @@ public class BoPhanDAO extends ManageDAO<BoPhan, String>{
                         rs.getDate(4), 
                         rs.getDate(5)
                 );
+                list.add(boPhan);
             }
         } catch (Exception e) {
         }

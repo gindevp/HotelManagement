@@ -54,7 +54,7 @@ public class XJdbc {
     public static Object value(String sql, Object... args) {
         try (ResultSet rs = XJdbc.query(sql, args);) {
             if (rs.next()) {
-                return rs.getObject(0);
+                return rs.getObject(1);
             }            
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -17,33 +17,46 @@ import java.util.List;
  */
 public class NhanVienDAO extends ManageDAO<NhanVien, String> {
 
-    String insert = "insert Nhanvien values (?, ?, ?, ?, ?, ?, ?, ?, default, ?, default, default, default)";
+    String insertSql = "insert Nhanvien values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, default, default)";
+    String updateSql = "update nhanvien set tennv = ?, password = ?, ngaysinh = ?, gioitinh = ?, "
+            + "diachi = ?, sdt = ?, email = ?, anh = ?, mabp = ?, updateat = default "
+            + "where manv = ?";
+    String deleteSql = "update nhanvien set isactive = 0 where manv = ?";
+    String selectAllSql = "select * from nhanvien where isactive = 1";
     String selectById = "select * from nhanvien where manv = ?";
-    String updatePassForgot = "update nhanvien set password = (select top 1 code from maxacnhan where "
-            + "maxacnhan.manv = nhanvien.manv order by createat desc), updateat = default where manv = ?";
-    String selectByEmailSql = "select * from nhanvien where manv = ? and email = ?";
+    String updatePassForgot = "update nhanvien set password = (select top 1 "
+            + "code from maxacnhan where maxacnhan.manv = nhanvien.manv order "
+            + "by createat desc), updateat = default where manv = ? and isactive = 1";
+    String selectByEmailSql = "select * from nhanvien where manv = ? and email = ? and isactive = 1";
+    String selectByKeyword = "select * from nhanvien where tennv like ? and isactive = 1";
+
     @Override
     public boolean insert(NhanVien entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return XJdbc.update(insertSql, entity.getMa(), entity.getTen(), entity.getPass(),
+                entity.getNs(), entity.isGt(), entity.getDiaChi(), entity.getSdt(),
+                entity.getEmail(), entity.getAnh(), entity.getMaBoPhan());
     }
 
     @Override
     public boolean update(NhanVien entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return XJdbc.update(updateSql, entity.getTen(), entity.getPass(),
+                entity.getNs(), entity.isGt(), entity.getDiaChi(), entity.getSdt(),
+                entity.getEmail(), entity.getAnh(), entity.getMaBoPhan(), entity.getMa());
     }
-    
+
     public boolean updateForgotPass(String ma) {
         return XJdbc.update(updatePassForgot, ma);
     }
 
     @Override
     public boolean delete(String key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return XJdbc.update(deleteSql, key);
     }
 
     @Override
     public List<NhanVien> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<NhanVien> list = selectBySql(selectAllSql);
+        return list;
     }
 
     @Override
@@ -51,12 +64,17 @@ public class NhanVienDAO extends ManageDAO<NhanVien, String> {
         List<NhanVien> list = selectBySql(selectById, key);
         return list.size() > 0 ? list.get(0) : null;
     }
-    
+
     public NhanVien selectByEmail(String ma, String email) {
         List<NhanVien> list = selectBySql(selectByEmailSql, ma, email);
         return list.size() > 0 ? list.get(0) : null;
     }
-    
+
+    public List<NhanVien> selectByKeyword(String key) {
+        List<NhanVien> list = selectBySql(selectByKeyword, "%" + key + "%");
+        return list;
+    }
+
     @Override
     protected List<NhanVien> selectBySql(String sql, Object... args) {
         List<NhanVien> list = new ArrayList<>();

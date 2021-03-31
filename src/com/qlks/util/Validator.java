@@ -73,6 +73,22 @@ public class Validator {
         return true;
     }
 
+    public static boolean checkSelectedDob(JDateChooser... args) {
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].getDate() == null) {
+                MsgBox.alert(null, "Vui lòng chọn thời gian!");
+                args[i].requestFocus();
+                return false;
+            } else if (new Date().getYear() - args[i].getDate().getYear() < 18
+                    || new Date().getYear() - args[i].getDate().getYear() > 65) {
+                MsgBox.alert(null, "Tuổi không hợp lệ (Phải từ 18-65)");
+                args[i].requestFocus();
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static boolean checkEmail(JTextComponent... args) {
         String reg = "^[a-zA-Z][\\w-]+@fpt.edu.vn$";
         for (int i = 0; i < args.length; i++) {
@@ -84,8 +100,8 @@ public class Validator {
         }
         return true;
     }
-    
-        public static boolean checkEmail(String... args) {
+
+    public static boolean checkEmail(String... args) {
         String reg = "^[a-zA-Z][\\w-]+@fpt.edu.vn$";
         for (int i = 0; i < args.length; i++) {
             if (!args[i].trim().matches(reg)) {
