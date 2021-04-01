@@ -160,8 +160,8 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGap(27, 27, 27)
                 .addComponent(lblThoiGian, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
