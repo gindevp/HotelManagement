@@ -5,13 +5,16 @@
  */
 package com.qlks.ui;
 
+import com.qlks.util.MsgBox;
+import com.qlks.util.Validator;
 import com.qlks.entity.Phong;
 import com.qlks.entity.LoaiPhong;
 import com.qlks.dao.PhongDAO;
 import com.qlks.dao.LoaiPhongDAO;
-import com.qlks.util.MsgBox;
-import com.qlks.util.Validator;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import javafx.scene.control.RadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;

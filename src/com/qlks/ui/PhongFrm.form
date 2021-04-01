@@ -81,7 +81,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tab" alignment="0" pref="1212" max="32767" attributes="0"/>
+                          <Component id="tab" alignment="0" max="32767" attributes="0"/>
                           <Component id="jPanel16" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -96,7 +96,7 @@
                       <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                       <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="tab" pref="432" max="32767" attributes="0"/>
+                      <Component id="tab" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

@@ -5,17 +5,31 @@
  */
 package com.qlks.ui;
 
+import com.qlks.util.MsgBox;
+import com.qlks.util.Validator;
+import com.qlks.entity.LoaiPhong;
+import com.qlks.dao.LoaiPhongDAO;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author markhyun
  */
 public class LoaiPhongFrm extends javax.swing.JInternalFrame {
 
+    private LoaiPhongDAO lpdao = new LoaiPhongDAO();
+    private int index = -1;
+
     /**
      * Creates new form LoaiPhong
      */
     public LoaiPhongFrm() {
         initComponents();
+        this.init();
     }
 
     /**
@@ -32,18 +46,18 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblLoaiPhong = new javax.swing.JTable();
+        tbl = new javax.swing.JTable();
         txtMaLP = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtTenLP = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnThem = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
+        btnFirst = new javax.swing.JButton();
+        btnPrevious = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        btnLast = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtMoTa = new javax.swing.JTextArea();
@@ -60,8 +74,8 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setText("Mã Loại Phòng:");
 
-        tblLoaiPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        tblLoaiPhong.setModel(new javax.swing.table.DefaultTableModel(
+        tbl.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -69,7 +83,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
                 "Mã Loại Phòng", "Tên Loại Phòng", "Mô Tả"
             }
         ));
-        jScrollPane1.setViewportView(tblLoaiPhong);
+        jScrollPane1.setViewportView(tbl);
 
         txtMaLP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
@@ -78,53 +92,53 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
 
         txtTenLP.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/add_24px.png"))); // NOI18N
-        jButton1.setText("Thêm");
-        jButton1.setOpaque(false);
+        btnThem.setBackground(new java.awt.Color(255, 255, 255));
+        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/add_24px.png"))); // NOI18N
+        btnThem.setText("Thêm");
+        btnThem.setOpaque(false);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/edit_24px.png"))); // NOI18N
-        jButton2.setText("Sửa");
-        jButton2.setOpaque(false);
+        btnSua.setBackground(new java.awt.Color(255, 255, 255));
+        btnSua.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/edit_24px.png"))); // NOI18N
+        btnSua.setText("Sửa");
+        btnSua.setOpaque(false);
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/delete_24px.png"))); // NOI18N
-        jButton3.setText("Xóa");
-        jButton3.setOpaque(false);
+        btnXoa.setBackground(new java.awt.Color(255, 255, 255));
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/delete_24px.png"))); // NOI18N
+        btnXoa.setText("Xóa");
+        btnXoa.setOpaque(false);
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/reset_24px.png"))); // NOI18N
-        jButton4.setText("Refresh");
-        jButton4.setOpaque(false);
+        btnRefresh.setBackground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/reset_24px.png"))); // NOI18N
+        btnRefresh.setText("Refresh");
+        btnRefresh.setOpaque(false);
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/first_24px.png"))); // NOI18N
-        jButton5.setText("First");
-        jButton5.setOpaque(false);
+        btnFirst.setBackground(new java.awt.Color(255, 255, 255));
+        btnFirst.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/first_24px.png"))); // NOI18N
+        btnFirst.setText("First");
+        btnFirst.setOpaque(false);
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/previous_24px.png"))); // NOI18N
-        jButton6.setText("Previous");
-        jButton6.setOpaque(false);
+        btnPrevious.setBackground(new java.awt.Color(255, 255, 255));
+        btnPrevious.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnPrevious.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/previous_24px.png"))); // NOI18N
+        btnPrevious.setText("Previous");
+        btnPrevious.setOpaque(false);
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/next_24px.png"))); // NOI18N
-        jButton7.setText("Next");
-        jButton7.setOpaque(false);
+        btnNext.setBackground(new java.awt.Color(255, 255, 255));
+        btnNext.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/next_24px.png"))); // NOI18N
+        btnNext.setText("Next");
+        btnNext.setOpaque(false);
 
-        jButton8.setBackground(new java.awt.Color(255, 255, 255));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/last_24px.png"))); // NOI18N
-        jButton8.setText("Last");
-        jButton8.setOpaque(false);
+        btnLast.setBackground(new java.awt.Color(255, 255, 255));
+        btnLast.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/last_24px.png"))); // NOI18N
+        btnLast.setText("Last");
+        btnLast.setOpaque(false);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel6.setText("Mô Tả:");
@@ -154,26 +168,26 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtTenLP, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(146, 146, 146)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,14 +212,14 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44))
         );
 
@@ -242,14 +256,14 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton btnFirst;
+    private javax.swing.JButton btnLast;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrevious;
+    private javax.swing.JButton btnRefresh;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnXoa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -258,9 +272,148 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblLoaiPhong;
+    private javax.swing.JTable tbl;
     private javax.swing.JTextField txtMaLP;
     private javax.swing.JTextArea txtMoTa;
     private javax.swing.JTextField txtTenLP;
     // End of variables declaration//GEN-END:variables
+private void init() {
+        this.fillToTable();
+        this.updateStatus();
+    }
+
+    private void fillToTable() {
+        List<LoaiPhong> list = lpdao.selectAll();
+        DefaultTableModel model = (DefaultTableModel) tbl.getModel();
+        model.setRowCount(0);
+        list.forEach((item) -> {
+            model.addRow(new Object[]{
+                item.getTenLP(),
+                item.getMoTa(),});
+        });
+    }
+
+    private void edit() {
+        DefaultTableModel model = (DefaultTableModel) tbl.getModel();
+        model.setRowCount(0);
+        List<LoaiPhong> list = lpdao.selectAll();
+        LoaiPhong lp = list.get(this.index);
+        this.setForm(lp);
+        this.updateStatus();
+        this.fillToTable();
+        tbl.setRowSelectionInterval(index, index);
+    }
+
+    private void updateStatus() {
+        boolean edit = this.index >= 0;
+        boolean first = this.index == 0;
+        boolean last = true;
+        if (this.index == tbl.getRowCount() - 1) {
+            last = true;
+        } else {
+            last = false;
+        }
+
+        txtMaLP.setEditable(!edit);
+        btnThem.setEnabled(!edit);
+        btnSua.setEnabled(edit);
+        btnXoa.setEnabled(edit);
+        btnFirst.setEnabled(edit && !first);
+        btnPrevious.setEnabled(edit && !first);
+        btnNext.setEnabled(edit && !last);
+        btnLast.setEnabled(edit && !last);
+    }
+
+    private void insert() {
+        LoaiPhong lp = getForm();
+        if (lp != null) {
+            if (lpdao.insert(lp)) {
+                MsgBox.alert(null, "Thêm thành công!");
+                this.fillToTable();
+                this.clearForm();
+            } else {
+                MsgBox.alert(null, "Thêm không thành công!");
+            }
+        }
+    }
+
+    private void update() {
+        LoaiPhong lp = getForm();
+        if (lp != null) {
+            if (lpdao.update(lp)) {
+                MsgBox.alert(null, "Sửa thành công!");
+                this.fillToTable();
+                this.clearForm();
+            } else {
+                MsgBox.alert(null, "Sửa không thành công!");
+            }
+        }
+    }
+
+    private void delete() {
+//        if (!Auth.isManager()) {
+//            MsgBox.alert(null, "Không có quyền xóa!");
+//        } else {
+        if (MsgBox.confirm(null, "Có chắc muốn xóa?")) {
+            String ma = txtMaLP.getText();
+            if (lpdao.delete(ma)) {
+                MsgBox.alert(null, "Xóa thành công!");
+                this.fillToTable();
+                this.clearForm();
+            } else {
+                MsgBox.alert(null, "Thêm không thành công!");
+            }
+        }
+
+//        }
+    }
+
+    private void clearForm() {
+        this.index = -1;
+        this.setForm(new LoaiPhong());
+        this.updateStatus();
+    }
+
+    private void first() {
+        this.index = 0;
+        this.edit();
+    }
+
+    private void prev() {
+        if (this.index > 0) {
+            this.index--;
+            this.edit();
+        }
+    }
+
+    private void last() {
+        this.index = tbl.getRowCount() - 1;
+        this.edit();
+    }
+
+    private void next() {
+        if (this.index < tbl.getRowCount() - 1) {
+            this.index++;
+            this.edit();
+        }
+    }
+
+    private LoaiPhong getForm() {
+        LoaiPhong lp = null;
+        if (Validator.checkBlack(txtMaLP, txtTenLP, txtMoTa)) {
+            lp = new LoaiPhong(
+                    txtMaLP.getText().trim(),
+                    txtTenLP.getText().trim(),
+                    txtMoTa.getText().trim()
+            );
+
+        }
+        return lp;
+    }
+
+    private void setForm(LoaiPhong lp) {
+        txtMaLP.setText(lp.getMaLP());
+        txtTenLP.setText(lp.getTenLP());
+        txtMoTa.setText(lp.getMoTa());
+    }
 }
