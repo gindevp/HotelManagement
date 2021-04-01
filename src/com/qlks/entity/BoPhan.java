@@ -74,9 +74,10 @@ public class BoPhan {
         return ten; //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        BoPhan boPhan = (BoPhan) obj;
-        return boPhan.getMa().equals(ma); //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public boolean equals(Object obj) {
+//        BoPhan boPhan = (BoPhan) obj;
+//        return boPhan.getMa().equals(ma); //To change body of generated methods, choose Tools | Templates.
+//    }
+//    
 }
