@@ -58,7 +58,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         tab = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
-        btnThem = new javax.swing.JButton();
+        btnThem1 = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -139,14 +139,14 @@ public class PhongFrm extends javax.swing.JInternalFrame {
 
         jPanel4.setOpaque(false);
 
-        btnThem.setBackground(new java.awt.Color(204, 204, 204));
-        btnThem.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/add_24px.png"))); // NOI18N
-        btnThem.setText("Thêm");
-        btnThem.setOpaque(false);
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
+        btnThem1.setBackground(new java.awt.Color(204, 204, 204));
+        btnThem1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnThem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/add_24px.png"))); // NOI18N
+        btnThem1.setText("Thêm");
+        btnThem1.setOpaque(false);
+        btnThem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
+                btnThem1ActionPerformed(evt);
             }
         });
 
@@ -294,7 +294,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
                             .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -339,7 +339,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
                 .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThem1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLamMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -465,9 +465,9 @@ public class PhongFrm extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+    private void btnThem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThem1ActionPerformed
         this.insert();
-    }//GEN-LAST:event_btnThemActionPerformed
+    }//GEN-LAST:event_btnThem1ActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         this.update();
@@ -512,7 +512,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrevious;
     private javax.swing.JButton btnSua;
-    private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnThem1;
     private javax.swing.JButton btnXoa;
     private javax.swing.JComboBox<String> cbo;
     private javax.swing.JButton jButton1;
@@ -562,7 +562,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         //-trang thai form
         //neu dang chon 1 dong hien thi len form thi khong duoc sua MANV va k duoc click button Them
         txtSoPhong.setEditable(!edit);
-        btnThem.setEnabled(!edit);
+        btnThem1.setEnabled(!edit);
         btnSua.setEnabled(edit);
         btnXoa.setEnabled(edit);
 

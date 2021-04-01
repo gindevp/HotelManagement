@@ -253,7 +253,7 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnThem" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <Component id="btnThem1" min="-2" pref="120" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnSua" min="-2" pref="120" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -307,7 +307,7 @@
                               <Component id="txtDonGia" min="-2" pref="40" max="-2" attributes="0"/>
                               <EmptySpace pref="76" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnThem" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="btnThem1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="btnSua" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="btnXoa" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="btnLamMoi" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
@@ -322,7 +322,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="btnThem">
+                    <Component class="javax.swing.JButton" name="btnThem1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -337,7 +337,7 @@
                         <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThem1ActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnSua">
