@@ -96,7 +96,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnDelete" min="-2" pref="128" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnClean" min="-2" pref="128" max="-2" attributes="0"/>
+                                      <Component id="btnRefresh" min="-2" pref="128" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
@@ -158,7 +158,7 @@
                           <Component id="btnInsert" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btnUpdate" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="btnDelete" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="btnClean" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnRefresh" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel5" min="-2" pref="24" max="-2" attributes="0"/>
@@ -259,6 +259,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInsertActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnUpdate">
               <Properties>
@@ -282,7 +285,7 @@
                 <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnClean">
+            <Component class="javax.swing.JButton" name="btnRefresh">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="16" style="0"/>

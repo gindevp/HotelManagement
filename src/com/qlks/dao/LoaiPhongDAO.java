@@ -26,12 +26,12 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
 
     @Override
     public boolean insert(LoaiPhong entity) {
-        return XJdbc.update(insertSql, entity.getMaLP(), entity.getTenLP(), entity.getMoTa());
+        return XJdbc.update(insertSql, entity.getMa(), entity.getTen(), entity.getMoTa());
     }
 
     @Override
     public boolean update(LoaiPhong entity) {
-        return XJdbc.update(insertSql, entity.getMaLP(), entity.getTenLP(), entity.getMoTa(), entity.isIsActive(), entity.getCreateAt(), entity.getUpdateAt());
+        return XJdbc.update(insertSql, entity.getMa(), entity.getTen(), entity.getMoTa(), entity.isIsActive(), entity.getCreateAt(), entity.getUpdateAt());
     }
 
     @Override
@@ -62,8 +62,8 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
                 ResultSet rs = XJdbc.query(sql, args);) {
             while (rs.next()) {
                 LoaiPhong lp = new LoaiPhong();
-                lp.setMaLP(rs.getString(1));
-                lp.setTenLP(rs.getString(2));
+                lp.setMa(rs.getString(1));
+                lp.setTen(rs.getString(2));
                 lp.setMoTa(rs.getString(3));
                 lp.setIsActive(rs.getBoolean(4));
                 lp.setCreateAt(rs.getDate(5));

@@ -20,9 +20,9 @@ public class PhongDAO extends ManageDAO<Phong, String> {
     private String insertSql = "insert phong values (?, ?, ?, ?, ?, default, default, default)";
     private String updateSql = "update phong set sucChua = ?, donGia = ?, trangThai = ?, updateat = default where soPhong = ?";
     private String deleteSql = "update phong set isactive = 0, updateat = default where soPhong = ?";
-    private String selectAll = "select * from phong where isactive = 1";
-    private String select_by_id_loaiPhong = "select * from phong where isactive = 1 and malp = ?";
-    private String selectById = "select * from phong where soPhong = ? and isactive = 1";
+    private String selectAllSql = "select * from phong where isactive = 1";
+    private String selectbByLoaiPhongSql = "select * from phong where isactive = 1 and malp = ?";
+    private String selectByIdSql = "select * from phong where soPhong = ? and isactive = 1";
 
     @Override
     public boolean insert(Phong entity) {
@@ -41,16 +41,16 @@ public class PhongDAO extends ManageDAO<Phong, String> {
 
     @Override
     public List<Phong> selectAll() {
-        return selectBySql(selectAll);
+        return selectBySql(selectAllSql);
     }
 
     public List<Phong> selectByLoaiPhong(String id) {
-        return selectBySql(select_by_id_loaiPhong, id);
+        return selectBySql(selectbByLoaiPhongSql, id);
     }
 
     @Override
     public Phong selectByID(String key) {
-        List<Phong> list = selectBySql(selectById, key);
+        List<Phong> list = selectBySql(selectByIdSql, key);
         return list.size() > 0 ? list.get(0) : null;
     }
 

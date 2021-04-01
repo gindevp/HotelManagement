@@ -13,8 +13,8 @@ import java.util.Date;
  */
 public class LoaiPhong {
 
-    private String maLP;
-    private String tenLP;
+    private String ma;
+    private String ten;
     private String moTa;
     private boolean isActive;
     private Date createAt;
@@ -24,63 +24,63 @@ public class LoaiPhong {
 
     }
 
-    public LoaiPhong(String maLP, String tenLP, String moTa) {
-        this.maLP = maLP;
-        this.tenLP = tenLP;
+    public LoaiPhong(String ma, String ten, String moTa) {
+        this.ma = ma;
+        this.ten = ten;
         this.moTa = moTa;
     }
 
-    public LoaiPhong(String maLP, String tenLP, String moTa, boolean isActive, Date createAt, Date updateAt) {
-        this.maLP = maLP;
-        this.tenLP = tenLP;
+    public LoaiPhong(String ma, String ten, String moTa, boolean isActive, Date createAt, Date updateAt) {
+        this.ma = ma;
+        this.ten = ten;
         this.moTa = moTa;
         this.isActive = isActive;
         this.createAt = createAt;
         this.updateAt = updateAt;
     }
 
-    public String getMaLP() {
-        return maLP;
+    public String getMa() {
+        return ma;
     }
 
-    public String getTenLP() {
-        return tenLP;
+    public void setMa(String ma) {
+        this.ma = ma;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public String getMoTa() {
         return moTa;
     }
 
-    public boolean isIsActive() {
-        return isActive;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setMaLP(String maLP) {
-        this.maLP = maLP;
-    }
-
-    public void setTenLP(String tenLP) {
-        this.tenLP = tenLP;
-    }
-
     public void setMoTa(String moTa) {
         this.moTa = moTa;
+    }
+
+    public boolean isIsActive() {
+        return isActive;
     }
 
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
 
+    public Date getCreateAt() {
+        return createAt;
+    }
+
     public void setCreateAt(Date createAt) {
         this.createAt = createAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
     }
 
     public void setUpdateAt(Date updateAt) {
@@ -89,13 +89,13 @@ public class LoaiPhong {
 
     @Override
     public String toString() {
-        return tenLP;
+        return this.ten;
     }
 
     @Override
     public boolean equals(Object obj) {
         LoaiPhong lp = (LoaiPhong) obj;
-        return lp.getMaLP().equals(maLP);
+        return lp.getMa().equals(this.ma);
     }
 
 }

@@ -5,12 +5,14 @@
  */
 package com.qlks.ui;
 
+import com.qlks.util.*;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -31,8 +33,7 @@ public class HomeFrm extends javax.swing.JFrame {
      */
     public HomeFrm() {
         initComponents();
-        this.inIt();
-        //Hua Manh Hung da vao day
+        this.init();
     }
 
     /**
@@ -46,14 +47,13 @@ public class HomeFrm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         pnlDoiMK = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         lblThoiGian = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnDoiMK = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
+        lblName = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         pnlPhong = new javax.swing.JPanel();
         btnPhong = new javax.swing.JButton();
@@ -62,21 +62,22 @@ public class HomeFrm extends javax.swing.JFrame {
         pnlDV_TN = new javax.swing.JPanel();
         btnDV_TN = new javax.swing.JButton();
         pnlNV = new javax.swing.JPanel();
-        btnNV = new javax.swing.JButton();
+        btnNhanVien = new javax.swing.JButton();
         pnlKH = new javax.swing.JPanel();
-        btnKH = new javax.swing.JButton();
+        btnKhachHang = new javax.swing.JButton();
         pnlHoaDon = new javax.swing.JPanel();
-        btnHD = new javax.swing.JButton();
+        btnHoaDon = new javax.swing.JButton();
         pnlThongKe = new javax.swing.JPanel();
-        btnTK = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
         pnlThoat = new javax.swing.JPanel();
         btnThoat = new javax.swing.JButton();
         pnlDangXuat = new javax.swing.JPanel();
         btnDangXuat = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desMain = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Startup Hotel");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(37, 49, 62));
@@ -84,32 +85,22 @@ public class HomeFrm extends javax.swing.JFrame {
         pnlDoiMK.setBackground(new java.awt.Color(37, 49, 62));
         pnlDoiMK.setPreferredSize(new java.awt.Dimension(300, 64));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Admin");
-
         javax.swing.GroupLayout pnlDoiMKLayout = new javax.swing.GroupLayout(pnlDoiMK);
         pnlDoiMK.setLayout(pnlDoiMKLayout);
         pnlDoiMKLayout.setHorizontalGroup(
             pnlDoiMKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDoiMKLayout.createSequentialGroup()
-                .addGap(0, 99, Short.MAX_VALUE)
-                .addComponent(jLabel5))
+            .addGap(0, 152, Short.MAX_VALUE)
         );
         pnlDoiMKLayout.setVerticalGroup(
             pnlDoiMKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/logo.jpg"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 195, 51));
-        jLabel1.setText("STARTUP -");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(173, 190, 206));
-        jLabel4.setText("HOTEL");
+        jLabel1.setText("STARTUP HOTEL");
 
         lblThoiGian.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblThoiGian.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,6 +127,11 @@ public class HomeFrm extends javax.swing.JFrame {
         jSeparator3.setForeground(new java.awt.Color(255, 0, 51));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        lblName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblName.setText("Admin");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -144,12 +140,12 @@ public class HomeFrm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1051, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
                 .addComponent(pnlDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
@@ -170,7 +166,7 @@ public class HomeFrm extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDoiMK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(jSeparator3)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -306,26 +302,31 @@ public class HomeFrm extends javax.swing.JFrame {
         pnlNV.setPreferredSize(new java.awt.Dimension(302, 64));
         pnlNV.setRequestFocusEnabled(false);
 
-        btnNV.setBackground(new java.awt.Color(46, 62, 78));
-        btnNV.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnNV.setForeground(new java.awt.Color(255, 255, 255));
-        btnNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/employee_24px.png"))); // NOI18N
-        btnNV.setText("Nhân Viên");
-        btnNV.setBorder(null);
-        btnNV.setBorderPainted(false);
-        btnNV.setContentAreaFilled(false);
-        btnNV.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnNV.setIconTextGap(16);
-        btnNV.setMargin(new java.awt.Insets(4, 16, 4, 16));
-        btnNV.setPreferredSize(new java.awt.Dimension(316, 32));
-        btnNV.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnNhanVien.setBackground(new java.awt.Color(46, 62, 78));
+        btnNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/employee_24px.png"))); // NOI18N
+        btnNhanVien.setText("Nhân Viên");
+        btnNhanVien.setBorder(null);
+        btnNhanVien.setBorderPainted(false);
+        btnNhanVien.setContentAreaFilled(false);
+        btnNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNhanVien.setIconTextGap(16);
+        btnNhanVien.setMargin(new java.awt.Insets(4, 16, 4, 16));
+        btnNhanVien.setPreferredSize(new java.awt.Dimension(316, 32));
+        btnNhanVien.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnNVMouseMoved(evt);
+                btnNhanVienMouseMoved(evt);
             }
         });
-        btnNV.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnNVMouseExited(evt);
+                btnNhanVienMouseExited(evt);
+            }
+        });
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienActionPerformed(evt);
             }
         });
 
@@ -335,41 +336,41 @@ public class HomeFrm extends javax.swing.JFrame {
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNVLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnNV, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlNVLayout.setVerticalGroup(
             pnlNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+            .addComponent(btnNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
         );
 
         pnlKH.setBackground(new java.awt.Color(46, 62, 78));
         pnlKH.setPreferredSize(new java.awt.Dimension(304, 64));
 
-        btnKH.setBackground(new java.awt.Color(46, 62, 78));
-        btnKH.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnKH.setForeground(new java.awt.Color(255, 255, 255));
-        btnKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/customer_24px.png"))); // NOI18N
-        btnKH.setText("Khách Hàng");
-        btnKH.setBorder(null);
-        btnKH.setBorderPainted(false);
-        btnKH.setContentAreaFilled(false);
-        btnKH.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnKH.setIconTextGap(16);
-        btnKH.setMargin(new java.awt.Insets(4, 16, 4, 16));
-        btnKH.setPreferredSize(new java.awt.Dimension(316, 32));
-        btnKH.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnKhachHang.setBackground(new java.awt.Color(46, 62, 78));
+        btnKhachHang.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnKhachHang.setForeground(new java.awt.Color(255, 255, 255));
+        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/customer_24px.png"))); // NOI18N
+        btnKhachHang.setText("Khách Hàng");
+        btnKhachHang.setBorder(null);
+        btnKhachHang.setBorderPainted(false);
+        btnKhachHang.setContentAreaFilled(false);
+        btnKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnKhachHang.setIconTextGap(16);
+        btnKhachHang.setMargin(new java.awt.Insets(4, 16, 4, 16));
+        btnKhachHang.setPreferredSize(new java.awt.Dimension(316, 32));
+        btnKhachHang.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnKHMouseMoved(evt);
+                btnKhachHangMouseMoved(evt);
             }
         });
-        btnKH.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnKHMouseExited(evt);
+                btnKhachHangMouseExited(evt);
             }
         });
-        btnKH.addActionListener(new java.awt.event.ActionListener() {
+        btnKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKHActionPerformed(evt);
+                btnKhachHangActionPerformed(evt);
             }
         });
 
@@ -379,36 +380,36 @@ public class HomeFrm extends javax.swing.JFrame {
             pnlKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKHLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnKH, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlKHLayout.setVerticalGroup(
             pnlKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+            .addComponent(btnKhachHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
         );
 
         pnlHoaDon.setBackground(new java.awt.Color(46, 62, 78));
         pnlHoaDon.setPreferredSize(new java.awt.Dimension(316, 64));
 
-        btnHD.setBackground(new java.awt.Color(46, 62, 78));
-        btnHD.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnHD.setForeground(new java.awt.Color(255, 255, 255));
-        btnHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/purchaseOrder_24px.png"))); // NOI18N
-        btnHD.setText("Hóa Đơn");
-        btnHD.setBorder(null);
-        btnHD.setBorderPainted(false);
-        btnHD.setContentAreaFilled(false);
-        btnHD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnHD.setIconTextGap(16);
-        btnHD.setMargin(new java.awt.Insets(4, 16, 4, 16));
-        btnHD.setPreferredSize(new java.awt.Dimension(316, 32));
-        btnHD.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnHoaDon.setBackground(new java.awt.Color(46, 62, 78));
+        btnHoaDon.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnHoaDon.setForeground(new java.awt.Color(255, 255, 255));
+        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/purchaseOrder_24px.png"))); // NOI18N
+        btnHoaDon.setText("Hóa Đơn");
+        btnHoaDon.setBorder(null);
+        btnHoaDon.setBorderPainted(false);
+        btnHoaDon.setContentAreaFilled(false);
+        btnHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnHoaDon.setIconTextGap(16);
+        btnHoaDon.setMargin(new java.awt.Insets(4, 16, 4, 16));
+        btnHoaDon.setPreferredSize(new java.awt.Dimension(316, 32));
+        btnHoaDon.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnHDMouseMoved(evt);
+                btnHoaDonMouseMoved(evt);
             }
         });
-        btnHD.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnHDMouseExited(evt);
+                btnHoaDonMouseExited(evt);
             }
         });
 
@@ -420,40 +421,40 @@ public class HomeFrm extends javax.swing.JFrame {
             .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHoaDonLayout.createSequentialGroup()
                     .addGap(0, 12, Short.MAX_VALUE)
-                    .addComponent(btnHD, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         pnlHoaDonLayout.setVerticalGroup(
             pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 64, Short.MAX_VALUE)
             .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(btnHD, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
+                .addComponent(btnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
         );
 
         pnlThongKe.setBackground(new java.awt.Color(46, 62, 78));
         pnlThongKe.setPreferredSize(new java.awt.Dimension(300, 64));
 
-        btnTK.setBackground(new java.awt.Color(46, 62, 78));
-        btnTK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnTK.setForeground(new java.awt.Color(255, 255, 255));
-        btnTK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/statistics_24px.png"))); // NOI18N
-        btnTK.setText("Thống Kê");
-        btnTK.setBorder(null);
-        btnTK.setBorderPainted(false);
-        btnTK.setContentAreaFilled(false);
-        btnTK.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnTK.setIconTextGap(16);
-        btnTK.setMargin(new java.awt.Insets(4, 16, 4, 16));
-        btnTK.setMaximumSize(new java.awt.Dimension(143, 32));
-        btnTK.setMinimumSize(new java.awt.Dimension(143, 32));
-        btnTK.setPreferredSize(new java.awt.Dimension(316, 32));
-        btnTK.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnThongKe.setBackground(new java.awt.Color(46, 62, 78));
+        btnThongKe.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnThongKe.setForeground(new java.awt.Color(255, 255, 255));
+        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/statistics_24px.png"))); // NOI18N
+        btnThongKe.setText("Thống Kê");
+        btnThongKe.setBorder(null);
+        btnThongKe.setBorderPainted(false);
+        btnThongKe.setContentAreaFilled(false);
+        btnThongKe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThongKe.setIconTextGap(16);
+        btnThongKe.setMargin(new java.awt.Insets(4, 16, 4, 16));
+        btnThongKe.setMaximumSize(new java.awt.Dimension(143, 32));
+        btnThongKe.setMinimumSize(new java.awt.Dimension(143, 32));
+        btnThongKe.setPreferredSize(new java.awt.Dimension(316, 32));
+        btnThongKe.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnTKMouseMoved(evt);
+                btnThongKeMouseMoved(evt);
             }
         });
-        btnTK.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnTKMouseExited(evt);
+                btnThongKeMouseExited(evt);
             }
         });
 
@@ -463,12 +464,12 @@ public class HomeFrm extends javax.swing.JFrame {
             pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThongKeLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlThongKeLayout.setVerticalGroup(
             pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThongKeLayout.createSequentialGroup()
-                .addComponent(btnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -487,6 +488,11 @@ public class HomeFrm extends javax.swing.JFrame {
         btnThoat.setIconTextGap(16);
         btnThoat.setMargin(new java.awt.Insets(4, 16, 4, 16));
         btnThoat.setPreferredSize(new java.awt.Dimension(121, 32));
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlThoatLayout = new javax.swing.GroupLayout(pnlThoat);
         pnlThoat.setLayout(pnlThoatLayout);
@@ -524,7 +530,7 @@ public class HomeFrm extends javax.swing.JFrame {
             pnlDangXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDangXuatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 110, Short.MAX_VALUE))
         );
         pnlDangXuatLayout.setVerticalGroup(
             pnlDangXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -544,8 +550,8 @@ public class HomeFrm extends javax.swing.JFrame {
                         .addComponent(pnlKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                         .addComponent(pnlNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                         .addComponent(pnlDV_TN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                        .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 306, Short.MAX_VALUE)
+                        .addComponent(pnlPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 306, Short.MAX_VALUE)
                         .addComponent(pnlHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                         .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -583,27 +589,21 @@ public class HomeFrm extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 940));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout desMainLayout = new javax.swing.GroupLayout(desMain);
+        desMain.setLayout(desMainLayout);
+        desMainLayout.setHorizontalGroup(
+            desMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1600, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        desMainLayout.setVerticalGroup(
+            desMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 930, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 1600, 930));
+        getContentPane().add(desMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 1600, 930));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void inIt() {
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.showTime();
-//        this.changeBGToolBar();
-    }
 
     private void btnPhongMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPhongMouseMoved
         pnlPhong.setBackground(changeColor);
@@ -629,46 +629,54 @@ public class HomeFrm extends javax.swing.JFrame {
         pnlDV_TN.setBackground(bgColor);
     }//GEN-LAST:event_btnDV_TNMouseExited
 
-    private void btnNVMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNVMouseMoved
+    private void btnNhanVienMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseMoved
         pnlNV.setBackground(changeColor);
-    }//GEN-LAST:event_btnNVMouseMoved
+    }//GEN-LAST:event_btnNhanVienMouseMoved
 
-    private void btnNVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNVMouseExited
+    private void btnNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseExited
         pnlNV.setBackground(bgColor);
-    }//GEN-LAST:event_btnNVMouseExited
+    }//GEN-LAST:event_btnNhanVienMouseExited
 
-    private void btnKHMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKHMouseMoved
+    private void btnKhachHangMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseMoved
         pnlKH.setBackground(changeColor);
-    }//GEN-LAST:event_btnKHMouseMoved
+    }//GEN-LAST:event_btnKhachHangMouseMoved
 
-    private void btnKHMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKHMouseExited
+    private void btnKhachHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseExited
         pnlKH.setBackground(bgColor);
-    }//GEN-LAST:event_btnKHMouseExited
+    }//GEN-LAST:event_btnKhachHangMouseExited
 
-    private void btnHDMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHDMouseMoved
+    private void btnHoaDonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseMoved
         pnlHoaDon.setBackground(changeColor);
-    }//GEN-LAST:event_btnHDMouseMoved
+    }//GEN-LAST:event_btnHoaDonMouseMoved
 
-    private void btnHDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHDMouseExited
+    private void btnHoaDonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseExited
         pnlHoaDon.setBackground(bgColor);
-    }//GEN-LAST:event_btnHDMouseExited
+    }//GEN-LAST:event_btnHoaDonMouseExited
 
-    private void btnTKMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTKMouseMoved
+    private void btnThongKeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseMoved
         pnlThongKe.setBackground(changeColor);
-    }//GEN-LAST:event_btnTKMouseMoved
+    }//GEN-LAST:event_btnThongKeMouseMoved
 
-    private void btnTKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTKMouseExited
+    private void btnThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseExited
         pnlThongKe.setBackground(bgColor);
-    }//GEN-LAST:event_btnTKMouseExited
+    }//GEN-LAST:event_btnThongKeMouseExited
 
-    private void btnKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKHActionPerformed
+    private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnKHActionPerformed
+    }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhongActionPerformed
         // TODO add your handling code here:
         this.openPhong();
     }//GEN-LAST:event_btnPhongActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        this.exit();
+    }//GEN-LAST:event_btnThoatActionPerformed
+
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+        this.openNhanVien();
+    }//GEN-LAST:event_btnNhanVienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -712,23 +720,22 @@ public class HomeFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnDV_TN;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoiMK;
-    private javax.swing.JButton btnHD;
-    private javax.swing.JButton btnKH;
+    private javax.swing.JButton btnHoaDon;
+    private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnNCC;
-    private javax.swing.JButton btnNV;
+    private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnPhong;
-    private javax.swing.JButton btnTK;
     private javax.swing.JButton btnThoat;
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JButton btnThongKe;
+    private javax.swing.JDesktopPane desMain;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblThoiGian;
     private javax.swing.JPanel pnlDV_TN;
     private javax.swing.JPanel pnlDangXuat;
@@ -742,6 +749,50 @@ public class HomeFrm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlThongKe;
     // End of variables declaration//GEN-END:variables
 
+    private void init() {
+        new LoginDialog(this, true).setVisible(true);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.showTime();
+        this.showName();
+    }
+
+    private void showTime() {
+        new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                lblThoiGian.setText(timeCurrent());
+            }
+        }).start();
+    }
+
+    private String timeCurrent() {
+        SimpleDateFormat sdf = new SimpleDateFormat("hh : mm : ss aa");
+        Date date = new Date();
+        return sdf.format(date);
+    }
+
+    private void showName() {
+        Date date = new Date();
+        int hour = date.getHours();
+        String mess = "";
+        String iconPath = "/com/qlks/icon/";
+        if (hour >= 1 && hour < 12) {
+            mess = "Good morning, ";
+            iconPath += "partly_cloudy_day_24px.png";
+        } else if (hour >= 12 && hour < 16) {
+            mess = "Good afternoon, ";
+            iconPath += "sun_24px.png";
+        } else if (hour >= 16 && hour < 21) {
+            mess = "Good evening, ";
+            iconPath += "sunset_24px.png";
+        } else {
+            mess = "Good night, ";
+            iconPath += "night_landscape_24px.png";
+        }
+        lblName.setText(mess + com.qlks.util.Auth.user.getTen());
+        lblName.setIcon(new ImageIcon(XImage.class.getResource(iconPath)));
+    }
+
     private void isResize() {
         if (this.getWidth() <= 1200 || this.getHeight() <= 800) {
             this.setVisible(false);
@@ -754,22 +805,6 @@ public class HomeFrm extends javax.swing.JFrame {
         }
     }
 
-    private void showTime() {
-        new Timer(300, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                lblThoiGian.setText(timeCurrent());
-            }
-
-        }).start();
-    }
-
-    private String timeCurrent() {
-        SimpleDateFormat sdf = new SimpleDateFormat("hh : mm : ss aa");
-        Date date = new Date();
-        return sdf.format(date);
-    }
-
 //    private void changeBGToolBar() {
 //        jToolBar1.setUI(new BasicToolBarUI() {
 //            public void paint(Graphics g, JComponent c) {
@@ -779,23 +814,22 @@ public class HomeFrm extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    private void openChildFrame(JInternalFrame frm) {
-//        if (!Auth.isLogin()) {
-//            openLogin();
-//        } else {
-        for (JInternalFrame frmItem : jDesktopPane1.getAllFrames()) {
-            frmItem.dispose();
-        }
-        frm.setLocation((jDesktopPane1.getWidth() - frm.getWidth()) / 2,
-                (jDesktopPane1.getHeight() - 20) / 2 - frm.getHeight() / 2 - 20);
-        jDesktopPane1.add(frm);
-        frm.setVisible(true);
-    }
-//    }
-
     private void openPhong() {
-        this.openChildFrame(new PhongFrm(jDesktopPane1));
-        
+        XForm.openChildFrm(this, desMain, new PhongFrm(desMain));
+    }
+
+    private void openNhanVien() {
+        XForm.openChildFrm(this, desMain, new NhanVienFrm(desMain));
+    }
+
+    private void openLogin() {
+        new LoginDialog(this, true).setVisible(true);
+    }
+
+    private void exit() {
+        if (MsgBox.confirm(this, "Bạn có chắc muốn thoát?")) {
+            System.exit(0);
+        }
     }
 
 }
