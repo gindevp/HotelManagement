@@ -5,6 +5,13 @@
  */
 package com.qlks.ui;
 
+import com.qlks.util.Auth;
+import com.qlks.util.MsgBox;
+import com.qlks.util.XImage;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author hungn
@@ -17,6 +24,7 @@ public class SplashScreenDialog extends javax.swing.JDialog {
     public SplashScreenDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        vip();
     }
 
     /**
@@ -84,6 +92,48 @@ public class SplashScreenDialog extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    private void vip() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    private void openChildFrm(JInternalFrame frm) {
+        if (!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        } else {
+//            for (JInternalFrame frmItem : desMain.getAllFrames()) {
+//                frmItem.dispose();
+//            }
+//            frm.setLocation((desMain.getWidth() - frm.getWidth()) / 2,
+//                    (desMain.getHeight() - 20) / 2 - frm.getHeight() / 2 - 20);
+//            desMain.add(frm);
+            frm.setVisible(true);
+        }
+    }
+
+    private void openNhanVien() {
+        this.openChildFrm(new NhanVienFrm());
+    }
+
+    private void showName() {
+        Date date = new Date();
+        int hour = date.getHours();
+        String mess = "";
+        String iconPath = "/com/qlks/icon/";
+        if (hour >= 1 && hour < 12) {
+            mess = "Good morning, ";
+            iconPath += "partly_cloudy_day_24px.png";
+        } else if (hour >= 12 && hour < 16) {
+            mess = "Good afternoon, ";
+            iconPath += "sun_24px.png";
+        } else if (hour >= 16 && hour < 21) {
+            mess = "Good evening, ";
+            iconPath += "sunset_24px.png";
+        } else {
+            mess = "Good night, ";
+            iconPath += "night_landscape_24px.png";
+        }
+//        lblName.setText(mess + Auth.user.getTen());
+//        lblName.setIcon(new ImageIcon(XImage.class.getResource(iconPath)));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
