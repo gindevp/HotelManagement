@@ -54,8 +54,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <Component id="btnDoiMK" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+=======
+                  <Component id="btnDoiMK" pref="139" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+>>>>>>> ffe696d51728f2afa337f821c685d2f579c0ef09
                   <Component id="jSeparator1" min="-2" pref="6" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="lblThoiGian" min="-2" pref="200" max="-2" attributes="0"/>
@@ -344,6 +349,7 @@
               <Events>
                 <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnPhongMouseMoved"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPhongMouseExited"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPhongActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -812,7 +818,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnDangXuat" pref="110" max="32767" attributes="0"/>
+                      <Component id="btnDangXuat" pref="113" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
