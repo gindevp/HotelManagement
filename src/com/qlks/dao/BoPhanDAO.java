@@ -23,6 +23,7 @@ public class BoPhanDAO extends ManageDAO<BoPhan, String>{
     String selectAllSql = "select * from bophan where isactive = 1";
     String selectByIdSql = "select * from bophan where mabp = ? and isactive = 1";
     String selectNameByIdSql = "select tenbp from bophan where mabp = ? and isactive = 1";
+    String selectByKeywordSql = "select * from bophan where tenbp like ? and isactive = 1";
     
     
     @Override
@@ -53,6 +54,10 @@ public class BoPhanDAO extends ManageDAO<BoPhan, String>{
     
     public String selectNameById(String id) {
         return (String) XJdbc.value(selectNameByIdSql, id);
+    }
+    
+    public List<BoPhan> selectByKeyword(String key) {
+        return selectBySql(selectByKeywordSql, "%" + key + "%");
     }
 
     @Override

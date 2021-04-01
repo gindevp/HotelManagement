@@ -25,6 +25,7 @@ public class SplashScreenDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         vip();
+//        new LoginDialog(this, modal);
     }
 
     /**
@@ -36,17 +37,27 @@ public class SplashScreenDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jButton1.setText("jButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jButton1)
+                .addContainerGap(253, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jButton1)
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,7 +122,7 @@ public class SplashScreenDialog extends javax.swing.JDialog {
     }
 
     private void openNhanVien() {
-        this.openChildFrm(new NhanVienFrm());
+//        this.openChildFrm(new NhanVienFrm());
     }
 
     private void showName() {
@@ -137,5 +148,6 @@ public class SplashScreenDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

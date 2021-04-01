@@ -16,7 +16,9 @@ import com.qlks.util.XImage;
 import java.io.File;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
+import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,12 +30,14 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
     private NhanVienDAO nvdao = new NhanVienDAO();
     private BoPhanDAO bpdao = new BoPhanDAO();
     private int index = -1;
+    private JDesktopPane des;
 
     /**
      * Creates new form BoPhanFrm
      */
-    public NhanVienFrm() {
+    public NhanVienFrm(JDesktopPane des) {
         initComponents();
+        this.des = des;
         this.init();
     }
 
@@ -234,8 +238,18 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         jLabel15.setText("Bộ Phận");
 
         lblAnh.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblAnh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAnhMouseClicked(evt);
+            }
+        });
 
         btnOpenBP.setText("...");
+        btnOpenBP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenBPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -548,6 +562,14 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         this.last();
     }//GEN-LAST:event_btnLastActionPerformed
 
+    private void lblAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhMouseClicked
+        this.chooseImage();
+    }//GEN-LAST:event_lblAnhMouseClicked
+
+    private void btnOpenBPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenBPActionPerformed
+        this.openBoPhan();
+    }//GEN-LAST:event_btnOpenBPActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgrGioiTinh;
@@ -679,8 +701,9 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         lblAnh.setIcon(XImage.read(nhanVien.getAnh(), lblAnh));
         lblAnh.setToolTipText(nhanVien.getAnh());
         BoPhan boPhan = bpdao.selectByID(nhanVien.getMaBoPhan());
-        System.out.println(boPhan + " - " + nhanVien.getMaBoPhan());
-        cboBoPhan.setSelectedItem(boPhan);
+        if (boPhan != null) {
+            cboBoPhan.setSelectedItem(boPhan);
+        }
     }
 
     private void fillCbo() {
@@ -757,5 +780,20 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
     }
 
     private void last() {
+    }
+
+    private void openBoPhan() {
+        BoPhanFrm frm = new BoPhanFrm();
+        if (!Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        } else {
+            for (JInternalFrame frmItem : des.getAllFrames()) {
+                frmItem.dispose();
+            }
+            frm.setLocation((des.getWidth() - frm.getWidth()) / 2,
+                    (des.getHeight() - 20) / 2 - frm.getHeight() / 2 - 20);
+            des.add(frm);
+            frm.setVisible(true);
+        }
     }
 }
