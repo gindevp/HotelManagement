@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.startuphotel.ui;
+package com.qlks.ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicToolBarUI;
 
@@ -73,6 +74,7 @@ public class HomeFrm extends javax.swing.JFrame {
         pnlDangXuat = new javax.swing.JPanel();
         btnDangXuat = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -201,6 +203,11 @@ public class HomeFrm extends javax.swing.JFrame {
         btnPhong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnPhongMouseExited(evt);
+            }
+        });
+        btnPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPhongActionPerformed(evt);
             }
         });
 
@@ -576,6 +583,19 @@ public class HomeFrm extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 940));
 
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1600, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 930, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 1600, 930));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -584,7 +604,7 @@ public class HomeFrm extends javax.swing.JFrame {
         this.showTime();
 //        this.changeBGToolBar();
     }
-    
+
     private void btnPhongMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPhongMouseMoved
         pnlPhong.setBackground(changeColor);
     }//GEN-LAST:event_btnPhongMouseMoved
@@ -645,6 +665,11 @@ public class HomeFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnKHActionPerformed
 
+    private void btnPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhongActionPerformed
+        // TODO add your handling code here:
+        this.openPhong();
+    }//GEN-LAST:event_btnPhongActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -694,6 +719,7 @@ public class HomeFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnPhong;
     private javax.swing.JButton btnTK;
     private javax.swing.JButton btnThoat;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -753,4 +779,23 @@ public class HomeFrm extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    private void openChildFrame(JInternalFrame frm) {
+//        if (!Auth.isLogin()) {
+//            openLogin();
+//        } else {
+        for (JInternalFrame frmItem : jDesktopPane1.getAllFrames()) {
+            frmItem.dispose();
+        }
+        frm.setLocation((jDesktopPane1.getWidth() - frm.getWidth()) / 2,
+                (jDesktopPane1.getHeight() - 20) / 2 - frm.getHeight() / 2 - 20);
+        jDesktopPane1.add(frm);
+        frm.setVisible(true);
+    }
+//    }
+
+    private void openPhong() {
+        this.openChildFrame(new PhongFrm(jDesktopPane1));
+        
+    }
+
 }
