@@ -12,15 +12,16 @@ import java.util.Date;
  * @author markhyun
  */
 public class LoaiPhong {
+
     private String maLP;
     private String tenLP;
     private String moTa;
     private boolean isActive;
     private Date createAt;
     private Date updateAt;
-    
-    public LoaiPhong(){
-        
+
+    public LoaiPhong() {
+
     }
 
     public LoaiPhong(String maLP, String tenLP, String moTa) {
@@ -28,7 +29,7 @@ public class LoaiPhong {
         this.tenLP = tenLP;
         this.moTa = moTa;
     }
-    
+
     public LoaiPhong(String maLP, String tenLP, String moTa, boolean isActive, Date createAt, Date updateAt) {
         this.maLP = maLP;
         this.tenLP = tenLP;
@@ -85,6 +86,16 @@ public class LoaiPhong {
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return tenLP;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        LoaiPhong lp = (LoaiPhong) obj;
+        return lp.getMaLP().equals(maLP);
+    }
+
 }

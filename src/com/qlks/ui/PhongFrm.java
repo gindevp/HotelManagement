@@ -17,6 +17,8 @@ import java.util.List;
 import javafx.scene.control.RadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,10 +31,12 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     private LoaiPhongDAO lpdao = new LoaiPhongDAO();
     public int index = -1;
 
+    private JDesktopPane jPhong;
+
     /**
      * Creates new form PhongFrm
      */
-    public PhongFrm() {
+    public PhongFrm(JDesktopPane jPhong) {
         initComponents();
         this.init();
     }
@@ -77,6 +81,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         tbl = new javax.swing.JTable();
 
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(1280, 776));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -400,7 +405,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tab, javax.swing.GroupLayout.DEFAULT_SIZE, 1212, Short.MAX_VALUE)
+                    .addComponent(tab)
                     .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -412,7 +417,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
                 .addGap(90, 90, 90)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tab, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                .addComponent(tab)
                 .addContainerGap())
         );
 
@@ -456,13 +461,12 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cboActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        LoaiPhongFrm lpJFrame = new LoaiPhongFrm();
-        lpJFrame.setVisible(true);
+        this.openLoaiPhong();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        insert();
+        this.insert();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -545,7 +549,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         model.removeAllElements();
         List<LoaiPhong> list = lpdao.selectAll();
         list.forEach((item) -> {
-            model.addElement(item.getTenLP());
+            model.addElement(item);
         });
     }
 
@@ -647,7 +651,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     private Phong getForm() {
         Phong p = null;
         boolean trangThai = this.checkRDOButtonGRP();
-        String lp = (String) cbo.getSelectedItem();
+        LoaiPhong lp = (LoaiPhong) cbo.getSelectedItem();
         if (Validator.checkBlack(txtSoPhong)
                 && Validator.checkPosNum(txtDonGia, txtSucChua)) {
             p = new Phong(
@@ -655,7 +659,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
                     Integer.parseInt(txtSucChua.getText().trim()),
                     Double.parseDouble(txtDonGia.getText().trim()),
                     trangThai,
-                    lp
+                    lp.getMaLP()
             );
         }
         return p;
@@ -668,17 +672,17 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     }
 
     private void selectLoaiPhong() {
-        String lp = (String) cbo.getSelectedItem();
-        txtMaLP.setText(lp);
+        LoaiPhong lp = (LoaiPhong) cbo.getSelectedItem();
+        txtMaLP.setText(lp.getTenLP());
     }
 
     private void fillTable() {
 
-        String lp = (String) cbo.getSelectedItem();
-        List<LoaiPhong> mlp = lpdao.selectByName(lp);
+        LoaiPhong lp = (LoaiPhong) cbo.getSelectedItem();
+
         DefaultTableModel model = (DefaultTableModel) tbl.getModel();
         model.setRowCount(0);
-        List<Phong> list = pdao.selectByLoaiPhong(mlp.get(0).getMaLP().trim());
+        List<Phong> list = pdao.selectByLoaiPhong(lp.getMaLP());
         list.forEach((item) -> {
             model.addRow(new Object[]{
                 item.getSoPhong(),
@@ -715,4 +719,18 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         }
     }
 
+    private void openLoaiPhong() {
+        LoaiPhongFrm frm = new LoaiPhongFrm();
+        if (!com.qlks.util.Auth.isLogin()) {
+            MsgBox.alert(this, "Vui lòng đăng nhập");
+        } else {
+            for (JInternalFrame frmItem : jPhong.getAllFrames()) {
+                frmItem.dispose();
+            }
+            frm.setLocation((jPhong.getWidth() - frm.getWidth()) / 2,
+                    (jPhong.getHeight() - 20) / 2 - frm.getHeight() / 2 - 20);
+            jPhong.add(frm);
+            frm.setVisible(true);
+        }
+    }
 }

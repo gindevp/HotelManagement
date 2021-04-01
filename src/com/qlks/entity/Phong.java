@@ -109,4 +109,11 @@ public class Phong {
         this.updateAt = updateAt;
     }
 
+    @Override
+    public String toString() {
+        return "Phong{" + "soPhong=" + soPhong + ", sucChua=" + sucChua + ", donGia=" + donGia + ", trangThai=" + trangThai + ", maLP=" + maLP + ", isActive=" + isActive + ", createAt=" + createAt + ", updateAt=" + updateAt + '}';
+    }
+    
+    
+
 }
