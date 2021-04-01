@@ -23,6 +23,12 @@ public class LoaiPhong {
         
     }
 
+    public LoaiPhong(String maLP, String tenLP, String moTa) {
+        this.maLP = maLP;
+        this.tenLP = tenLP;
+        this.moTa = moTa;
+    }
+    
     public LoaiPhong(String maLP, String tenLP, String moTa, boolean isActive, Date createAt, Date updateAt) {
         this.maLP = maLP;
         this.tenLP = tenLP;
