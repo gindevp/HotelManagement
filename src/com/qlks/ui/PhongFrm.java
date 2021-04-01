@@ -24,7 +24,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
 
     private PhongDAO pdao = new PhongDAO();
     private LoaiPhongDAO lpdao = new LoaiPhongDAO();
-    private int index = -1;
+    public int index = -1;
 
     /**
      * Creates new form PhongFrm
