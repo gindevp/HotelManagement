@@ -54,16 +54,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-<!-- <<<<<<< HEAD
-                  <Component id="btnDoiMK" min="-2" pref="150" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-======= -->
                   <Component id="btnDoiMK" pref="139" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-<!-- >>>>>>> ffe696d51728f2afa337f821c685d2f579c0ef09 -->
-                  <Component id="jSeparator1" min="-2" pref="6" max="-2" attributes="0"/>
+                  <Component id="lblThoiGian" min="-2" pref="200" max="-2" attributes="0"/>                
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="lblThoiGian" min="-2" pref="200" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
