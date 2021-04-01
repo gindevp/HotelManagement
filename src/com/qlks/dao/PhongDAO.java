@@ -17,10 +17,11 @@ import java.util.List;
  */
 public class PhongDAO extends ManageDAO<Phong, String> {
 
-    private String insertSql = "insert phong values (?, ?, ?, ?, ?, default, default, default";
-    private String updateSql = "update phong set sucChua = ?, donGia = ?, trangThai = ?, maLP = ?, updateat = default where soPhong = ?";
+    private String insertSql = "insert phong values (?, ?, ?, ?, ?, default, default, default)";
+    private String updateSql = "update phong set sucChua = ?, donGia = ?, trangThai = ?, updateat = default where soPhong = ?";
     private String deleteSql = "update phong set isactive = 0, updateat = default where soPhong = ?";
     private String selectAll = "select * from phong where isactive = 1";
+    private String select_by_id_loaiPhong = "select * from phong where isactive = 1 and malp = ?";
     private String selectById = "select * from phong where soPhong = ? and isactive = 1";
 
     @Override
@@ -30,7 +31,7 @@ public class PhongDAO extends ManageDAO<Phong, String> {
 
     @Override
     public boolean update(Phong entity) {
-        return XJdbc.update(updateSql, entity.getSoPhong(), entity.getSucChua(), entity.getDonGia(), entity.isTrangThai(), entity.getMaLP());
+        return XJdbc.update(updateSql, entity.getSucChua(), entity.getDonGia(), entity.isTrangThai(), entity.getSoPhong());
     }
 
     @Override
@@ -41,6 +42,10 @@ public class PhongDAO extends ManageDAO<Phong, String> {
     @Override
     public List<Phong> selectAll() {
         return selectBySql(selectAll);
+    }
+
+    public List<Phong> selectByLoaiPhong(String id) {
+        return selectBySql(select_by_id_loaiPhong, id);
     }
 
     @Override
@@ -63,8 +68,8 @@ public class PhongDAO extends ManageDAO<Phong, String> {
                         rs.getString(5),
                         rs.getBoolean(6),
                         rs.getDate(7),
-                        rs.getDate(8)
-                );
+                        rs.getDate(8));
+                list.add(phong);
             }
         } catch (Exception e) {
         }

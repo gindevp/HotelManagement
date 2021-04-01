@@ -209,6 +209,11 @@ public class HomeFrame extends javax.swing.JFrame {
                 btnPhongMouseExited(evt);
             }
         });
+        btnPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPhongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPhongLayout = new javax.swing.GroupLayout(pnlPhong);
         pnlPhong.setLayout(pnlPhongLayout);
@@ -689,6 +694,13 @@ public class HomeFrame extends javax.swing.JFrame {
     private void btnNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNVActionPerformed
         this.openBoPhan();
     }//GEN-LAST:event_btnNVActionPerformed
+
+    private void btnPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhongActionPerformed
+        // TODO add your handling code here:
+        PhongFrm p = new PhongFrm();
+        p.setVisible(true);
+        System.out.println("hung");
+    }//GEN-LAST:event_btnPhongActionPerformed
 
     /**
      * @param args the command line arguments

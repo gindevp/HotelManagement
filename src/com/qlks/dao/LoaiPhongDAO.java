@@ -20,8 +20,9 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
     private String insertSql = "insert loaiPhong values (?, ?, ?, default, default, default";
     private String updateSql = "update loaiPhong set tenLP = ?, moTa = ?, updateat = default where maLP = ?";
     private String deleteSql = "update loaiPhong set isactive = 0, updateat = default where maLP = ?";
-    private String selectAll = "select * from loaiPhong where isactive = 1";
+    private String selectAll = "select * from loaiphong where isactive = 1";
     private String selectById = "select * from loaiPhong where maLP = ? and isactive = 1";
+    private String selectByName = "select * from loaiPhong where tenlp = ? and isactive = 1";
 
     @Override
     public boolean insert(LoaiPhong entity) {
@@ -30,7 +31,7 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
 
     @Override
     public boolean update(LoaiPhong entity) {
-        return XJdbc.update(insertSql, entity.getMaLP(), entity.getTenLP(), entity.getMoTa());
+        return XJdbc.update(insertSql, entity.getMaLP(), entity.getTenLP(), entity.getMoTa(), entity.isIsActive(), entity.getCreateAt(), entity.getUpdateAt());
     }
 
     @Override
@@ -42,6 +43,10 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
     @Override
     public List<LoaiPhong> selectAll() {
         return selectBySql(selectAll);
+    }
+
+    public List<LoaiPhong> selectByName(String key) {
+        return selectBySql(selectByName, key);
     }
 
     @Override
@@ -56,16 +61,18 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
         try (
                 ResultSet rs = XJdbc.query(sql, args);) {
             while (rs.next()) {
-                LoaiPhong loaiPhong = new LoaiPhong(
-                        rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getBoolean(4),
-                        rs.getDate(5),
-                        rs.getDate(6)
-                );
+                LoaiPhong lp = new LoaiPhong();
+                lp.setMaLP(rs.getString(1));
+                lp.setTenLP(rs.getString(2));
+                lp.setMoTa(rs.getString(3));
+                lp.setIsActive(rs.getBoolean(4));
+                lp.setCreateAt(rs.getDate(5));
+                lp.setUpdateAt(rs.getDate(6));
+                list.add(lp);
+                ;
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return list;
     }

@@ -9,12 +9,12 @@ package com.qlks.ui;
  *
  * @author markhyun
  */
-public class LoaiPhong extends javax.swing.JInternalFrame {
+public class LoaiPhongFrm extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form LoaiPhong
      */
-    public LoaiPhong() {
+    public LoaiPhongFrm() {
         initComponents();
     }
 

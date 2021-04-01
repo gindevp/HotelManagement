@@ -12,6 +12,7 @@ import java.util.Date;
  * @author markhyun
  */
 public class Phong {
+
     private String soPhong;
     private int sucChua;
     private double donGia;
@@ -21,10 +22,18 @@ public class Phong {
     private Date createAt;
     private Date updateAt;
 
-    public Phong(){
-        
+    public Phong() {
+
     }
-    
+
+    public Phong(String soPhong, int sucChua, double donGia, boolean trangThai, String maLP) {
+        this.soPhong = soPhong;
+        this.sucChua = sucChua;
+        this.donGia = donGia;
+        this.trangThai = trangThai;
+        this.maLP = maLP;
+    }
+
     public Phong(String soPhong, int sucChua, double donGia, boolean trangThai, String maLP, boolean isActive, Date createAt, Date updateAt) {
         this.soPhong = soPhong;
         this.sucChua = sucChua;
@@ -99,7 +108,5 @@ public class Phong {
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
-        
-    
-    
+
 }
