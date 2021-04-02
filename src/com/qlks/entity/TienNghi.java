@@ -83,7 +83,7 @@ public class TienNghi {
     @Override
     public boolean equals(Object obj) {
         TienNghi nghi = (TienNghi) obj;
-        return ((Integer) nghi.getMa()).equals(ma);  //To change body of generated methods, choose Tools | Templates.
+        return nghi.getTen().equals(this.ten);  //To change body of generated methods, choose Tools | Templates.
     }
 
 }

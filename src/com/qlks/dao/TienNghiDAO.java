@@ -48,7 +48,8 @@ public class TienNghiDAO extends ManageDAO<TienNghi, Integer> {
 
     @Override
     public TienNghi selectByID(Integer key) {
-        return (TienNghi) XJdbc.value(selectByIdSql, key);
+        List<TienNghi> list = selectBySql(selectByIdSql, key);
+        return list.size() > 0 ? list.get(0) : null;
     }
     
     public List<TienNghi> selectBySP(String sp) {

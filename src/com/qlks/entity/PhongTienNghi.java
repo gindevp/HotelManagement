@@ -77,4 +77,9 @@ public class PhongTienNghi {
         this.tinhTrang = tinhTrang;
     }
 
+    @Override
+    public String toString() {
+        return "PhongTienNghi{" + "id=" + id + ", soPhong=" + soPhong + ", maTienNghi=" + maTienNghi + ", soLuong=" + soLuong + ", tinhTrang=" + tinhTrang + '}';
+    }
+
 }

@@ -19,7 +19,8 @@ import java.util.List;
 public class PhongTienNghiDAO extends ManageDAO<PhongTienNghi, Integer> {
 
     String insertSql = "insert phong_tiennghi values (?, ?, ?, ?)";
-    String updateSql = "update phong_tiennghi set soluong = ?, tinh trang = ? where id = ?";
+    String updateSql = "update phong_tiennghi set soluong = ?, tinhtrang = ? where id = ?";
+    String deleteSql = "delete from phong_tiennghi where id = ?";
     String selectBySoPhong = "select * from PHONG_TIENNGHI where SOPHONG = ?";
     String selectByIdSql = "select * from phong_tiennghi where id = ?";
 
@@ -30,12 +31,12 @@ public class PhongTienNghiDAO extends ManageDAO<PhongTienNghi, Integer> {
 
     @Override
     public boolean update(PhongTienNghi entity) {
-        return XJdbc.update(insertSql, entity.getSoLuong(), entity.getTinhTrang(), entity.getId());
+        return XJdbc.update(updateSql, entity.getSoLuong(), entity.getTinhTrang(), entity.getId());
     }
 
     @Override
     public boolean delete(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return XJdbc.update(deleteSql, key);
     }
 
     @Override
@@ -45,7 +46,8 @@ public class PhongTienNghiDAO extends ManageDAO<PhongTienNghi, Integer> {
 
     @Override
     public PhongTienNghi selectByID(Integer key) {
-        return (PhongTienNghi) XJdbc.value(selectByIdSql, key);
+        List<PhongTienNghi> list = selectBySql(selectByIdSql, key);
+        return list.size() > 0 ? list.get(0) : null;
     }
 
     public List<PhongTienNghi> selectBySoPhong(String soPhong) {

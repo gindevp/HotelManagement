@@ -450,7 +450,6 @@ public class PhongFrm extends javax.swing.JInternalFrame {
 
     private void btnLoaiPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoaiPhongActionPerformed
         this.openLoaiPhong();
-
     }//GEN-LAST:event_btnLoaiPhongActionPerformed
 
     private void tblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMouseClicked
@@ -705,11 +704,11 @@ public class PhongFrm extends javax.swing.JInternalFrame {
 //        }
 //    }
     private void openLoaiPhong() {
-        XForm.openChildFrm(this, des, new LoaiPhongFrm());
+        XForm.openChildFrm(this, des, new LoaiPhongFrm(des));
     }
 
     private void openPhongTN() {
-        XForm.openChildFrm(this, des, new PhongTienNghiFrm(txtSoPhong.getText()));
+        XForm.openChildFrm(this, des, new PhongTienNghiFrm(des, txtSoPhong.getText()));
     }
     
 }

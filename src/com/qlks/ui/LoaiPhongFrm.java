@@ -10,10 +10,12 @@ import com.qlks.util.Validator;
 import com.qlks.entity.LoaiPhong;
 import com.qlks.dao.LoaiPhongDAO;
 import com.qlks.util.Auth;
+import com.qlks.util.XForm;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,11 +27,13 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
     private LoaiPhongDAO lpdao = new LoaiPhongDAO();
     private int index = -1;
 
+    private JDesktopPane des;
     /**
      * Creates new form LoaiPhong
      */
-    public LoaiPhongFrm() {
+    public LoaiPhongFrm(JDesktopPane des) {
         initComponents();
+        this.des = des;
         this.init();
     }
 
@@ -62,7 +66,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtMoTa = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        btnPhong = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -216,12 +220,12 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
         txtMoTa.setRows(5);
         jScrollPane2.setViewportView(txtMoTa);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/back_to_40px.png"))); // NOI18N
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/back_to_40px.png"))); // NOI18N
+        btnPhong.setText("BACK");
+        btnPhong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPhongActionPerformed(evt);
             }
         });
 
@@ -265,7 +269,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnPhong)
                         .addGap(200, 200, 200)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -276,8 +280,8 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -293,7 +297,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -376,9 +380,9 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
         this.last();
     }//GEN-LAST:event_btnLastActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhongActionPerformed
+        this.openPhong();
+    }//GEN-LAST:event_btnPhongActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -387,10 +391,10 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnInsert;
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPhong;
     private javax.swing.JButton btnPrevious;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnUpdate;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -484,7 +488,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
 
     private void update() {
         LoaiPhong lp = getForm();
-        if (lp != null) {
+        if (lp != null) {            
             if (lpdao.update(lp)) {
                 MsgBox.alert(null, "Sửa thành công!");
                 this.fillTbl();
@@ -541,6 +545,10 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
             this.index++;
             this.edit();
         }
+    }
+
+    private void openPhong() {
+        XForm.openChildFrm(this, des, new PhongFrm(des));
     }
 
 }
