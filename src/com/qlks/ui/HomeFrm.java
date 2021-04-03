@@ -663,6 +663,7 @@ public class HomeFrm extends javax.swing.JFrame {
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
         // TODO add your handling code here:
+        this.openKhachHang();
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhongActionPerformed
@@ -814,6 +815,11 @@ public class HomeFrm extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    
+    private void openKhachHang(){
+        XForm.openChildFrm(this, desMain, new KhachHangFrm(desMain));
+    }
+    
     private void openPhong() {
         XForm.openChildFrm(this, desMain, new PhongFrm(desMain));
     }

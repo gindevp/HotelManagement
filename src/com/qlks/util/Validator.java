@@ -5,6 +5,7 @@
  */
 package com.qlks.util;
 
+import com.qlks.dao.KhachHangDAO;
 import com.toedter.calendar.JDateChooser;
 import java.util.Date;
 import javax.swing.ButtonGroup;
@@ -17,6 +18,8 @@ import javax.swing.text.JTextComponent;
  */
 public class Validator {
 
+    KhachHangDAO khdao = new KhachHangDAO();
+    
     public static boolean checkBlack(JTextComponent... args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].getText().trim().isEmpty()) {
@@ -117,6 +120,22 @@ public class Validator {
         for (int i = 0; i < args.length; i++) {
             if (!args[i].getText().trim().matches(reg)) {
                 MsgBox.alert(null, "SDT không hợp lệ!");
+                args[i].requestFocus();
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static boolean checkiDentityCard(JTextComponent... args) {
+        String reg9 = "\\d{9}";
+        String reg12 = "\\d{12}";
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].getText().trim().matches(reg9)
+                    || args[i].getText().trim().matches(reg12)) {
+                return true;
+            } else {
+                MsgBox.alert(null, "Số chứng minh nhân dân không hợp lệ!");
                 args[i].requestFocus();
                 return false;
             }
