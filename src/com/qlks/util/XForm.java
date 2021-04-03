@@ -17,7 +17,7 @@ import javax.swing.JInternalFrame;
 public class XForm {
 
     public static void openChildFrm(Component parent, JDesktopPane des, JInternalFrame frm) {
-        if (com.qlks.util.Auth.isLogin()) {
+        if (!com.qlks.util.Auth.isLogin()) {
             MsgBox.alert(parent, "Vui lòng đăng nhập");
         } else {
             for (JInternalFrame frmItem : des.getAllFrames()) {

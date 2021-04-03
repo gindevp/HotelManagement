@@ -284,6 +284,11 @@ public class HomeFrm extends javax.swing.JFrame {
                 btnDV_TNMouseExited(evt);
             }
         });
+        btnDV_TN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDV_TNActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDV_TNLayout = new javax.swing.GroupLayout(pnlDV_TN);
         pnlDV_TN.setLayout(pnlDV_TNLayout);
@@ -530,7 +535,7 @@ public class HomeFrm extends javax.swing.JFrame {
             pnlDangXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDangXuatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 110, Short.MAX_VALUE))
+                .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
         );
         pnlDangXuatLayout.setVerticalGroup(
             pnlDangXuatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -550,8 +555,8 @@ public class HomeFrm extends javax.swing.JFrame {
                         .addComponent(pnlKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                         .addComponent(pnlNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                         .addComponent(pnlDV_TN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 306, Short.MAX_VALUE)
+                        .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                        .addComponent(pnlPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                         .addComponent(pnlHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                         .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -678,6 +683,10 @@ public class HomeFrm extends javax.swing.JFrame {
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         this.openNhanVien();
     }//GEN-LAST:event_btnNhanVienActionPerformed
+
+    private void btnDV_TNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDV_TNActionPerformed
+        this.openDichVuTienNghi();
+    }//GEN-LAST:event_btnDV_TNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -815,11 +824,14 @@ public class HomeFrm extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    
-    private void openKhachHang(){
+    private void openDichVuTienNghi() {
+        XForm.openChildFrm(this, desMain, new DichVuTienNghiFrm(desMain));
+    }
+
+    private void openKhachHang() {
         XForm.openChildFrm(this, desMain, new KhachHangFrm(desMain));
     }
-    
+
     private void openPhong() {
         XForm.openChildFrm(this, desMain, new PhongFrm(desMain));
     }

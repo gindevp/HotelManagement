@@ -23,7 +23,6 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
     String selectAllSql = "select * from khachhang where isactive = 1";
     String selectAllSdt = "select * from khachhang where sdt = ?";
     String selectAllCmnd = "select * from khachhang where cmnd = ?";
-//    String selectBySoPhong = "select * from khachhang where SOPHONG = ?";
     String selectByIdSql = "select * from khachhang where makh = ?";
 
     @Override

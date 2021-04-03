@@ -28,7 +28,8 @@ public class KhachHang {
 
     }
 
-    public KhachHang(String ten, String cmnd, String sdt, boolean gioiTinh, String diaChi, String quocTich) {
+    public KhachHang(int ma, String ten, String cmnd, String sdt, boolean gioiTinh, String diaChi, String quocTich) {
+        this.ma = ma;
         this.ten = ten;
         this.cmnd = cmnd;
         this.sdt = sdt;
@@ -89,7 +90,7 @@ public class KhachHang {
     public void setGioiTinh(boolean gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
-    
+
     public String isGender(boolean gioiTinh) {
         String gender = "";
         gender = gioiTinh == true ? "Nam" : "Nữ";
@@ -138,7 +139,7 @@ public class KhachHang {
 
     @Override
     public String toString() {
-        return "KhachHang{" + "ma=" + ma + ", ten=" + ten + ", cmnd=" + cmnd + ", sdt=" + sdt + ", gioiTinh=" + gioiTinh + ", diaChi=" + diaChi + ", quocTich=" + quocTich + ", isActive=" + isActive + ", createAt=" + createAt + ", updateAt=" + updateAt + '}';
+        return this.ten;
     }
 
 }

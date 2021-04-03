@@ -5,7 +5,6 @@
  */
 package com.qlks.dao;
 
-import com.qlks.entity.BoPhan;
 import com.qlks.entity.TienNghi;
 import com.qlks.util.XJdbc;
 import java.sql.ResultSet;
