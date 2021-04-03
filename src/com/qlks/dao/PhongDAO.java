@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class PhongDAO extends ManageDAO<Phong, String> {
 
-    private String insertSql = "insert phong values (?, ?, ?, ?, ?, default, default, default)";
-    private String updateSql = "update phong set sucChua = ?, donGia = ?, trangThai = ?, updateat = default where soPhong = ?";
+    private String insertSql = "insert phong values (?, ?, ?, default, ?, default, default, default)";
+    private String updateSql = "update phong set sucChua = ?, donGia = ?, trangThai = ?, malp = ?, updateat = default where soPhong = ?";
     private String deleteSql = "update phong set isactive = 0, updateat = default where soPhong = ?";
     private String selectAllSql = "select * from phong where isactive = 1";
     private String selectbByLoaiPhongSql = "select * from phong where isactive = 1 and malp = ?";
@@ -26,12 +26,12 @@ public class PhongDAO extends ManageDAO<Phong, String> {
 
     @Override
     public boolean insert(Phong entity) {
-        return XJdbc.update(insertSql, entity.getSoPhong(), entity.getSucChua(), entity.getDonGia(), entity.isTrangThai(), entity.getMaLP());
+        return XJdbc.update(insertSql, entity.getSoPhong(), entity.getSucChua(), entity.getDonGia(), entity.getMaLP());
     }
 
     @Override
     public boolean update(Phong entity) {
-        return XJdbc.update(updateSql, entity.getSucChua(), entity.getDonGia(), entity.isTrangThai(), entity.getSoPhong());
+        return XJdbc.update(updateSql, entity.getSucChua(), entity.getDonGia(), entity.isTrangThai(), entity.getMaLP(), entity.getSoPhong());
     }
 
     @Override

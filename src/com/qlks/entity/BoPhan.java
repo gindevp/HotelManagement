@@ -12,6 +12,7 @@ import java.util.Date;
  * @author hungn
  */
 public class BoPhan {
+
     private String ma;
     private String ten;
     private boolean isActive;
@@ -19,6 +20,11 @@ public class BoPhan {
     private Date updateAt;
 
     public BoPhan() {
+    }
+
+    public BoPhan(String ma, String ten) {
+        this.ma = ma;
+        this.ten = ten;
     }
 
     public BoPhan(String ma, String ten, boolean isActive, Date createAt, Date updateAt) {
@@ -79,5 +85,5 @@ public class BoPhan {
         BoPhan boPhan = (BoPhan) obj;
         return boPhan.getMa().equals(ma); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

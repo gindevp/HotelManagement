@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class BoPhanDAO extends ManageDAO<BoPhan, String>{
 
-    String insertSql = "insert bophan values (?, ?, default, default, default";
+    String insertSql = "insert bophan values (?, ?, default, default, default)";
     String updateSql = "update bophan set tenbp = ?, updateat = default where mabp = ?";
     String deleteSql = "update bophan set isactive = 0, updateat = default where mabp = ?";
     String selectAllSql = "select * from bophan where isactive = 1";
