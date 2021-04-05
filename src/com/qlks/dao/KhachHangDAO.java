@@ -42,18 +42,12 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
 
     public boolean isExistsSdt(String key) {
         Object sdt = XJdbc.value(selectAllSdt, key);
-        if (sdt != null) { //null la khong trung
-            return true;
-        }
-        return false;
+         return sdt != null ? true : false;
     }
     
     public boolean isExistsCmnd(String key) {
-        Object sdt = XJdbc.value(selectAllCmnd, key);
-        if (sdt != null) { //null la khong trung
-            return true;
-        }
-        return false;
+        Object cmnd = XJdbc.value(selectAllCmnd, key);
+         return cmnd != null ? true : false;
     }
 
     @Override
