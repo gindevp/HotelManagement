@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class KhachHangFrm extends javax.swing.JInternalFrame {
 
-    KhachHangDAO khdao = new KhachHangDAO();
+    private KhachHangDAO khdao = new KhachHangDAO();
     private int index = -1;
 
     private JDesktopPane des;
@@ -75,6 +75,7 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
         tbl = new javax.swing.JTable();
 
         setClosable(true);
+        setTitle("Quản Lý Khách Hàng");
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 

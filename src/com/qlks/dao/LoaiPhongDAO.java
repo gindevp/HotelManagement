@@ -31,7 +31,7 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
 
     @Override
     public boolean update(LoaiPhong entity) {
-        return XJdbc.update(insertSql, entity.getMa(), entity.getTen(), entity.getMoTa(), entity.isIsActive(), entity.getCreateAt(), entity.getUpdateAt());
+        return XJdbc.update(updateSql, entity.getMa(), entity.getTen(), entity.getMoTa(), entity.isIsActive(), entity.getCreateAt(), entity.getUpdateAt());
     }
 
     @Override
