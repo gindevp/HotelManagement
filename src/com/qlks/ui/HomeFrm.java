@@ -753,7 +753,7 @@ public class HomeFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThueTraPhongMouseExited
 
     private void btnThueTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThueTraPhongActionPerformed
-        // TODO add your handling code here:
+        this.openThueTra();
     }//GEN-LAST:event_btnThueTraPhongActionPerformed
 
     /**
@@ -926,6 +926,10 @@ public class HomeFrm extends javax.swing.JFrame {
         if (MsgBox.confirm(this, "Bạn có chắc muốn thoát?")) {
             System.exit(0);
         }
+    }
+
+    private void openThueTra() {
+        XForm.openChildFrm(this, desMain, new DatPhongFrm());
     }
 
 }
