@@ -14,24 +14,32 @@ import com.qlks.util.Auth;
 import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
-import java.util.List;
+import java.beans.PropertyVetoException;
 import java.util.Random;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.Timer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JRootPane;
 
 public class LoginDialog extends javax.swing.JDialog {
 
     private NhanVienDAO nvdao = new NhanVienDAO();
     private MaXacNhanDAO mxndao = new MaXacNhanDAO();
 
+    private JDesktopPane desktop = new JDesktopPane();
+
     /**
      * Creates new form LoginDialog
      */
+    public LoginDialog() {
+        initComponents();
+        this.init();
+    }
+
     public LoginDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -276,8 +284,11 @@ public class LoginDialog extends javax.swing.JDialog {
         this.forgotPassword();
     }//GEN-LAST:event_lblQuenMatKhauMouseClicked
 
+
     private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
-        this.register();
+//        this.register();
+        this.openNhanVien();
+
     }//GEN-LAST:event_btnDangKyActionPerformed
 
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
@@ -434,6 +445,7 @@ public class LoginDialog extends javax.swing.JDialog {
         if (MsgBox.confirm(this, "Bạn có chắc muốn thoát?")) {
             System.exit(0);
         }
+
     }
 
     private void showPass(ItemEvent e) {
@@ -444,4 +456,32 @@ public class LoginDialog extends javax.swing.JDialog {
         }
     }
 
+    private void openNhanVien() {
+        LoginDialog.this.dispose();
+        JFrame frame = new JFrame("Đăng ký");
+
+        frame.setDefaultCloseOperation(0);
+        frame.setUndecorated(true);
+        frame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+        frame.setPreferredSize(new Dimension(1280, 800));
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setVisible(true);
+        
+        NhanVienFrm nvFrm = new NhanVienFrm(frame);
+        nvFrm.setTitle("Đăng ký");
+        nvFrm.setDefaultCloseOperation(0);
+        nvFrm.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
+        nvFrm.setVisible(true);
+        nvFrm.setClosable(true);
+        nvFrm.setResizable(false);
+        nvFrm.setPreferredSize(new Dimension(1280, 780));
+        frame.add(nvFrm);
+        try {
+            nvFrm.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(LoginDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
