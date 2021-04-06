@@ -17,12 +17,12 @@ import java.util.ArrayList;
  */
 public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
 
-    private String insertSql = "insert loaiPhong values (?, ?, ?, default, default, default";
-    private String updateSql = "update loaiPhong set tenLP = ?, moTa = ?, updateat = default where maLP = ?";
-    private String deleteSql = "update loaiPhong set isactive = 0, updateat = default where maLP = ?";
-    private String selectAll = "select * from loaiphong where isactive = 1";
-    private String selectById = "select * from loaiPhong where maLP = ? and isactive = 1";
-    private String selectByName = "select * from loaiPhong where tenlp = ? and isactive = 1";
+    private String insertSql = "insert loaiPhong values (?, ?, ?)";
+    private String updateSql = "update loaiPhong set tenLP = ?, moTa = ? where maLP = ?";
+    private String deleteSql = "delete from loaiPhong where maLP = ?";
+    private String selectAll = "select * from loaiphong";
+    private String selectById = "select * from loaiPhong where maLP = ?";
+    private String selectByName = "select * from loaiPhong where tenlp = ?";
 
     @Override
     public boolean insert(LoaiPhong entity) {
@@ -31,7 +31,7 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
 
     @Override
     public boolean update(LoaiPhong entity) {
-        return XJdbc.update(updateSql, entity.getMa(), entity.getTen(), entity.getMoTa(), entity.isIsActive(), entity.getCreateAt(), entity.getUpdateAt());
+        return XJdbc.update(updateSql, entity.getMa(), entity.getTen(), entity.getMoTa());
     }
 
     @Override
@@ -65,9 +65,6 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
                 lp.setMa(rs.getString(1));
                 lp.setTen(rs.getString(2));
                 lp.setMoTa(rs.getString(3));
-                lp.setIsActive(rs.getBoolean(4));
-                lp.setCreateAt(rs.getDate(5));
-                lp.setUpdateAt(rs.getDate(6));
                 list.add(lp);
                 ;
             }

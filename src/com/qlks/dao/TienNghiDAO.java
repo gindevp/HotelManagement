@@ -17,11 +17,11 @@ import java.util.List;
  */
 public class TienNghiDAO extends ManageDAO<TienNghi, Integer> {
 
-    String insertSql = "insert tiennghi values (?, default, default, default)";
-    String updateSql = "update tiennghi set tentn = ?, updateAt = default where matn = ? and isactive = 1";
-    String deleteSql = "update tiennghi set isactive = 0 where matn = ?";
-    String selectAllSql = "select * from tiennghi where isactive = 1";
-    String selectByIdSql = "select * from tiennghi where matn = ? and isactive = 1";
+    String insertSql = "insert tiennghi values (?)";
+    String updateSql = "update tiennghi set tentn = ? where matn = ?";
+    String deleteSql = "delete from tiennghi where matn = ?";
+    String selectAllSql = "select * from tiennghi";
+    String selectByIdSql = "select * from tiennghi where matn = ? ";
     String selectNameByIdSql = "select tentn from tiennghi where matn = ?";
     String selectBySPSql = "select * from tiennghi where sophong = ?";
 
@@ -50,11 +50,11 @@ public class TienNghiDAO extends ManageDAO<TienNghi, Integer> {
         List<TienNghi> list = selectBySql(selectByIdSql, key);
         return list.size() > 0 ? list.get(0) : null;
     }
-    
+
     public List<TienNghi> selectBySP(String sp) {
         return selectBySql(selectBySPSql, sp);
     }
-    
+
     public String selectNameById(Integer id) {
         return (String) XJdbc.value(selectNameByIdSql, id);
     }
@@ -67,10 +67,7 @@ public class TienNghiDAO extends ManageDAO<TienNghi, Integer> {
             while (rs.next()) {
                 TienNghi tienNghi = new TienNghi(
                         rs.getInt(1),
-                        rs.getString(2),
-                        rs.getBoolean(3),
-                        rs.getDate(4),
-                        rs.getDate(5)
+                        rs.getString(2)
                 );
                 list.add(tienNghi);
             }

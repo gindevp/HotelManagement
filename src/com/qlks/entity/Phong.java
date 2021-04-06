@@ -18,9 +18,6 @@ public class Phong {
     private double donGia;
     private boolean trangThai;
     private String maLP;
-    private boolean isActive;
-    private Date createAt;
-    private Date updateAt;
 
     public Phong() {
 
@@ -32,17 +29,6 @@ public class Phong {
         this.donGia = donGia;
         this.trangThai = trangThai;
         this.maLP = maLP;
-    }
-
-    public Phong(String soPhong, int sucChua, double donGia, boolean trangThai, String maLP, boolean isActive, Date createAt, Date updateAt) {
-        this.soPhong = soPhong;
-        this.sucChua = sucChua;
-        this.donGia = donGia;
-        this.trangThai = trangThai;
-        this.maLP = maLP;
-        this.isActive = isActive;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public String getSoPhong() {
@@ -65,18 +51,6 @@ public class Phong {
         return maLP;
     }
 
-    public boolean isIsActive() {
-        return isActive;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
     public void setSoPhong(String soPhong) {
         this.soPhong = soPhong;
     }
@@ -96,24 +70,5 @@ public class Phong {
     public void setMaLP(String maLP) {
         this.maLP = maLP;
     }
-
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    @Override
-    public String toString() {
-        return "Phong{" + "soPhong=" + soPhong + ", sucChua=" + sucChua + ", donGia=" + donGia + ", trangThai=" + trangThai + ", maLP=" + maLP + ", isActive=" + isActive + ", createAt=" + createAt + ", updateAt=" + updateAt + '}';
-    }
-    
-    
 
 }

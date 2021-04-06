@@ -829,7 +829,11 @@ public class HomeFrm extends javax.swing.JFrame {
     }
 
     private void openKhachHang() {
-        XForm.openChildFrm(this, desMain, new KhachHangFrm(desMain));
+        if (Auth.isReceptionist() || Auth.isManager()) {
+            XForm.openChildFrm(this, desMain, new KhachHangFrm(desMain));
+        } else {
+            MsgBox.alert(this, "Không có quyền xem");
+        }
     }
 
     private void openPhong() {

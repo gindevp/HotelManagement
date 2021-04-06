@@ -593,8 +593,10 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         Phong p = null;
 //        boolean trangThai = this.checkRDOButtonGRP();
         LoaiPhong lp = (LoaiPhong) cbo.getSelectedItem();
-        if (Validator.checkBlack(txtSo)
-                && Validator.checkPosNum(txtDonGia, txtSucChua)) {
+        String[] title = new String[]{"Số phòng", "Sức chứa", "Đơn giá"};
+        String[] titleNum = new String[] {"Sức chứa", "Đơn giá"};
+        if (Validator.checkBlack(this, title, txtSo, txtSucChua, txtDonGia)
+                && Validator.checkPosNum(this, titleNum, txtSucChua, txtDonGia)) {
             p = new Phong(
                     txtSo.getText().trim(),
                     Integer.parseInt(txtSucChua.getText().trim()),
@@ -609,13 +611,14 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     private void insert() {
         Phong p = getForm();
         if (p != null) {
-            if (pdao.insert(p)) {
-                MsgBox.alert(this, "Thêm thành công!");
-                this.clearForm();
-                this.fillTable();
-            } else {
-                MsgBox.alert(this, "Thêm không thành công! Phòng đã tồn tại");
-            }
+//            if (pdao.insert(p)) {
+//                MsgBox.alert(this, "Thêm thành công!");
+//                this.clearForm();
+//                this.fillTable();
+//            } else {
+//                MsgBox.alert(this, "Thêm không thành công! Phòng đã tồn tại");
+//            }
+//            Validator.isExists(this, p.getMaLP(), pdao., title)
         }
     }
 

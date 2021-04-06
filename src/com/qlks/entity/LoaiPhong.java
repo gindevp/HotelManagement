@@ -16,9 +16,6 @@ public class LoaiPhong {
     private String ma;
     private String ten;
     private String moTa;
-    private boolean isActive;
-    private Date createAt;
-    private Date updateAt;
 
     public LoaiPhong() {
 
@@ -28,15 +25,6 @@ public class LoaiPhong {
         this.ma = ma;
         this.ten = ten;
         this.moTa = moTa;
-    }
-
-    public LoaiPhong(String ma, String ten, String moTa, boolean isActive, Date createAt, Date updateAt) {
-        this.ma = ma;
-        this.ten = ten;
-        this.moTa = moTa;
-        this.isActive = isActive;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public String getMa() {
@@ -61,30 +49,6 @@ public class LoaiPhong {
 
     public void setMoTa(String moTa) {
         this.moTa = moTa;
-    }
-
-    public boolean isIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
     }
 
     @Override

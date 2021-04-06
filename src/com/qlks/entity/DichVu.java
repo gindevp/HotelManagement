@@ -18,12 +18,16 @@ public class DichVu {
     private double gia;
     private String moTa;
     private boolean trangThai;
-    private boolean isActive;
-    private Date createAt;
-    private Date updateAt;
 
     public DichVu() {
 
+    }
+
+    public DichVu(String ten, double gia, String moTa, boolean trangThai) {
+        this.ten = ten;
+        this.gia = gia;
+        this.moTa = moTa;
+        this.trangThai = trangThai;
     }
 
     public DichVu(int ma, String ten, double gia, String moTa, boolean trangThai) {
@@ -32,17 +36,6 @@ public class DichVu {
         this.gia = gia;
         this.moTa = moTa;
         this.trangThai = trangThai;
-    }
-
-    public DichVu(int ma, String ten, double gia, String moTa, boolean trangThai, boolean isActive, Date createAt, Date updateAt) {
-        this.ma = ma;
-        this.ten = ten;
-        this.gia = gia;
-        this.moTa = moTa;
-        this.trangThai = trangThai;
-        this.isActive = isActive;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public int getMa() {
@@ -85,34 +78,9 @@ public class DichVu {
         this.trangThai = trangThai;
     }
 
-    public boolean isIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
     @Override
     public String toString() {
         return this.ten;
     }
 
-    
 }

@@ -28,6 +28,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
     private int index = -1;
 
     private JDesktopPane des;
+
     /**
      * Creates new form LoaiPhong
      */
@@ -444,7 +445,8 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
 
     private LoaiPhong getForm() {
         LoaiPhong lp = null;
-        if (Validator.checkBlack(txtMa, txtTen, txtMoTa)) {
+        String[] title = new String[]{"Mã loại phòng", "Tên loại phòng", "Mô tả"};
+        if (Validator.checkBlack(this, title, txtMa, txtTen, txtMoTa)) {
             lp = new LoaiPhong(
                     txtMa.getText().trim(),
                     txtTen.getText().trim(),
@@ -489,7 +491,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
 
     private void update() {
         LoaiPhong lp = getForm();
-        if (lp != null) {            
+        if (lp != null) {
             if (lpdao.update(lp)) {
                 MsgBox.alert(null, "Sửa thành công!");
                 this.fillTbl();

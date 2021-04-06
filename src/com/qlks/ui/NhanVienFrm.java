@@ -379,11 +379,12 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel13))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnChonAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnXoaAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnChonAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnXoaAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -702,11 +703,12 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
 
     private NhanVien getForm() {
         NhanVien nhanVien = null;
-        if (Validator.checkBlack(txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
+        String[] title = new String[]{"Mã nhân viên", "Tên nhân viên", "Password", "Sdt", "Địa chỉ", "Email"};
+        if (Validator.checkBlack(this, title, txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
                 && Validator.checkPhoneNum(txtSdt)
                 && Validator.checkSelectedDob(jdcNgaySinh)
-                && Validator.checkSelectedBgr(bgrGioiTinh, "Giới tính")
-                && Validator.checkEmail(txtEmail)) {
+                && Validator.checkSelectedBgr(this, bgrGioiTinh, "Giới tính")
+                && Validator.checkEmail(this, txtEmail)) {
             BoPhan boPhan = (BoPhan) cboBoPhan.getSelectedItem();
             nhanVien = new NhanVien(
                     txtMa.getText().trim(),

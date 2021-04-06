@@ -383,8 +383,10 @@ public class PhongTienNghiFrm extends javax.swing.JInternalFrame {
 
     private PhongTienNghi getForm() {
         PhongTienNghi ptn = null;
-        if (Validator.checkPosNum(txtSoLuong)
-                && Validator.checkBlack(txtTinhTrang)) {
+        String[] title = new String[]{"Số lượng", "Tình trạng"};
+        String[] titleNum = new String[] {"Số lượng"};
+        if (Validator.checkBlack(this, title, txtSoLuong, txtTinhTrang)
+                && Validator.checkPosNum(this, titleNum, txtSoLuong)) {
             TienNghi tienNghi = (TienNghi) cbo.getSelectedItem();
             ptn = new PhongTienNghi(
                     txtSoPhong.getText(),

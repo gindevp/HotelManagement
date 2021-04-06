@@ -15,9 +15,6 @@ public class BoPhan {
 
     private String ma;
     private String ten;
-    private boolean isActive;
-    private Date createAt;
-    private Date updateAt;
 
     public BoPhan() {
     }
@@ -25,14 +22,6 @@ public class BoPhan {
     public BoPhan(String ma, String ten) {
         this.ma = ma;
         this.ten = ten;
-    }
-
-    public BoPhan(String ma, String ten, boolean isActive, Date createAt, Date updateAt) {
-        this.ma = ma;
-        this.ten = ten;
-        this.isActive = isActive;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public String getMa() {
@@ -49,30 +38,6 @@ public class BoPhan {
 
     public void setTen(String ten) {
         this.ten = ten;
-    }
-
-    public boolean isIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
     }
 
     @Override
