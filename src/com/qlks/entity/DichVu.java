@@ -83,4 +83,13 @@ public class DichVu {
         return this.ten;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        DichVu dichVu = (DichVu) obj;
+        Integer id = dichVu.getMa();
+        return id.equals(this.ma); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
 }

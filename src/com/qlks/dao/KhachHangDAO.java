@@ -17,16 +17,17 @@ import java.util.List;
  */
 public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
 
-    String insertSql = "insert khachhang values (?, ?, ?, ?, ?, ?)";
-    String updateSql = "update khachhang set tenkh = ?, cmnd = ?, sdt = ?, gioitinh = ?, diachi = ?, quoctich = ? where makh = ?";
-    String deleteSql = "delete from khachhang where makh = ?";
-    String selectAllSql = "select * from khachhang";
-    String selectAllSdt = "select * from khachhang where sdt = ?";
-    String selectByKeywordSql = "select * from khachhang where tenkh like ?";
-    String selectAllCmnd = "select * from khachhang where cmnd = ?";
-    String selectByIdSql = "select * from khachhang where makh = ?";
-    String selectCmndsSql = "select cmnd from khachhang";
-    String selectSdtsSql = "select sdt from khachhang";
+    private String insertSql = "insert khachhang values (?, ?, ?, ?, ?, ?)";
+    private String updateSql = "update khachhang set tenkh = ?, cmnd = ?, sdt = ?, gioitinh = ?, diachi = ?, quoctich = ? where makh = ?";
+    private String deleteSql = "delete from khachhang where makh = ?";
+    private String selectAllSql = "select * from khachhang";
+    private String selectAllSdt = "select * from khachhang where sdt = ?";
+    private String selectByKeywordSql = "select * from khachhang where tenkh like ?";
+    private String selectAllCmnd = "select * from khachhang where cmnd = ?";
+    private String selectByIdSql = "select * from khachhang where makh = ?";
+    private String selectCmndsSql = "select cmnd from khachhang";
+    private String selectSdtsSql = "select sdt from khachhang";
+    private String selectBySdtOrCmndSql = "select * from khachhang where sdt = ? or cmnd = ?";
 
     @Override
     public boolean insert(KhachHang entity) {
@@ -74,6 +75,11 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
 
     public List<String> selectSdts() {
         return selectColumn(selectSdtsSql);
+    }
+
+    public KhachHang selectBySdtOrCmnd(String key) {
+        List<KhachHang> list = selectBySql(selectBySdtOrCmndSql, key, key);
+        return list.size() > 0 ? list.get(0) : null;
     }
 
     @Override

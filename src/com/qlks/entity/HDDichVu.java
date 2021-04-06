@@ -10,6 +10,7 @@ package com.qlks.entity;
  * @author hungn
  */
 public class HDDichVu {
+
     private int id;
     private int maHd;
     private int maDv;
@@ -20,6 +21,11 @@ public class HDDichVu {
 
     public HDDichVu(int maHd, int maDv, int soLuong) {
         this.maHd = maHd;
+        this.maDv = maDv;
+        this.soLuong = soLuong;
+    }
+
+    public HDDichVu(int maDv, int soLuong) {
         this.maDv = maDv;
         this.soLuong = soLuong;
     }
@@ -62,6 +68,5 @@ public class HDDichVu {
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
-    
-    
+
 }

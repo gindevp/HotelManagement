@@ -10,11 +10,16 @@ package com.qlks.entity;
  * @author hungn
  */
 public class HDPhong {
+
     private int id;
     private int maHd;
     private String soPhong;
 
     public HDPhong() {
+    }
+
+    public HDPhong(String soPhong) {
+        this.soPhong = soPhong;
     }
 
     public HDPhong(int maHd, String soPhong) {
@@ -51,6 +56,5 @@ public class HDPhong {
     public void setSoPhong(String soPhong) {
         this.soPhong = soPhong;
     }
-    
-    
+
 }
