@@ -5,8 +5,6 @@
  */
 package com.qlks.entity;
 
-import java.util.Date;
-
 /**
  *
  * @author markhyun

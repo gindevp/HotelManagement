@@ -186,6 +186,8 @@ public class Validator {
         return true;
     }
 
+    
+
     public static boolean isExists(Component parent, String value, List<String> data, String title) {
         for (Object item : data) {
             if (item.equals(value.trim())) {
