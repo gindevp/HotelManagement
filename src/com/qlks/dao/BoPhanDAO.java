@@ -20,7 +20,10 @@ public class BoPhanDAO extends ManageDAO<BoPhan, String> {
     String insertSql = "insert bophan values (?, ?)";
     String updateSql = "update bophan set tenbp = ? where mabp = ?";
     String deleteSql = "delete from bophan where mabp = ?";
+
     String selectAllSql = "select * from bophan";
+    String selectNotLikeSql = "select * from bophan where mabp not like 'ql'";
+
     String selectByIdSql = "select * from bophan where mabp = ?";
     String selectNameByIdSql = "select tenbp from bophan where mabp = ?";
     String selectByKeywordSql = "select * from bophan where tenbp like ?";
@@ -43,6 +46,10 @@ public class BoPhanDAO extends ManageDAO<BoPhan, String> {
     @Override
     public List<BoPhan> selectAll() {
         return selectBySql(selectAllSql);
+    }
+
+    public List<BoPhan> selectNotLikeSql() {
+        return selectBySql(selectNotLikeSql);
     }
 
     @Override

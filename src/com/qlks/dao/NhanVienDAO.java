@@ -29,6 +29,12 @@ public class NhanVienDAO extends ManageDAO<NhanVien, String> {
     String selectByEmailSql = "select * from nhanvien where manv = ? and email = ?";
     String selectByKeyword = "select * from nhanvien where tennv like ?";
 
+    String selectEmailSql = "select email from nhanvien";
+    String selectEmailSql1 = "select email from nhanvien where email not like ?";
+
+    String selectSdtSql = "select sdt from nhanvien";
+    String selectSdtSql1 = "select sdt from nhanvien where sdt not like ?";
+    
     @Override
     public boolean insert(NhanVien entity) {
         return XJdbc.update(insertSql, entity.getMa(), entity.getTen(), entity.getPass(),
@@ -74,6 +80,24 @@ public class NhanVienDAO extends ManageDAO<NhanVien, String> {
         return list;
     }
 
+    
+    public List<String> selectEmail() {
+        return selectColumn(selectEmailSql);
+    }
+
+    public List<String> selectEmail1(String key) {
+        return selectColumn(selectEmailSql1, key);
+    }
+
+    public List<String> selectSdt() {
+        return selectColumn(selectSdtSql);
+    }
+
+    public List<String> selectSdt1(String key) {
+        return selectColumn(selectSdtSql1, key);
+    }
+    
+    
     @Override
     protected List<NhanVien> selectBySql(String sql, Object... args) {
         List<NhanVien> list = new ArrayList<>();
@@ -96,6 +120,19 @@ public class NhanVienDAO extends ManageDAO<NhanVien, String> {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<String> selectColumn(String sql, Object... args) {
+        List<String> list = new ArrayList<>();
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                String item = rs.getString(1);
+                list.add(item);
+            }
+        } catch (Exception e) {
         }
         return list;
     }
