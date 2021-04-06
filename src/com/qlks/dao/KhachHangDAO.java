@@ -21,15 +21,12 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
     String updateSql = "update khachhang set tenkh = ?, cmnd = ?, sdt = ?, gioitinh = ?, diachi = ?, quoctich = ? where makh = ?";
     String deleteSql = "delete from khachhang where makh = ?";
     String selectAllSql = "select * from khachhang";
-
+    String selectAllSdt = "select * from khachhang where sdt = ?";
     String selectByKeywordSql = "select * from khachhang where tenkh like ?";
+    String selectAllCmnd = "select * from khachhang where cmnd = ?";
     String selectByIdSql = "select * from khachhang where makh = ?";
-    
-    String selectCmndSql = "select cmnd from khachhang";
-    String selectCmndSql1 = "select cmnd from khachhang where cmnd not like ?";
-
-    String selectSdtSql = "select sdt from khachhang";
-    String selectSdtSql1 = "select sdt from khachhang where sdt not like ?";
+    String selectCmndsSql = "select cmnd from khachhang";
+    String selectSdtsSql = "select sdt from khachhang";
 
     @Override
     public boolean insert(KhachHang entity) {
@@ -44,6 +41,16 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
     @Override
     public boolean delete(Integer key) {
         return XJdbc.update(deleteSql, key);
+    }
+
+    public boolean isExistsSdt(String key) {
+        Object sdt = XJdbc.value(selectAllSdt, key);
+        return sdt != null ? true : false;
+    }
+
+    public boolean isExistsCmnd(String key) {
+        Object cmnd = XJdbc.value(selectAllCmnd, key);
+        return cmnd != null ? true : false;
     }
 
     @Override
@@ -61,20 +68,12 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
         return list.size() > 0 ? list.get(0) : null;
     }
 
-    public List<String> selectCmnd() {
-        return selectColumn(selectCmndSql);
+    public List<String> selectCmnds() {
+        return selectColumn(selectCmndsSql);
     }
 
-    public List<String> selectCmnd1(String key) {
-        return selectColumn(selectCmndSql1, key);
-    }
-
-    public List<String> selectSdt() {
-        return selectColumn(selectSdtSql);
-    }
-    
-    public List<String> selectSdt1(String key) {
-        return selectColumn(selectSdtSql1, key);
+    public List<String> selectSdts() {
+        return selectColumn(selectSdtsSql);
     }
 
     @Override

@@ -160,7 +160,6 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         rdoTrong.setBackground(new java.awt.Color(255, 255, 255));
         bgrTrangThai.add(rdoTrong);
         rdoTrong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        rdoTrong.setSelected(true);
         rdoTrong.setText("Trống");
 
         rdoDangThue.setBackground(new java.awt.Color(255, 255, 255));

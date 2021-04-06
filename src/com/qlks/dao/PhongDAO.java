@@ -26,6 +26,7 @@ public class PhongDAO extends ManageDAO<Phong, String> {
     private String selectbByLoaiPhongSql = "select * from phong where malp = ?";
     private String selectByIdSql = "select * from phong where soPhong = ?";
     private String selectIdsSql = "select maphong from phong";
+    private String selectByLpAndSucChuaSql = "select * from phong where malp = ? and succhua >= ?";
 
     @Override
     public boolean insert(Phong entity) {
@@ -60,6 +61,10 @@ public class PhongDAO extends ManageDAO<Phong, String> {
     public List<String> selectIds() {
         return selectColumn(selectIdsSql);
     }
+    
+//    public List<Phong> selectByLpAndSucChua(String lp, Integer sucChua) {
+//        
+//    }
 
     @Override
     protected List<Phong> selectBySql(String sql, Object... args) {
