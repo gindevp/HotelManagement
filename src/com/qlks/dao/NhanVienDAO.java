@@ -17,18 +17,17 @@ import java.util.List;
  */
 public class NhanVienDAO extends ManageDAO<NhanVien, String> {
 
-    String insertSql = "insert Nhanvien values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, default, default)";
+    String insertSql = "insert Nhanvien values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     String updateSql = "update nhanvien set tennv = ?, password = ?, ngaysinh = ?, gioitinh = ?, "
-            + "diachi = ?, sdt = ?, email = ?, anh = ?, mabp = ?, updateat = default "
-            + "where manv = ?";
-    String deleteSql = "update nhanvien set isactive = 0 where manv = ?";
-    String selectAllSql = "select * from nhanvien where isactive = 1";
+            + "diachi = ?, sdt = ?, email = ?, anh = ?, mabp = ? where manv = ?";
+    String deleteSql = "delete from nhanvien where manv = ?";
+    String selectAllSql = "select * from nhanvien";
     String selectById = "select * from nhanvien where manv = ?";
     String updatePassForgot = "update nhanvien set password = (select top 1 "
             + "code from maxacnhan where maxacnhan.manv = nhanvien.manv order "
-            + "by createat desc), updateat = default where manv = ? and isactive = 1";
-    String selectByEmailSql = "select * from nhanvien where manv = ? and email = ? and isactive = 1";
-    String selectByKeyword = "select * from nhanvien where tennv like ? and isactive = 1";
+            + "by createat desc), updateat = default where manv = ?";
+    String selectByEmailSql = "select * from nhanvien where manv = ? and email = ?";
+    String selectByKeyword = "select * from nhanvien where tennv like ?";
 
     @Override
     public boolean insert(NhanVien entity) {
@@ -91,10 +90,7 @@ public class NhanVienDAO extends ManageDAO<NhanVien, String> {
                         rs.getString(7),
                         rs.getString(8),
                         rs.getString(9),
-                        rs.getString(10),
-                        rs.getBoolean(11),
-                        rs.getDate(12),
-                        rs.getDate(13)
+                        rs.getString(10)
                 );
                 list.add(nhanVien);
             }

@@ -486,12 +486,12 @@ public class NhaCungCapFrm extends javax.swing.JInternalFrame {
 
     private NhaCungCap getForm() {
         NhaCungCap ncc = null;
-        if (Validator.checkBlack(txtTen, txtDiaChi)) {
-            ncc = new NhaCungCap(
-                    txtTen.getText(),
-                    txtDiaChi.getText()
-            );
-        }
+//        if (Validator.checkBlack(txtTen, txtDiaChi)) {
+//            ncc = new NhaCungCap(
+//                    txtTen.getText(),
+//                    txtDiaChi.getText()
+//            );
+//        }
         return ncc;
     }
 

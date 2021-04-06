@@ -73,6 +73,8 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         tbl = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        txtKeyWord = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Quản Lý Khách Hàng");
@@ -347,20 +349,39 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
             tbl.getColumnModel().getColumn(4).setPreferredWidth(40);
         }
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setText("Nhập tên KH cần tìm:");
+
+        txtKeyWord.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtKeyWord.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtKeyWordKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 1183, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 1183, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtKeyWord)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtKeyWord, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -372,12 +393,10 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,6 +479,10 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tblMouseClicked
 
+    private void txtKeyWordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKeyWordKeyReleased
+        this.fillTable();
+    }//GEN-LAST:event_txtKeyWordKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClean;
@@ -472,6 +495,7 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel38;
@@ -489,6 +513,7 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txtCMND;
     private javax.swing.JTextField txtDiaChi;
+    private javax.swing.JTextField txtKeyWord;
     private javax.swing.JTextField txtQuocTich;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTenKH;
@@ -502,7 +527,7 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
     private void fillTable() {
         DefaultTableModel model = (DefaultTableModel) tbl.getModel();
         model.setRowCount(0);
-        List<KhachHang> list = khdao.selectAll();
+        List<KhachHang> list = khdao.selectByKeyword(txtKeyWord.getText().trim());
         list.forEach((i) -> {
             model.addRow(new Object[]{
                 i.getMa(),
@@ -555,10 +580,12 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
 
     private KhachHang getForm() {
         KhachHang kh = null;
-
-        if (Validator.checkBlack(txtTenKH, txtDiaChi, txtQuocTich)
-                && Validator.checkPhoneNum(txtSDT)
-                && Validator.checkiDentityCard(txtCMND)) {
+        String[] title = new String[]{"Tên khách hàng", "CMND", "SDT", "Địa Chỉ", "Quốc tịch"};
+        if (Validator.checkBlack(this, title, txtTenKH, txtCMND, txtSDT, txtDiaChi, txtQuocTich)
+                && Validator.checkIdentityCard(txtCMND)
+                && Validator.isExists(this, txtCMND, khdao.selectCmnds(), "CMND")
+                && Validator.checkPhoneNum(this, txtSDT)
+                && Validator.isExists(this, txtSDT, khdao.selectSdts(), "SDT")) {
             String ten = txtTenKH.getText().trim();
             String cmnd = txtCMND.getText().trim();
             String sdt = txtSDT.getText().trim();
@@ -566,7 +593,7 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
             String diaChi = txtDiaChi.getText().trim();
             String quocTich = txtQuocTich.getText().trim();
 
-            kh = new KhachHang(WIDTH, ten, cmnd, sdt, gioiTinh, diaChi, quocTich);
+            kh = new KhachHang(ten, cmnd, sdt, gioiTinh, diaChi, quocTich);
         }
         return kh;
     }

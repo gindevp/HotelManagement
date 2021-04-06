@@ -17,9 +17,9 @@ import java.util.ArrayList;
  */
 public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
 
-    private String insertSql = "insert loaiPhong values (?, ?, ?";
+    private String insertSql = "insert loaiPhong values (?, ?, ?)";
     private String updateSql = "update loaiPhong set tenLP = ?, moTa = ? where maLP = ?";
-    private String deleteSql = "delete loaiPhong where maLP = ?";
+    private String deleteSql = "delete from loaiPhong where maLP = ?";
     private String selectAll = "select * from loaiphong";
     private String selectById = "select * from loaiPhong where maLP = ?";
     private String selectByName = "select * from loaiPhong where tenlp = ?";

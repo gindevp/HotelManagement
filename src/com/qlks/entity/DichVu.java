@@ -23,6 +23,13 @@ public class DichVu {
 
     }
 
+    public DichVu(String ten, double gia, String moTa, boolean trangThai) {
+        this.ten = ten;
+        this.gia = gia;
+        this.moTa = moTa;
+        this.trangThai = trangThai;
+    }
+
     public DichVu(int ma, String ten, double gia, String moTa, boolean trangThai) {
         this.ma = ma;
         this.ten = ten;

@@ -18,11 +18,14 @@ import java.util.List;
 public class PhongDAO extends ManageDAO<Phong, String> {
 
     private String insertSql = "insert phong values (?, ?, ?, default, ?)";
+    private String insertAfterRemoveSql = "update phong set sucChua = ?, donGia = ?,"
+            + " trangThai = ?, malp = ?, isactive = 1 where soPhong = ?";
     private String updateSql = "update phong set sucChua = ?, donGia = ?, trangThai = ?, malp = ? where soPhong = ?";
-    private String deleteSql = "delete phong where soPhong = ?";
+    private String deleteSql = "delete from phong where soPhong = ?";
     private String selectAllSql = "select * from phong";
     private String selectbByLoaiPhongSql = "select * from phong where malp = ?";
     private String selectByIdSql = "select * from phong where soPhong = ?";
+    private String selectIdsSql = "select maphong from phong";
 
     @Override
     public boolean insert(Phong entity) {
@@ -54,6 +57,10 @@ public class PhongDAO extends ManageDAO<Phong, String> {
         return list.size() > 0 ? list.get(0) : null;
     }
 
+    public List<String> selectIds() {
+        return selectColumn(selectIdsSql);
+    }
+
     @Override
     protected List<Phong> selectBySql(String sql, Object... args) {
         List<Phong> list = new ArrayList<>();
@@ -67,6 +74,19 @@ public class PhongDAO extends ManageDAO<Phong, String> {
                         rs.getBoolean(4),
                         rs.getString(5));
                 list.add(phong);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<String> selectColumn(String sql, Object... args) {
+        List<String> list = new ArrayList<>();
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                String item = rs.getString(1);
+                list.add(item);
             }
         } catch (Exception e) {
         }

@@ -19,7 +19,7 @@ public class DichVuDAO extends ManageDAO<DichVu, Integer> {
 
     String insertSql = "insert dichvu values (?, ?, ?, ?)";
     String updateSql = "update dichvu set tendv = ?, dongia = ?, mota = ?, trangthai = ? where madv = ?";
-    String deleteSql = "delete dichvu where madv = ?";
+    String deleteSql = "delete from dichvu where madv = ?";
     String selectAllSql = "select * from dichvu";
 //    String selectAllSdt = "select * from dichvu where sdt = ?";
 //    String selectAllCmnd = "select * from dichvu where cmnd = ?";
@@ -63,7 +63,6 @@ public class DichVuDAO extends ManageDAO<DichVu, Integer> {
                         rs.getDouble(3),
                         rs.getString(4),
                         rs.getBoolean(5));
-
                 list.add(dv);
             }
         } catch (Exception e) {

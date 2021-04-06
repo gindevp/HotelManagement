@@ -19,11 +19,14 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
 
     String insertSql = "insert khachhang values (?, ?, ?, ?, ?, ?)";
     String updateSql = "update khachhang set tenkh = ?, cmnd = ?, sdt = ?, gioitinh = ?, diachi = ?, quoctich = ? where makh = ?";
-    String deleteSql = "delete khachhang where makh = ?";
+    String deleteSql = "delete from khachhang where makh = ?";
     String selectAllSql = "select * from khachhang";
     String selectAllSdt = "select * from khachhang where sdt = ?";
+    String selectByKeywordSql = "select * from khachhang where tenkh like ?";
     String selectAllCmnd = "select * from khachhang where cmnd = ?";
     String selectByIdSql = "select * from khachhang where makh = ?";
+    String selectCmndsSql = "select cmnd from khachhang";
+    String selectSdtsSql = "select sdt from khachhang";
 
     @Override
     public boolean insert(KhachHang entity) {
@@ -55,10 +58,22 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
         return selectBySql(selectAllSql);
     }
 
+    public List<KhachHang> selectByKeyword(String key) {
+        return selectBySql(selectByKeywordSql, "%" + key + "%");
+    }
+
     @Override
     public KhachHang selectByID(Integer key) {
         List<KhachHang> list = selectBySql(selectByIdSql, key);
         return list.size() > 0 ? list.get(0) : null;
+    }
+
+    public List<String> selectCmnds() {
+        return selectColumn(selectCmndsSql);
+    }
+
+    public List<String> selectSdts() {
+        return selectColumn(selectSdtsSql);
     }
 
     @Override
@@ -76,6 +91,19 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
                         rs.getString(6),
                         rs.getString(7));
                 list.add(kh);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<String> selectColumn(String sql, Object... args) {
+        List<String> list = new ArrayList<>();
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                String item = rs.getString(1);
+                list.add(item);
             }
         } catch (Exception e) {
         }

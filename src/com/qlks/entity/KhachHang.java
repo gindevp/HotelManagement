@@ -25,6 +25,15 @@ public class KhachHang {
 
     }
 
+    public KhachHang(String ten, String cmnd, String sdt, boolean gioiTinh, String diaChi, String quocTich) {
+        this.ten = ten;
+        this.cmnd = cmnd;
+        this.sdt = sdt;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.quocTich = quocTich;
+    }
+
     public KhachHang(int ma, String ten, String cmnd, String sdt, boolean gioiTinh, String diaChi, String quocTich) {
         this.ma = ma;
         this.ten = ten;

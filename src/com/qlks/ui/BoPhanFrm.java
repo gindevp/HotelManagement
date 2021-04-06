@@ -437,7 +437,8 @@ public class BoPhanFrm extends javax.swing.JInternalFrame {
 
     private BoPhan getForm() {
         BoPhan boPhan = null;
-        if (Validator.checkBlack(txtMa, txtTen)) {
+        String[] title = new String[] {"Mã bộ phận", "Tên bộ phận"};
+        if (Validator.checkBlack(this, title, txtMa, txtTen)) {
             boPhan = new BoPhan(txtMa.getText().trim(), txtTen.getText().trim());
         }
         return boPhan;
