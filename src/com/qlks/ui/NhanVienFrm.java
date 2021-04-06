@@ -706,9 +706,39 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         String[] title = new String[]{"Mã nhân viên", "Tên nhân viên", "Password", "Sdt", "Địa chỉ", "Email"};
         if (Validator.checkBlack(this, title, txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
                 && Validator.checkPhoneNum(txtSdt)
+                && Validator.isExists(this, txtSdt, nvdao.selectSdt(), title[3])
                 && Validator.checkSelectedDob(jdcNgaySinh)
                 && Validator.checkSelectedBgr(this, bgrGioiTinh, "Giới tính")
-                && Validator.checkEmail(this, txtEmail)) {
+                && Validator.checkEmail(this, txtEmail)
+                && Validator.isExists(this, txtEmail, nvdao.selectEmail(), title[5])) {
+            BoPhan boPhan = (BoPhan) cboBoPhan.getSelectedItem();
+            nhanVien = new NhanVien(
+                    txtMa.getText().trim(),
+                    txtTen.getText().trim(),
+                    txtPass.getText().trim(),
+                    jdcNgaySinh.getDate(),
+                    rdoNam.isSelected() ? true : false,
+                    txtDiaChi.getText().trim(),
+                    txtSdt.getText().trim(),
+                    txtEmail.getText().trim(),
+                    lblAnh.getToolTipText() == null ? "" : lblAnh.getToolTipText(),
+                    boPhan.getMa()
+            );
+        }
+        return nhanVien;
+    }
+
+    private NhanVien getFormUpdate() {
+        NhanVien nhanVien = null;
+        NhanVien nv1 = nvdao.selectByID((tbl.getValueAt(this.index, 0).toString()));
+        String[] title = new String[]{"Mã nhân viên", "Tên nhân viên", "Password", "Sdt", "Địa chỉ", "Email"};
+        if (Validator.checkBlack(this, title, txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
+                && Validator.checkPhoneNum(txtSdt)
+                && Validator.isExists(this, txtSdt, nvdao.selectSdt1(nv1.getSdt()), title[3])
+                && Validator.checkSelectedDob(jdcNgaySinh)
+                && Validator.checkSelectedBgr(this, bgrGioiTinh, "Giới tính")
+                && Validator.checkEmail(this, txtEmail)
+                && Validator.isExists(this, txtEmail, nvdao.selectEmail1(nv1.getEmail()), title[5])) {
             BoPhan boPhan = (BoPhan) cboBoPhan.getSelectedItem();
             nhanVien = new NhanVien(
                     txtMa.getText().trim(),
@@ -777,7 +807,7 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
     }
 
     private void update() {
-        NhanVien nhanVien = getForm();
+        NhanVien nhanVien = getFormUpdate();
         if (nhanVien != null) {
             if (nvdao.update(nhanVien)) {
                 MsgBox.alert(this, "Sửa thành công!");

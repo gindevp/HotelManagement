@@ -583,9 +583,30 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
         String[] title = new String[]{"Tên khách hàng", "CMND", "SDT", "Địa Chỉ", "Quốc tịch"};
         if (Validator.checkBlack(this, title, txtTenKH, txtCMND, txtSDT, txtDiaChi, txtQuocTich)
                 && Validator.checkIdentityCard(txtCMND)
-                && Validator.isExists(this, txtCMND, khdao.selectCmnds(), "CMND")
+                && Validator.isExists(this, txtCMND, khdao.selectCmnd(), "CMND")
                 && Validator.checkPhoneNum(this, txtSDT)
-                && Validator.isExists(this, txtSDT, khdao.selectSdts(), "SDT")) {
+                && Validator.isExists(this, txtSDT, khdao.selectSdt(), "SDT")) {
+            String ten = txtTenKH.getText().trim();
+            String cmnd = txtCMND.getText().trim();
+            String sdt = txtSDT.getText().trim();
+            boolean gioiTinh = rdoNam.isSelected() ? true : false;
+            String diaChi = txtDiaChi.getText().trim();
+            String quocTich = txtQuocTich.getText().trim();
+
+            kh = new KhachHang(ten, cmnd, sdt, gioiTinh, diaChi, quocTich);
+        }
+        return kh;
+    }
+
+    private KhachHang getFormUpdate() {
+        KhachHang kh = null;
+        KhachHang kh1 = khdao.selectByID(Integer.parseInt(tbl.getValueAt(this.index, 0).toString()));
+        String[] title = new String[]{"Tên khách hàng", "CMND", "SDT", "Địa Chỉ", "Quốc tịch"};
+        if (Validator.checkBlack(this, title, txtTenKH, txtCMND, txtSDT, txtDiaChi, txtQuocTich)
+                && Validator.checkIdentityCard(this, txtCMND)
+                && Validator.isExists(this, txtCMND, khdao.selectCmnd1(kh1.getCmnd()), title[1])
+                && Validator.checkPhoneNum(this, txtSDT)
+                && Validator.isExists(this, txtSDT, khdao.selectSdt1(kh1.getSdt()), title[2])) {
             String ten = txtTenKH.getText().trim();
             String cmnd = txtCMND.getText().trim();
             String sdt = txtSDT.getText().trim();
@@ -601,63 +622,31 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
     private void insert() {
         KhachHang kh = this.getForm();
         if (kh != null) {
-            if (khdao.isExistsSdt(kh.getSdt()) || khdao.isExistsCmnd(kh.getCmnd())) {
-                if (khdao.isExistsSdt(kh.getSdt())) {
-                    MsgBox.alert(null, "Số điện thoại trùng!");
-                    txtSDT.requestFocus();
-                } else {
-                    MsgBox.alert(null, "Số chứng minh nhân dân trùng!");
-                    txtCMND.requestFocus();
-                }
-
+            if (khdao.insert(kh)) {
+                MsgBox.alert(this, "Thêm thành công!");
+                this.clearForm();
+                this.fillTable();
+                tab.setSelectedIndex(1);
+                tbl.setRowSelectionInterval(tbl.getRowCount() - 1, tbl.getRowCount() - 1);
             } else {
-                if (khdao.insert(kh)) {
-                    MsgBox.alert(this, "Thêm thành công!");
-                    this.clearForm();
-                    this.fillTable();
-                    tab.setSelectedIndex(1);
-                } else {
-                    MsgBox.alert(this, "Thêm không thành công!");
-                }
+                MsgBox.alert(this, "Thêm không thành công!");
             }
-
         }
-        System.out.println(khdao.isExistsSdt(kh.getSdt()));
     }
 
     private void update() {
         Integer ma = Integer.parseInt(tbl.getValueAt(this.index, 0).toString());
-        KhachHang kh = this.getForm();
+        KhachHang kh = this.getFormUpdate();
         kh.setMa(ma);
         if (kh != null) {
-            if (kh.getSdt().trim().equalsIgnoreCase(tbl.getValueAt(this.index, 3).toString())) { //check khong sua sdt || cmnd khach hang thi thuc hien update
-                if (khdao.update(kh)) {
-                    MsgBox.alert(this, "Sửa thành công!");
-                    this.clearForm();
-                    this.fillTable();
-                    tab.setSelectedIndex(1);
-                } else {
-                    MsgBox.alert(this, "Sửa không thành công!");
-                }
-            } else { //neu sua so dien thoai thi check xem so dien thoai || cmnd co bi trung voi khach hang khac hay khong
-                if (khdao.isExistsSdt(kh.getSdt()) || khdao.isExistsCmnd(kh.getCmnd())) {
-                    if (khdao.isExistsSdt(kh.getSdt())) {
-                        MsgBox.alert(null, "Số điện thoại trùng!");
-                        txtSDT.requestFocus();
-                    } else {
-                        MsgBox.alert(null, "Số chứng minh nhân dân trùng!");
-                        txtCMND.requestFocus();
-                    }
-                } else {
-                    if (khdao.update(kh)) {
-                        MsgBox.alert(this, "Sửa thành công!");
-                        this.clearForm();
-                        this.fillTable();
-                        tab.setSelectedIndex(1);
-                    } else {
-                        MsgBox.alert(this, "Sửa không thành công!");
-                    }
-                }
+            if (khdao.update(kh)) {
+                MsgBox.alert(this, "Sửa thành công!");
+                this.clearForm();
+                this.fillTable();
+                tab.setSelectedIndex(1);
+                tbl.setRowSelectionInterval(this.index, this.index);
+            } else {
+                MsgBox.alert(this, "Sửa không thành công!");
             }
         }
     }
