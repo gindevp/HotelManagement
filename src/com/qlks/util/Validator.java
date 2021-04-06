@@ -195,4 +195,14 @@ public class Validator {
         }
         return true;
     }
+
+    public static boolean isExists(Component parent, Object item, List<Object> data, String title) {
+        for (Object i : data) {
+            if (i.equals(item)) {
+                MsgBox.alert(parent, title + " đã tồn tại");
+                return false;
+            }
+        }
+        return true;
+    }
 }

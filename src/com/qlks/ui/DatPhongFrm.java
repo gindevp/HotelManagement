@@ -16,6 +16,7 @@ import com.qlks.entity.LoaiPhong;
 import com.qlks.entity.Phong;
 import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -33,6 +34,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private DichVuDAO dvdao = new DichVuDAO();
 
     private List<Phong> roomList = new ArrayList<>();
+    private List<HDDichVu> serviceList = new ArrayList<>();
+
+    private int iChonPhong = -1;
+    private int iPhong = -1;
+    private int iDichVu = -1;
 
     /**
      * Creates new form BoPhanFrm
@@ -99,7 +105,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblDichVu = new javax.swing.JTable();
-        btnDeleteDichVu = new javax.swing.JButton();
+        btnXoaDichVu = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -193,6 +199,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             }
         });
         tblDaChon.setRowHeight(40);
+        tblDaChon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDaChonMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDaChon);
         if (tblDaChon.getColumnModel().getColumnCount() > 0) {
             tblDaChon.getColumnModel().getColumn(0).setResizable(false);
@@ -362,18 +373,16 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                         .addComponent(txtQuocTich))
                     .addComponent(btnDaCoTt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rdoNam, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rdoNu, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rdoNam, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rdoNu, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 69, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMa)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -466,6 +475,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             }
         });
         tblDichVu.setRowHeight(40);
+        tblDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDichVuMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblDichVu);
         if (tblDichVu.getColumnModel().getColumnCount() > 0) {
             tblDichVu.getColumnModel().getColumn(0).setResizable(false);
@@ -473,9 +487,14 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             tblDichVu.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        btnDeleteDichVu.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnDeleteDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/delete_24px.png"))); // NOI18N
-        btnDeleteDichVu.setText("Xóa dịch vụ đã thêm");
+        btnXoaDichVu.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnXoaDichVu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/delete_24px.png"))); // NOI18N
+        btnXoaDichVu.setText("Xóa dịch vụ đã thêm");
+        btnXoaDichVu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaDichVuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -484,20 +503,19 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDeleteDichVu, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtSoLuongDv)
-                                .addComponent(cboDichVu, 0, 215, Short.MAX_VALUE)))))
+                    .addComponent(btnXoaDichVu, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtSoLuongDv)
+                            .addComponent(cboDichVu, 0, 215, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -520,7 +538,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(btnDeleteDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnXoaDichVu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
 
@@ -620,7 +638,8 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
 
     private void tblDanhSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMouseClicked
         if (evt.getClickCount() == 2) {
-//            this.danhSach = tblDanhSach.getSelectedRow();
+            this.iChonPhong = tblDanhSach.getSelectedRow();
+            this.updateStatus();
         }
     }//GEN-LAST:event_tblDanhSachMouseClicked
 
@@ -644,15 +663,33 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         this.insertDichVu();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnXoaDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaDichVuActionPerformed
+        this.deleteDichVu();
+    }//GEN-LAST:event_btnXoaDichVuActionPerformed
+
+    private void tblDaChonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDaChonMouseClicked
+        if (evt.getClickCount() == 2) {
+            this.iPhong = tblDaChon.getSelectedRow();
+            this.updateStatus();
+        }
+    }//GEN-LAST:event_tblDaChonMouseClicked
+
+    private void tblDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDichVuMouseClicked
+        if (evt.getClickCount() == 2) {
+            this.iDichVu = tblDichVu.getSelectedRow();
+            this.updateStatus();
+        }
+    }//GEN-LAST:event_tblDichVuMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgrGioiTinh;
     private javax.swing.JButton btnChonPhong;
     private javax.swing.JButton btnDaCoTt;
     private javax.swing.JButton btnDatPhong;
-    private javax.swing.JButton btnDeleteDichVu;
     private javax.swing.JButton btnThemKh;
     private javax.swing.JButton btnTimPhong;
+    private javax.swing.JButton btnXoaDichVu;
     private javax.swing.JButton btnXoaPhong;
     private javax.swing.JComboBox<String> cboDichVu;
     private javax.swing.JComboBox<String> cboLoaiPhong;
@@ -735,16 +772,12 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         LoaiPhong loaiPhong = (LoaiPhong) cboLoaiPhong.getSelectedItem();
         Integer soNguoi = Integer.parseInt(txtSucChua.getText().trim());
         List<Phong> list = pdao.selectByLpAndSucChua(loaiPhong.getMa(), soNguoi);
-        if (list.size() == 0) {
-            MsgBox.alert(this, "Không còn phòng phù hợp. Xin chọn loại phòng khác!");
-        }
         list.forEach((item -> {
             model.addRow(new Object[]{
                 item.getSoPhong(),
                 item.getDonGia()
             });
         }));
-        this.updateStatus();
     }
 
     private void chooseRoom() {
@@ -754,6 +787,8 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             pdao.updateAfterChooseOrRemove(p, true);
             roomList.add(p);
         }
+        MsgBox.alert(this, "Đã thêm phòng!");
+        this.clearForm();
         this.fillTblDanhSach();
         this.fillTblDaChon();
     }
@@ -767,7 +802,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 i.getDonGia()
             });
         });
-        this.updateStatus();
     }
 
     private void deleteRoom() {
@@ -777,6 +811,8 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             pdao.updateAfterChooseOrRemove(p, false);
             roomList.remove(i);
         }
+        MsgBox.alert(this, "Đã xóa phòng!");
+        this.clearForm();
         this.fillTblDaChon();
         this.fillTblDanhSach();
     }
@@ -785,13 +821,12 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         KhachHang kh = this.getFormKhachHang();
         if (kh != null) {
             if (khdao.insert(kh)) {
-                MsgBox.alert(this, "Thêm thành công");
+                MsgBox.alert(this, "Thêm Khách Hàng thành công");
                 this.setForm(kh);
             } else {
-                MsgBox.alert(this, "Thêm không thành công!");
+                MsgBox.alert(this, "Thêm Khách Hàng không thành công!");
             }
         }
-        this.updateStatus();
     }
 
     private KhachHang getFormKhachHang() {
@@ -831,30 +866,87 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         if (!keyword.isEmpty()) {
             KhachHang kh = khdao.selectBySdtOrCmnd(keyword.trim());
             if (kh != null) {
+                MsgBox.alert(this, "Tìm thấy Khách Hàng!");
                 this.setForm(kh);
                 System.out.println("CMND: " + kh.getCmnd());
             } else {
-                System.out.println("deo thay!");
+                MsgBox.alert(this, "không tìm thấy Khách Hàng!");
             }
         }
-        this.updateStatus();
     }
 
     private void updateStatus() {
+        boolean isChooseRoom = iChonPhong >= 0;
         boolean isEnableBook = tblDaChon.getModel().getRowCount() > 0 && !txtMa.getText().isEmpty() ? true : false;
         boolean isAddCus = txtMa.getText().isEmpty() ? true : false;
-
+        boolean isDeleteRoom = this.iPhong >= 0;
+        boolean isDeleteService = this.iDichVu >= 0;
+        System.out.println("Chon Phong: " + iChonPhong + " Da Chon: " + iPhong + " dichvu: " + iDichVu);
+        btnChonPhong.setEnabled(isChooseRoom);
         btnThemKh.setEnabled(isAddCus);
         btnDatPhong.setEnabled(isEnableBook);
+        btnXoaPhong.setEnabled(isDeleteRoom);
+        btnXoaDichVu.setEnabled(isDeleteService);
     }
 
     private void insertDichVu() {
-        if (Validator.checkPosNum(this, new String[] {"Số lượng"}, txtSoLuongDv)) {
+        if (Validator.checkPosNum(this, new String[]{"Số lượng"}, txtSoLuongDv)) {
             DichVu dichVu = (DichVu) cboDichVu.getSelectedItem();
             int maDv = dichVu.getMa();
             int soLuong = Integer.parseInt(txtSoLuongDv.getText());
             HDDichVu hddv = new HDDichVu(maDv, soLuong);
+            if (isExistsDichVu(hddv, serviceList)) {
+                serviceList.add(hddv);
+                MsgBox.alert(this, "Đã thêm dịch vụ!");
+            } else {
+                if (MsgBox.confirm(this, "Dịch vụ đã có! Bạn có muốn cập nhật số lượng?")) {
+                    for (int i = 0; i < serviceList.size(); i++) {
+                        if (serviceList.get(i).getMaDv() == hddv.getMaDv()) {
+                            serviceList.set(i, hddv);
+                        }
+                    }
+                }
+            }
         }
+        this.fillTblDichVu();
+    }
+
+    private void fillTblDichVu() {
+        DefaultTableModel model = (DefaultTableModel) tblDichVu.getModel();
+        model.setRowCount(0);
+        serviceList.forEach(i -> {
+            DichVu dv = dvdao.selectByID(i.getMaDv());
+            model.addRow(new Object[]{
+                dv.getTen(),
+                i.getSoLuong()
+            });
+        });
+    }
+
+    private boolean isExistsDichVu(HDDichVu item, List<HDDichVu> data) {
+        for (HDDichVu i : data) {
+            if (i.getMaDv() == (item.getMaDv())) {
+//                MsgBox.alert(this, title + " đã tồn tại");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void deleteDichVu() {
+        for (int i : tblDichVu.getSelectedRows()) {
+            serviceList.remove(i);
+        }
+        MsgBox.alert(this, "Đã xóa dịch vụ!");
+        this.clearForm();
+        this.fillTblDichVu();
+    }
+
+    private void clearForm() {
+        this.iChonPhong = -1;
+        this.iDichVu = -1;
+        this.iPhong = -1;
+        this.updateStatus();
     }
 
 }
