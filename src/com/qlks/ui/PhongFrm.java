@@ -591,7 +591,6 @@ public class PhongFrm extends javax.swing.JInternalFrame {
 
     private Phong getForm() {
         Phong p = null;
-//        boolean trangThai = this.checkRDOButtonGRP();
         LoaiPhong lp = (LoaiPhong) cbo.getSelectedItem();
         if (Validator.checkBlack(txtSo)
                 && Validator.checkPosNum(txtDonGia, txtSucChua)) {

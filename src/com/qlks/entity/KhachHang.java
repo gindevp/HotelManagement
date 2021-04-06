@@ -20,9 +20,6 @@ public class KhachHang {
     private boolean gioiTinh;
     private String diaChi;
     private String quocTich;
-    private boolean isActive;
-    private Date createAt;
-    private Date updateAt;
 
     public KhachHang() {
 
@@ -36,19 +33,6 @@ public class KhachHang {
         this.gioiTinh = gioiTinh;
         this.diaChi = diaChi;
         this.quocTich = quocTich;
-    }
-
-    public KhachHang(int ma, String ten, String cmnd, String sdt, boolean gioiTinh, String diaChi, String quocTich, boolean isActive, Date createAt, Date updateAt) {
-        this.ma = ma;
-        this.ten = ten;
-        this.cmnd = cmnd;
-        this.sdt = sdt;
-        this.gioiTinh = gioiTinh;
-        this.diaChi = diaChi;
-        this.quocTich = quocTich;
-        this.isActive = isActive;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
     }
 
     public int getMa() {
@@ -111,30 +95,6 @@ public class KhachHang {
 
     public void setQuocTich(String quocTich) {
         this.quocTich = quocTich;
-    }
-
-    public boolean isIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
     }
 
     @Override

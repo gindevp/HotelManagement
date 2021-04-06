@@ -17,10 +17,10 @@ import java.util.List;
  */
 public class DichVuDAO extends ManageDAO<DichVu, Integer> {
 
-    String insertSql = "insert dichvu values (?, ?, ?, ?, default, default, default)";
-    String updateSql = "update dichvu set tendv = ?, dongia = ?, mota = ?, trangthai = ?,updateat = default where madv = ?";
-    String deleteSql = "update dichvu set isactive = 0, updateat = default where madv = ?";
-    String selectAllSql = "select * from dichvu where isactive = 1";
+    String insertSql = "insert dichvu values (?, ?, ?, ?)";
+    String updateSql = "update dichvu set tendv = ?, dongia = ?, mota = ?, trangthai = ? where madv = ?";
+    String deleteSql = "delete dichvu where madv = ?";
+    String selectAllSql = "select * from dichvu";
 //    String selectAllSdt = "select * from dichvu where sdt = ?";
 //    String selectAllCmnd = "select * from dichvu where cmnd = ?";
     String selectByIdSql = "select * from dichvu where madv = ?";
@@ -62,10 +62,7 @@ public class DichVuDAO extends ManageDAO<DichVu, Integer> {
                         rs.getString(2),
                         rs.getDouble(3),
                         rs.getString(4),
-                        rs.getBoolean(5),
-                        rs.getBoolean(6),
-                        rs.getDate(7),
-                        rs.getDate(8));
+                        rs.getBoolean(5));
 
                 list.add(dv);
             }

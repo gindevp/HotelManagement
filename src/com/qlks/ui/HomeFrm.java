@@ -245,6 +245,11 @@ public class HomeFrm extends javax.swing.JFrame {
                 btnNCCMouseExited(evt);
             }
         });
+        btnNCC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNCCActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlNhaCungCapLayout = new javax.swing.GroupLayout(pnlNhaCungCap);
         pnlNhaCungCap.setLayout(pnlNhaCungCapLayout);
@@ -688,6 +693,10 @@ public class HomeFrm extends javax.swing.JFrame {
         this.openDichVuTienNghi();
     }//GEN-LAST:event_btnDV_TNActionPerformed
 
+    private void btnNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNCCActionPerformed
+       this.openNhaCungCap();
+    }//GEN-LAST:event_btnNCCActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -824,6 +833,11 @@ public class HomeFrm extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    
+    private void openNhaCungCap(){
+        XForm.openChildFrm(this, desMain, new NhaCungCapFrm(desMain));
+    }
+    
     private void openDichVuTienNghi() {
         XForm.openChildFrm(this, desMain, new DichVuTienNghiFrm(desMain));
     }

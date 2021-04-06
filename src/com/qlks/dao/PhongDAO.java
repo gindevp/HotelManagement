@@ -17,12 +17,12 @@ import java.util.List;
  */
 public class PhongDAO extends ManageDAO<Phong, String> {
 
-    private String insertSql = "insert phong values (?, ?, ?, default, ?, default, default, default)";
-    private String updateSql = "update phong set sucChua = ?, donGia = ?, trangThai = ?, malp = ?, updateat = default where soPhong = ?";
-    private String deleteSql = "update phong set isactive = 0, updateat = default where soPhong = ?";
-    private String selectAllSql = "select * from phong where isactive = 1";
-    private String selectbByLoaiPhongSql = "select * from phong where isactive = 1 and malp = ?";
-    private String selectByIdSql = "select * from phong where soPhong = ? and isactive = 1";
+    private String insertSql = "insert phong values (?, ?, ?, default, ?)";
+    private String updateSql = "update phong set sucChua = ?, donGia = ?, trangThai = ?, malp = ? where soPhong = ?";
+    private String deleteSql = "delete phong where soPhong = ?";
+    private String selectAllSql = "select * from phong";
+    private String selectbByLoaiPhongSql = "select * from phong where malp = ?";
+    private String selectByIdSql = "select * from phong where soPhong = ?";
 
     @Override
     public boolean insert(Phong entity) {
@@ -65,10 +65,7 @@ public class PhongDAO extends ManageDAO<Phong, String> {
                         rs.getInt(2),
                         rs.getDouble(3),
                         rs.getBoolean(4),
-                        rs.getString(5),
-                        rs.getBoolean(6),
-                        rs.getDate(7),
-                        rs.getDate(8));
+                        rs.getString(5));
                 list.add(phong);
             }
         } catch (Exception e) {
