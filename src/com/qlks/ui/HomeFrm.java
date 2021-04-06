@@ -74,6 +74,8 @@ public class HomeFrm extends javax.swing.JFrame {
         pnlDangXuat = new javax.swing.JPanel();
         btnDangXuat = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        pnlThueTraPhong = new javax.swing.JPanel();
+        btnThueTraPhong = new javax.swing.JButton();
         desMain = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -549,33 +551,79 @@ public class HomeFrm extends javax.swing.JFrame {
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        pnlThueTraPhong.setBackground(new java.awt.Color(46, 62, 78));
+
+        btnThueTraPhong.setBackground(new java.awt.Color(46, 62, 78));
+        btnThueTraPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnThueTraPhong.setForeground(new java.awt.Color(255, 255, 255));
+        btnThueTraPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/key_24px.png"))); // NOI18N
+        btnThueTraPhong.setText("Thuê Phòng/ Trả Phòng");
+        btnThueTraPhong.setBorder(null);
+        btnThueTraPhong.setBorderPainted(false);
+        btnThueTraPhong.setContentAreaFilled(false);
+        btnThueTraPhong.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThueTraPhong.setIconTextGap(16);
+        btnThueTraPhong.setInheritsPopupMenu(true);
+        btnThueTraPhong.setMargin(new java.awt.Insets(4, 16, 4, 16));
+        btnThueTraPhong.setPreferredSize(new java.awt.Dimension(316, 32));
+        btnThueTraPhong.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnThueTraPhongMouseMoved(evt);
+            }
+        });
+        btnThueTraPhong.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnThueTraPhongMouseExited(evt);
+            }
+        });
+        btnThueTraPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThueTraPhongActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlThueTraPhongLayout = new javax.swing.GroupLayout(pnlThueTraPhong);
+        pnlThueTraPhong.setLayout(pnlThueTraPhongLayout);
+        pnlThueTraPhongLayout.setHorizontalGroup(
+            pnlThueTraPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThueTraPhongLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnThueTraPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlThueTraPhongLayout.setVerticalGroup(
+            pnlThueTraPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnThueTraPhong, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(pnlKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlDV_TN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                        .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(pnlNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(pnlDV_TN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(pnlPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(pnlHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(pnlDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(pnlThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pnlThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnlThueTraPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addGap(85, 85, 85)
+                .addComponent(pnlThueTraPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlPhong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -589,7 +637,7 @@ public class HomeFrm extends javax.swing.JFrame {
                 .addComponent(pnlHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlDangXuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(pnlThoat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
@@ -672,12 +720,10 @@ public class HomeFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThongKeMouseExited
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
-        // TODO add your handling code here:
         this.openKhachHang();
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhongActionPerformed
-        // TODO add your handling code here:
         this.openPhong();
     }//GEN-LAST:event_btnPhongActionPerformed
 
@@ -694,8 +740,21 @@ public class HomeFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDV_TNActionPerformed
 
     private void btnNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNCCActionPerformed
-       this.openNhaCungCap();
+        this.openNhaCungCap();
     }//GEN-LAST:event_btnNCCActionPerformed
+
+    private void btnThueTraPhongMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThueTraPhongMouseMoved
+        pnlThueTraPhong.setBackground(changeColor);
+
+    }//GEN-LAST:event_btnThueTraPhongMouseMoved
+
+    private void btnThueTraPhongMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThueTraPhongMouseExited
+        pnlThueTraPhong.setBackground(bgColor);
+    }//GEN-LAST:event_btnThueTraPhongMouseExited
+
+    private void btnThueTraPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThueTraPhongActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThueTraPhongActionPerformed
 
     /**
      * @param args the command line arguments
@@ -746,6 +805,7 @@ public class HomeFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnPhong;
     private javax.swing.JButton btnThoat;
     private javax.swing.JButton btnThongKe;
+    private javax.swing.JButton btnThueTraPhong;
     private javax.swing.JDesktopPane desMain;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -766,6 +826,7 @@ public class HomeFrm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlPhong;
     private javax.swing.JPanel pnlThoat;
     private javax.swing.JPanel pnlThongKe;
+    private javax.swing.JPanel pnlThueTraPhong;
     // End of variables declaration//GEN-END:variables
 
     private void init() {
@@ -833,11 +894,10 @@ public class HomeFrm extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    
-    private void openNhaCungCap(){
+    private void openNhaCungCap() {
         XForm.openChildFrm(this, desMain, new NhaCungCapFrm(desMain));
     }
-    
+
     private void openDichVuTienNghi() {
         XForm.openChildFrm(this, desMain, new DichVuTienNghiFrm(desMain));
     }
