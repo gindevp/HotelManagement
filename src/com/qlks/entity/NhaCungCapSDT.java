@@ -9,32 +9,33 @@ package com.qlks.entity;
  *
  * @author markhyun
  */
-public class NhaCungCapSoDienThoai {
+public class NhaCungCapSDT {
 
-    int ma;
+    int id;
     int mancc;
     String sdt;
 
-    public NhaCungCapSoDienThoai() {
+    public NhaCungCapSDT() {
 
     }
 
-    public NhaCungCapSoDienThoai(String sdt) {
-        this.sdt = sdt;
-    }
-
-    public NhaCungCapSoDienThoai(int ma, int mancc, String sdt) {
-        this.ma = ma;
+    public NhaCungCapSDT(int mancc, String sdt) {
         this.mancc = mancc;
         this.sdt = sdt;
     }
 
-    public int getMa() {
-        return ma;
+    public NhaCungCapSDT(int id, int mancc, String sdt) {
+        this.id = id;
+        this.mancc = mancc;
+        this.sdt = sdt;
     }
 
-    public void setMa(int ma) {
-        this.ma = ma;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getMancc() {
@@ -53,6 +54,7 @@ public class NhaCungCapSoDienThoai {
         this.sdt = sdt;
     }
 
+    
     @Override
     public String toString() {
         return "NhaCungCapSoDienThoai{" + "sdt=" + sdt + '}';

@@ -5,13 +5,13 @@
  */
 package com.qlks.ui;
 
-import com.qlks.entity.NhaCungCapSoDienThoai;
+import com.qlks.entity.NhaCungCapSDT;
 import com.qlks.util.Validator;
 import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
 import com.qlks.entity.NhaCungCap;
 import com.qlks.dao.NhaCungCapDAO;
-import com.qlks.dao.NhaCungCapSoDienThoaiDAO;
+import com.qlks.dao.NhaCungCapSDTDAO;
 import java.util.List;
 import com.qlks.util.MsgBox;
 import javax.swing.DefaultListModel;
@@ -24,7 +24,7 @@ public class NhaCungCapFrm extends javax.swing.JInternalFrame {
 
     private int index = -1;
     private NhaCungCapDAO nccdao = new NhaCungCapDAO();
-    private NhaCungCapSoDienThoaiDAO nccSdt = new NhaCungCapSoDienThoaiDAO();
+    private NhaCungCapSDTDAO nccSdtDao = new NhaCungCapSDTDAO();
     private JDesktopPane des;
 
     /**
@@ -67,7 +67,7 @@ public class NhaCungCapFrm extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         txtMa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listSdtNcc = new javax.swing.JList<>();
+        listSdt = new javax.swing.JList<>();
 
         setClosable(true);
 
@@ -216,13 +216,13 @@ public class NhaCungCapFrm extends javax.swing.JInternalFrame {
 
         txtMa.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
-        listSdtNcc.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        listSdtNcc.setModel(new javax.swing.AbstractListModel<String>() {
+        listSdt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        listSdt.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(listSdtNcc);
+        jScrollPane1.setViewportView(listSdt);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -422,7 +422,7 @@ public class NhaCungCapFrm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JList<String> listSdtNcc;
+    private javax.swing.JList<String> listSdt;
     private javax.swing.JTable tbl;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtMa;
@@ -431,7 +431,6 @@ public class NhaCungCapFrm extends javax.swing.JInternalFrame {
     private void init() {
         this.fillTable();
         this.updateStatus();
-        this.sdt();
 
     }
 
@@ -476,6 +475,7 @@ public class NhaCungCapFrm extends javax.swing.JInternalFrame {
         tbl.setRowSelectionInterval(this.index, this.index);
         this.setForm(ncc);
         this.updateStatus();
+        this.fillSdt();
     }
 
     private void setForm(NhaCungCap ncc) {
@@ -578,18 +578,15 @@ public class NhaCungCapFrm extends javax.swing.JInternalFrame {
         }
     }
 
-    private void sdt() {
-        DefaultListModel<String> model = new DefaultListModel<>();
-        listSdtNcc.getModel();
+    private void fillSdt() {
+        DefaultListModel model = new DefaultListModel();
         model.removeAllElements();
-//        Integer id = Integer.parseInt(tbl.getValueAt(this.index, 0).toString());
-//        List<NhaCungCapSoDienThoai> list = nccSdt.selectAllSdt(id);
-
-//        if (list != null) {
-//            list.forEach((item) -> {
-//                model.addElement(item.getSdt());
-//            });
-//        }
-
+        Integer mancc = Integer.parseInt(tbl.getValueAt(this.index, 0).toString());
+        System.out.println(mancc);
+        List<NhaCungCapSDT> data = nccSdtDao.selectByNcc(mancc);
+        data.forEach((item) -> {
+            model.addElement(item.getSdt());
+        });
+        listSdt.setModel(model);
     }
 }
