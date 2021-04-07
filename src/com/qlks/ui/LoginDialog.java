@@ -468,7 +468,7 @@ public class LoginDialog extends javax.swing.JDialog {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(true);
-        
+
         NhanVienFrm nvFrm = new NhanVienFrm(frame);
         nvFrm.setTitle("Đăng ký");
         nvFrm.setDefaultCloseOperation(0);
