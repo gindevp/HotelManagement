@@ -1194,8 +1194,8 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
     }
 
     private void openLogin() {
-        LoginDialog login = new LoginDialog();
-        login.setVisible(true);
+        HomeFrm home = new HomeFrm(this.frame);
+        home.setVisible(true);
         this.frame.dispose();
         NhanVienFrm.this.dispose();
     }

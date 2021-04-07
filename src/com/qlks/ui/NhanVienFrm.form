@@ -913,7 +913,6 @@
                                       <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lblAnhDK" min="-2" pref="220" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -931,7 +930,6 @@
                                                   <Component id="rdoNamDK" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                                   <Component id="rdoNuDK" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="txtMaDK" min="-2" pref="40" max="-2" attributes="0"/>
@@ -997,7 +995,6 @@
                           </Border>
                         </Property>
                         <Property name="contentAreaFilled" type="boolean" value="false"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

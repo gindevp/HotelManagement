@@ -31,6 +31,12 @@ public class HomeFrm extends javax.swing.JFrame {
     /**
      * Creates new form managerHome
      */
+    public HomeFrm(JFrame frm) {
+        XForm.closeFrame(frm);
+        initComponents();
+        this.init();
+    }
+
     public HomeFrm() {
         initComponents();
         this.init();
