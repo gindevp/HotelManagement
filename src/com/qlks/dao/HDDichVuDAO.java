@@ -16,11 +16,11 @@ import java.util.List;
  * @author hungn
  */
 public class HDDichVuDAO extends ManageDAO<HDDichVu, Integer>{
-    private String insertSql = "insert hdtt_dichvu values (?, ?, ?)";
+    private String insertSql = "insert hddichvu values (?, ?, ?)";
     private String updateSql;
-    private String deleteSql = "delete from hdtt_dichvu where id = ?";
-    private String selectAllSql = "select * from hdtt_phong";
-    private String selectByIdSql = "select * from hdtt_phong where id = ?";
+    private String deleteSql = "delete from hddichvu where id = ?";
+    private String selectAllSql = "select * from hddichvu";
+    private String selectByIdSql = "select * from hddichvu where id = ?";
     
     @Override
     public boolean insert(HDDichVu entity) {

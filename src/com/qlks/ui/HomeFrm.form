@@ -313,7 +313,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/com/qlks/icon/room_24px.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Ph&#xf2;ng"/>
+                <Property name="text" type="java.lang.String" value="Ph&#xf2;ng/Lo&#x1ea1;i Ph&#xf2;ng"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -375,9 +375,9 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/qlks/icon/supplier_24px.png"/>
+                  <Image iconType="3" name="/com/qlks/icon/price_24px.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Nh&#xe0; Cung C&#x1ea5;p"/>
+                <Property name="text" type="java.lang.String" value="Gi&#xe1;"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>

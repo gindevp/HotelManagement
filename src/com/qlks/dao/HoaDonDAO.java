@@ -5,14 +5,14 @@
  */
 package com.qlks.dao;
 
-import com.qlks.entity.HDThanhToan;
+import com.qlks.entity.HoaDon;
 import java.util.List;
 
 /**
  *
  * @author hungn
  */
-public class HoaDonDAO extends ManageDAO<HDThanhToan, Integer>{
+public class HoaDonDAO extends ManageDAO<HoaDon, Integer>{
 
     private String insertSql = "insert hdthanhtoan values (?, default, ?, ?, ?)";
     private String updateSql;
@@ -21,12 +21,12 @@ public class HoaDonDAO extends ManageDAO<HDThanhToan, Integer>{
     private String selectById = "select * from hdthanhtoan where mahd = ?";
     
     @Override
-    public boolean insert(HDThanhToan entity) {
+    public boolean insert(HoaDon entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean update(HDThanhToan entity) {
+    public boolean update(HoaDon entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -36,17 +36,17 @@ public class HoaDonDAO extends ManageDAO<HDThanhToan, Integer>{
     }
 
     @Override
-    public List<HDThanhToan> selectAll() {
+    public List<HoaDon> selectAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public HDThanhToan selectByID(Integer key) {
+    public HoaDon selectByID(Integer key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected List<HDThanhToan> selectBySql(String sql, Object... args) {
+    protected List<HoaDon> selectBySql(String sql, Object... args) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

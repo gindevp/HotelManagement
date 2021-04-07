@@ -190,7 +190,7 @@ public class HomeFrm extends javax.swing.JFrame {
         btnPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnPhong.setForeground(new java.awt.Color(255, 255, 255));
         btnPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/room_24px.png"))); // NOI18N
-        btnPhong.setText("Phòng");
+        btnPhong.setText("Phòng/Loại Phòng");
         btnPhong.setBorder(null);
         btnPhong.setBorderPainted(false);
         btnPhong.setContentAreaFilled(false);
@@ -234,8 +234,8 @@ public class HomeFrm extends javax.swing.JFrame {
         btnNCC.setBackground(new java.awt.Color(46, 62, 78));
         btnNCC.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnNCC.setForeground(new java.awt.Color(255, 255, 255));
-        btnNCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/supplier_24px.png"))); // NOI18N
-        btnNCC.setText("Nhà Cung Cấp");
+        btnNCC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/price_24px.png"))); // NOI18N
+        btnNCC.setText("Giá");
         btnNCC.setBorder(null);
         btnNCC.setBorderPainted(false);
         btnNCC.setContentAreaFilled(false);
@@ -746,7 +746,7 @@ public class HomeFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDV_TNActionPerformed
 
     private void btnNCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNCCActionPerformed
-        this.openNhaCungCap();
+        this.openGia();
     }//GEN-LAST:event_btnNCCActionPerformed
 
     private void btnThueTraPhongMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThueTraPhongMouseMoved
@@ -936,6 +936,10 @@ public class HomeFrm extends javax.swing.JFrame {
 
     private void openThueTra() {
         XForm.openChildFrm(this, desMain, new DatPhongFrm());
+    }
+
+    private void openGia() {
+        XForm.openChildFrm(this, desMain, new GiaFrm());
     }
 
 }

@@ -55,21 +55,20 @@ public class XJdbc {
         try (ResultSet rs = XJdbc.query(sql, args);) {
             if (rs.next()) {
                 return rs.getObject(1);
-            }            
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
     }
-    
-    public static boolean update(String sql, Object...args) {
-        try (PreparedStatement ps = getStmt(sql, args)){
+
+    public static boolean update(String sql, Object... args) {
+        try (PreparedStatement ps = getStmt(sql, args)) {
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
-    
 
 }

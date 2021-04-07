@@ -17,26 +17,23 @@ import java.util.List;
  */
 public class PhongDAO extends ManageDAO<Phong, String> {
 
-    private String insertSql = "insert phong values (?, ?, ?, default, ?)";
-    private String insertAfterRemoveSql = "update phong set sucChua = ?, donGia = ?,"
-            + " trangThai = ?, malp = ?, isactive = 1 where soPhong = ?";
-    private String updateSql = "update phong set sucChua = ?, donGia = ?, trangThai = ?, malp = ? where soPhong = ?";
+    private String insertSql = "insert phong values (?, ?, default, ?)";
+    private String updateSql = "update phong set sucChua = ?, trangThai = ?, malp = ? where soPhong = ?";
     private String deleteSql = "delete from phong where soPhong = ?";
     private String selectAllSql = "select * from phong";
-    private String selectbByLoaiPhongSql = "select * from phong where malp = ?";
     private String selectByIdSql = "select * from phong where soPhong = ?";
-    private String selectIdsSql = "select maphong from phong";
+    private String selectbByLoaiPhongSql = "select * from phong where malp = ?";
     private String selectByLpAndSucChuaSql = "select * from phong where malp = ? and succhua >= ? and trangthai = 0";
     private String updateAfterChooseOrRemoveSql = "update phong set trangthai = ? where sophong = ?";
-
+    private String selectIdsSql = "select sophong from phong";
     @Override
     public boolean insert(Phong entity) {
-        return XJdbc.update(insertSql, entity.getSoPhong(), entity.getSucChua(), entity.getDonGia(), entity.getMaLP());
+        return XJdbc.update(insertSql, entity.getSoPhong(), entity.getSucChua(), entity.getMaLP());
     }
 
     @Override
     public boolean update(Phong entity) {
-        return XJdbc.update(updateSql, entity.getSucChua(), entity.getDonGia(), entity.isTrangThai(), entity.getMaLP(), entity.getSoPhong());
+        return XJdbc.update(updateSql, entity.getSucChua(), entity.isTrangThai(), entity.getMaLP(), entity.getSoPhong());
     }
 
     @Override
@@ -47,7 +44,7 @@ public class PhongDAO extends ManageDAO<Phong, String> {
     public boolean updateAfterChooseOrRemove(Phong p, boolean isAdd) {
         return XJdbc.update(updateAfterChooseOrRemoveSql, isAdd, p.getSoPhong());
     }
-    
+
     @Override
     public List<Phong> selectAll() {
         return selectBySql(selectAllSql);
@@ -66,7 +63,7 @@ public class PhongDAO extends ManageDAO<Phong, String> {
     public List<String> selectIds() {
         return selectColumn(selectIdsSql);
     }
-    
+
     public List<Phong> selectByLpAndSucChua(String lp, Integer sucChua) {
         return selectBySql(selectByLpAndSucChuaSql, lp, sucChua);
     }
@@ -80,9 +77,8 @@ public class PhongDAO extends ManageDAO<Phong, String> {
                 Phong phong = new Phong(
                         rs.getString(1),
                         rs.getInt(2),
-                        rs.getDouble(3),
-                        rs.getBoolean(4),
-                        rs.getString(5));
+                        rs.getBoolean(3),
+                        rs.getString(4));
                 list.add(phong);
             }
         } catch (Exception e) {

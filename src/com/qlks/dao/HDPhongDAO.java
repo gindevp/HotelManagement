@@ -17,12 +17,12 @@ import java.util.List;
  */
 public class HDPhongDAO extends ManageDAO<HDPhong, Integer>{
     
-    private String insertSql = "insert hdtt_phong values (?, ?)";
-    private String updateSql = "update hdtt_phong set mahdtt = ?, sophong = ? where id = ?";
-    private String deleteSql = "delete from hdtt_phong where id = ?";
-    private String selectAllSql = "select * from hdtt_phong";
-    private String selectById = "select * from hdtt_phong where id = ?";
-    private String selectByMahd = "select * form hdtt_phong where mahdtt = ?";
+    private String insertSql = "insert hdphong values (?, ?)";
+    private String updateSql = "update hdphong set mahdtt = ?, sophong = ? where id = ?";
+    private String deleteSql = "delete from hdphong where id = ?";
+    private String selectAllSql = "select * from hdphong";
+    private String selectById = "select * from hdphong where id = ?";
+    private String selectByMahd = "select * form hdphong where mahdtt = ?";
     
     @Override
     public boolean insert(HDPhong entity) {

@@ -20,9 +20,9 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
     private String insertSql = "insert loaiPhong values (?, ?, ?)";
     private String updateSql = "update loaiPhong set tenLP = ?, moTa = ? where maLP = ?";
     private String deleteSql = "delete from loaiPhong where maLP = ?";
-    private String selectAll = "select * from loaiphong";
-    private String selectById = "select * from loaiPhong where maLP = ?";
-    private String selectByName = "select * from loaiPhong where tenlp = ?";
+    private String selectAllSql = "select * from loaiphong";
+    private String selectByIdSql = "select * from loaiPhong where maLP = ?";
+    private String selectByNameSql = "select * from loaiPhong where tenlp = ?";
 
     @Override
     public boolean insert(LoaiPhong entity) {
@@ -41,16 +41,16 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
 
     @Override
     public List<LoaiPhong> selectAll() {
-        return selectBySql(selectAll);
+        return selectBySql(selectAllSql);
     }
 
     public List<LoaiPhong> selectByName(String key) {
-        return selectBySql(selectByName, key);
+        return selectBySql(selectByNameSql, key);
     }
 
     @Override
     public LoaiPhong selectByID(String key) {
-        List<LoaiPhong> list = selectBySql(selectById, key);
+        List<LoaiPhong> list = selectBySql(selectByIdSql, key);
         return list.size() > 0 ? list.get(0) : null;
     }
 

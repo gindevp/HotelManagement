@@ -15,7 +15,6 @@ public class Phong {
 
     private String soPhong;
     private int sucChua;
-    private double donGia;
     private boolean trangThai;
     private String maLP;
 
@@ -23,10 +22,9 @@ public class Phong {
 
     }
 
-    public Phong(String soPhong, int sucChua, double donGia, boolean trangThai, String maLP) {
+    public Phong(String soPhong, int sucChua, boolean trangThai, String maLP) {
         this.soPhong = soPhong;
         this.sucChua = sucChua;
-        this.donGia = donGia;
         this.trangThai = trangThai;
         this.maLP = maLP;
     }
@@ -37,10 +35,6 @@ public class Phong {
 
     public int getSucChua() {
         return sucChua;
-    }
-
-    public double getDonGia() {
-        return donGia;
     }
 
     public boolean isTrangThai() {
@@ -59,21 +53,12 @@ public class Phong {
         this.sucChua = sucChua;
     }
 
-    public void setDonGia(double donGia) {
-        this.donGia = donGia;
-    }
-
     public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
     }
 
     public void setMaLP(String maLP) {
         this.maLP = maLP;
-    }
-
-    @Override
-    public String toString() {
-        return "Phong{" + "soPhong=" + soPhong + ", sucChua=" + sucChua + ", donGia=" + donGia + ", trangThai=" + trangThai + ", maLP=" + maLP + '}';
     }
 
 }

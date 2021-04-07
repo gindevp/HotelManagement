@@ -775,7 +775,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         list.forEach((item -> {
             model.addRow(new Object[]{
                 item.getSoPhong(),
-                item.getDonGia()
+//                item.getDonGia()
             });
         }));
     }
@@ -799,7 +799,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         roomList.forEach(i -> {
             model.addRow(new Object[]{
                 i.getSoPhong(),
-                i.getDonGia()
+//                i.getDonGia()
             });
         });
     }

@@ -11,30 +11,33 @@ import java.util.Date;
  *
  * @author hungn
  */
-public class HDThanhToan {
+public class HoaDon {
     private int ma;
-    private Date ngayLap;
+    private Date ngayThue;
     private Date ngayThanhToan;
     private double tongTien;
+    private boolean trangThai;
     private int maKh;
     private String maNv;
 
-    public HDThanhToan() {
+    public HoaDon() {
     }
 
-    public HDThanhToan(Date ngayLap, Date ngayThanhToan, double tongTien, int maKh, String maNv) {
-        this.ngayLap = ngayLap;
+    public HoaDon(Date ngayThue, Date ngayThanhToan, double tongTien, boolean trangThai, int maKh, String maNv) {
+        this.ngayThue = ngayThue;
         this.ngayThanhToan = ngayThanhToan;
         this.tongTien = tongTien;
+        this.trangThai = trangThai;
         this.maKh = maKh;
         this.maNv = maNv;
     }
 
-    public HDThanhToan(int ma, Date ngayLap, Date ngayThanhToan, double tongTien, int maKh, String maNv) {
+    public HoaDon(int ma, Date ngayThue, Date ngayThanhToan, double tongTien, boolean trangThai, int maKh, String maNv) {
         this.ma = ma;
-        this.ngayLap = ngayLap;
+        this.ngayThue = ngayThue;
         this.ngayThanhToan = ngayThanhToan;
         this.tongTien = tongTien;
+        this.trangThai = trangThai;
         this.maKh = maKh;
         this.maNv = maNv;
     }
@@ -47,12 +50,12 @@ public class HDThanhToan {
         this.ma = ma;
     }
 
-    public Date getNgayLap() {
-        return ngayLap;
+    public Date getNgayThue() {
+        return ngayThue;
     }
 
-    public void setNgayLap(Date ngayLap) {
-        this.ngayLap = ngayLap;
+    public void setNgayThue(Date ngayThue) {
+        this.ngayThue = ngayThue;
     }
 
     public Date getNgayThanhToan() {
@@ -71,6 +74,14 @@ public class HDThanhToan {
         this.tongTien = tongTien;
     }
 
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
     public int getMaKh() {
         return maKh;
     }
@@ -87,5 +98,8 @@ public class HDThanhToan {
         this.maNv = maNv;
     }
     
+    
+
+
     
 }
