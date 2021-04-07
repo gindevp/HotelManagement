@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author hungn
  */
-public class HDThanhToanDAO extends ManageDAO<HDThanhToan, Integer>{
+public class HoaDonDAO extends ManageDAO<HDThanhToan, Integer>{
 
     private String insertSql = "insert hdthanhtoan values (?, default, ?, ?, ?)";
     private String updateSql;
