@@ -74,7 +74,7 @@ public class GiaFrm extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
-        setTitle("Quản Lý Loại Phòng");
+        setTitle("Quản Lý Giá");
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -462,10 +462,10 @@ public class GiaFrm extends javax.swing.JInternalFrame {
     }
 
     private void setForm(LoaiPhongLoaiGia lplg) {
-        LoaiPhong lp = lpdao.selectByID(lplg.getMaLp());
-        if (lp != null) {
-            cboLoaiPhong.setSelectedItem(lp);
-        }
+//        LoaiPhong lp = lpdao.selectByID(lplg.getMaLp());
+//        if (lp != null) {
+//            cboLoaiPhong.setSelectedItem(lp);
+//        }
         txtDonGia.setText(lplg.getDonGia() + "");
     }
 
@@ -496,12 +496,13 @@ public class GiaFrm extends javax.swing.JInternalFrame {
     private void insert() {
         LoaiPhongLoaiGia lplg = getForm();
         if (lplg != null) {
+            System.out.println(lplg);
             if (lplgdao.insert(lplg)) {
                 MsgBox.alert(this, "Thêm thành công!");
                 this.clearForm();
                 this.fillTbl();
             } else {
-                MsgBox.alert(this, "Thêm không thành công!");
+                MsgBox.alert(this, "Loại phòng đã có loại giá này!");
             }
         }
     }
@@ -509,7 +510,9 @@ public class GiaFrm extends javax.swing.JInternalFrame {
     private void update() {
         LoaiPhongLoaiGia lplg = getForm();
         if (lplg != null) {
-            System.out.println(lplg.getMaLp() + " - " + lplg.getMaLg() + " - " + lplg.getDonGia());
+            Integer id = Integer.parseInt(tbl.getValueAt(this.index, 0).toString());
+            lplg.setId(id);
+            System.out.println(lplg);
             if (lplgdao.update(lplg)) {
                 MsgBox.alert(this, "Cập nhật thành công!");
                 this.clearForm();
@@ -521,14 +524,19 @@ public class GiaFrm extends javax.swing.JInternalFrame {
     }
 
     private void delete() {
-        LoaiPhongLoaiGia lplg = getForm();
-        if (lplg != null) {
-            if (lplgdao.update(lplg)) {
-                MsgBox.alert(this, "Xóa thành công!");
-                this.clearForm();
-                this.fillTbl();
-            } else {
-                MsgBox.alert(this, "Xóa không thành công!");
+        if (!Auth.isManager()) {
+            MsgBox.alert(this, "Không có quyền xóa!");
+        } else {
+            if (MsgBox.confirm(this, "Bạn có chắc muôn xóa?")) {
+                Integer ma = Integer.parseInt(tbl.getValueAt(this.index, 0).toString());
+                System.out.println(ma);
+                if (lplgdao.delete(ma)) {
+                    MsgBox.alert(this, "Xóa thành công!");
+                    this.clearForm();
+                    this.fillTbl();
+                } else {
+                    MsgBox.alert(this, "Xóa không thành công!");
+                }
             }
         }
     }

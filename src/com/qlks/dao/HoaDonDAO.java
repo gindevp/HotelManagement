@@ -6,28 +6,33 @@
 package com.qlks.dao;
 
 import com.qlks.entity.HoaDon;
+import com.qlks.util.XJdbc;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author hungn
  */
-public class HoaDonDAO extends ManageDAO<HoaDon, Integer>{
+public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
 
-    private String insertSql = "insert hdthanhtoan values (?, default, ?, ?, ?)";
-    private String updateSql;
+    private String insertSql = "insert hoadon values (getdate(), ?, 0, default, ?, ?)";
+    private String updateSql = "update hoadon set ngaytt = ?, trangthai = 1 where mahd = ?";
     private String deleteSql;
-    private String selectAll = "select * from hdthanhtoan";
-    private String selectById = "select * from hdthanhtoan where mahd = ?";
-    
+    private String selectAll = "select * from hoadon";
+    private String selectById = "select * from hoadon where mahd = ?";
+    private String selectByKhAndNvSql = "select top 1 * from hoadon where makh = ? and manv = ? order by ngaythue desc";
+    private String selectBySttSql = "select * from hoadon where trangthai = 0";
+
     @Override
     public boolean insert(HoaDon entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return XJdbc.update(insertSql, entity.getNgayThanhToan(), entity.getMaKh(), entity.getMaNv());
     }
 
     @Override
     public boolean update(HoaDon entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return XJdbc.update(updateSql, entity.getNgayThanhToan(), entity.getMa());
     }
 
     @Override
@@ -40,14 +45,40 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public List<HoaDon> selectByStt() {
+        return selectBySql(selectBySttSql);
+    }
+
     @Override
     public HoaDon selectByID(Integer key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public HoaDon selectByKhAndNv(Integer maKH, String maNv) {
+        List<HoaDon> list = selectBySql(selectByKhAndNvSql, maKH, maNv);
+        return list.size() > 0 ? list.get(0) : null;
+    }
+
     @Override
     protected List<HoaDon> selectBySql(String sql, Object... args) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<HoaDon> list = new ArrayList<>();
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                HoaDon hd = new HoaDon(
+                        rs.getInt(1),
+                        rs.getDate(2),
+                        rs.getDate(3),
+                        rs.getDouble(4),
+                        rs.getBoolean(5),
+                        rs.getInt(6),
+                        rs.getString(7)
+                );
+                list.add(hd);
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
-    
+
 }

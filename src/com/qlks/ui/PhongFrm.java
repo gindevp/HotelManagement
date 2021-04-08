@@ -29,8 +29,8 @@ public class PhongFrm extends javax.swing.JInternalFrame {
 
     private PhongDAO pdao = new PhongDAO();
     private LoaiPhongDAO lpdao = new LoaiPhongDAO();
-    private LoaiGiaDAO gdao = new LoaiGiaDAO();
-    private LoaiPhongLoaiGiaDAO lpgdao = new LoaiPhongLoaiGiaDAO();
+    private LoaiGiaDAO lgdao = new LoaiGiaDAO();
+    private LoaiPhongLoaiGiaDAO lplgdao = new LoaiPhongLoaiGiaDAO();
     private int index = -1;
 
     private JDesktopPane des;
@@ -491,7 +491,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     private void cboLoaiPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLoaiPhongActionPerformed
         if (cboLoaiPhong.getSelectedItem() != null) {
             this.fillTable();
-            this.fillCboGia();
+            this.fillCboLoaiGia();
         }
     }//GEN-LAST:event_cboLoaiPhongActionPerformed
 
@@ -541,6 +541,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
 
     private void init() {
         this.fillCboLoaiPhong();
+//        this.fillCboLoaiGia();
         this.fillTable();
         this.updateStatus();
     }
@@ -554,14 +555,26 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         });
     }
 
-    private void fillCboGia() {
+    private void fillCboLoaiGia() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboLoaiGia.getModel();
         model.removeAllElements();
         LoaiPhong loaiPhong = (LoaiPhong) cboLoaiPhong.getSelectedItem();
-        List<String> tenGiaList = lpgdao.selectTenGiaByMaLpSql(loaiPhong.getMa());
-        tenGiaList.forEach((item) -> {
-            model.addElement(item);
-        });
+        List<LoaiPhongLoaiGia> list = lplgdao.selectByLp(loaiPhong.getMa());
+        for (LoaiPhongLoaiGia item : list) {
+            System.out.println(item.getMaLg());
+            LoaiGia lg = lgdao.selectByID(item.getMaLg());
+            System.out.println(lg);
+            model.addElement(lg);
+        }
+    }
+
+    private void fillDonGia() {
+        LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
+        LoaiPhong lp = (LoaiPhong) cboLoaiPhong.getSelectedItem();
+        if (lp != null && lg != null) {
+            LoaiPhongLoaiGia lplg = lplgdao.selectByLpAndLg(lp.getMa(), lg.getMa());
+            lblDonGia.setText(lplg.getDonGia() + "");
+        }
     }
 
     private void fillTable() {
@@ -721,14 +734,6 @@ public class PhongFrm extends javax.swing.JInternalFrame {
 
     private void openPhongTN() {
         XForm.openChildFrm(this, des, new PhongTienNghiFrm(des, txtSo.getText()));
-    }
-
-    private void fillDonGia() {
-        LoaiPhong loaiPhong = (LoaiPhong) cboLoaiPhong.getSelectedItem();
-        String tenLg = (String) cboLoaiGia.getSelectedItem();
-        LoaiGia gia = gdao.selectByName(tenLg);
-        LoaiPhongLoaiGia lpg = lpgdao.selectByLpAndMaGia(loaiPhong.getMa(), gia.getMa());
-        lblDonGia.setText(lpg.getDonGia() + "");
     }
 
 }

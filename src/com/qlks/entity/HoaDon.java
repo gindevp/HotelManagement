@@ -12,6 +12,7 @@ import java.util.Date;
  * @author hungn
  */
 public class HoaDon {
+
     private int ma;
     private Date ngayThue;
     private Date ngayThanhToan;
@@ -21,6 +22,17 @@ public class HoaDon {
     private String maNv;
 
     public HoaDon() {
+    }
+
+    public HoaDon(int maKh, String maNv) {
+        this.maKh = maKh;
+        this.maNv = maNv;
+    }
+
+    public HoaDon(Date ngayThanhToan, int maKh, String maNv) {
+        this.ngayThanhToan = ngayThanhToan;
+        this.maKh = maKh;
+        this.maNv = maNv;
     }
 
     public HoaDon(Date ngayThue, Date ngayThanhToan, double tongTien, boolean trangThai, int maKh, String maNv) {
@@ -97,9 +109,5 @@ public class HoaDon {
     public void setMaNv(String maNv) {
         this.maNv = maNv;
     }
-    
-    
 
-
-    
 }

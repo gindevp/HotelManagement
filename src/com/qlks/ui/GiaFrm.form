@@ -6,7 +6,7 @@
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
     <Property name="closable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Lo&#x1ea1;i Ph&#xf2;ng"/>
+    <Property name="title" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Gi&#xe1;"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>

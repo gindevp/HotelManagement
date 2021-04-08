@@ -63,6 +63,10 @@ public class LoaiPhongLoaiGia {
         this.donGia = donGia;
     }
 
+    @Override
+    public String toString() {
+        return "LoaiPhongLoaiGia{" + "id=" + id + ", maLp=" + maLp + ", maLg=" + maLg + ", donGia=" + donGia + '}';
+    }
     
     
 }

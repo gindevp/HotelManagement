@@ -18,9 +18,11 @@ import java.util.List;
 public class LoaiGiaDAO extends ManageDAO<LoaiGia, Integer> {
 
     private String selectAllSql = "select * from loaigia";
-    private String selectByMaLpSql = "select * from loaigia where malp = ?";
+    private String selectByMaLpSql = "select a.MALG, a.TENLG from LOAIGIA a\n"
+            + "join LOAIPHONG_LOAIGIA b on a.MALG = b.MALG\n"
+            + "where MALP = ?";
     private String selectByNameSql = "select * from loaigia where tenlg  = ?";
-    private String selectByIdSql = "select * from loaigia where ";
+    private String selectByIdSql = "select * from loaigia where malg = ?";
 
     @Override
     public boolean insert(LoaiGia entity) {
@@ -48,9 +50,10 @@ public class LoaiGiaDAO extends ManageDAO<LoaiGia, Integer> {
 
     @Override
     public LoaiGia selectByID(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<LoaiGia> list = selectBySql(selectByIdSql, key);
+        return list.size() > 0 ? list.get(0) : null;
     }
-    
+
     public LoaiGia selectByName(String name) {
         List<LoaiGia> list = selectBySql(selectByNameSql, name);
         return list.size() > 0 ? list.get(0) : null;

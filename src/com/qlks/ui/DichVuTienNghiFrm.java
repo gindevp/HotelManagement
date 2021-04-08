@@ -112,18 +112,19 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         txtDonGia.setOpaque(false);
 
         txtMoTa.setColumns(20);
+        txtMoTa.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtMoTa.setRows(5);
         jScrollPane1.setViewportView(txtMoTa);
 
         buttonGroup1.add(rdo1);
         rdo1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         rdo1.setSelected(true);
-        rdo1.setText("True");
+        rdo1.setText("Sẵn sàng");
         rdo1.setOpaque(false);
 
         buttonGroup1.add(rdo0);
         rdo0.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        rdo0.setText("False");
+        rdo0.setText("Tạm thời ngừng");
         rdo0.setOpaque(false);
 
         btnInsertDV.setBackground(new java.awt.Color(204, 204, 204));
@@ -458,8 +459,6 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
             tblTN.getColumnModel().getColumn(0).setMaxWidth(80);
         }
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\huama\\OneDrive\\Desktop\\QLKS\\img\\631x366_convenient.jpg")); // NOI18N
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -470,7 +469,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 601, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnInsertTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -727,7 +726,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
                 i.getTen(),
                 i.getGia(),
                 i.getMoTa(),
-                i.isTrangThai()
+                i.isTrangThai() ? "Sẵn sàng" : "Tạm thời ngừng"
             });
         });
     }
@@ -756,6 +755,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         Integer id = Integer.parseInt(tblDV.getValueAt(this.indexDV, 0).toString());
         DichVu dv = dvdao.selectByID(id);
         this.setFormDV(dv);
+        tblDV.setRowSelectionInterval(this.indexDV, this.indexDV);
         this.updateStatusDV();
     }
 
@@ -770,7 +770,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
     private DichVu getFormDV() {
         DichVu dv = null;
         String[] title = new String[]{"Tên dịch vụ", "Đơn giá", "Mô tả"};
-        String[] titleNum = new String[] {"Đon giá"};
+        String[] titleNum = new String[]{"Đon giá"};
         if (Validator.checkBlack(this, title, txtTenDV, txtDonGia, txtMoTa)
                 && Validator.checkPosNum(this, titleNum, txtDonGia)) {
             String ten = txtTenDV.getText().trim();
@@ -778,7 +778,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
             String moTa = txtMoTa.getText().trim();
             boolean trangThai = rdo1.isSelected() ? true : false;
 
-            dv = new DichVu(WIDTH, ten, gia, moTa, trangThai);
+            dv = new DichVu(ten, gia, moTa, trangThai);
         }
         return dv;
     }
@@ -790,6 +790,8 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
                 MsgBox.alert(this, "Thêm thành công!");
                 this.clearFormDV();
                 this.fillTableDV();
+            } else {
+                MsgBox.alert(this, "Thêm không thành công!");
             }
         }
     }
@@ -797,6 +799,8 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
     private void updateDV() {
         DichVu dv = this.getFormDV();
         if (dv != null) {
+            Integer id = Integer.parseInt(tblDV.getValueAt(this.indexDV, 0).toString());
+            dv.setMa(id);
             if (dvdao.update(dv)) {
                 MsgBox.alert(null, "Sửa thành công!");
                 this.fillTableDV();
@@ -834,14 +838,12 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
     private void firstDV() {
         this.indexDV = 0;
         this.editDV();
-        tblDV.setRowSelectionInterval(this.indexDV, this.indexDV);
     }
 
     private void prevDV() {
         if (this.indexDV > 0) {
             this.indexDV--;
             this.editDV();
-            tblDV.setRowSelectionInterval(this.indexDV, this.indexDV);
         }
     }
 
@@ -849,14 +851,12 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         if (this.indexDV < tblDV.getRowCount() - 1) {
             this.indexDV++;
             this.editDV();
-            tblDV.setRowSelectionInterval(this.indexDV, this.indexDV);
         }
     }
 
     private void lastDV() {
         this.indexDV = tblDV.getRowCount() - 1;
         this.editDV();
-        tblDV.setRowSelectionInterval(this.indexDV, this.indexDV);
     }
 
     //Tien nghi methods 
@@ -896,6 +896,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         Integer id = Integer.parseInt(tblTN.getValueAt(this.indexTN, 0).toString());
         TienNghi tn = tndao.selectByID(id);
         this.setFormTN(tn);
+        tblTN.setRowSelectionInterval(this.indexTN, this.indexTN);
         this.updateStatusTN();
     }
 
@@ -921,6 +922,8 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
                 MsgBox.alert(this, "Thêm thành công!");
                 this.clearFormTN();
                 this.fillTableTN();
+            } else {
+                MsgBox.alert(this, "Thêm không thành công!");
             }
         }
     }
@@ -967,14 +970,12 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
     private void firstTN() {
         this.indexTN = 0;
         this.editTN();
-        tblTN.setRowSelectionInterval(this.indexTN, this.indexTN);
     }
 
     private void prevTN() {
         if (this.indexTN > 0) {
             this.indexTN--;
             this.editTN();
-            tblTN.setRowSelectionInterval(this.indexTN, this.indexTN);
         }
     }
 
@@ -982,13 +983,11 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         if (this.indexTN < tblTN.getRowCount() - 1) {
             this.indexTN++;
             this.editTN();
-            tblTN.setRowSelectionInterval(this.indexTN, this.indexTN);
         }
     }
 
     private void lastTN() {
         this.indexTN = tblTN.getRowCount() - 1;
         this.editTN();
-        tblTN.setRowSelectionInterval(this.indexTN, this.indexTN);
     }
 }

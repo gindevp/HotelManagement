@@ -17,13 +17,12 @@ import java.util.List;
  */
 public class DichVuDAO extends ManageDAO<DichVu, Integer> {
 
-    String insertSql = "insert dichvu values (?, ?, ?, ?)";
-    String updateSql = "update dichvu set tendv = ?, dongia = ?, mota = ?, trangthai = ? where madv = ?";
-    String deleteSql = "delete from dichvu where madv = ?";
-    String selectAllSql = "select * from dichvu";
-//    String selectAllSdt = "select * from dichvu where sdt = ?";
-//    String selectAllCmnd = "select * from dichvu where cmnd = ?";
-    String selectByIdSql = "select * from dichvu where madv = ?";
+    private String insertSql = "insert dichvu values (?, ?, ?, ?)";
+    private String updateSql = "update dichvu set tendv = ?, dongia = ?, mota = ?, trangthai = ? where madv = ?";
+    private String deleteSql = "delete from dichvu where madv = ?";
+    private String selectAllSql = "select * from dichvu";
+    private String selectEnableSql = "select * from dichvu where trangthai = 1";
+    private String selectByIdSql = "select * from dichvu where madv = ?";
 
     @Override
     public boolean insert(DichVu entity) {
@@ -43,6 +42,10 @@ public class DichVuDAO extends ManageDAO<DichVu, Integer> {
     @Override
     public List<DichVu> selectAll() {
         return selectBySql(selectAllSql);
+    }
+
+    public List<DichVu> selectEnable() {
+        return selectBySql(selectEnableSql);
     }
 
     @Override

@@ -23,12 +23,13 @@ public class LoaiPhongLoaiGiaDAO extends ManageDAO<LoaiPhongLoaiGia, Integer> {
     private String deleteSql = "delete from loaiphong_loaigia where id = ?";
     private String selectByIdSql = "select * from loaiphong_loaigia where id = ?";
 
-    private String selectByLpAndMaGiaSql = "select * from loaiphong_loaigia where malp = ? and malg = ?";
+    private String selectByLpAndLgSql = "select * from loaiphong_loaigia where malp = ? and malg = ?";
     private String selectTenGiaByMaLpSql = "select tenlg from loaigia\n"
             + "  join loaiphong_loaigia on loaigia.MAlg = loaiphong_loaigia.malg\n"
             + "  where MALP = ?";
 
-    private String selectByMalgSql = "select * from loaiphong_loaigia where malg = ?";
+    private String selectByLgSql = "select * from loaiphong_loaigia where malg = ?";
+    private String selectByLpSql = "select * from loaiphong_loaigia where malp = ?";
 
     @Override
 
@@ -52,7 +53,11 @@ public class LoaiPhongLoaiGiaDAO extends ManageDAO<LoaiPhongLoaiGia, Integer> {
     }
 
     public List<LoaiPhongLoaiGia> selectByMalg(Integer maGia) {
-        return selectBySql(selectByMalgSql, maGia);
+        return selectBySql(selectByLgSql, maGia);
+    }
+
+    public List<LoaiPhongLoaiGia> selectByLp(String maLp) {
+        return selectBySql(selectByLpSql, maLp);
     }
 
     @Override
@@ -61,8 +66,8 @@ public class LoaiPhongLoaiGiaDAO extends ManageDAO<LoaiPhongLoaiGia, Integer> {
         return list.size() > 0 ? list.get(0) : null;
     }
 
-    public LoaiPhongLoaiGia selectByLpAndMaGia(String maLp, Integer maGia) {
-        List<LoaiPhongLoaiGia> list = selectBySql(selectByLpAndMaGiaSql, maLp, maGia);
+    public LoaiPhongLoaiGia selectByLpAndLg(String maLp, Integer maGia) {
+        List<LoaiPhongLoaiGia> list = selectBySql(selectByLpAndLgSql, maLp, maGia);
         return list.size() > 0 ? list.get(0) : null;
     }
 

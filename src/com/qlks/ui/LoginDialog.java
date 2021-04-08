@@ -459,6 +459,7 @@ public class LoginDialog extends javax.swing.JDialog {
 
     private void openRegisterDialog() {
         LoginDialog.this.setVisible(false);
+//        LoginDialog.this.setOpacity(0);
         RegisterDialog regis = new RegisterDialog();
         regis.setLocationRelativeTo(null);
         regis.setVisible(true);

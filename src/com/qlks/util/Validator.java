@@ -148,7 +148,8 @@ public class Validator {
     public static boolean checkAfterNow(Component parent, JDateChooser d1, Date d2, int task) {
         if (d1.getDate().before(d2)) {
             if (task == 1) {
-                MsgBox.alert(parent, "Vui lòng chọn ngày khai giảng sau ngày tạo!");
+//                MsgBox.alert(parent, "Vui lòng chọn ngày khai giảng sau ngày tạo!");
+                MsgBox.alert(parent, "Vui lòng chọn ngày trả phòng sau hôm nay!");
             }
             d1.requestFocus();
             return false;
