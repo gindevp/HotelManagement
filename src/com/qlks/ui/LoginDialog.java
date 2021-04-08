@@ -14,6 +14,7 @@ import com.qlks.util.Auth;
 import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
@@ -75,6 +76,7 @@ public class LoginDialog extends javax.swing.JDialog {
         jFormattedTextField1.setText("jFormattedTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -287,7 +289,7 @@ public class LoginDialog extends javax.swing.JDialog {
 
     private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
 //        this.register();
-        this.openNhanVien();
+        this.openRegisterDialog();
 
     }//GEN-LAST:event_btnDangKyActionPerformed
 
@@ -362,7 +364,6 @@ public class LoginDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
-
     }
 
     private void login() {
@@ -456,32 +457,11 @@ public class LoginDialog extends javax.swing.JDialog {
         }
     }
 
-    private void openNhanVien() {
-        LoginDialog.this.dispose();
-        JFrame frame = new JFrame("Đăng ký");
-
-        frame.setDefaultCloseOperation(0);
-        frame.setUndecorated(true);
-        frame.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
-        frame.setPreferredSize(new Dimension(1280, 800));
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
-        frame.setVisible(true);
-
-        NhanVienFrm nvFrm = new NhanVienFrm(frame);
-        nvFrm.setTitle("Đăng ký");
-        nvFrm.setDefaultCloseOperation(0);
-        nvFrm.getRootPane().setWindowDecorationStyle(JRootPane.NONE);
-        nvFrm.setVisible(true);
-        nvFrm.setClosable(true);
-        nvFrm.setResizable(false);
-        nvFrm.setPreferredSize(new Dimension(1280, 780));
-        frame.add(nvFrm);
-        try {
-            nvFrm.setSelected(true);
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(LoginDialog.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void openRegisterDialog() {
+        LoginDialog.this.setVisible(false);
+        RegisterDialog regis = new RegisterDialog();
+        regis.setLocationRelativeTo(null);
+        regis.setVisible(true);
     }
+
 }
