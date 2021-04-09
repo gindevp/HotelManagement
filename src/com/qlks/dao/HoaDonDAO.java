@@ -8,7 +8,10 @@ package com.qlks.dao;
 import com.qlks.entity.HoaDon;
 import com.qlks.util.XJdbc;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,7 +20,7 @@ import java.util.List;
  */
 public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
 
-    private String insertSql = "insert hoadon values (getdate(), ?, 0, default, ?, ?)";
+    private String insertSql = "insert hoadon values (getdate(), ?, 0, default, ?, ?, ?)";
     private String updateSql = "update hoadon set ngaytt = ?, trangthai = 1 where mahd = ?";
     private String deleteSql;
     private String selectAll = "select * from hoadon";
@@ -27,7 +30,7 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
 
     @Override
     public boolean insert(HoaDon entity) {
-        return XJdbc.update(insertSql, entity.getNgayThanhToan(), entity.getMaKh(), entity.getMaNv());
+        return XJdbc.update(insertSql, entity.getNgayThanhToan(), entity.getMaLg(), entity.getMaKh(), entity.getMaNv());
     }
 
     @Override
@@ -67,12 +70,13 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
             while (rs.next()) {
                 HoaDon hd = new HoaDon(
                         rs.getInt(1),
-                        rs.getDate(2),
-                        rs.getDate(3),
+                        rs.getTimestamp(2),
+                        rs.getTimestamp(3),
                         rs.getDouble(4),
                         rs.getBoolean(5),
                         rs.getInt(6),
-                        rs.getString(7)
+                        rs.getInt(7),
+                        rs.getString(8)
                 );
                 list.add(hd);
             }

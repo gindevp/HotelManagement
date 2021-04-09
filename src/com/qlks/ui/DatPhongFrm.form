@@ -112,8 +112,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="lblNgayTra" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jdcNgayTra" max="32767" attributes="0"/>
@@ -146,7 +146,7 @@
                                   <Component id="jLabel14" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="cboLoaiGia" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="13" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -155,12 +155,12 @@
                                   <Component id="jPanel4" max="32767" attributes="0"/>
                                   <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnDatPhong" alignment="1" pref="44" max="32767" attributes="0"/>
-                                  <Component id="jdcNgayTra" max="32767" attributes="0"/>
-                                  <Component id="lblNgayTra" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="chk" alignment="1" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" pref="31" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="btnDatPhong" pref="40" max="32767" attributes="0"/>
+                                  <Component id="chk" alignment="1" pref="40" max="32767" attributes="0"/>
+                                  <Component id="jdcNgayTra" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblNgayTra" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -500,7 +500,7 @@
                                           <Component id="rdoNam" min="-2" pref="80" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="rdoNu" min="-2" pref="80" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="69" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="249" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel5" min="-2" pref="80" max="-2" attributes="0"/>
@@ -1020,8 +1020,8 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="51" max="32767" attributes="0"/>
+                              <Component id="jPanel8" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1035,7 +1035,7 @@
                                   <Component id="jPanel8" max="32767" attributes="0"/>
                                   <Component id="jPanel9" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="156" max="32767" attributes="0"/>
+                              <EmptySpace pref="174" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1063,7 +1063,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane10" pref="844" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane10" pref="1057" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1092,24 +1092,18 @@
                                   <Font name="Segoe UI" size="16" style="0"/>
                                 </Property>
                                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                  <Table columnCount="8" rowCount="0">
+                                  <Table columnCount="7" rowCount="0">
                                     <Column editable="false" title="ID" type="java.lang.Object"/>
-                                    <Column editable="false" title="M&#xe3; KH" type="java.lang.Object"/>
-                                    <Column editable="false" title="T&#xea;n KH" type="java.lang.Object"/>
-                                    <Column editable="false" title="CMND" type="java.lang.Object"/>
-                                    <Column editable="false" title="SDT" type="java.lang.Object"/>
-                                    <Column editable="false" title="Gi&#x1edb;i T&#xed;nh" type="java.lang.Object"/>
-                                    <Column editable="false" title="&#x110;&#x1ecb;a Ch&#x1ec9;" type="java.lang.Object"/>
-                                    <Column editable="false" title="Qu&#x1ed1;c T&#x1ecb;ch" type="java.lang.Object"/>
+                                    <Column editable="false" title="TG Thu&#xea;" type="java.lang.Object"/>
+                                    <Column editable="true" title="TG Thanh To&#xe1;n" type="java.lang.Object"/>
+                                    <Column editable="false" title="T&#xea;n Kh&#xe1;ch H&#xe0;ng" type="java.lang.Object"/>
+                                    <Column editable="false" title="CMND KH" type="java.lang.Object"/>
+                                    <Column editable="false" title="SDT KH" type="java.lang.Object"/>
+                                    <Column editable="false" title="Lo&#x1ea1;i H&#xec;nh Thu&#xea;" type="java.lang.Object"/>
                                   </Table>
                                 </Property>
                                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                                   <TableColumnModel selectionModel="0">
-                                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                      <Title/>
-                                      <Editor/>
-                                      <Renderer/>
-                                    </Column>
                                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                       <Title/>
                                       <Editor/>

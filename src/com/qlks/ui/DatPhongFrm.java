@@ -30,6 +30,8 @@ import java.awt.Component;
 import java.awt.event.ItemEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -409,7 +411,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                         .addComponent(rdoNam, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rdoNu, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 69, Short.MAX_VALUE))
+                        .addGap(0, 249, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -610,7 +612,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(lblNgayTra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -638,18 +640,18 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(cboLoaiGia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 4, Short.MAX_VALUE)))
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDatPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(jdcNgayTra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblNgayTra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(chk, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 31, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnDatPhong, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(chk, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jdcNgayTra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNgayTra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -666,11 +668,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID", "Mã KH", "Tên KH", "CMND", "SDT", "Giới Tính", "Địa Chỉ", "Quốc Tịch"
+                "ID", "TG Thuê", "TG Thanh Toán", "Tên Khách Hàng", "CMND KH", "SDT KH", "Loại Hình Thuê"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, true, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -692,7 +694,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 844, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -750,8 +752,8 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -762,7 +764,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Trả Phòng", jPanel2);
@@ -948,7 +950,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         this.fillCboLoaiGia();
         this.fillCboLoaiPhong();
         this.fillCboDichVu();
-        this.fillTblKHDangThue();
+        this.fillTblDangThue();
         this.updateStatus();
     }
 
@@ -1188,13 +1190,17 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }
 
     private void createHoaDon() {
+        Timestamp ngayTt = new Timestamp(jdcNgayTra.getDate().getTime());
+        LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
+        Integer maLg = lg.getMa();
         Integer maKH = Integer.parseInt(txtMaKh.getText().trim().toString());
         String maNv = Auth.user.getMa();
-        HoaDon hd = new HoaDon(jdcNgayTra.getDate(), maKH, maNv);
+        HoaDon hd = new HoaDon(ngayTt, maLg, maKH, maNv);
         if (hddao.insert(hd)) {
             System.out.println("create Hd success");
-            this.createHDPhong(maKH, maNv);
-            this.createHDDichVu(maKH, maNv);
+            MsgBox.alert(this, "Đặt phòng thành công!");
+            this.clearForm();
+            this.fillTblDangThue();
         } else {
             System.out.println("create hd failed");
         }
@@ -1255,27 +1261,28 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 System.out.println("hddv fail");
             }
         }
-        this.fillTblKHDangThue();
+        this.fillTblDangThue();
     }
 
-    private void fillTblKHDangThue() {
+    private void fillTblDangThue() {
         DefaultTableModel model = (DefaultTableModel) tblKHDangThue.getModel();
         model.setRowCount(0);
         List<HoaDon> list = hddao.selectByStt();
-        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
         list.forEach(i -> {
             Integer maKh = i.getMaKh();
             KhachHang kh = khdao.selectByID(maKh);
+            LoaiGia lg = lgdao.selectByID(i.getMaLg());
             model.addRow(new Object[]{
-                    i.getMa(), 
-                    maKh,
-                    kh.getTen(),
-                    kh.getCmnd(),
-                    kh.getSdt(),
-                    kh.isGioiTinh() ? "Nam" : "Nữ",
-                    kh.getDiaChi(),
-                    kh.getQuocTich()
-                }
+                i.getMa(),
+                i.getNgayThue(),
+                i.getNgayThanhToan(),
+                kh.getTen(),
+                kh.getCmnd(),
+                kh.getSdt(),
+                lg.getTen()
+            }
             );
         });
     }

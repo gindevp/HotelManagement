@@ -5,6 +5,7 @@
  */
 package com.qlks.entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -14,42 +15,31 @@ import java.util.Date;
 public class HoaDon {
 
     private int ma;
-    private Date ngayThue;
-    private Date ngayThanhToan;
+    private Timestamp ngayThue;
+    private Timestamp ngayThanhToan;
     private double tongTien;
     private boolean trangThai;
+    private int maLg;
     private int maKh;
     private String maNv;
 
     public HoaDon() {
     }
 
-    public HoaDon(int maKh, String maNv) {
-        this.maKh = maKh;
-        this.maNv = maNv;
-    }
-
-    public HoaDon(Date ngayThanhToan, int maKh, String maNv) {
+    public HoaDon(Timestamp ngayThanhToan, int maLg, int maKh, String maNv) {
         this.ngayThanhToan = ngayThanhToan;
+        this.maLg = maLg;
         this.maKh = maKh;
         this.maNv = maNv;
     }
 
-    public HoaDon(Date ngayThue, Date ngayThanhToan, double tongTien, boolean trangThai, int maKh, String maNv) {
-        this.ngayThue = ngayThue;
-        this.ngayThanhToan = ngayThanhToan;
-        this.tongTien = tongTien;
-        this.trangThai = trangThai;
-        this.maKh = maKh;
-        this.maNv = maNv;
-    }
-
-    public HoaDon(int ma, Date ngayThue, Date ngayThanhToan, double tongTien, boolean trangThai, int maKh, String maNv) {
+    public HoaDon(int ma, Timestamp ngayThue, Timestamp ngayThanhToan, double tongTien, boolean trangThai, int maLg, int maKh, String maNv) {
         this.ma = ma;
         this.ngayThue = ngayThue;
         this.ngayThanhToan = ngayThanhToan;
         this.tongTien = tongTien;
         this.trangThai = trangThai;
+        this.maLg = maLg;
         this.maKh = maKh;
         this.maNv = maNv;
     }
@@ -66,7 +56,7 @@ public class HoaDon {
         return ngayThue;
     }
 
-    public void setNgayThue(Date ngayThue) {
+    public void setNgayThue(Timestamp ngayThue) {
         this.ngayThue = ngayThue;
     }
 
@@ -74,7 +64,7 @@ public class HoaDon {
         return ngayThanhToan;
     }
 
-    public void setNgayThanhToan(Date ngayThanhToan) {
+    public void setNgayThanhToan(Timestamp ngayThanhToan) {
         this.ngayThanhToan = ngayThanhToan;
     }
 
@@ -92,6 +82,14 @@ public class HoaDon {
 
     public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public int getMaLg() {
+        return maLg;
+    }
+
+    public void setMaLg(int maLg) {
+        this.maLg = maLg;
     }
 
     public int getMaKh() {

@@ -159,23 +159,27 @@
                                       <Component id="rdo1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="rdo0" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" pref="680" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnInsertDV" pref="227" max="32767" attributes="0"/>
-                                          <Component id="btnDeleteDV" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnCleanDV" pref="215" max="32767" attributes="0"/>
-                                          <Component id="btnUpdateDV" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="btnInsertDV" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnUpdateDV" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnDeleteDV" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnCleanDV" min="-2" pref="120" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="2" attributes="0">
-                                  <Group type="102" alignment="2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane12" min="-2" pref="620" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnFirstDV" min="-2" pref="120" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnPreDV" min="-2" pref="120" max="-2" attributes="0"/>
@@ -184,7 +188,6 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnLastDV" min="-2" pref="120" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jScrollPane12" alignment="2" min="-2" pref="620" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -194,11 +197,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jScrollPane12" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
@@ -209,31 +208,31 @@
                                       <Component id="txtDonGia" min="-2" pref="40" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" pref="152" max="32767" attributes="0"/>
-                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="rdo0" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                                           <Component id="rdo1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                                           <Component id="jLabel34" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="btnInsertDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                          <Component id="btnUpdateDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="btnDeleteDV" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnCleanDV" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnLastDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                          <Component id="btnPreDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                          <Component id="btnFirstDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                          <Component id="btnNextDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      </Group>
+                                  </Group>
+                                  <Component id="jScrollPane12" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="175" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnInsertDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="btnUpdateDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="btnDeleteDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="btnCleanDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                                      <Component id="btnLastDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="btnPreDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="btnFirstDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="btnNextDV" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -547,7 +546,7 @@
                                   <Component id="jLabel41" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel2" alignment="0" pref="601" max="32767" attributes="0"/>
+                                          <Component id="jLabel2" alignment="0" pref="821" max="32767" attributes="0"/>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="btnInsertTN" max="32767" attributes="0"/>
