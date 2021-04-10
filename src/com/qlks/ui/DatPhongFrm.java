@@ -138,7 +138,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
         tblDangThue = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        btnThanhToan = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         txtKeyword = new javax.swing.JTextField();
 
@@ -711,11 +711,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton2.setText("THANH TOÁN");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnThanhToan.setText("THANH TOÁN");
+        btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnThanhToanActionPerformed(evt);
             }
         });
 
@@ -739,7 +739,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -756,7 +756,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -868,6 +868,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private void tblDangThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDangThueMouseClicked
         if (evt.getClickCount() == 2) {
             this.iDangThue = tblDangThue.getSelectedRow();
+            this.updateStatus();
         }
     }//GEN-LAST:event_tblDangThueMouseClicked
 
@@ -875,9 +876,9 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         this.fillTblDangThue();
     }//GEN-LAST:event_txtKeywordKeyReleased
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         this.makePay();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnThanhToanActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -885,6 +886,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnChonPhong;
     private javax.swing.JButton btnDaCoTt;
     private javax.swing.JButton btnDatPhong;
+    private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnThemKh;
     private javax.swing.JButton btnTimPhong;
     private javax.swing.JButton btnXoaDichVu;
@@ -894,7 +896,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cboLoaiPhong;
     private javax.swing.JCheckBox chk;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1050,7 +1051,9 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         if (kh != null) {
             if (khdao.insert(kh)) {
                 MsgBox.alert(this, "Thêm Khách Hàng thành công");
-                this.setFormKhachHang(kh);
+                String cmnd = txtCmnd.getText().trim();
+                KhachHang kh1 = khdao.selectBySdtOrCmnd(cmnd);
+                this.setFormKhachHang(kh1);
             } else {
                 MsgBox.alert(this, "Thêm Khách Hàng không thành công!");
             }
@@ -1111,12 +1114,14 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         boolean isAddCus = txtMaKh.getText().isEmpty() ? true : false;
         boolean isDeleteRoom = this.iPhong >= 0;
         boolean isDeleteService = this.iDichVu >= 0;
+        boolean isMakePay = this.iDangThue >= 0;
 
         btnChonPhong.setEnabled(isChooseRoom);
 //        btnThemKh.setEnabled(isAddCus);
         btnDatPhong.setEnabled(isEnableBook);
         btnXoaPhong.setEnabled(isDeleteRoom);
         btnXoaDichVu.setEnabled(isDeleteService);
+        btnThanhToan.setEnabled(isMakePay);
     }
 
     private void insertDichVu() {
@@ -1312,38 +1317,45 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }
 
     private void makePay() {
-        Integer maHd = Integer.parseInt(tblDangThue.getValueAt(this.iDangThue, 0).toString());
-        HoaDon hd = hddao.selectByID(maHd);
-        double tongTien = 0;
-        List<Object> phongs = hdpdao.selectDgByHdLg(maHd, hd.getMaLg());
-        List<Object> dichVus = hddvdao.selectDgByHd(maHd);
-        for (Object i : phongs) {
-            Double gia = Double.parseDouble(i.toString());
-            System.out.println(gia);
-            tongTien += gia;
-        }
-        for (Object i : dichVus) {
-            Double gia = Double.parseDouble(i.toString());
-            System.out.println(gia);
-            tongTien += gia;
-        }
-        System.out.println(tongTien);
-        hd.setTongTien(tongTien);
-        if (hd.getMaLg() == 3) {
-            if (hddao.updateWithoutNgaytt(hd)) {
+        if (MsgBox.confirm(this, "Xác nhận thanh toán?")) {
+            Integer maHd = Integer.parseInt(tblDangThue.getValueAt(this.iDangThue, 0).toString());
+            HoaDon hd = hddao.selectByID(maHd);
+            if (hddao.thanhToanHd(hd.getMa(), hd.getMaLg())) {
                 MsgBox.alert(this, "Thanh toán thành công!");
-            } else {
-                MsgBox.alert(this, "Thanh toán không thành công!");
-            }
-        } else {
-            if (hddao.update(hd)) {
-                MsgBox.alert(this, "Thanh toán thành công!");
+                this.fillTblDangThue();
+                this.updateStatus();
             } else {
                 MsgBox.alert(this, "Thanh toán không thành công!");
             }
         }
-        this.fillTblDangThue();
-
+//        double tongTien = 0;
+//        List<Object> phongs = hdpdao.selectDgByHdLg(maHd, hd.getMaLg());
+//        List<Object> dichVus = hddvdao.selectDgByHd(maHd);
+//        for (Object i : phongs) {
+//            Double gia = Double.parseDouble(i.toString());
+//            System.out.println(gia);
+//            tongTien += gia;
+//        }
+//        for (Object i : dichVus) {
+//            Double gia = Double.parseDouble(i.toString());
+//            System.out.println(gia);
+//            tongTien += gia;
+//        }
+//        System.out.println(tongTien);
+//        hd.setTongTien(tongTien);
+//        if (hd.getMaLg() == 3) {
+//            if (hddao.updateWithoutNgaytt(hd)) {
+//                MsgBox.alert(this, "Thanh toán thành công!");
+//            } else {
+//                MsgBox.alert(this, "Thanh toán không thành công!");
+//            }
+//        } else {
+//            if (hddao.update(hd)) {
+//                MsgBox.alert(this, "Thanh toán thành công!");
+//            } else {
+//                MsgBox.alert(this, "Thanh toán không thành công!");
+//            }
+//        }
     }
 
 }

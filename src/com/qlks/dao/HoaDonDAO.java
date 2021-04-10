@@ -33,6 +33,7 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
             + "on a.makh = b.makh where trangthai = 0 and (b.tenkh like ? "
             + "or b.sdt like ? or b.cmnd like ?)";
 
+    private String thanhtoanSql = "{call sp_thanhtoanhd(?,?)}";
     @Override
     public boolean insert(HoaDon entity) {
         return XJdbc.update(insertSql, entity.getNgayThanhToan(), entity.getMaLg(), entity.getMaKh(), entity.getMaNv());
@@ -40,6 +41,10 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
 
     public boolean insertWithoutNgayTt(HoaDon entity) {
         return XJdbc.update(insertWithoutNgayTtSql, entity.getMaLg(), entity.getMaKh(), entity.getMaNv());
+    }
+    
+    public boolean thanhToanHd(Integer maHd, Integer maLg) {
+        return XJdbc.update(thanhtoanSql, maHd, maLg);
     }
 
     @Override
