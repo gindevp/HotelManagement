@@ -21,21 +21,34 @@ import java.util.List;
 public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
 
     private String insertSql = "insert hoadon values (getdate(), ?, 0, default, ?, ?, ?)";
-    private String updateSql = "update hoadon set ngaytt = ?, trangthai = 1 where mahd = ?";
+    private String insertWithoutNgayTtSql = "insert hoadon values (getdate(), null, 0, default, ?, ?, ?)";
+    private String updateSql = "update hoadon set ngaytt = getdate(), trangthai = 1, tongtien = ? where mahd = ?";
+    private String updateWithoutNgayttSql = "update hoadon set tongtien = ?, trangthai = 1 where mahd = ?";
     private String deleteSql;
     private String selectAll = "select * from hoadon";
     private String selectById = "select * from hoadon where mahd = ?";
-    private String selectByKhAndNvSql = "select top 1 * from hoadon where makh = ? and manv = ? order by ngaythue desc";
-    private String selectBySttSql = "select * from hoadon where trangthai = 0";
+    private String selectByLgKhNvSql = "select top 1 * from hoadon where malg = ? and makh = ? and manv = ? order by ngaythue desc";
+    
+    private String selectDsThueSql = "select a.* from hoadon a join khachhang b "
+            + "on a.makh = b.makh where trangthai = 0 and (b.tenkh like ? "
+            + "or b.sdt like ? or b.cmnd like ?)";
 
     @Override
     public boolean insert(HoaDon entity) {
         return XJdbc.update(insertSql, entity.getNgayThanhToan(), entity.getMaLg(), entity.getMaKh(), entity.getMaNv());
     }
 
+    public boolean insertWithoutNgayTt(HoaDon entity) {
+        return XJdbc.update(insertWithoutNgayTtSql, entity.getMaLg(), entity.getMaKh(), entity.getMaNv());
+    }
+
     @Override
     public boolean update(HoaDon entity) {
-        return XJdbc.update(updateSql, entity.getNgayThanhToan(), entity.getMa());
+        return XJdbc.update(updateSql, entity.getTongTien(), entity.getMa());
+    }
+
+    public boolean updateWithoutNgaytt(HoaDon entity) {
+        return XJdbc.update(updateWithoutNgayttSql, entity.getTongTien(), entity.getMa());
     }
 
     @Override
@@ -48,17 +61,18 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public List<HoaDon> selectByStt() {
-        return selectBySql(selectBySttSql);
+    public List<HoaDon> selectDsThue(String keyword) {
+        return selectBySql(selectDsThueSql, "%" + keyword + "%", "%" + keyword + "%", "%" + keyword + "%");
     }
 
     @Override
     public HoaDon selectByID(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<HoaDon> list = selectBySql(selectById, key);
+        return list.size() > 0 ? list.get(0) : null;
     }
 
-    public HoaDon selectByKhAndNv(Integer maKH, String maNv) {
-        List<HoaDon> list = selectBySql(selectByKhAndNvSql, maKH, maNv);
+    public HoaDon selectByLgKhNv(Integer maLg, Integer maKH, String maNv) {
+        List<HoaDon> list = selectBySql(selectByLgKhNvSql, maLg, maKH, maNv);
         return list.size() > 0 ? list.get(0) : null;
     }
 

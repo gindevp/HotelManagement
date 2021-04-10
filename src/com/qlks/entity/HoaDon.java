@@ -26,6 +26,12 @@ public class HoaDon {
     public HoaDon() {
     }
 
+    public HoaDon(int maLg, int maKh, String maNv) {
+        this.maLg = maLg;
+        this.maKh = maKh;
+        this.maNv = maNv;
+    }
+
     public HoaDon(Timestamp ngayThanhToan, int maLg, int maKh, String maNv) {
         this.ngayThanhToan = ngayThanhToan;
         this.maLg = maLg;

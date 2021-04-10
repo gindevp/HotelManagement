@@ -10,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -69,6 +71,19 @@ public class XJdbc {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static List<Object> column(String sql, Object... args) {
+        List<Object> list = new ArrayList<>();
+        try (ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                Object obj = rs.getObject(1);
+                list.add(obj);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return list;
     }
 
 }
