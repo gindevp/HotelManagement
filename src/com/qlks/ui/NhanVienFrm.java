@@ -128,6 +128,7 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         rdoNam.setBackground(new java.awt.Color(255, 255, 255));
         bgrGioiTinh.add(rdoNam);
         rdoNam.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        rdoNam.setSelected(true);
         rdoNam.setText("Nam");
 
         rdoNu.setBackground(new java.awt.Color(255, 255, 255));
@@ -371,8 +372,7 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

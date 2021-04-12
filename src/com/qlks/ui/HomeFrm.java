@@ -65,8 +65,6 @@ public class HomeFrm extends javax.swing.JFrame {
         btnNhanVien = new javax.swing.JButton();
         pnlKH = new javax.swing.JPanel();
         btnKhachHang = new javax.swing.JButton();
-        pnlHoaDon = new javax.swing.JPanel();
-        btnHoaDon = new javax.swing.JButton();
         pnlThongKe = new javax.swing.JPanel();
         btnThongKe = new javax.swing.JButton();
         pnlThoat = new javax.swing.JPanel();
@@ -115,8 +113,8 @@ public class HomeFrm extends javax.swing.JFrame {
         btnDoiMK.setBackground(new java.awt.Color(46, 62, 78));
         btnDoiMK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnDoiMK.setForeground(new java.awt.Color(255, 255, 255));
-        btnDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/changePassword_24px.png"))); // NOI18N
-        btnDoiMK.setText("Đổi mật khẩu");
+        btnDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/changeUser_24px.png"))); // NOI18N
+        btnDoiMK.setText("Đổi thông tin cá nhân");
         btnDoiMK.setBorder(null);
         btnDoiMK.setBorderPainted(false);
         btnDoiMK.setContentAreaFilled(false);
@@ -124,6 +122,11 @@ public class HomeFrm extends javax.swing.JFrame {
         btnDoiMK.setIconTextGap(16);
         btnDoiMK.setMargin(new java.awt.Insets(4, 16, 4, 16));
         btnDoiMK.setPreferredSize(new java.awt.Dimension(121, 32));
+        btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoiMKActionPerformed(evt);
+            }
+        });
 
         jSeparator3.setBackground(new java.awt.Color(37, 49, 62));
         jSeparator3.setForeground(new java.awt.Color(255, 0, 51));
@@ -143,14 +146,14 @@ public class HomeFrm extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 405, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 356, Short.MAX_VALUE)
                 .addComponent(pnlDoiMK, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                .addComponent(btnDoiMK, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -399,49 +402,6 @@ public class HomeFrm extends javax.swing.JFrame {
             .addComponent(btnKhachHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
         );
 
-        pnlHoaDon.setBackground(new java.awt.Color(46, 62, 78));
-        pnlHoaDon.setPreferredSize(new java.awt.Dimension(316, 64));
-
-        btnHoaDon.setBackground(new java.awt.Color(46, 62, 78));
-        btnHoaDon.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnHoaDon.setForeground(new java.awt.Color(255, 255, 255));
-        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/purchaseOrder_24px.png"))); // NOI18N
-        btnHoaDon.setText("Hóa Đơn");
-        btnHoaDon.setBorder(null);
-        btnHoaDon.setBorderPainted(false);
-        btnHoaDon.setContentAreaFilled(false);
-        btnHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnHoaDon.setIconTextGap(16);
-        btnHoaDon.setMargin(new java.awt.Insets(4, 16, 4, 16));
-        btnHoaDon.setPreferredSize(new java.awt.Dimension(316, 32));
-        btnHoaDon.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnHoaDonMouseMoved(evt);
-            }
-        });
-        btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnHoaDonMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlHoaDonLayout = new javax.swing.GroupLayout(pnlHoaDon);
-        pnlHoaDon.setLayout(pnlHoaDonLayout);
-        pnlHoaDonLayout.setHorizontalGroup(
-            pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHoaDonLayout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
-                    .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        pnlHoaDonLayout.setVerticalGroup(
-            pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 64, Short.MAX_VALUE)
-            .addGroup(pnlHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(btnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
-        );
-
         pnlThongKe.setBackground(new java.awt.Color(46, 62, 78));
         pnlThongKe.setPreferredSize(new java.awt.Dimension(300, 64));
 
@@ -607,7 +567,6 @@ public class HomeFrm extends javax.swing.JFrame {
                     .addComponent(pnlDV_TN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                     .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                     .addComponent(pnlPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                    .addComponent(pnlHoaDon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                     .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(pnlDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -634,10 +593,8 @@ public class HomeFrm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(pnlKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pnlHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(pnlThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlDangXuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(pnlThoat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
@@ -703,14 +660,6 @@ public class HomeFrm extends javax.swing.JFrame {
         pnlKH.setBackground(bgColor);
     }//GEN-LAST:event_btnKhachHangMouseExited
 
-    private void btnHoaDonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseMoved
-        pnlHoaDon.setBackground(changeColor);
-    }//GEN-LAST:event_btnHoaDonMouseMoved
-
-    private void btnHoaDonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseExited
-        pnlHoaDon.setBackground(bgColor);
-    }//GEN-LAST:event_btnHoaDonMouseExited
-
     private void btnThongKeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseMoved
         pnlThongKe.setBackground(changeColor);
     }//GEN-LAST:event_btnThongKeMouseMoved
@@ -756,6 +705,11 @@ public class HomeFrm extends javax.swing.JFrame {
         this.openThueTra();
     }//GEN-LAST:event_btnThueTraPhongActionPerformed
 
+    private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed
+        // TODO add your handling code here:
+        this.openDoiTTNhanVien();
+    }//GEN-LAST:event_btnDoiMKActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -798,7 +752,6 @@ public class HomeFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnDV_TN;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDoiMK;
-    private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnNCC;
     private javax.swing.JButton btnNhanVien;
@@ -819,7 +772,6 @@ public class HomeFrm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDV_TN;
     private javax.swing.JPanel pnlDangXuat;
     private javax.swing.JPanel pnlDoiMK;
-    private javax.swing.JPanel pnlHoaDon;
     private javax.swing.JPanel pnlKH;
     private javax.swing.JPanel pnlNV;
     private javax.swing.JPanel pnlNhaCungCap;
@@ -894,6 +846,10 @@ public class HomeFrm extends javax.swing.JFrame {
 //            }
 //        });
 //    }
+    private void openDoiTTNhanVien() {
+        XForm.openChildFrm(this, desMain, new ThongTinNhanVienFrm(desMain));
+    }
+
     private void openNhaCungCap() {
         XForm.openChildFrm(this, desMain, new NhaCungCapFrm(desMain));
     }

@@ -33,6 +33,8 @@ public class LoginDialog extends javax.swing.JDialog {
 
     private JDesktopPane desktop = new JDesktopPane();
 
+    private String user = null;
+
     /**
      * Creates new form LoginDialog
      */
@@ -368,7 +370,7 @@ public class LoginDialog extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
 
-    private void login() {
+    private String login() {
         String[] title = new String[]{"Tên đăng nhập", "Mật khẩu"};
         if (Validator.checkBlack(this, title, edtTenDangNhap, edtMatKhau)) {
             String user = edtTenDangNhap.getText().trim();
@@ -387,7 +389,7 @@ public class LoginDialog extends javax.swing.JDialog {
                 }
             }
         }
-
+        return user;
     }
 
     private void forgotPassword() {
