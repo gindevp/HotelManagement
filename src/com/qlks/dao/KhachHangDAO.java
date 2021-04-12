@@ -25,11 +25,14 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
     private String selectByKeywordSql = "select * from khachhang where tenkh like ?";
     private String selectAllCmnd = "select * from khachhang where cmnd = ?";
     private String selectByIdSql = "select * from khachhang where makh = ?";
-    private String selectCmndsSql = "select cmnd from khachhang";
-    private String selectSdtsSql = "select sdt from khachhang";
-    private String selectBySdtOrCmndSql = "select * from khachhang a where "
-            + "not exists (select * from hoadon b where a.MAKH = b.MAKH and "
-            + "trangthai = 0) and (sdt = ? or cmnd = ?)";
+
+    private String selectCmndSql = "select cmnd from khachhang";
+    private String selectCmndNotLikeSql = "select cmnd from khachhang where cmnd not like ?";
+
+    private String selectSdtSql = "select sdt from khachhang";
+    private String selectSdtNotLikeSql = "select sdt from khachhang where sdt not like ?";
+
+    private String selectBySdtOrCmndSql = "select * from khachhang where sdt = ? or cmnd = ?";
 
     @Override
     public boolean insert(KhachHang entity) {
@@ -44,16 +47,6 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
     @Override
     public boolean delete(Integer key) {
         return XJdbc.update(deleteSql, key);
-    }
-
-    public boolean isExistsSdt(String key) {
-        Object sdt = XJdbc.value(selectAllSdt, key);
-        return sdt != null ? true : false;
-    }
-
-    public boolean isExistsCmnd(String key) {
-        Object cmnd = XJdbc.value(selectAllCmnd, key);
-        return cmnd != null ? true : false;
     }
 
     @Override
@@ -71,12 +64,20 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
         return list.size() > 0 ? list.get(0) : null;
     }
 
-    public List<String> selectCmnds() {
-        return selectColumn(selectCmndsSql);
+    public List<String> selectCmnd() {
+        return selectColumn(selectCmndSql);
     }
 
-    public List<String> selectSdts() {
-        return selectColumn(selectSdtsSql);
+    public List<String> selectCmnd(KhachHang entity) {
+        return selectColumn(selectCmndNotLikeSql, entity.getCmnd());
+    }
+
+    public List<String> selectSdt() {
+        return selectColumn(selectSdtSql);
+    }
+
+    public List<String> selectSdt(KhachHang entity) {
+        return selectColumn(selectSdtNotLikeSql, entity.getSdt());
     }
 
     public KhachHang selectBySdtOrCmnd(String key) {

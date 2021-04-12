@@ -33,12 +33,14 @@ public class GiaFrm extends javax.swing.JInternalFrame {
     private LoaiGiaDAO lgdao = new LoaiGiaDAO();
     private LoaiPhongDAO lpdao = new LoaiPhongDAO();
     private int index = -1;
+    private JDesktopPane des;
 
     /**
      * Creates new form LoaiPhong
      */
-    public GiaFrm() {
+    public GiaFrm(JDesktopPane des) {
         initComponents();
+        this.des = des;
         this.init();
     }
 
@@ -71,6 +73,7 @@ public class GiaFrm extends javax.swing.JInternalFrame {
         btnLast = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txtDonGia = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -104,7 +107,7 @@ public class GiaFrm extends javax.swing.JInternalFrame {
         cboLoaiPhong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnNew.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnNew.setText("Thêm mớ loại giá");
+        btnNew.setText("Thêm mới loại giá");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -230,6 +233,14 @@ public class GiaFrm extends javax.swing.JInternalFrame {
 
         txtDonGia.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButton1.setText("Xem chi tiết loại giá");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -249,7 +260,9 @@ public class GiaFrm extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addComponent(txtDonGia)
                             .addComponent(btnNew))
-                        .addGap(142, 142, 142)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnInsert, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,7 +292,9 @@ public class GiaFrm extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboLoaiGia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboLoaiGia, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -291,7 +306,7 @@ public class GiaFrm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDonGia, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,6 +399,10 @@ public class GiaFrm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tblMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.openLoaiGia();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
@@ -397,6 +416,7 @@ public class GiaFrm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cboLoaiGia;
     private javax.swing.JComboBox<String> cboLoaiPhong;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -573,6 +593,10 @@ public class GiaFrm extends javax.swing.JInternalFrame {
     }
 
     private void addNew() {
+    }
+
+    private void openLoaiGia() {
+        XForm.openChildFrm(this, des, new LoaiGiaFrm(des));
     }
 
 }

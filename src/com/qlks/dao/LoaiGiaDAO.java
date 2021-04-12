@@ -17,6 +17,9 @@ import java.util.List;
  */
 public class LoaiGiaDAO extends ManageDAO<LoaiGia, Integer> {
 
+    private String insertSql = "insert loaigia values (?)";
+    private String updateSql = "update loaigia set tenlg = ? where malg = ?";
+    private String deleteSql = "delete from loaigia where malg = ?";
     private String selectAllSql = "select * from loaigia";
     private String selectByMaLpSql = "select a.MALG, a.TENLG from LOAIGIA a\n"
             + "join LOAIPHONG_LOAIGIA b on a.MALG = b.MALG\n"
@@ -24,19 +27,22 @@ public class LoaiGiaDAO extends ManageDAO<LoaiGia, Integer> {
     private String selectByNameSql = "select * from loaigia where tenlg  = ?";
     private String selectByIdSql = "select * from loaigia where malg = ?";
 
+    private String selectTenSql = "select tenlg from loaigia";
+    private String selectTenNotLikeSql = "select tenlg from loaigia where tenlg not like ?";
+
     @Override
     public boolean insert(LoaiGia entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return XJdbc.update(insertSql, entity.getTen());
     }
 
     @Override
     public boolean update(LoaiGia entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return XJdbc.update(updateSql, entity.getTen(), entity.getMa());
     }
 
     @Override
     public boolean delete(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return XJdbc.update(deleteSql, key);
     }
 
     @Override
@@ -59,6 +65,14 @@ public class LoaiGiaDAO extends ManageDAO<LoaiGia, Integer> {
         return list.size() > 0 ? list.get(0) : null;
     }
 
+    public List<String> selectTen() {
+        return selectColumn(selectTenSql);
+    }
+
+    public List<String> selectTen(LoaiGia entity) {
+        return selectColumn(selectTenNotLikeSql, entity.getTen());
+    }
+
     @Override
     protected List<LoaiGia> selectBySql(String sql, Object... args) {
         List<LoaiGia> list = new ArrayList<>();
@@ -67,6 +81,19 @@ public class LoaiGiaDAO extends ManageDAO<LoaiGia, Integer> {
             while (rs.next()) {
                 LoaiGia g = new LoaiGia(rs.getInt(1), rs.getString(2));
                 list.add(g);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<String> selectColumn(String sql, Object... args) {
+        List<String> list = new ArrayList<>();
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                String item = rs.getString(1);
+                list.add(item);
             }
         } catch (Exception e) {
         }

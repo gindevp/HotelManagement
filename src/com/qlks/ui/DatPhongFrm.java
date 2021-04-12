@@ -957,27 +957,31 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboLoaiGia.getModel();
         model.removeAllElements();
         List<LoaiGia> list = lgdao.selectAll();
-        list.forEach(i -> {
-            model.addElement(i);
-        });
+        for (LoaiGia item : list) {
+            model.addElement(item);
+        }
+
     }
 
     private void fillCboLoaiPhong() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboLoaiPhong.getModel();
         model.removeAllElements();
         List<LoaiPhong> list = lpdao.selectAll();
-        list.forEach((item -> {
-            model.addElement(item);
-        }));
+
+        for (LoaiPhong lp : list) {
+            model.addElement(lp);
+        }
+
     }
 
     private void fillCboDichVu() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboDichVu.getModel();
         model.removeAllElements();
         List<DichVu> list = dvdao.selectEnable();
-        list.forEach((item -> {
-            model.addElement(item);
-        }));
+        for (DichVu dv : list) {
+            model.addElement(dv);
+        }
+
     }
 
     private void searchRoom() {
@@ -1066,9 +1070,9 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         String[] title = new String[]{"Tên khách hàng", "CMND", "SDT", "Địa Chỉ", "Quốc tịch"};
         if (Validator.checkBlack(this, title, txtTen, txtCmnd, txtSdt, txtDiaChi, txtQuocTich)
                 && Validator.checkIdentityCard(txtCmnd)
-                && Validator.isExists(this, txtCmnd, khdao.selectCmnds(), "CMND")
+                && Validator.isExists(this, txtCmnd, khdao.selectCmnd(), "CMND")
                 && Validator.checkPhoneNum(this, txtSdt)
-                && Validator.isExists(this, txtSdt, khdao.selectSdts(), "SDT")) {
+                && Validator.isExists(this, txtSdt, khdao.selectSdt(), "SDT")) {
             String ten = txtTen.getText().trim();
             String cmnd = txtCmnd.getText().trim();
             String sdt = txtSdt.getText().trim();

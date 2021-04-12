@@ -165,6 +165,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         rdoTrong.setBackground(new java.awt.Color(255, 255, 255));
         bgrTrangThai.add(rdoTrong);
         rdoTrong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        rdoTrong.setSelected(true);
         rdoTrong.setText("Trống");
 
         rdoDangThue.setBackground(new java.awt.Color(255, 255, 255));
@@ -592,7 +593,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
             model.addRow(new Object[]{
                 item.getSoPhong(),
                 item.getSucChua(),
-                item.isTrangThai() ? "Đang Thuê" : "Trống",
+                item.isTrangThai() ? "Đang thuê" : "Trống",
                 item.getMaLP()
             });
         }
@@ -653,7 +654,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
             p = new Phong(
                     txtSo.getText().trim(),
                     Integer.parseInt(txtSucChua.getText().trim()),
-                    rdoTrong.isSelected() ? true : false,
+                    rdoTrong.isSelected() ? false : true,
                     lp.getMa()
             );
         }

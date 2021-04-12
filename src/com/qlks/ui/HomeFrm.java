@@ -933,7 +933,7 @@ public class HomeFrm extends javax.swing.JFrame {
     }
 
     private void openGia() {
-        XForm.openChildFrm(this, desMain, new GiaFrm());
+        XForm.openChildFrm(this, desMain, new GiaFrm(desMain));
     }
 
 }

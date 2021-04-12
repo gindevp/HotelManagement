@@ -45,6 +45,8 @@ public class LoginDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.init();
+        edtTenDangNhap.setText("ph01");
+        edtMatKhau.setText("hungnn");
     }
 
     /**
