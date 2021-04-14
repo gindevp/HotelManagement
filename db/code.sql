@@ -369,31 +369,3 @@ CREATE TABLE HDPHONG
 GO
 DELETE FROM HDPHONG
 DBCC CHECKIDENT ('HDPHONG', RESEED, 0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
