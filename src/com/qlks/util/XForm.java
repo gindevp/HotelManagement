@@ -18,17 +18,13 @@ import javax.swing.JInternalFrame;
 public class XForm {
 
     public static void openChildFrm(Component parent, JDesktopPane des, JInternalFrame frm) {
-        if (!com.qlks.util.Auth.isLogin()) {
-            MsgBox.alert(parent, "Vui lòng đăng nhập");
-        } else {
-            for (JInternalFrame frmItem : des.getAllFrames()) {
-                frmItem.dispose();
-            }
-            frm.setLocation((des.getWidth() - frm.getWidth()) / 2,
-                    (des.getHeight() - 20) / 2 - frm.getHeight() / 2 - 20);
-            des.add(frm);
-            frm.setVisible(true);
+        for (JInternalFrame frmItem : des.getAllFrames()) {
+            frmItem.dispose();
         }
+        frm.setLocation((des.getWidth() - frm.getWidth()) / 2,
+                (des.getHeight() - 20) / 2 - frm.getHeight() / 2 - 20);
+        des.add(frm);
+        frm.setVisible(true);
     }
 
     public static void closeFrame(JFrame frm) {

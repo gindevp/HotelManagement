@@ -495,6 +495,11 @@ public class HomeFrm extends javax.swing.JFrame {
         btnDangXuat.setIconTextGap(16);
         btnDangXuat.setMargin(new java.awt.Insets(4, 16, 4, 16));
         btnDangXuat.setPreferredSize(new java.awt.Dimension(121, 32));
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDangXuatLayout = new javax.swing.GroupLayout(pnlDangXuat);
         pnlDangXuat.setLayout(pnlDangXuatLayout);
@@ -710,6 +715,11 @@ public class HomeFrm extends javax.swing.JFrame {
         this.openDoiTTNhanVien();
     }//GEN-LAST:event_btnDoiMKActionPerformed
 
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        Auth.clean();
+        this.openLogin();
+    }//GEN-LAST:event_btnDangXuatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -821,7 +831,13 @@ public class HomeFrm extends javax.swing.JFrame {
             mess = "Good night, ";
             iconPath += "night_landscape_24px.png";
         }
-        lblName.setText(mess + com.qlks.util.Auth.user.getTen());
+        String name = "";
+        try {
+            name = Auth.user.getTen();
+        } catch (Exception e) {
+            name = "Some one :)";
+        }
+        lblName.setText(mess + name);
         lblName.setIcon(new ImageIcon(XImage.class.getResource(iconPath)));
     }
 
@@ -847,7 +863,12 @@ public class HomeFrm extends javax.swing.JFrame {
 //        });
 //    }
     private void openDoiTTNhanVien() {
-        XForm.openChildFrm(this, desMain, new ThongTinNhanVienFrm(desMain));
+        if (Auth.isLogin()) {
+            XForm.openChildFrm(this, desMain, new ThongTinNhanVienFrm(desMain));
+
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }
 
     private void openNhaCungCap() {
@@ -855,27 +876,60 @@ public class HomeFrm extends javax.swing.JFrame {
     }
 
     private void openDichVuTienNghi() {
-        XForm.openChildFrm(this, desMain, new DichVuTienNghiFrm(desMain));
+
+        if (Auth.isLogin()) {
+            if (Auth.isRoomStaff() || Auth.isManager()) {
+                XForm.openChildFrm(this, desMain, new DichVuTienNghiFrm(desMain));
+            } else {
+                MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }
 
     private void openKhachHang() {
-        if (Auth.isReceptionist() || Auth.isManager()) {
-            XForm.openChildFrm(this, desMain, new KhachHangFrm(desMain));
+
+        if (Auth.isLogin()) {
+            if (Auth.isReceptionist() || Auth.isManager()) {
+                XForm.openChildFrm(this, desMain, new KhachHangFrm(desMain));
+            } else {
+                MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
+            }
         } else {
-            MsgBox.alert(this, "Không có quyền xem");
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
 
     private void openPhong() {
-        XForm.openChildFrm(this, desMain, new PhongFrm(desMain));
+
+        if (Auth.isLogin()) {
+            if (Auth.isRoomStaff() || Auth.isManager()) {
+                XForm.openChildFrm(this, desMain, new GiaFrm(desMain));
+            } else {
+                MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }
 
     private void openNhanVien() {
-        XForm.openChildFrm(this, desMain, new NhanVienFrm(desMain));
+
+        if (Auth.isLogin()) {
+            if (Auth.isManager()) {
+                XForm.openChildFrm(this, desMain, new NhanVienFrm(desMain));
+            } else {
+                MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }
 
     private void openLogin() {
         new LoginDialog(this, true).setVisible(true);
+        this.showName();
     }
 
     private void exit() {
@@ -885,11 +939,27 @@ public class HomeFrm extends javax.swing.JFrame {
     }
 
     private void openThueTra() {
-        XForm.openChildFrm(this, desMain, new DatPhongFrm());
+        if (Auth.isLogin()) {
+            if (Auth.isReceptionist() || Auth.isManager()) {
+                XForm.openChildFrm(this, desMain, new DatPhongFrm());
+            } else {
+                MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }
 
     private void openGia() {
-        XForm.openChildFrm(this, desMain, new GiaFrm(desMain));
+        if (Auth.isLogin()) {
+            if (Auth.isAccountant() || Auth.isManager()) {
+                XForm.openChildFrm(this, desMain, new GiaFrm(desMain));
+            } else {
+                MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }
 
 }

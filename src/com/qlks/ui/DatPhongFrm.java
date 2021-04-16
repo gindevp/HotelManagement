@@ -869,6 +869,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         if (evt.getClickCount() == 2) {
             this.iDangThue = tblDangThue.getSelectedRow();
             this.updateStatus();
+            this.editTblDangThue();
         }
     }//GEN-LAST:event_tblDangThueMouseClicked
 
@@ -999,12 +1000,18 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         List<Phong> list = pdao.selectByLpAndSucChua(loaiPhong.getMa(), sucChua);
         LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
         LoaiPhongLoaiGia lplg = (LoaiPhongLoaiGia) lplgdao.selectByLpAndLg(loaiPhong.getMa(), lg.getMa());
-        list.forEach((item -> {
+//        list.forEach((item -> {
+//            model.addRow(new Object[]{
+//                item.getSoPhong(),
+//                lplg.getDonGia()
+//            });
+//        }));
+        for (Phong p : list) {
             model.addRow(new Object[]{
-                item.getSoPhong(),
+                p.getSoPhong(),
                 lplg.getDonGia()
             });
-        }));
+        }
     }
 
     private void chooseRoom() {
@@ -1028,13 +1035,19 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
         LoaiPhongLoaiGia lplg = (LoaiPhongLoaiGia) lplgdao.selectByLpAndLg(loaiPhong.getMa(), lg.getMa());
 
-        roomList.forEach(i -> {
-            model.addRow(new Object[]{
-                i.getSoPhong(),
-                lplg.getDonGia()
+//        roomList.forEach(i -> {
+//            model.addRow(new Object[]{
+//                i.getSoPhong(),
+//                lplg.getDonGia()
 //                i.getDonGia()
+//            });
+//        });
+        for (Phong p : roomList) {
+            model.addRow(new Object[]{
+                p.getSoPhong(),
+                lplg.getDonGia()
             });
-        });
+        }
     }
 
     private void deleteRoom() {
@@ -1303,21 +1316,35 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         model.setRowCount(0);
         List<HoaDon> list = hddao.selectDsThue(txtKeyword.getText().trim());
 
-        list.forEach(i -> {
-            Integer maKh = i.getMaKh();
+//        list.forEach(i -> {
+//            Integer maKh = i.getMaKh();
+//            KhachHang kh = khdao.selectByID(maKh);
+//            LoaiGia lg = lgdao.selectByID(i.getMaLg());
+//            model.addRow(new Object[]{
+//                i.getMa(),
+//                i.getNgayThue(),
+//                i.getNgayThanhToan(),
+//                kh.getTen(),
+//                kh.getCmnd(),
+//                kh.getSdt(),
+//                lg.getTen()
+//            }
+//            );
+//        });
+        for (HoaDon hd : list) {
+            Integer maKh = hd.getMaKh();
             KhachHang kh = khdao.selectByID(maKh);
-            LoaiGia lg = lgdao.selectByID(i.getMaLg());
+            LoaiGia lg = lgdao.selectByID(hd.getMaLg());
             model.addRow(new Object[]{
-                i.getMa(),
-                i.getNgayThue(),
-                i.getNgayThanhToan(),
+                hd.getMa(),
+                hd.getNgayThue(),
+                hd.getNgayThanhToan(),
                 kh.getTen(),
                 kh.getCmnd(),
                 kh.getSdt(),
                 lg.getTen()
-            }
-            );
-        });
+            });
+        }
     }
 
     private void makePay() {
@@ -1360,6 +1387,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
 //                MsgBox.alert(this, "Thanh toán không thành công!");
 //            }
 //        }
+    }
+
+    private void editTblDangThue() {
+        int ma = Integer.parseInt(tblDangThue.getValueAt(this.iDangThue, 0).toString());
+        HoaDon hd = hddao.selectByID(ma);
     }
 
 }
