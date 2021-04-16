@@ -720,17 +720,15 @@ public class HomeFrm extends javax.swing.JFrame {
         this.openDoiTTNhanVien();
     }//GEN-LAST:event_btnDoiMKActionPerformed
 
-
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         this.openThongKe();
     }
 
-    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {
         Auth.clean();
         this.openLogin();
     }
-
 
     /**
      * @param args the command line arguments
@@ -917,7 +915,7 @@ public class HomeFrm extends javax.swing.JFrame {
 
         if (Auth.isLogin()) {
             if (Auth.isRoomStaff() || Auth.isManager()) {
-                XForm.openChildFrm(this, desMain, new GiaFrm(desMain));
+                XForm.openChildFrm(this, desMain, new PhongFrm(desMain));
             } else {
                 MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
             }
@@ -974,7 +972,7 @@ public class HomeFrm extends javax.swing.JFrame {
         }
     }
 
-    private void openThongKe(){
+    private void openThongKe() {
         XForm.openChildFrm(this, desMain, new ThongKeFrm());
     }
 }

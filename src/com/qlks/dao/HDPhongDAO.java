@@ -30,6 +30,10 @@ public class HDPhongDAO extends ManageDAO<HDPhong, Integer> {
             + "join LOAIPHONG_LOAIGIA e on d.MALP = e.MALP\n"
             + "where a.MAHD = ? and e.MALG = ?";
 
+    private String selectSoPhongByHoaDonSql = "select sophong from hdphong where mahd = ?";
+    
+    private String deleteByHdSql = "{call sp_xoahdp(?)}";
+    
     @Override
     public boolean insert(HDPhong entity) {
         return XJdbc.update(insertSql, entity.getMaHd(), entity.getSoPhong());
@@ -63,6 +67,14 @@ public class HDPhongDAO extends ManageDAO<HDPhong, Integer> {
 
     public List<Object> selectDgByHdLg(Integer maHd, Integer maLg) {
         return XJdbc.column(selectDgByHdLgSql, maHd, maLg);
+    }
+    
+    public List<Object> selectSoPhongByHoaDon(Integer maHd) {
+        return XJdbc.column(selectSoPhongByHoaDonSql, maHd);
+    }
+    
+    public boolean deleteByHd(Integer maHd) {
+        return XJdbc.update(deleteByHdSql, maHd);
     }
 
     @Override

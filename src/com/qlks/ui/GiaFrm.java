@@ -14,6 +14,7 @@ import com.qlks.dao.LoaiPhongLoaiGiaDAO;
 import com.qlks.entity.LoaiGia;
 import com.qlks.entity.LoaiPhongLoaiGia;
 import com.qlks.util.Auth;
+import com.qlks.util.FormatData;
 import com.qlks.util.XForm;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -462,7 +463,7 @@ public class GiaFrm extends javax.swing.JInternalFrame {
             model.addRow(new Object[]{
                 i.getId(),
                 lp.getTen(),
-                i.getDonGia()
+                FormatData.formatMoney(i.getDonGia())
             });
         });
     }

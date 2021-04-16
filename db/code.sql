@@ -374,7 +374,7 @@ GO
 DELETE FROM HDPHONG
 DBCC CHECKIDENT ('HDPHONG', RESEED, 0)
 
------------------------------------------
+-----------------------------------------sp_thanhtoan
 if OBJECT_ID('sp_thanhtoanhd') is not null
 drop proc sp_thanhtoanhd
 go
@@ -463,3 +463,88 @@ begin catch
 	rollback tran
 end catch
 end
+
+----------------------------sp_xoahdp
+if OBJECT_ID('sp_xoahdp') is not null
+	drop proc sp_xoahdp
+go
+create proc sp_xoahdp @mahd int
+as
+begin
+begin tran
+begin try
+	delete from HDPHONG where MAHD = @mahd
+	update phong
+	set TRANGTHAI = 0
+	where phong.SOPHONG in (select SOPHONG from HDPHONG where MAHD = @mahd)
+	commit tran
+end try
+begin catch
+	rollback tran
+end catch
+end
+go
+
+----------------------------------sp_xoahddv
+
+if OBJECT_ID('sp_xoahddv') is not null
+	drop proc sp_xoahddv
+go
+create proc sp_xoahddv @mahd int
+as
+begin
+begin tran
+begin try
+	delete from HDDICHVU where MAHD = @mahd
+	commit tran
+end try
+begin catch
+	rollback tran
+end catch
+end
+go
+
+---------------------------------------sp_topphong
+if OBJECT_ID('sp_topphong') is not null
+	drop proc sp_topphong
+go
+create proc sp_topphong 
+as
+begin
+begin tran
+begin try
+	select a.SOPHONG, 
+		sum(case b.MALG
+		when 1 then case 
+			when DATEDIFF(HOUR, ngaythue, ngaytt) <= 2 then 2 * DONGIA
+			else 2 * DONGIA + (DATEDIFF(HOUR, ngaythue, ngaytt) - 2) * 20
+			end
+		when 2 then case 
+			when DATEPART(hour, ngaytt) <= 10 and DATEDIFF(day, ngaythue, ngaytt) > 0 then DONGIA + (DATEPART(hour, ngaytt) - 10) * 20
+			else DONGIA
+			end
+		when 3 then case
+			when DATEDIFF(day, ngaythue, ngaytt) < 2 then DONGIA
+			else DATEDIFF(day, ngaythue, ngaytt) * DONGIA
+			end
+		end)
+	as gia
+	from HDPHONG a
+	join HOADON b on a.MAHD = b.MAHD
+	join phong c on a.SOPHONG = c.SOPHONG
+	join LOAIPHONG d on c.MALP = d.MALP
+	join LOAIPHONG_LOAIGIA e on d.MALP = e.MALP
+	where b.MALG = e.MALG
+	group by a.SOPHONG
+	order by gia desc
+	commit tran
+end try
+begin catch
+	rollback tran
+end catch
+end
+go
+
+exec sp_topphong
+
+

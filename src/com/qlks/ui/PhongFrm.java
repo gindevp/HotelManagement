@@ -13,6 +13,7 @@ import com.qlks.entity.LoaiGia;
 import com.qlks.entity.LoaiPhong;
 import com.qlks.entity.LoaiPhongLoaiGia;
 import com.qlks.entity.Phong;
+import com.qlks.util.FormatData;
 import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
 import com.qlks.util.XForm;
@@ -580,7 +581,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         LoaiPhong lp = (LoaiPhong) cboLoaiPhong.getSelectedItem();
         if (lp != null && lg != null) {
             LoaiPhongLoaiGia lplg = lplgdao.selectByLpAndLg(lp.getMa(), lg.getMa());
-            lblDonGia.setText(lplg.getDonGia() + "");
+            lblDonGia.setText(FormatData.formatMoney(lplg.getDonGia()));
         }
     }
 

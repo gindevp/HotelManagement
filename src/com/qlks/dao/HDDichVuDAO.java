@@ -27,7 +27,7 @@ public class HDDichVuDAO extends ManageDAO<HDDichVu, Integer> {
             + "join HDDICHVU b on a.MAHD = b.MAHD\n"
             + "join DICHVU c on b.MADV = c.MADV\n"
             + "where a.MAHD = ?";
-
+    private String deleteByHdSql = "{call sp_xoahddv(?)}";
     @Override
 
     public boolean insert(HDDichVu entity) {
@@ -59,6 +59,10 @@ public class HDDichVuDAO extends ManageDAO<HDDichVu, Integer> {
         return selectBySql(selectByMaHdSql, key);
     }
 
+    public boolean deleteByHd(Integer maHd) {
+        return XJdbc.update(deleteByHdSql, maHd);
+    }
+    
     public List<Object> selectDgByHd(Integer maHd) {
         return XJdbc.column(selectDgByHdSql, maHd);
     }
