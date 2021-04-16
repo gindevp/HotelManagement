@@ -18,7 +18,6 @@ CREATE TABLE BOPHAN
 (
 	MABP	VARCHAR(10) NOT NULL PRIMARY KEY,
 	TENBP	NVARCHAR(50) NOT NULL
-	UNIQUE(TENBP)
 )
 GO
 
@@ -84,16 +83,15 @@ CREATE TABLE DICHVU
 	TENDV		NVARCHAR(50) NOT NULL,
 	DONGIA		MONEY NOT NULL CHECK(DONGIA >= 0),
 	MOTA		NVARCHAR(500),
-	TRANGTHAI	BIT NOT NULL
-	UNIQUE(TENDV)
+	TRANGTHAI	BIT NOT NULL DEFAULT 1
 )
 GO
 
 DELETE FROM DICHVU
 DBCC CHECKIDENT ('DICHVU', RESEED, 0)
-INSERT DICHVU VALUES ('Make-up room service', 100, N'Make-up room service là dịch vụ làm phòng. Trong dịch vụ này, người làm phòng sẽ thay drap giường, khăn tắm và các đồ dùng trong phòng ngủ.', 1)
-INSERT DICHVU VALUES ('Turndown service', 200, N'Là dịch vụ chỉnh trang phòng buổi tối. Người làm phòng sẽ trải thẳng lại drap giường, gấp nếp giường, đặt cành hoa hoặc thiệp chúc ngủ ngon lên giường..', 1)
-INSERT DICHVU VALUES ('Laundry service', 500, N'Laundry service là dịch vụ giặt ủi trong khách sạn.', 1)
+INSERT DICHVU VALUES ('Make-up room service', 20000, N'Make-up room service là dịch vụ làm phòng. Trong dịch vụ này, người làm phòng sẽ thay drap giường, khăn tắm và các đồ dùng trong phòng ngủ.', 1)
+INSERT DICHVU VALUES ('Turndown service', 40000, N'Là dịch vụ chỉnh trang phòng buổi tối. Người làm phòng sẽ trải thẳng lại drap giường, gấp nếp giường, đặt cành hoa hoặc thiệp chúc ngủ ngon lên giường..', 1)
+INSERT DICHVU VALUES ('Laundry service', 50000, N'Laundry service là dịch vụ giặt ủi trong khách sạn.', 1)
 SELECT * FROM DICHVU
 GO
 
@@ -124,7 +122,6 @@ CREATE TABLE LOAIGIA
 ( 
 	MALG	INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	TENLG	NVARCHAR(50) NOT NULL
-	UNIQUE(TENLG)
 )
 GO
 DELETE FROM LOAIGIA
@@ -144,7 +141,6 @@ CREATE TABLE LOAIPHONG
 	MALP		VARCHAR(10) NOT NULL PRIMARY KEY,
 	TENLP		NVARCHAR(50) NOT NULL,
 	MOTA		NVARCHAR(500) 
-	UNIQUE(TENLP)
 )
 GO
 
@@ -306,9 +302,17 @@ GO
 
 DELETE FROM KHACHHANG
 DBCC CHECKIDENT ('KHACHHANG', RESEED, 0)
-INSERT KHACHHANG VALUES (N'Customer 1', '122122121', '0987654001', 1, N'Hà Nội', N'Việt Nam')
-INSERT KHACHHANG VALUES (N'Customer 2', '122122122', '0987654002', 0, N'Hồ Chí Minh', N'Việt Nam')
-INSERT KHACHHANG VALUES (N'Customer 3', '122122123', '0987654003', 1, N'Đà Nẵng', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Trần Thị Quỳnh', '122122121', '0987654001', 0, N'Hà Nội', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Trần Ngọc Hải', '122122122', '0987654002', 0, N'Hồ Chí Minh', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Đỗ Trà My', '122122123', '0987654003', 1, N'Đà Nẵng', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Nguyễn Bá Quang', '122122124', '0987654004', 1, N'Hải Phòng', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Nguyễn Bảo Linh', '122122125', '0987654005', 0, N'Hải Dương', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Vũ Thị Thu', '122122126', '0987654006', 0, N'Bắc Nih', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Trần Thị Ngọc Diệp', '122122127', '0987654007', 0, N'Hà Nam', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Nguyễn Việt Anh', '122122128', '0987654008', 1, N'Quảng Ninh', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Nông Thị Ngoan', '122122129', '0987654009', 0, N'Bắc Giang', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Ngô Hà Vy', '122122130', '0987654010', 0, N'Hà Nội', N'Việt Nam')
+
 GO
 SELECT * FROM KHACHHANG
 
@@ -326,9 +330,9 @@ CREATE TABLE HOADON
 	MALG		INT NOT NULL,
 	MAKH		INT NOT NULL,
 	MANV		VARCHAR(10) NOT NULL
-	FOREIGN KEY (MALG) REFERENCES LOAIGIA(MALG) ON UPDATE CASCADE,
-	FOREIGN KEY (MAKH) REFERENCES KHACHHANG(MAKH) ON UPDATE CASCADE,
-	FOREIGN KEY (MANV) REFERENCES NHANVIEN(MANV) ON UPDATE CASCADE
+	FOREIGN KEY (MALG) REFERENCES LOAIGIA(MALG),
+	FOREIGN KEY (MAKH) REFERENCES KHACHHANG(MAKH),
+	FOREIGN KEY (MANV) REFERENCES NHANVIEN(MANV)
 )
 GO
 
@@ -369,3 +373,93 @@ CREATE TABLE HDPHONG
 GO
 DELETE FROM HDPHONG
 DBCC CHECKIDENT ('HDPHONG', RESEED, 0)
+
+-----------------------------------------
+if OBJECT_ID('sp_thanhtoanhd') is not null
+drop proc sp_thanhtoanhd
+go
+create proc sp_thanhtoanhd @mahd int, @malg int
+as
+begin
+begin try
+begin tran
+	update HOADON set NGAYTT = getdate() where MAHD = @mahd
+	declare @gia money, @tienphong money, @tiendv money, @tongNgayThue int, @tongGioThue int
+
+	select @gia =  sum(dongia) from hoadon a
+						join HDPHONG b on a.MAHD = b.MAHD
+						join PHONG c on b.SOPHONG = c.SOPHONG
+						join LOAIPHONG d on c.MALP = d.MALP
+						join LOAIPHONG_LOAIGIA e on d.MALP = e.MALP
+						where a.MAHD = @mahd and e.MALG = @malg
+	select @tongNgayThue = DATEDIFF(day, ngaythue, ngaytt) from hoadon where MAHD = @mahd
+	select @tongGioThue = DATEDIFF(HOUR, ngaythue, ngaytt) from hoadon where MAHD = @mahd
+	if @malg = 1
+	begin
+		if @tongGioThue <= 2
+		begin
+			select @tienphong = 2 * @gia
+		end
+		else
+		begin
+			select @tienphong = 2 * @gia + (@tongGioThue - 2) * 20
+		end
+	end
+	else
+	begin
+		if @malg = 2
+		begin
+			declare @giotre_quadem int
+			select @giotre_quadem = DATEPART(hour, ngaytt) from hoadon where MAHD = @mahd
+			if @giotre_quadem >= 10 and @tongNgayThue > 0
+			begin
+				select @tienphong = @gia + (@giotre_quadem - 10) * 20
+			end
+			else
+			begin
+				select @tienphong = @gia
+			end
+		end
+		else
+		begin 
+			if @malg = 3
+			begin
+				if @tongNgayThue < 2
+				begin
+					select @tienphong = @gia
+				end
+				else
+				begin
+					select @tienphong = @tongNgayThue * @gia
+				end
+			end
+		end
+	end
+	if (select count(*) from HDDICHVU where MAHD = @mahd) > 0
+	begin
+		select @tiendv = sum(a.SOLUONG * b.DONGIA) from HDDICHVU a
+					join DICHVU b on a.MADV = b.MADV
+					where MAHD = @mahd
+					group by MAHD
+	end
+	else
+	begin
+		select @tiendv = 0
+	end
+
+	select @tienphong, @tiendv
+	declare @tongtien money
+
+	update HOADON
+	set TONGTIEN = (@tienphong + @tiendv), TRANGTHAI = 1 where MAHD = @mahd
+		
+	update phong
+	set TRANGTHAI = 0
+	where phong.SOPHONG in (select sophong from HDPHONG 
+								where phong.SOPHONG = HDPHONG.SOPHONG and MAHD = @mahd)
+commit tran
+end try
+begin catch
+	rollback tran
+end catch
+end

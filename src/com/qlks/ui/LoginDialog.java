@@ -47,8 +47,6 @@ public class LoginDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.init();
-        edtTenDangNhap.setText("ph01");
-        edtMatKhau.setText("hungnn");
     }
 
     /**
@@ -298,7 +296,7 @@ public class LoginDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDangKyActionPerformed
 
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
-        this.close();
+        this.dispose();
     }//GEN-LAST:event_lblCloseMouseClicked
 
     private void chkShowPassItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkShowPassItemStateChanged

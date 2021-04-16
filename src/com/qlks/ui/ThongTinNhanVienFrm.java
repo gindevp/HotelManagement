@@ -145,6 +145,7 @@ public class ThongTinNhanVienFrm extends javax.swing.JInternalFrame {
 
         cboBoPhan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         cboBoPhan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboBoPhan.setEnabled(false);
 
         btnChange.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnChange.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/changeUserBlack_24px_1.png"))); // NOI18N
@@ -404,10 +405,10 @@ public class ThongTinNhanVienFrm extends javax.swing.JInternalFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboBoPhan.getModel();
         model.removeAllElements();
 
-        List<BoPhan> list = bpdao.selectNotLikeSql();
-        list.forEach((i) -> {
-            model.addElement(i);
-        });
+        List<BoPhan> list = bpdao.selectAll();
+        for (BoPhan bp : list) {
+            model.addElement(bp);
+        }
     }
 
     private NhanVien getFormInfor() {

@@ -631,6 +631,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         tbl.setRowSelectionInterval(this.index, this.index);
         this.setForm(p);
         this.updateStatus();
+        tbl.setRowSelectionInterval(this.index, this.index);
     }
 
     private void setForm(Phong p) {
