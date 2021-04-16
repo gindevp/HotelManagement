@@ -5,17 +5,28 @@
  */
 package com.qlks.ui;
 
+import com.qlks.dao.HoaDonDAO;
+import com.qlks.dao.ThongKeDAO;
+import com.qlks.util.FormatData;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author markhyun
  */
 public class ThongKeFrm extends javax.swing.JInternalFrame {
 
+    private HoaDonDAO hddao = new HoaDonDAO();
+    private ThongKeDAO tkdao = new ThongKeDAO();
+    
     /**
      * Creates new form ThongKeFrm
      */
     public ThongKeFrm() {
         initComponents();
+        init();
     }
 
     /**
@@ -38,7 +49,11 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         jLabel37 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl = new javax.swing.JTable();
+        tblTopPhong = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        cboNam_TopPhong = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        cboThang_TopPhong = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl3 = new javax.swing.JTable();
@@ -51,6 +66,8 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         tbl6 = new javax.swing.JTable();
         cboNam3 = new javax.swing.JComboBox<>();
         lblTitle = new javax.swing.JLabel();
+
+        setClosable(true);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -134,8 +151,8 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        tbl.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        tbl.setModel(new javax.swing.table.DefaultTableModel(
+        tblTopPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tblTopPhong.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -151,15 +168,31 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbl.setFillsViewportHeight(true);
-        tbl.setRowHeight(40);
-        jScrollPane1.setViewportView(tbl);
-        if (tbl.getColumnModel().getColumnCount() > 0) {
-            tbl.getColumnModel().getColumn(0).setPreferredWidth(100);
-            tbl.getColumnModel().getColumn(0).setMaxWidth(100);
-            tbl.getColumnModel().getColumn(1).setPreferredWidth(150);
-            tbl.getColumnModel().getColumn(1).setMaxWidth(150);
-        }
+        tblTopPhong.setFillsViewportHeight(true);
+        tblTopPhong.setRowHeight(40);
+        jScrollPane1.setViewportView(tblTopPhong);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel1.setText("Năm");
+
+        cboNam_TopPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboNam_TopPhong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam_TopPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNam_TopPhongActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel2.setText("Tháng:");
+
+        cboThang_TopPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboThang_TopPhong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboThang_TopPhong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboThang_TopPhongActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -167,14 +200,32 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1427, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1427, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboThang_TopPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboNam_TopPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cboNam_TopPhong, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cboThang_TopPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -414,11 +465,25 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_cboNamActionPerformed
 
+    private void cboNam_TopPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNam_TopPhongActionPerformed
+        if (cboNam_TopPhong.getSelectedItem() != null) {
+            this.fillCboThangTopPhong();
+        }
+    }//GEN-LAST:event_cboNam_TopPhongActionPerformed
+
+    private void cboThang_TopPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThang_TopPhongActionPerformed
+        this.fillTblTopPhong();
+    }//GEN-LAST:event_cboThang_TopPhongActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboNam;
     private javax.swing.JComboBox<String> cboNam1;
     private javax.swing.JComboBox<String> cboNam3;
+    private javax.swing.JComboBox<String> cboNam_TopPhong;
+    private javax.swing.JComboBox<String> cboThang_TopPhong;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -434,12 +499,52 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTabbedPane tab;
-    private javax.swing.JTable tbl;
     private javax.swing.JTable tbl1;
     private javax.swing.JTable tbl3;
     private javax.swing.JTable tbl4;
     private javax.swing.JTable tbl6;
+    private javax.swing.JTable tblTopPhong;
     private javax.swing.JTextField txtKeyword1;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        this.fillCboNamTopPhong();
+    }
+
+    private void fillCboNamTopPhong() {
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboNam_TopPhong.getModel();
+        model.removeAllElements();
+        List<Object> list = hddao.selectYear();
+        for (Object i : list) {
+            model.addElement(i);
+        }
+    }
+
+    private void fillCboThangTopPhong() {
+        Integer year = (Integer) cboNam_TopPhong.getSelectedItem();
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboThang_TopPhong.getModel();
+        model.removeAllElements();
+        List<Object> list = hddao.selectMonthByYear(year);
+        for (Object i : list) {
+            model.addElement(i);
+        }
+    }
+
+    private void fillTblTopPhong() {
+        int stt = 1;
+        DefaultTableModel model = (DefaultTableModel) tblTopPhong.getModel();
+        model.setRowCount(0);
+        Integer year = (Integer) cboNam_TopPhong.getSelectedItem();
+        Integer month = (Integer) cboThang_TopPhong.getSelectedItem();
+        List<Object[]> list = tkdao.getTopPhong(year, month);
+        for (Object[] obj : list) {
+            model.addRow(new Object[] {
+                stt,
+                obj[0],
+                FormatData.formatMoney(Double.parseDouble(obj[1].toString()))
+            });
+            stt++;
+        }
+    }
 
 }

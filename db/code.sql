@@ -402,7 +402,7 @@ begin tran
 		end
 		else
 		begin
-			select @tienphong = 2 * @gia + (@tongGioThue - 2) * 20
+			select @tienphong = 2 * @gia + (@tongGioThue - 2) * 20000
 		end
 	end
 	else
@@ -413,7 +413,7 @@ begin tran
 			select @giotre_quadem = DATEPART(hour, ngaytt) from hoadon where MAHD = @mahd
 			if @giotre_quadem >= 10 and @tongNgayThue > 0
 			begin
-				select @tienphong = @gia + (@giotre_quadem - 10) * 20
+				select @tienphong = @gia + (@giotre_quadem - 10) * 20000
 			end
 			else
 			begin
@@ -508,7 +508,7 @@ go
 if OBJECT_ID('sp_topphong') is not null
 	drop proc sp_topphong
 go
-create proc sp_topphong 
+create proc sp_topphong @year int, @month int
 as
 begin
 begin tran
@@ -517,10 +517,10 @@ begin try
 		sum(case b.MALG
 		when 1 then case 
 			when DATEDIFF(HOUR, ngaythue, ngaytt) <= 2 then 2 * DONGIA
-			else 2 * DONGIA + (DATEDIFF(HOUR, ngaythue, ngaytt) - 2) * 20
+			else 2 * DONGIA + (DATEDIFF(HOUR, ngaythue, ngaytt) - 2) * 20000
 			end
 		when 2 then case 
-			when DATEPART(hour, ngaytt) <= 10 and DATEDIFF(day, ngaythue, ngaytt) > 0 then DONGIA + (DATEPART(hour, ngaytt) - 10) * 20
+			when DATEPART(hour, ngaytt) <= 10 and DATEDIFF(day, ngaythue, ngaytt) > 0 then DONGIA + (DATEPART(hour, ngaytt) - 10) * 20000
 			else DONGIA
 			end
 		when 3 then case
@@ -528,15 +528,15 @@ begin try
 			else DATEDIFF(day, ngaythue, ngaytt) * DONGIA
 			end
 		end)
-	as gia
+	as DOANHTHU
 	from HDPHONG a
 	join HOADON b on a.MAHD = b.MAHD
 	join phong c on a.SOPHONG = c.SOPHONG
 	join LOAIPHONG d on c.MALP = d.MALP
 	join LOAIPHONG_LOAIGIA e on d.MALP = e.MALP
-	where b.MALG = e.MALG
+	where b.MALG = e.MALG and MONTH(ngaytt) = @month and year(ngaytt) = @year
 	group by a.SOPHONG
-	order by gia desc
+	order by DOANHTHU desc
 	commit tran
 end try
 begin catch
@@ -545,6 +545,6 @@ end catch
 end
 go
 
-exec sp_topphong
+exec sp_topphong 2021, 3
 
 
