@@ -429,6 +429,11 @@ public class HomeFrm extends javax.swing.JFrame {
                 btnThongKeMouseExited(evt);
             }
         });
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlThongKeLayout = new javax.swing.GroupLayout(pnlThongKe);
         pnlThongKe.setLayout(pnlThongKeLayout);
@@ -715,10 +720,17 @@ public class HomeFrm extends javax.swing.JFrame {
         this.openDoiTTNhanVien();
     }//GEN-LAST:event_btnDoiMKActionPerformed
 
+
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        // TODO add your handling code here:
+        this.openThongKe();
+    }
+
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
         Auth.clean();
         this.openLogin();
-    }//GEN-LAST:event_btnDangXuatActionPerformed
+    }
+
 
     /**
      * @param args the command line arguments
@@ -962,4 +974,7 @@ public class HomeFrm extends javax.swing.JFrame {
         }
     }
 
+    private void openThongKe(){
+        XForm.openChildFrm(this, desMain, new ThongKeFrm());
+    }
 }
