@@ -20,7 +20,7 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
 
     private HoaDonDAO hddao = new HoaDonDAO();
     private ThongKeDAO tkdao = new ThongKeDAO();
-    
+
     /**
      * Creates new form ThongKeFrm
      */
@@ -51,17 +51,20 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTopPhong = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        cboNam_TopPhong = new javax.swing.JComboBox<>();
+        cboNam1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        cboThang_TopPhong = new javax.swing.JComboBox<>();
-        jPanel6 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tbl3 = new javax.swing.JTable();
+        cboThang1 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblTopDv = new javax.swing.JTable();
+        lblTongPhong = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblTongDv = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        cboNam = new javax.swing.JComboBox<>();
+        cboNam2 = new javax.swing.JComboBox<>();
         jScrollPane5 = new javax.swing.JScrollPane();
         tbl4 = new javax.swing.JTable();
-        cboNam1 = new javax.swing.JComboBox<>();
+        cboThang2 = new javax.swing.JComboBox<>();
         jScrollPane7 = new javax.swing.JScrollPane();
         tbl6 = new javax.swing.JTable();
         cboNam3 = new javax.swing.JComboBox<>();
@@ -133,7 +136,7 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1427, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1403, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -175,24 +178,51 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel1.setText("Năm");
 
-        cboNam_TopPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cboNam_TopPhong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboNam_TopPhong.addActionListener(new java.awt.event.ActionListener() {
+        cboNam1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboNam1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboNam_TopPhongActionPerformed(evt);
+                cboNam1ActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Tháng:");
 
-        cboThang_TopPhong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cboThang_TopPhong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboThang_TopPhong.addActionListener(new java.awt.event.ActionListener() {
+        cboThang1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboThang1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboThang1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboThang_TopPhongActionPerformed(evt);
+                cboThang1ActionPerformed(evt);
             }
         });
+
+        tblTopDv.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tblTopDv.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "STT", "Dịch Vụ", "Doanh Thu"
+            }
+        ));
+        tblTopDv.setFillsViewportHeight(true);
+        tblTopDv.setRowHeight(40);
+        jScrollPane3.setViewportView(tblTopDv);
+
+        lblTongPhong.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTongPhong.setForeground(new java.awt.Color(51, 153, 255));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel4.setText("Tổng:");
+
+        lblTongDv.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTongDv.setForeground(new java.awt.Color(51, 153, 255));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel5.setText("Tổng:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -201,17 +231,29 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1427, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboThang_TopPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboNam_TopPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(cboNam1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboThang1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTongPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTongDv, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,73 +261,31 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboNam_TopPhong, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(cboNam1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboThang1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 35, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboThang_TopPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(lblTongPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTongDv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        tab.addTab("Top phòng được khách hàng thuê", jPanel3);
-
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-
-        tbl3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        tbl3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "STT", "Mã Dịch Vụ", "Doanh Thu"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tbl3.setFillsViewportHeight(true);
-        tbl3.setRowHeight(40);
-        jScrollPane4.setViewportView(tbl3);
-        if (tbl3.getColumnModel().getColumnCount() > 0) {
-            tbl3.getColumnModel().getColumn(0).setPreferredWidth(100);
-            tbl3.getColumnModel().getColumn(0).setMaxWidth(100);
-            tbl3.getColumnModel().getColumn(1).setPreferredWidth(150);
-            tbl3.getColumnModel().getColumn(1).setMaxWidth(150);
-        }
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tab.addTab("Top dịch vụ khách hàng sử dụng", jPanel6);
+        tab.addTab("Doanh thu theo phòng - dịch vụ", jPanel3);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        cboNam.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboNam.addActionListener(new java.awt.event.ActionListener() {
+        cboNam2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboNam2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboNamActionPerformed(evt);
+                cboNam2ActionPerformed(evt);
             }
         });
 
@@ -314,11 +314,11 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
             tbl4.getColumnModel().getColumn(0).setMaxWidth(100);
         }
 
-        cboNam1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cboNam1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cboNam1.addActionListener(new java.awt.event.ActionListener() {
+        cboThang2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboThang2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboThang2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboNam1ActionPerformed(evt);
+                cboThang2ActionPerformed(evt);
             }
         });
 
@@ -363,11 +363,11 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboNam2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(cboNam1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cboThang2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cboNam3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -378,8 +378,8 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboNam, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboNam1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboNam2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboThang2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -457,52 +457,58 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboNam3ActionPerformed
 
-    private void cboNam1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNam1ActionPerformed
+    private void cboThang2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThang2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboNam1ActionPerformed
+    }//GEN-LAST:event_cboThang2ActionPerformed
 
-    private void cboNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNamActionPerformed
+    private void cboNam2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNam2ActionPerformed
 
-    }//GEN-LAST:event_cboNamActionPerformed
+    }//GEN-LAST:event_cboNam2ActionPerformed
 
-    private void cboNam_TopPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNam_TopPhongActionPerformed
-        if (cboNam_TopPhong.getSelectedItem() != null) {
+    private void cboNam1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNam1ActionPerformed
+        if (cboNam1.getSelectedItem() != null) {
             this.fillCboThangTopPhong();
         }
-    }//GEN-LAST:event_cboNam_TopPhongActionPerformed
+    }//GEN-LAST:event_cboNam1ActionPerformed
 
-    private void cboThang_TopPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThang_TopPhongActionPerformed
-        this.fillTblTopPhong();
-    }//GEN-LAST:event_cboThang_TopPhongActionPerformed
+    private void cboThang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThang1ActionPerformed
+        if (cboThang1.getSelectedItem() != null) {
+            this.fillTblTopPhong();
+            this.fillTblTopDv();
+        }
+    }//GEN-LAST:event_cboThang1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cboNam;
     private javax.swing.JComboBox<String> cboNam1;
+    private javax.swing.JComboBox<String> cboNam2;
     private javax.swing.JComboBox<String> cboNam3;
-    private javax.swing.JComboBox<String> cboNam_TopPhong;
-    private javax.swing.JComboBox<String> cboThang_TopPhong;
+    private javax.swing.JComboBox<String> cboThang1;
+    private javax.swing.JComboBox<String> cboThang2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblTongDv;
+    private javax.swing.JLabel lblTongPhong;
     private javax.swing.JTabbedPane tab;
     private javax.swing.JTable tbl1;
-    private javax.swing.JTable tbl3;
     private javax.swing.JTable tbl4;
     private javax.swing.JTable tbl6;
+    private javax.swing.JTable tblTopDv;
     private javax.swing.JTable tblTopPhong;
     private javax.swing.JTextField txtKeyword1;
     // End of variables declaration//GEN-END:variables
@@ -512,7 +518,7 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
     }
 
     private void fillCboNamTopPhong() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboNam_TopPhong.getModel();
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboNam1.getModel();
         model.removeAllElements();
         List<Object> list = hddao.selectYear();
         for (Object i : list) {
@@ -521,8 +527,8 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
     }
 
     private void fillCboThangTopPhong() {
-        Integer year = (Integer) cboNam_TopPhong.getSelectedItem();
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboThang_TopPhong.getModel();
+        Integer year = (Integer) cboNam1.getSelectedItem();
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboThang1.getModel();
         model.removeAllElements();
         List<Object> list = hddao.selectMonthByYear(year);
         for (Object i : list) {
@@ -534,17 +540,40 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         int stt = 1;
         DefaultTableModel model = (DefaultTableModel) tblTopPhong.getModel();
         model.setRowCount(0);
-        Integer year = (Integer) cboNam_TopPhong.getSelectedItem();
-        Integer month = (Integer) cboThang_TopPhong.getSelectedItem();
+        double tong = 0;
+        Integer year = (Integer) cboNam1.getSelectedItem();
+        Integer month = (Integer) cboThang1.getSelectedItem();
         List<Object[]> list = tkdao.getTopPhong(year, month);
         for (Object[] obj : list) {
-            model.addRow(new Object[] {
+            model.addRow(new Object[]{
                 stt,
                 obj[0],
                 FormatData.formatMoney(Double.parseDouble(obj[1].toString()))
             });
+            tong += Double.parseDouble(obj[1].toString());
             stt++;
         }
+        lblTongPhong.setText(FormatData.formatMoney(tong));
+    }
+
+    private void fillTblTopDv() {
+        int stt = 1;
+        DefaultTableModel model = (DefaultTableModel) tblTopDv.getModel();
+        model.setRowCount(0);
+        double tong = 0;
+        Integer year = (Integer) cboNam1.getSelectedItem();
+        Integer month = (Integer) cboThang1.getSelectedItem();
+        List<Object[]> list = tkdao.getTopDv(year, month);
+        for (Object[] obj : list) {
+            model.addRow(new Object[]{
+                stt,
+                obj[0],
+                FormatData.formatMoney(Double.parseDouble(obj[1].toString()))
+            });
+            tong += Double.parseDouble(obj[1].toString());
+            stt++;
+        }
+        lblTongDv.setText(FormatData.formatMoney(tong));
     }
 
 }

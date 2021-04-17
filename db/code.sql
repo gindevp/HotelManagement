@@ -547,4 +547,30 @@ go
 
 exec sp_topphong 2021, 3
 
+--------------------------------sp_topdv
+if OBJECT_ID('sp_topdv') is not null
+	drop proc sp_topdv
+go
+create proc sp_topdv @year int, @month int
+as
+begin
+begin tran
+begin try
+	select TENDV, sum(soluong * dongia) as doanhthu from HOADON a
+	join HDDICHVU b on a.MAHD = b.MAHD
+	join DICHVU c on b.MADV = c.MADV
+	where YEAR(ngaytt) = @year and MONTH(ngaytt) = @month
+	group by TENDV
+	order by doanhthu desc
+	commit tran
+end try
+begin catch
+	rollback tran
+end catch
+end
+
+exec sp_topdv 2021, 3
+
+
+
 

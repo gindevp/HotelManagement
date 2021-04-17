@@ -1372,6 +1372,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             HoaDon hd = hddao.selectByID(maHd);
             if (hddao.thanhToanHd(hd.getMa(), hd.getMaLg())) {
                 MsgBox.alert(this, "Thanh toán thành công!");
+                this.clearForm();
                 this.fillTblDangThue();
                 this.updateStatus();
             } else {
