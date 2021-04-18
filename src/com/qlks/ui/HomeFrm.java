@@ -882,7 +882,6 @@ public class HomeFrm extends javax.swing.JFrame {
     }
 
     private void openNhaCungCap() {
-        XForm.openChildFrm(this, desMain, new NhaCungCapFrm(desMain));
     }
 
     private void openDichVuTienNghi() {
