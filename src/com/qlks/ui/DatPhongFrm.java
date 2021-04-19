@@ -1422,7 +1422,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private boolean checkSelectDate() {
         if (chk.isEnabled()) {
             if (!chk.isSelected()) {
-                if (Validator.checkSelectedDate(DatPhongFrm.this, jdcNgayTra)
+                if (Validator.checkSelectedDate(DatPhongFrm.this, new String[]{"ngày trả!"}, jdcNgayTra)
                         && Validator.checkAfterNow(DatPhongFrm.this, jdcNgayTra, new Date(), 1)) {
                     return true;
                 } else {

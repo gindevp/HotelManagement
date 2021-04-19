@@ -8,6 +8,8 @@ package com.qlks.ui;
 import com.qlks.dao.HoaDonDAO;
 import com.qlks.dao.ThongKeDAO;
 import com.qlks.util.FormatData;
+import com.qlks.util.Validator;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -43,10 +45,14 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         tab = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbl1 = new javax.swing.JTable();
+        tblHoaDon = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
-        txtKeyword1 = new javax.swing.JTextField();
         jLabel37 = new javax.swing.JLabel();
+        jdcStart = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
+        jdcEnd = new com.toedter.calendar.JDateChooser();
+        btnTimHd = new javax.swing.JButton();
+        btnRefreshHd = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTopPhong = new javax.swing.JTable();
@@ -79,34 +85,53 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        tbl1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        tbl1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHoaDon.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Mã Hóa Đơn", "Ngày Thuê ", "Ngày Thanh Toán", "Tổng Tiền", "Trạng Thái", "Mã Loại Giá", "Mã Khách Hàng", "Mã Nhân Viên"
+                "Mã Hóa Đơn", "Ngày Thuê ", "Ngày Thanh Toán", "Tổng Tiền", "Loại Hình Thuê", "Tên Khách Hàng", "Nhân Viên  Thanh Toán"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tbl1.setFillsViewportHeight(true);
-        tbl1.setRowHeight(40);
-        jScrollPane2.setViewportView(tbl1);
+        tblHoaDon.setFillsViewportHeight(true);
+        tblHoaDon.setRowHeight(40);
+        jScrollPane2.setViewportView(tblHoaDon);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "TÌM KIẾM", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
-        txtKeyword1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
         jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel37.setText("Nhập Mã Khách Hàng:");
+        jLabel37.setText("Từ ngày:");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel3.setText("Đến ngày:");
+
+        btnTimHd.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnTimHd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/search_24px.png"))); // NOI18N
+        btnTimHd.setText("Tìm");
+        btnTimHd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimHdActionPerformed(evt);
+            }
+        });
+
+        btnRefreshHd.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnRefreshHd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/reset_24px.png"))); // NOI18N
+        btnRefreshHd.setText("Xem Toàn Bộ");
+        btnRefreshHd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshHdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -114,9 +139,17 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtKeyword1)
+                .addComponent(jdcStart, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jdcEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTimHd, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRefreshHd, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -124,8 +157,12 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtKeyword1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(jdcStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jdcEnd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTimHd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRefreshHd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -478,8 +515,18 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cboThang1ActionPerformed
 
+    private void btnTimHdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimHdActionPerformed
+        this.timHd();
+    }//GEN-LAST:event_btnTimHdActionPerformed
+
+    private void btnRefreshHdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshHdActionPerformed
+        this.fillTblHoaDon();
+    }//GEN-LAST:event_btnRefreshHdActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRefreshHd;
+    private javax.swing.JButton btnTimHd;
     private javax.swing.JComboBox<String> cboNam1;
     private javax.swing.JComboBox<String> cboNam2;
     private javax.swing.JComboBox<String> cboNam3;
@@ -487,6 +534,7 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cboThang2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -501,20 +549,23 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
+    private com.toedter.calendar.JDateChooser jdcEnd;
+    private com.toedter.calendar.JDateChooser jdcStart;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTongDv;
     private javax.swing.JLabel lblTongPhong;
     private javax.swing.JTabbedPane tab;
-    private javax.swing.JTable tbl1;
     private javax.swing.JTable tbl4;
     private javax.swing.JTable tbl6;
+    private javax.swing.JTable tblHoaDon;
     private javax.swing.JTable tblTopDv;
     private javax.swing.JTable tblTopPhong;
-    private javax.swing.JTextField txtKeyword1;
     // End of variables declaration//GEN-END:variables
 
     private void init() {
+        this.fillTblHoaDon();
         this.fillCboNamTopPhong();
+
     }
 
     private void fillCboNamTopPhong() {
@@ -574,6 +625,49 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
             stt++;
         }
         lblTongDv.setText(FormatData.formatMoney(tong));
+    }
+
+    private void fillTblHoaDon() {
+        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+        List<Object[]> list = tkdao.getHoaDon();
+        for (Object[] obj : list) {
+            model.addRow(new Object[]{
+                obj[0],
+                obj[1],
+                obj[2],
+                FormatData.formatMoney(Double.parseDouble(obj[3].toString())),
+                obj[4],
+                obj[5],
+                obj[6]
+            });
+        }
+    }
+
+    private void timHd() {
+        if (Validator.checkSelectedDate(this, new String[]{"ngày bắt đầu!", "ngày kết thúc!"}, jdcStart, jdcEnd)
+                && Validator.checkDates(this, jdcStart, jdcEnd)) {
+            Date start = jdcStart.getDate();
+            Date end = jdcEnd.getDate();
+            this.fillTblHoaDon(start, end);
+        }
+    }
+
+    private void fillTblHoaDon(Date start, Date end) {
+        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+        List<Object[]> list = tkdao.getHoaDon1(start, end);
+        for (Object[] obj : list) {
+            model.addRow(new Object[]{
+                obj[0],
+                obj[1],
+                obj[2],
+                FormatData.formatMoney(Double.parseDouble(obj[3].toString())),
+                obj[4],
+                obj[5],
+                obj[6]
+            });
+        }
     }
 
 }

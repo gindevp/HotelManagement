@@ -67,10 +67,10 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkSelectedDate(Component parent, JDateChooser... args) {
+    public static boolean checkSelectedDate(Component parent, String[] title, JDateChooser... args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].getDate() == null) {
-                MsgBox.alert(parent, "Vui lòng chọn thời gian!");
+                MsgBox.alert(parent, "Vui lòng chọn thời gian cho " + title[i]);
                 args[i].requestFocus();
                 return false;
             }
@@ -159,6 +159,15 @@ public class Validator {
                 d1.requestFocus();
             }
             return true;
+        }
+    }
+    
+    public static boolean checkDates(Component parent, JDateChooser start, JDateChooser end) {
+        if (start.getDate().before(end.getDate())) {
+            return true;
+        } else {
+            MsgBox.alert(parent, "Vui lòng chọn ngày bắt đầu nhỏ hơn ngày kết thúc!");
+            return false;
         }
     }
 
