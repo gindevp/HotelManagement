@@ -721,12 +721,12 @@ public class HomeFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDoiMKActionPerformed
 
 
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         this.openThongKe();
     }
 
-    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {                                            
         Auth.clean();
         this.openLogin();
     }
@@ -865,15 +865,6 @@ public class HomeFrm extends javax.swing.JFrame {
         }
     }
 
-//    private void changeBGToolBar() {
-//        jToolBar1.setUI(new BasicToolBarUI() {
-//            public void paint(Graphics g, JComponent c) {
-//
-//                g.setColor(bgColor);
-//                g.fillRect(0, 0, c.getWidth(), c.getHeight());
-//            }
-//        });
-//    }
     private void openDoiTTNhanVien() {
         if (Auth.isLogin()) {
             XForm.openChildFrm(this, desMain, new ThongTinNhanVienFrm(desMain));
