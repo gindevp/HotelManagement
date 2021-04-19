@@ -37,6 +37,11 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
     
     private String selectYearSql = "select distinct year(ngaytt) from hoadon";
     private String selectMonthByYearSql = "select distinct month(ngaytt) from hoadon where year(ngaytt) = ?";
+    private String selectTongTienNowSql = "{call sp_tongtiennow(?, ?)}";
+    
+    public Object selectTongTienNow(Integer maHd, Integer maLg) {
+        return XJdbc.value(selectTongTienNowSql, maHd, maLg);
+    }
     
     public List<Object> selectYear() {
         return XJdbc.column(selectYearSql);
