@@ -18,6 +18,11 @@ public class PDFExportDAO {
 
     String selectHDByIDSql = "select * from hoadon where maHD = ?";
 
+    String selectTongGioThueSql = "select tongGioThue = DATEDIFF(HOUR, ngaythue, ngaytt) from hoadon where MAHD = ?";
+    String selectTongNgayThueSql = "tongNgayThue = DATEDIFF(day, ngaythue, ngaytt) from hoadon where MAHD = ?";
+
+    String selectGioTre_QuaDemSql = "select giotre_quadem = DATEPART(hour, ngaytt) from hoadon where MAHD = ?";
+
     String selectHDPhongSql = "select b.mahd, b.sophong, a.malg, e.tenlg, c.malp, dongia "
             + "from hoadon a join hdphong b on b.MAHD = a.MAHD "
             + "join phong c on c.SOPHONG = b.SOPHONG "
@@ -30,23 +35,41 @@ public class PDFExportDAO {
             + "join dichvu d on d.MADV = c.MADV\n"
             + "where c.MAHD = ?";
 
-    public List<String> selectTongTienHD(Integer key) {
-        List<String> list = selectColumn(selectHDByIDSql, "tongtien", key);
+    public Integer selectMaLG(Integer key) {
+        return selectColumInt(selectHDPhongSql, "malg", key);
+    }
+
+    public Integer selecHour3(Integer key) {
+        return selectColumInt(selectTongNgayThueSql, "tongngaythue", key);
+
+    }
+
+    public Integer selecHour2(Integer key) {
+        return selectColumInt(selectGioTre_QuaDemSql, "giotre_quadem", key);
+
+    }
+
+    public Integer selectHour(Integer key) {
+        return selectColumInt(selectTongGioThueSql, "tonggiothue", key);
+    }
+
+    public List<Double> selectTongTienHD(Integer key) {
+        List<Double> list = selectNumValue(selectHDByIDSql, "tongtien", key);
         return list;
     }
 
-    public List<String> selectTongTien(Integer key) {
-        List<String> list = selectColumn(selectHDDVSql, "tong", key);
+    public List<Double> selectTongTienDV(Integer key) {
+        List<Double> list = selectNumValue(selectHDDVSql, "tong", key);
         return list;
     }
 
-    public List<String> selectDGDV(Integer key) {
-        List<String> list = selectColumn(selectHDDVSql, "dongia", key);
+    public List<Double> selectDGDV(Integer key) {
+        List<Double> list = selectNumValue(selectHDDVSql, "dongia", key);
         return list;
     }
 
-    public List<String> selectSoLuong(Integer key) {
-        List<String> list = selectColumn(selectHDDVSql, "soluong", key);
+    public List<Double> selectSoLuong(Integer key) {
+        List<Double> list = selectNumValue(selectHDDVSql, "soluong", key);
         return list;
     }
 
@@ -55,8 +78,8 @@ public class PDFExportDAO {
         return list;
     }
 
-    public List<String> selectDonGiaPhong(Integer key) {
-        List<String> list = selectColumn(selectHDPhongSql, "dongia", key);
+    public List<Double> selectDonGiaPhong(Integer key) {
+        List<Double> list = selectNumValue(selectHDPhongSql, "dongia", key);
         return list;
     }
 
@@ -86,5 +109,29 @@ public class PDFExportDAO {
         } catch (Exception e) {
         }
         return list;
+    }
+
+    protected List<Double> selectNumValue(String sql, String column, Object... args) {
+        List<Double> list = new ArrayList<Double>();
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                double item = rs.getDouble(column);
+                list.add(item);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    protected Integer selectColumInt(String sql, String column, Object... args) {
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                return rs.getInt(column);
+            }
+        } catch (Exception e) {
+        }
+        return -1;
     }
 }
