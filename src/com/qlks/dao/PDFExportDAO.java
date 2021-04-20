@@ -68,8 +68,8 @@ public class PDFExportDAO {
         return list;
     }
 
-    public List<Double> selectSoLuong(Integer key) {
-        List<Double> list = selectNumValue(selectHDDVSql, "soluong", key);
+    public List<Integer> selectSoLuong(Integer key) {
+        List<Integer> list = selectNumIntValue(selectHDDVSql, "soluong", key);
         return list;
     }
 
@@ -117,6 +117,19 @@ public class PDFExportDAO {
                 ResultSet rs = XJdbc.query(sql, args);) {
             while (rs.next()) {
                 double item = rs.getDouble(column);
+                list.add(item);
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    protected List<Integer> selectNumIntValue(String sql, String column, Object... args) {
+        List<Integer> list = new ArrayList<Integer>();
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                int item = rs.getInt(column);
                 list.add(item);
             }
         } catch (Exception e) {
