@@ -366,6 +366,8 @@ public class LoginDialog extends javax.swing.JDialog {
 
     private void init() {
         this.setLocationRelativeTo(null);
+        edtTenDangNhap.setText("ph01");
+        edtMatKhau.setText("hungnn");
     }
 
     private String login() {

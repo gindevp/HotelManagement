@@ -863,15 +863,6 @@ public class HomeFrm extends javax.swing.JFrame {
         }
     }
 
-//    private void changeBGToolBar() {
-//        jToolBar1.setUI(new BasicToolBarUI() {
-//            public void paint(Graphics g, JComponent c) {
-//
-//                g.setColor(bgColor);
-//                g.fillRect(0, 0, c.getWidth(), c.getHeight());
-//            }
-//        });
-//    }
     private void openDoiTTNhanVien() {
         if (Auth.isLogin()) {
             XForm.openChildFrm(this, desMain, new ThongTinNhanVienFrm(desMain));
