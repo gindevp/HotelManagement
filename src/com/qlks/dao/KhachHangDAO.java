@@ -32,7 +32,7 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
     private String selectSdtSql = "select sdt from khachhang";
     private String selectSdtNotLikeSql = "select sdt from khachhang where sdt not like ?";
 
-    private String selectBySdtOrCmndSql = "select * from khachhang where sdt = ? or cmnd = ?";
+    private String selectBySdtOrCmndSql = "select * from khachhang where not exists (select * from HOADON where TRANGTHAI = 0 and KHACHHANG.MAKH = HOADON.MAKH) and (sdt = ? or cmnd = ?)";
 
     @Override
     public boolean insert(KhachHang entity) {

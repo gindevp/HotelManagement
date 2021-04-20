@@ -23,7 +23,12 @@ public class PhongTienNghiDAO extends ManageDAO<PhongTienNghi, Integer> {
     String deleteSql = "delete from phong_tiennghi where id = ?";
     String selectBySoPhong = "select * from PHONG_TIENNGHI where SOPHONG = ?";
     String selectByIdSql = "select * from phong_tiennghi where id = ?";
+    String moTaPhongSql = "{call sp_motaphong(?)}";
 
+    public List<Object> moTaPhong(String soPhong) {
+        return XJdbc.column(moTaPhongSql, soPhong);
+    }
+    
     @Override
     public boolean insert(PhongTienNghi entity) {
         return XJdbc.update(insertSql, entity.getSoPhong(), entity.getMaTienNghi(), entity.getSoLuong(), entity.getTinhTrang());
