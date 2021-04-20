@@ -25,7 +25,7 @@ public class NhanVienDAO extends ManageDAO<NhanVien, String> {
     String selectById = "select * from nhanvien where manv = ?";
     String updatePassForgot = "update nhanvien set password = (select top 1 "
             + "code from maxacnhan where maxacnhan.manv = nhanvien.manv order "
-            + "by createat desc), updateat = default where manv = ?";
+            + "by createat desc) where manv = ?";
     String selectByEmailSql = "select * from nhanvien where manv = ? and email = ?";
     String selectByKeyword = "select * from nhanvien where tennv like ?";
 

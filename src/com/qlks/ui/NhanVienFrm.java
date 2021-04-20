@@ -101,6 +101,7 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Quản Lý Nhân Viên");
         setOpaque(true);
+        setPreferredSize(new java.awt.Dimension(1500, 850));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -433,7 +434,7 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtKeyword)
                 .addContainerGap())

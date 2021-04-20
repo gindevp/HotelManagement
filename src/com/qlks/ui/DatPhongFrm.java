@@ -58,7 +58,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private List<HDDichVu> serviceList = new ArrayList<>();
 
     private int iChonPhong = -1;
-    private int iPhong = -1;
+    private int iDaChon = -1;
     private int iDichVu = -1;
     private int iDangThue = -1;
     private boolean isSelectDate = true;
@@ -117,7 +117,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         btnDaCoTt = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         txtTen = new javax.swing.JTextField();
-        btnDatPhong = new javax.swing.JButton();
+        btnLapPhieu = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cboDichVu = new javax.swing.JComboBox<>();
@@ -134,6 +134,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         lblNgayTra = new javax.swing.JLabel();
         jdcNgayTra = new com.toedter.calendar.JDateChooser();
         chk = new javax.swing.JCheckBox();
+        btnCapNhatPhieu = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
@@ -162,17 +163,18 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Số Phòng", "Đơn Giá"
+                "Số Phòng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblDanhSach.setFillsViewportHeight(true);
         tblDanhSach.setRowHeight(40);
         tblDanhSach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -183,7 +185,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         if (tblDanhSach.getColumnModel().getColumnCount() > 0) {
             tblDanhSach.getColumnModel().getColumn(0).setResizable(false);
             tblDanhSach.getColumnModel().getColumn(0).setPreferredWidth(40);
-            tblDanhSach.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -221,17 +222,18 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Số Phòng", "Đơn Giá"
+                "Số Phòng"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        tblDaChon.setFillsViewportHeight(true);
         tblDaChon.setRowHeight(40);
         tblDaChon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -241,7 +243,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tblDaChon);
         if (tblDaChon.getColumnModel().getColumnCount() > 0) {
             tblDaChon.getColumnModel().getColumn(0).setResizable(false);
-            tblDaChon.getColumnModel().getColumn(1).setResizable(false);
         }
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
@@ -458,13 +459,13 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        btnDatPhong.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnDatPhong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/bookroom_24px.png"))); // NOI18N
-        btnDatPhong.setText("LẬP PHIẾU THUÊ");
-        btnDatPhong.setIconTextGap(8);
-        btnDatPhong.addActionListener(new java.awt.event.ActionListener() {
+        btnLapPhieu.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnLapPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/bookroom_24px.png"))); // NOI18N
+        btnLapPhieu.setText("LẬP PHIẾU THUÊ");
+        btnLapPhieu.setIconTextGap(8);
+        btnLapPhieu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDatPhongActionPerformed(evt);
+                btnLapPhieuActionPerformed(evt);
             }
         });
 
@@ -514,6 +515,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDichVu.setFillsViewportHeight(true);
         tblDichVu.setRowHeight(40);
         tblDichVu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -602,6 +604,15 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         chk.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         chk.setText("Chưa biết");
 
+        btnCapNhatPhieu.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnCapNhatPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/edit_24px.png"))); // NOI18N
+        btnCapNhatPhieu.setText("CẬP NHẬT PHIẾU THUÊ");
+        btnCapNhatPhieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapNhatPhieuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -621,11 +632,15 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                         .addComponent(cboLoaiGia, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnCapNhatPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDatPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLapPhieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -642,13 +657,15 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 31, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnDatPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jdcNgayTra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblNgayTra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCapNhatPhieu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLapPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jdcNgayTra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblNgayTra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -712,6 +729,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         );
 
         btnThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/paper_money_24px.png"))); // NOI18N
         btnThanhToan.setText("THANH TOÁN");
         btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -805,7 +823,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
-        this.searchRoom();
+        this.timPhong();
     }//GEN-LAST:event_btnTimPhongActionPerformed
 
     private void tblDanhSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMouseClicked
@@ -816,32 +834,32 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblDanhSachMouseClicked
 
     private void btnChonPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonPhongActionPerformed
-        this.chooseRoom();
+        this.themPhong();
     }//GEN-LAST:event_btnChonPhongActionPerformed
 
     private void btnXoaPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaPhongActionPerformed
-        this.deleteRoom();
+        this.xoaPhong();
     }//GEN-LAST:event_btnXoaPhongActionPerformed
 
     private void btnThemKhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemKhActionPerformed
-        this.insertCustomer();
+        this.themKhachHang();
     }//GEN-LAST:event_btnThemKhActionPerformed
 
     private void btnDaCoTtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaCoTtActionPerformed
-        this.searchCustomer();
+        this.timKhachHang();
     }//GEN-LAST:event_btnDaCoTtActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.insertDichVu();
+        this.themDichVu();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnXoaDichVuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaDichVuActionPerformed
-        this.deleteDichVu();
+        this.xoaDichVu();
     }//GEN-LAST:event_btnXoaDichVuActionPerformed
 
     private void tblDaChonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDaChonMouseClicked
         if (evt.getClickCount() == 2) {
-            this.iPhong = tblDaChon.getSelectedRow();
+            this.iDaChon = tblDaChon.getSelectedRow();
             this.updateStatus();
         }
     }//GEN-LAST:event_tblDaChonMouseClicked
@@ -853,9 +871,9 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tblDichVuMouseClicked
 
-    private void btnDatPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatPhongActionPerformed
-        this.bookRoom();
-    }//GEN-LAST:event_btnDatPhongActionPerformed
+    private void btnLapPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLapPhieuActionPerformed
+        this.datPhong();
+    }//GEN-LAST:event_btnLapPhieuActionPerformed
 
     private void cboLoaiGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLoaiGiaActionPerformed
         if (tblDanhSach.getModel().getRowCount() > 0 || tblDaChon.getModel().getRowCount() > 0) {
@@ -868,6 +886,10 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private void tblDangThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDangThueMouseClicked
         if (evt.getClickCount() == 2) {
             this.iDangThue = tblDangThue.getSelectedRow();
+            this.editPhieuThue();
+            tabs.setSelectedIndex(0);
+        } else if (evt.getClickCount() == 1) {
+            this.iDangThue = tblDangThue.getSelectedRow();
             this.updateStatus();
             this.editTblDangThue();
         }
@@ -878,15 +900,20 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtKeywordKeyReleased
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        this.makePay();
+        this.thanhToan();
     }//GEN-LAST:event_btnThanhToanActionPerformed
+
+    private void btnCapNhatPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatPhieuActionPerformed
+        this.capNhatPhieu();
+    }//GEN-LAST:event_btnCapNhatPhieuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgrGioiTinh;
+    private javax.swing.JButton btnCapNhatPhieu;
     private javax.swing.JButton btnChonPhong;
     private javax.swing.JButton btnDaCoTt;
-    private javax.swing.JButton btnDatPhong;
+    private javax.swing.JButton btnLapPhieu;
     private javax.swing.JButton btnThanhToan;
     private javax.swing.JButton btnThemKh;
     private javax.swing.JButton btnTimPhong;
@@ -985,7 +1012,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
 
     }
 
-    private void searchRoom() {
+    private void timPhong() {
         if (Validator.checkBlack(this, new String[]{"Số người"}, txtSucChua)
                 && Validator.checkPosNum(this, new String[]{"Số người"}, txtSucChua)) {
             this.fillTblDanhSach();
@@ -996,16 +1023,16 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) tblDanhSach.getModel();
         model.setRowCount(0);
         LoaiPhong loaiPhong = (LoaiPhong) cboLoaiPhong.getSelectedItem();
-        Integer sucChua = Integer.parseInt(txtSucChua.getText().trim());
+        Integer sucChua = 0;
+        try {
+            sucChua = Integer.parseInt(txtSucChua.getText().trim());
+        } catch (Exception e) {
+            sucChua = 0;
+        }
         List<Phong> list = pdao.selectByLpAndSucChua(loaiPhong.getMa(), sucChua);
         LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
         LoaiPhongLoaiGia lplg = (LoaiPhongLoaiGia) lplgdao.selectByLpAndLg(loaiPhong.getMa(), lg.getMa());
-//        list.forEach((item -> {
-//            model.addRow(new Object[]{
-//                item.getSoPhong(),
-//                lplg.getDonGia()
-//            });
-//        }));
+
         for (Phong p : list) {
             model.addRow(new Object[]{
                 p.getSoPhong(),
@@ -1014,43 +1041,41 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         }
     }
 
-    private void chooseRoom() {
-        for (int i : tblDanhSach.getSelectedRows()) {
-            String soPhong = tblDanhSach.getValueAt(i, 0).toString();
-            Phong p = pdao.selectByID(soPhong);
+    private void themPhong() {
+        String soPhong = tblDanhSach.getValueAt(iChonPhong, 0).toString();
+        Phong p = pdao.selectByID(soPhong);
+        if (checkPhong(p, roomList)) {
             pdao.updateAfterChooseOrRemove(p, true);
             roomList.add(p);
+            MsgBox.alert(this, "Đã thêm phòng!");
+        } else {
+            MsgBox.alert(this, "Phòng đã được chọn! Vui lòng chọn phòng khác");
         }
-        MsgBox.alert(this, "Đã thêm phòng!");
-        this.clearForm();
+        this.updateStatus();
         this.fillTblDanhSach();
         this.fillTblDaChon();
+    }
+
+    private boolean checkPhong(Phong p, List<Phong> list) {
+        for (Phong item : list) {
+            if (p.getSoPhong().equalsIgnoreCase(item.getSoPhong())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void fillTblDaChon() {
         DefaultTableModel model = (DefaultTableModel) tblDaChon.getModel();
         model.setRowCount(0);
-
-        LoaiPhong loaiPhong = (LoaiPhong) cboLoaiPhong.getSelectedItem();
-        LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
-        LoaiPhongLoaiGia lplg = (LoaiPhongLoaiGia) lplgdao.selectByLpAndLg(loaiPhong.getMa(), lg.getMa());
-
-//        roomList.forEach(i -> {
-//            model.addRow(new Object[]{
-//                i.getSoPhong(),
-//                lplg.getDonGia()
-//                i.getDonGia()
-//            });
-//        });
         for (Phong p : roomList) {
             model.addRow(new Object[]{
-                p.getSoPhong(),
-                lplg.getDonGia()
+                p.getSoPhong()
             });
         }
     }
 
-    private void deleteRoom() {
+    private void xoaPhong() {
         for (int i : tblDaChon.getSelectedRows()) {
             String soPhong = tblDaChon.getValueAt(i, 0).toString();
             Phong p = pdao.selectByID(soPhong);
@@ -1058,12 +1083,12 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             roomList.remove(i);
         }
         MsgBox.alert(this, "Đã xóa phòng!");
-        this.clearForm();
+        this.updateStatus();
         this.fillTblDaChon();
         this.fillTblDanhSach();
     }
 
-    private void insertCustomer() {
+    private void themKhachHang() {
         KhachHang kh = this.getFormKhachHang();
         if (kh != null) {
             if (khdao.insert(kh)) {
@@ -1109,7 +1134,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         rdoNu.setSelected(!kh.isGioiTinh());
     }
 
-    private void searchCustomer() {
+    private void timKhachHang() {
         String keyword = MsgBox.prompt(this, "Xin nhập SDT hoặc CMND của khách hàng...");
         System.out.println(keyword);
         if (!keyword.isEmpty()) {
@@ -1126,22 +1151,30 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }
 
     private void updateStatus() {
-        boolean isChooseRoom = iChonPhong >= 0;
-        boolean isEnableBook = tblDaChon.getModel().getRowCount() > 0 && !txtMaKh.getText().isEmpty() ? true : false && isSelectDate == true;
-        boolean isAddCus = txtMaKh.getText().isEmpty() ? true : false;
-        boolean isDeleteRoom = this.iPhong >= 0;
+        boolean chonPhong = iChonPhong >= 0;
+        boolean lapPhieu = tblDaChon.getModel().getRowCount() > 0
+                && !txtMaKh.getText().isEmpty()
+                && Integer.parseInt(txtMaKh.getText().toString()) != 0
+                && iDangThue < 0;
+        boolean themKhachHang = txtMaKh.getText().isEmpty() ? true : false;
+        boolean xoaPhong = this.iDaChon >= 0;
         boolean isDeleteService = this.iDichVu >= 0;
-        boolean isMakePay = this.iDangThue >= 0;
+        boolean thanhToan = this.iDangThue >= 0;
+        boolean capNhatPhieu = tblDaChon.getModel().getRowCount() > 0
+                && !txtMaKh.getText().isEmpty()
+                && Integer.parseInt(txtMaKh.getText().toString()) != 0
+                && iDangThue >= 0;
 
-        btnChonPhong.setEnabled(isChooseRoom);
+        btnChonPhong.setEnabled(chonPhong);
 //        btnThemKh.setEnabled(isAddCus);
-        btnDatPhong.setEnabled(isEnableBook);
-        btnXoaPhong.setEnabled(isDeleteRoom);
+        btnLapPhieu.setEnabled(lapPhieu);
+        btnXoaPhong.setEnabled(xoaPhong);
         btnXoaDichVu.setEnabled(isDeleteService);
-        btnThanhToan.setEnabled(isMakePay);
+        btnThanhToan.setEnabled(thanhToan);
+        btnCapNhatPhieu.setEnabled(capNhatPhieu);
     }
 
-    private void insertDichVu() {
+    private void themDichVu() {
         if (Validator.checkPosNum(this, new String[]{"Số lượng"}, txtSoLuongDv)) {
             DichVu dichVu = (DichVu) cboDichVu.getSelectedItem();
             int maDv = dichVu.getMa();
@@ -1185,7 +1218,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         return true;
     }
 
-    private void deleteDichVu() {
+    private void xoaDichVu() {
         for (int i : tblDichVu.getSelectedRows()) {
             serviceList.remove(i);
         }
@@ -1197,7 +1230,8 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private void clearForm() {
         this.iChonPhong = -1;
         this.iDichVu = -1;
-        this.iPhong = -1;
+        this.iDaChon = -1;
+        this.iDangThue = -1;
 
         this.setFormKhachHang(new KhachHang());
         this.fillTblDanhSach();
@@ -1206,15 +1240,15 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         this.updateStatus();
     }
 
-    private void bookRoom() {
+    private void datPhong() {
         if (this.checkSelectDate()) {
             if (MsgBox.confirm(this, "Xác nhận đặt phòng?")) {
-                this.createHoaDon();
+                this.taoHoaDon();
             }
         }
     }
 
-    private void createHoaDon() {
+    private void taoHoaDon() {
         HoaDon hd = null;
         LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
         Integer maLg = lg.getMa();
@@ -1226,25 +1260,25 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             hd = new HoaDon(ngayTt, maLg, maKH, maNv);
             if (hddao.insert(hd)) {
                 System.out.println("create Hd success");
-                MsgBox.alert(this, "Đặt phòng thành công!");
+                MsgBox.alert(this, "Lập phiếu thuê thành công!");
                 this.createHDPhong(maLg, maKH, maNv);
                 this.createHDDichVu(maLg, maKH, maNv);
                 this.clearForm();
                 this.fillTblDangThue();
             } else {
-                System.out.println("create hd failed");
+                System.out.println("Lập phiếu thuê không thành công!");
             }
         } else {
             hd = new HoaDon(maLg, maKH, maNv);
             if (hddao.insertWithoutNgayTt(hd)) {
                 System.out.println("create Hd1 success");
-                MsgBox.alert(this, "Đặt phòng thành công!");
+                MsgBox.alert(this, "Lập phiếu thuê thành công!");
                 this.createHDPhong(maLg, maKH, maNv);
                 this.createHDDichVu(maLg, maKH, maNv);
                 this.clearForm();
                 this.fillTblDangThue();
             } else {
-                System.out.println("create hd1 failed");
+                System.out.println("Lập phiếu thuê không thành công!");
             }
         }
         roomList.clear();
@@ -1289,6 +1323,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         HoaDon hd = hddao.selectByLgKhNv(maLg, maKH, maNv);
         Integer maHd = hd.getMa();
         for (Phong p : roomList) {
+            pdao.updateAfterChooseOrRemove(p, true);
             HDPhong hdp = new HDPhong(maHd, p.getSoPhong());
             if (hdpdao.insert(hdp)) {
                 System.out.println("hdp suc");
@@ -1315,22 +1350,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         DefaultTableModel model = (DefaultTableModel) tblDangThue.getModel();
         model.setRowCount(0);
         List<HoaDon> list = hddao.selectDsThue(txtKeyword.getText().trim());
-
-//        list.forEach(i -> {
-//            Integer maKh = i.getMaKh();
-//            KhachHang kh = khdao.selectByID(maKh);
-//            LoaiGia lg = lgdao.selectByID(i.getMaLg());
-//            model.addRow(new Object[]{
-//                i.getMa(),
-//                i.getNgayThue(),
-//                i.getNgayThanhToan(),
-//                kh.getTen(),
-//                kh.getCmnd(),
-//                kh.getSdt(),
-//                lg.getTen()
-//            }
-//            );
-//        });
         for (HoaDon hd : list) {
             Integer maKh = hd.getMaKh();
             KhachHang kh = khdao.selectByID(maKh);
@@ -1347,51 +1366,66 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         }
     }
 
-    private void makePay() {
+    private void thanhToan() {
         if (MsgBox.confirm(this, "Xác nhận thanh toán?")) {
             Integer maHd = Integer.parseInt(tblDangThue.getValueAt(this.iDangThue, 0).toString());
             HoaDon hd = hddao.selectByID(maHd);
             if (hddao.thanhToanHd(hd.getMa(), hd.getMaLg())) {
                 MsgBox.alert(this, "Thanh toán thành công!");
+                this.clearForm();
                 this.fillTblDangThue();
                 this.updateStatus();
             } else {
                 MsgBox.alert(this, "Thanh toán không thành công!");
             }
         }
-//        double tongTien = 0;
-//        List<Object> phongs = hdpdao.selectDgByHdLg(maHd, hd.getMaLg());
-//        List<Object> dichVus = hddvdao.selectDgByHd(maHd);
-//        for (Object i : phongs) {
-//            Double gia = Double.parseDouble(i.toString());
-//            System.out.println(gia);
-//            tongTien += gia;
-//        }
-//        for (Object i : dichVus) {
-//            Double gia = Double.parseDouble(i.toString());
-//            System.out.println(gia);
-//            tongTien += gia;
-//        }
-//        System.out.println(tongTien);
-//        hd.setTongTien(tongTien);
-//        if (hd.getMaLg() == 3) {
-//            if (hddao.updateWithoutNgaytt(hd)) {
-//                MsgBox.alert(this, "Thanh toán thành công!");
-//            } else {
-//                MsgBox.alert(this, "Thanh toán không thành công!");
-//            }
-//        } else {
-//            if (hddao.update(hd)) {
-//                MsgBox.alert(this, "Thanh toán thành công!");
-//            } else {
-//                MsgBox.alert(this, "Thanh toán không thành công!");
-//            }
-//        }
     }
 
     private void editTblDangThue() {
         int ma = Integer.parseInt(tblDangThue.getValueAt(this.iDangThue, 0).toString());
         HoaDon hd = hddao.selectByID(ma);
+    }
+
+    private void editPhieuThue() {
+        roomList.clear();
+        Integer maHd = Integer.parseInt(tblDangThue.getValueAt(this.iDangThue, 0).toString());
+        HoaDon hd = hddao.selectByID(maHd);
+        List<Object> list = hdpdao.selectSoPhongByHoaDon(maHd);
+        for (Object i : list) {
+            Phong p = pdao.selectByID(i.toString());
+            roomList.add(p);
+        }
+        this.fillTblDaChon();
+
+        KhachHang kh = khdao.selectByID(hd.getMaKh());
+        this.setFormKhachHang(kh);
+
+        serviceList.clear();
+        List<HDDichVu> dvs = hddvdao.selectByMaHd(maHd);
+        for (HDDichVu i : dvs) {
+            serviceList.add(i);
+        }
+        this.fillTblDichVu();
+
+        LoaiGia lg = lgdao.selectByID(hd.getMaLg());
+        cboLoaiGia.setSelectedItem(lg);
+
+        this.updateStatus();
+    }
+
+    private void capNhatPhieu() {
+        try {
+            Integer maHd = Integer.parseInt(tblDangThue.getValueAt(this.iDangThue, 0).toString());
+            HoaDon hd = hddao.selectByID(maHd);
+            hdpdao.deleteByHd(maHd);
+            hddvdao.deleteByHd(maHd);
+            this.createHDPhong(hd.getMaLg(), hd.getMaKh(), hd.getMaNv());
+            this.createHDDichVu(hd.getMaLg(), hd.getMaKh(), hd.getMaNv());
+            MsgBox.alert(this, "Cập nhật phiếu thành công!");
+            this.clearForm();
+        } catch (Exception e) {
+            MsgBox.alert(this, "Cập nhật phiếu không thành công!");            
+        }
     }
 
 }

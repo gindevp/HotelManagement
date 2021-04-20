@@ -34,6 +34,18 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
             + "or b.sdt like ? or b.cmnd like ?)";
 
     private String thanhtoanSql = "{call sp_thanhtoanhd(?,?)}";
+    
+    private String selectYearSql = "select distinct year(ngaytt) from hoadon";
+    private String selectMonthByYearSql = "select distinct month(ngaytt) from hoadon where year(ngaytt) = ?";
+    
+    public List<Object> selectYear() {
+        return XJdbc.column(selectYearSql);
+    }
+    
+    public List<Object> selectMonthByYear(int year) {
+        return XJdbc.column(selectMonthByYearSql, year);
+    }
+    
     @Override
     public boolean insert(HoaDon entity) {
         return XJdbc.update(insertSql, entity.getNgayThanhToan(), entity.getMaLg(), entity.getMaKh(), entity.getMaNv());

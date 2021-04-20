@@ -225,12 +225,12 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="pnlKH" alignment="1" pref="306" max="32767" attributes="0"/>
-                      <Component id="pnlNV" alignment="1" pref="306" max="32767" attributes="0"/>
-                      <Component id="pnlDV_TN" alignment="1" pref="306" max="32767" attributes="0"/>
-                      <Component id="pnlNhaCungCap" alignment="1" pref="306" max="32767" attributes="0"/>
-                      <Component id="pnlPhong" alignment="1" pref="306" max="32767" attributes="0"/>
-                      <Component id="pnlThongKe" pref="306" max="32767" attributes="0"/>
+                      <Component id="pnlKH" alignment="1" pref="309" max="32767" attributes="0"/>
+                      <Component id="pnlNV" alignment="1" pref="309" max="32767" attributes="0"/>
+                      <Component id="pnlDV_TN" alignment="1" pref="309" max="32767" attributes="0"/>
+                      <Component id="pnlNhaCungCap" alignment="1" pref="309" max="32767" attributes="0"/>
+                      <Component id="pnlPhong" alignment="1" pref="309" max="32767" attributes="0"/>
+                      <Component id="pnlThongKe" pref="309" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="pnlDangXuat" min="-2" pref="125" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -351,7 +351,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
                       <Component id="btnNCC" min="-2" pref="294" max="-2" attributes="0"/>
                   </Group>
               </Group>
