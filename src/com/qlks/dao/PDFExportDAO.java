@@ -5,7 +5,6 @@
  */
 package com.qlks.dao;
 
-import com.qlks.entity.HoaDon;
 import com.qlks.util.XJdbc;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -15,10 +14,10 @@ import java.util.List;
  *
  * @author markhyun
  */
-public class PDFExportDAO extends ManageDAO<HoaDon, Integer> {
+public class PDFExportDAO {
 
     String selectHDByIDSql = "select * from hoadon where maHD = ?";
-    
+
     String selectHDPhongSql = "select b.mahd, b.sophong, a.malg, e.tenlg, c.malp, dongia "
             + "from hoadon a join hdphong b on b.MAHD = a.MAHD "
             + "join phong c on c.SOPHONG = b.SOPHONG "
@@ -32,51 +31,51 @@ public class PDFExportDAO extends ManageDAO<HoaDon, Integer> {
             + "where c.MAHD = ?";
 
     public List<String> selectTongTienHD(Integer key) {
-        List<String> list = selectColumnPhong(selectHDByIDSql, "tongtien", key);
+        List<String> list = selectColumn(selectHDByIDSql, "tongtien", key);
         return list;
     }
-    
+
     public List<String> selectTongTien(Integer key) {
-        List<String> list = selectColumnPhong(selectHDDVSql, "tong", key);
+        List<String> list = selectColumn(selectHDDVSql, "tong", key);
         return list;
     }
 
     public List<String> selectDGDV(Integer key) {
-        List<String> list = selectColumnPhong(selectHDDVSql, "dongia", key);
+        List<String> list = selectColumn(selectHDDVSql, "dongia", key);
         return list;
     }
 
     public List<String> selectSoLuong(Integer key) {
-        List<String> list = selectColumnPhong(selectHDDVSql, "soluong", key);
+        List<String> list = selectColumn(selectHDDVSql, "soluong", key);
         return list;
     }
 
     public List<String> selectTenDV(Integer key) {
-        List<String> list = selectColumnPhong(selectHDDVSql, "tenDV", key);
+        List<String> list = selectColumn(selectHDDVSql, "tenDV", key);
         return list;
     }
 
     public List<String> selectDonGiaPhong(Integer key) {
-        List<String> list = selectColumnPhong(selectHDPhongSql, "dongia", key);
+        List<String> list = selectColumn(selectHDPhongSql, "dongia", key);
         return list;
     }
 
     public List<String> selectTenLG(Integer key) {
-        List<String> list = selectColumnPhong(selectHDPhongSql, "tenlg", key);
+        List<String> list = selectColumn(selectHDPhongSql, "tenlg", key);
         return list;
     }
 
     public List<String> selectMaLP(Integer key) {
-        List<String> list = selectColumnPhong(selectHDPhongSql, "malp", key);
+        List<String> list = selectColumn(selectHDPhongSql, "malp", key);
         return list;
     }
 
     public List<String> selectPhong(Integer key) {
-        List<String> list = selectColumnPhong(selectHDPhongSql, "sophong", key);
+        List<String> list = selectColumn(selectHDPhongSql, "sophong", key);
         return list;
     }
 
-    protected List<String> selectColumnPhong(String sql, String column, Object... args) {
+    protected List<String> selectColumn(String sql, String column, Object... args) {
         List<String> list = new ArrayList<String>();
         try (
                 ResultSet rs = XJdbc.query(sql, args);) {
@@ -88,35 +87,4 @@ public class PDFExportDAO extends ManageDAO<HoaDon, Integer> {
         }
         return list;
     }
-
-    @Override
-    public boolean insert(HoaDon entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean update(HoaDon entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean delete(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<HoaDon> selectAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public HoaDon selectByID(Integer key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected List<HoaDon> selectBySql(String sql, Object... args) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

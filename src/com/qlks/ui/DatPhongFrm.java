@@ -5,11 +5,11 @@
  */
 package com.qlks.ui;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
 import com.qlks.dao.DichVuDAO;
 import com.qlks.dao.HDDichVuDAO;
 import com.qlks.dao.HDPhongDAO;
-import com.qlks.dao.HoaDonDAO;
-import com.qlks.dao.KhachHangDAO;
 import com.qlks.dao.LoaiGiaDAO;
 import com.qlks.dao.LoaiPhongDAO;
 import com.qlks.dao.LoaiPhongLoaiGiaDAO;
@@ -18,8 +18,6 @@ import com.qlks.dao.PhongTienNghiDAO;
 import com.qlks.entity.DichVu;
 import com.qlks.entity.HDDichVu;
 import com.qlks.entity.HDPhong;
-import com.qlks.entity.HoaDon;
-import com.qlks.entity.KhachHang;
 import com.qlks.entity.LoaiGia;
 import com.qlks.entity.LoaiPhong;
 import com.qlks.entity.LoaiPhongLoaiGia;
@@ -28,17 +26,31 @@ import com.qlks.util.Auth;
 import com.qlks.util.FormatData;
 import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
-import java.awt.Component;
-import java.awt.event.ItemEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
+import com.qlks.dao.PDFExportDAO;
+import com.qlks.dao.HoaDonDAO;
+import com.qlks.dao.KhachHangDAO;
+import com.qlks.entity.HoaDon;
+import com.qlks.entity.KhachHang;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.layout.border.Border;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.property.VerticalAlignment;
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -1349,7 +1361,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         this.iDangThue = -1;
         roomList.clear();
         serviceList.clear();
-        
+
         this.setFormKhachHang(new KhachHang());
         this.fillTblDanhSach();
         this.fillTblDaChon();
@@ -1493,6 +1505,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 this.clearForm();
                 this.fillTblDangThue();
                 this.updateStatus();
+                this.exportBillToPDF(maHd);
             } else {
                 MsgBox.alert(this, "Thanh toán không thành công!");
             }
@@ -1584,4 +1597,154 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         }
     }
 
+    private void exportBillToPDF(Integer maHD) {
+        List<String> listSoLuong = null;
+
+        List<String> listTenLG = null;
+        List<String> listTenDV = null;
+        List<String> listSoPhong = null;
+        List<String> listDGDV = null;
+        List<String> listDGPhong = null;
+        List<String> listTongTien = null;
+        List<String> listTongTienHD = null;
+        List<String> listMaLP = null;
+
+        //DAO void
+        PDFExportDAO pdfdao = new PDFExportDAO();
+        HoaDonDAO hddao = new HoaDonDAO();
+        KhachHangDAO khdao = new KhachHangDAO();
+
+        //DAO use
+        listSoPhong = pdfdao.selectPhong(maHD);
+        listDGPhong = pdfdao.selectDonGiaPhong(maHD);
+        listTenLG = pdfdao.selectTenLG(maHD);
+        listMaLP = pdfdao.selectMaLP(maHD);
+
+        listSoLuong = pdfdao.selectSoLuong(maHD);
+        listTenDV = pdfdao.selectTenDV(maHD);
+        listDGDV = pdfdao.selectDGDV(maHD);
+        listTongTien = pdfdao.selectTongTien(maHD);
+
+        listTongTienHD = pdfdao.selectTongTienHD(maHD);
+
+        //Object
+        HoaDon hd = hddao.selectByID(maHD);
+        KhachHang khachHang = khdao.selectByID(hd.getMaKh());
+
+        //Document create and setting
+        String path = "invoice.pdf";
+        PdfWriter pdfWriter = null;
+        try {
+            pdfWriter = new PdfWriter(path);
+        } catch (FileNotFoundException ex) {
+
+        }
+        PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+        Document document = new Document(pdfDocument);
+        pdfDocument.setDefaultPageSize(PageSize.A4);
+
+        //Table 1
+        float col = 380f;
+        float columnWidth[] = {col};
+        Table headTbl = new Table(columnWidth);
+
+        headTbl.setBackgroundColor(new DeviceRgb(63, 169, 219));
+
+        headTbl.addCell(new Cell().add("STARTUP HOTEL")
+                .setTextAlignment(TextAlignment.CENTER)
+                .setVerticalAlignment(VerticalAlignment.MIDDLE)
+                .setMarginTop(30f)
+                .setFontSize(25f)
+                .setBorder(Border.NO_BORDER)
+        );
+        headTbl.addCell(new Cell().add("INVOICE")
+                .setTextAlignment(TextAlignment.CENTER)
+                .setVerticalAlignment(VerticalAlignment.MIDDLE)
+                .setFontSize(20f)
+                .setBorder(Border.NO_BORDER)
+        );
+
+        headTbl.addCell(new Cell().add("Information Technology\n#3546 Markhyun\n987654321")
+                .setTextAlignment(TextAlignment.RIGHT)
+                .setMarginTop(5f)
+                .setBorder(Border.NO_BORDER)
+                .setMarginRight(10f));
+
+        document.add(headTbl);
+        document.add(new Paragraph("\n"));
+
+        //TABLE 2
+        float colWidth[] = {180};
+        Table inforTbl = new Table(colWidth);
+        inforTbl.addCell(new Cell(0, 4)
+                .add("Customer Information")
+                .setBold()
+                .setBorder(Border.NO_BORDER)
+        );
+
+        inforTbl.addCell(new Cell().add("Receipt No: " + hd.getMa())
+                .setBorder(Border.NO_BORDER)
+        );
+
+        inforTbl.addCell(new Cell().add("Date: " + hd.getNgayThanhToan())
+                .setBorder(Border.NO_BORDER)
+        );
+
+        inforTbl.addCell(new Cell().add("Cashier: " + hd.getMaNv())
+                .setBorder(Border.NO_BORDER)
+        );
+        inforTbl.addCell(new Cell().add("Customer: " + removeAccent(khachHang.getTen()))
+                .setBorder(Border.NO_BORDER)
+        );
+
+        inforTbl.addCell(new Cell().add("Description: ")
+                .setBorder(Border.NO_BORDER)
+        );
+        document.add(inforTbl);
+        document.add(new Paragraph("======================================================="));
+
+//TABLE 3
+        float tblWidth[] = {150, 100, 250};
+        Table allRoomTbl = new Table(tblWidth);
+//        allRoomTbl.setFontSize(16);
+        document.add(new Paragraph("Room is rented: \n"));
+        if (listSoPhong.size() != 0) {
+            for (int i = 0; i < listSoPhong.size(); i++) {
+                allRoomTbl.addCell(new Cell().add("- " + removeAccent(listTenLG.get(i))).setBorder(Border.NO_BORDER));
+                allRoomTbl.addCell(new Cell().add(listMaLP.get(i) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
+                allRoomTbl.addCell(new Cell().add(listDGPhong.get(i) + " VND").setBorder(Border.NO_BORDER));
+            }
+        }
+        document.add(allRoomTbl);
+
+        Table allServicesTbl = new Table(tblWidth);
+        document.add(new Paragraph("Service used: \n"));
+        if (listTenDV.size() != 0) {
+            for (int i = 0; i < listTenDV.size(); i++) {
+                allServicesTbl.addCell(new Cell().add("- " + listTenDV.get(i)).setBorder(Border.NO_BORDER));
+                allServicesTbl.addCell(new Cell().add(listSoLuong.get(i) + " x " + listDGDV.get(i)).setBorder(Border.NO_BORDER));
+                allServicesTbl.addCell(new Cell().add(listTongTien.get(i) + " VND").setBorder(Border.NO_BORDER));
+            }
+        }
+        document.add(allServicesTbl);
+
+        document.add(new Paragraph("__________###################################__________"));
+        Table totalMoney = new Table(tblWidth);
+        if (listTongTienHD.size() != 0) {
+            totalMoney.addCell(new Cell().add("Total money: ").setBorder(Border.NO_BORDER));
+            totalMoney.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            totalMoney.addCell(new Cell().add(listTongTienHD.get(0) + " VND").setBorder(Border.NO_BORDER).setBold());
+        }
+        document.add(totalMoney);
+
+        document.close();
+        System.out.println("PDF Created!");
+    }
+
+    private String removeAccent(String s) {
+
+        String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(temp).replaceAll("");
+    }
 }
