@@ -20,6 +20,11 @@ public class PDFExportDAO {
 
     String selectTongGioThueSql = "select tongGioThue = DATEDIFF(HOUR, ngaythue, ngaytt) from hoadon where MAHD = ?";
     String selectTongNgayThueSql = "tongNgayThue = DATEDIFF(day, ngaythue, ngaytt) from hoadon where MAHD = ?";
+    String selectTenLPSql = "select d.tenlp \n"
+            + "from hoadon a join hdphong b on b.MAHD = a.MAHD \n"
+            + "join phong c on c.SOPHONG = b.SOPHONG \n"
+            + "join loaiphong d on d.malp = c.malp\n"
+            + "where b.MAHD = ?";
 
     String selectGioTre_QuaDemSql = "select giotre_quadem = DATEPART(hour, ngaytt) from hoadon where MAHD = ?";
 
@@ -88,8 +93,8 @@ public class PDFExportDAO {
         return list;
     }
 
-    public List<String> selectMaLP(Integer key) {
-        List<String> list = selectColumn(selectHDPhongSql, "malp", key);
+    public List<String> selectTenLP(Integer key) {
+        List<String> list = selectColumn(selectTenLPSql, "tenlp", key);
         return list;
     }
 

@@ -912,7 +912,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private void tblDanhSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMouseClicked
         this.iChonPhong1 = tblDanhSach.getSelectedRow();
         this.fillGiaPhong();
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 1) {
             this.iChonPhong = tblDanhSach.getSelectedRow();
             this.updateStatus();
         }
@@ -952,7 +952,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblDaChonMouseClicked
 
     private void tblDichVuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDichVuMouseClicked
-        if (evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 1) {
             this.iDichVu = tblDichVu.getSelectedRow();
             this.updateStatus();
         }
@@ -1091,7 +1091,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         for (LoaiGia item : list) {
             model.addElement(item);
         }
-
     }
 
     private void fillCboLoaiPhong() {
@@ -1612,7 +1611,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         List<Double> listTienPhong = new ArrayList<>();
         List<Double> listTongTien = null;
         List<Double> listTongTienHD = null;
-        List<String> listMaLP = null;
+        List<String> listTenLP = null;
 
         //DAO use
         maLG = pdfdao.selectMaLG(maHD);
@@ -1622,7 +1621,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         listSoPhong = pdfdao.selectPhong(maHD);
         listDGPhong = pdfdao.selectDonGiaPhong(maHD);
         listTenLG = pdfdao.selectTenLG(maHD);
-        listMaLP = pdfdao.selectMaLP(maHD);
+        listTenLP = pdfdao.selectTenLP(maHD);
         listSoLuong = pdfdao.selectSoLuong(maHD);
         listTenDV = pdfdao.selectTenDV(maHD);
         listDGDV = pdfdao.selectDGDV(maHD);
@@ -1716,13 +1715,12 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 .setBold()
                 .setBorder(Border.NO_BORDER)
         );
-        inforTbl.addCell(new Cell().add("Cashier: " + hd.getMaNv())
-                .setBorder(Border.NO_BORDER)
-        );
         inforTbl.addCell(new Cell().add("Receipt No: " + hd.getMa())
                 .setBorder(Border.NO_BORDER)
         );
-
+        inforTbl.addCell(new Cell().add("Cashier: " + removeAccent(Auth.user.getTen()))
+                .setBorder(Border.NO_BORDER)
+        );
         inforTbl.addCell(new Cell().add("Date of rent: " + hd.getNgayThue())
                 .setBorder(Border.NO_BORDER)
         );
@@ -1741,16 +1739,22 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         document.add(new Paragraph("=========================================================================="));
 
 //TABLE 3
-        float tblWidth[] = {10, 160, 100, 250};
+        float tblWidth[] = {10, 160, 160, 190};
         Table allRoomTbl = new Table(tblWidth);
         document.add(new Paragraph("Room is rented: \n"));
         if (!listSoPhong.isEmpty()) {
+            allRoomTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            allRoomTbl.addCell(new Cell().add(removeAccent("Type of rental")).setBorder(Border.NO_BORDER));
+            allRoomTbl.addCell(new Cell().add(removeAccent("Type - Number of rooms")).setBorder(Border.NO_BORDER));
+            allRoomTbl.addCell(new Cell().add(removeAccent("Into money"))
+                    .setBorder(Border.NO_BORDER)
+                    .setTextAlignment(TextAlignment.RIGHT));
             switch (maLG) {
                 case 1:
                     for (int i = 0; i < listSoPhong.size(); i++) {
                         allRoomTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add("- " + (removeAccent(listTenLG.get(i))) + ": " + gioThue + removeAccent(" giờ")).setBorder(Border.NO_BORDER));
-                        allRoomTbl.addCell(new Cell().add(removeAccent(listMaLP.get(i)) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
+                        allRoomTbl.addCell(new Cell().add(removeAccent(listTenLP.get(i)) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add(listTienPhong.get(i) + " VND")
                                 .setBorder(Border.NO_BORDER)
                                 .setTextAlignment(TextAlignment.RIGHT));
@@ -1760,7 +1764,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                     for (int i = 0; i < listSoPhong.size(); i++) {
                         allRoomTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add("- " + (removeAccent(listTenLG.get(i))) + ": " + gioTre_QuaDem + removeAccent(" giờ")).setBorder(Border.NO_BORDER));
-                        allRoomTbl.addCell(new Cell().add(removeAccent(listMaLP.get(i)) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
+                        allRoomTbl.addCell(new Cell().add(removeAccent(listTenLP.get(i)) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add(listTienPhong.get(i) + " VND")
                                 .setBorder(Border.NO_BORDER)
                                 .setTextAlignment(TextAlignment.RIGHT));
@@ -1770,7 +1774,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                     for (int i = 0; i < listSoPhong.size(); i++) {
                         allRoomTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add("- " + (removeAccent(listTenLG.get(i))) + ": " + tongNgayThue + removeAccent(" ngày")).setBorder(Border.NO_BORDER));
-                        allRoomTbl.addCell(new Cell().add(removeAccent(listMaLP.get(i)) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
+                        allRoomTbl.addCell(new Cell().add(removeAccent(listTenLP.get(i)) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add(listTienPhong.get(i) + " VND")
                                 .setBorder(Border.NO_BORDER)
                                 .setTextAlignment(TextAlignment.RIGHT));
@@ -1784,6 +1788,13 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         Table allServicesTbl = new Table(tblWidth);
         if (!listTenDV.isEmpty()) {
             document.add(new Paragraph("Service used: \n"));
+            allServicesTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
+            allServicesTbl.addCell(new Cell().add(removeAccent("Service name")).setBorder(Border.NO_BORDER));
+            allServicesTbl.addCell(new Cell().add(removeAccent("Quantity x unit price")).setBorder(Border.NO_BORDER));
+            allServicesTbl.addCell(new Cell().add(removeAccent(""))
+                    .setBorder(Border.NO_BORDER)
+                    .setTextAlignment(TextAlignment.RIGHT));
+
             for (int i = 0; i < listTenDV.size(); i++) {
                 allServicesTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
                 allServicesTbl.addCell(new Cell().add("- " + removeAccent(listTenDV.get(i)))
