@@ -164,6 +164,7 @@ public class PhongTienNghiFrm extends javax.swing.JInternalFrame {
         jLabel6.setText("Tình Trạng:");
 
         txtTinhTrang.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtTinhTrang.setText("Normal");
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/back_to_40px.png"))); // NOI18N

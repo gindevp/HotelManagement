@@ -52,8 +52,19 @@ CREATE TABLE NHANVIEN
 GO
 DELETE FROM NHANVIEN
 INSERT NHANVIEN VALUES ('PH01', N'Nguyễn Nhật Hùng', 'hungnn', '1998-03-05', 1, N'Hà Nội', '0984111111', 'hungnnph09719@fpt.edu.vn', DEFAULT, 'QL')
-INSERT NHANVIEN VALUES ('PH02', N'Hứa Mạnh Hùng', 'hunghm', '2000-03-05', 1, N'Hà Nội', '0984111112', 'hunghmph09808@fpt.edu.vn', DEFAULT, 'KT')
+INSERT NHANVIEN VALUES ('PH02', N'Hứa Mạnh Hùng', 'hunghm', '2000-03-05', 1, N'Hà Nội', '0984111112', 'hunghmph09808@fpt.edu.vn', DEFAULT, 'QL')
 INSERT NHANVIEN VALUES ('PH03', N'Nguyễn Hữu Quyết', 'quyetnh', '2001-03-05', 1, N'Hà Nội', '0984111113', 'quyetnhph12037@fpt.edu.vn', DEFAULT, 'LT')
+
+INSERT NHANVIEN VALUES ('PH04', N'Nguyễn Quốc Lập', 'lapnq', '2002-11-12', 1, N'Hà Nội', '0984111114', 'lapnqph14889@fpt.edu.vn', DEFAULT, 'LT')
+INSERT NHANVIEN VALUES ('PH05', N'Hoàng Tấn Lộc', 'locht', '2001-08-13', 1, N'Hà Nội', '0984111115', 'lochtph15557@fpt.edu.vn', DEFAULT, 'LT')
+INSERT NHANVIEN VALUES ('PH06', N'Trương Tấn Thành', 'thanhtt', '2000-05-09', 1, N'Hà Nội', '0984111116', 'thanhttph15752@fpt.edu.vn', DEFAULT, 'PB')
+INSERT NHANVIEN VALUES ('PH07', N'Ngô Duy Nam ', 'namnd', '1999-06-05', 1, N'Hà Nội', '0984111117', 'namndph15819 @fpt.edu.vn', DEFAULT, 'PB')
+INSERT NHANVIEN VALUES ('PH08', N'Bùi Minh Hiển ', 'hienbm', '2001-12-05', 1, N'Hà Nội', '0984111118', 'hienbmph15983@fpt.edu.vn', DEFAULT, 'KT')
+INSERT NHANVIEN VALUES ('PH09', N'Đỗ Thị Huế ', 'huedt', '2001-03-23', 0, N'Hà Nội', '0984111119', 'huedtph16848@fpt.edu.vn', DEFAULT, 'KT')
+INSERT NHANVIEN VALUES ('PH10', N'Phạm Anh Tú ', 'tupa', '2001-10-05', 1, N'Hà Nội', '0984111120', 'tupaph17044@fpt.edu.vn', DEFAULT, 'LT')
+
+delete from NHANVIEN where MANV = 'ph10'
+
 SELECT * FROM NHANVIEN
 GO
 
@@ -312,6 +323,17 @@ INSERT KHACHHANG VALUES (N'Trần Thị Ngọc Diệp', '122122127', '0987654007
 INSERT KHACHHANG VALUES (N'Nguyễn Việt Anh', '122122128', '0987654008', 1, N'Quảng Ninh', N'Việt Nam')
 INSERT KHACHHANG VALUES (N'Nông Thị Ngoan', '122122129', '0987654009', 0, N'Bắc Giang', N'Việt Nam')
 INSERT KHACHHANG VALUES (N'Ngô Hà Vy', '122122130', '0987654010', 0, N'Hà Nội', N'Việt Nam')
+
+INSERT KHACHHANG VALUES (N'Vũ Trọng Huy', '122122131', '0987654011', 1, N'Bắc Kạn', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Vũ Hoàng Phong', '122122132', '0987654012', 1, N'Bến Tre', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Đinh Văn Kiên', '122122133', '0987654013', 1, N'Thái Bình', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Phạm Anh Hùng', '122122134', '0987654014', 1, N'Cần Thơ', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Lê Thuỷ Tiên', '122122135', '0987654015', 0, N'Khánh Hòa', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Phan Văn Ký', '122122136', '0987654016', 1, N'Lâm Đồng', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Lê Thu Trà ', '122122137', '0987654017', 0, N'Nam Định', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Chu Văn An', '122122138', '0987654018', 1, N'Ninh Thuận', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Lê Thị Dung', '122122139', '0987654019', 0, N'Phú Thọ', N'Việt Nam')
+INSERT KHACHHANG VALUES (N'Lê Anh Quân', '122122140', '0987654020', 1, N'Hà Tĩnh', N'Việt Nam')
 
 GO
 SELECT * FROM KHACHHANG

@@ -117,7 +117,7 @@
               <Font name="Segoe UI" size="24" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="33" green="c3" red="ff" type="rgb"/>
+              <Color blue="3b" green="95" red="dc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="STARTUP HOTEL"/>
           </Properties>

@@ -805,7 +805,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
 
     private void setFormDV(DichVu dv) {
         txtTenDV.setText(dv.getTen());
-        txtDonGia.setText(FormatData.formatMoney(dv.getGia()));
+        txtDonGia.setText(dv.getGia() + "");
         txtMoTa.setText(dv.getMoTa());
         rdo1.setSelected(dv.isTrangThai());
         rdo0.setSelected(!dv.isTrangThai());
