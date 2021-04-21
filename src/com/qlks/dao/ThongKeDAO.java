@@ -19,14 +19,20 @@ public class ThongKeDAO {
 
     private String sp_topphong = "{call sp_topphong(?, ?)}";
     private String sp_topdv = "{call sp_topdv(?, ?)}";
-    private String sp_hoadon =" {call sp_hoadon}";
+    private String sp_hoadon = " {call sp_hoadon}";
     private String sp_hoadon1 = "{call sp_hoadon1(?, ?)}";
-    
+    private String sp_ssdt = "{call sp_sosanhdoanhthu(?)}";
+
+    public List<Object[]> getDoanhThu(Integer year) {
+        String[] title = {"THANG", "DOANHTHU"};
+        return getListOfArray(sp_ssdt, title, year);
+    }
+
     public List<Object[]> getHoaDon() {
         String[] title = {"MAHD", "NGAYTHUE", "NGAYTT", "TONGTIEN", "TENLG", "TENKH", "TENNV"};
         return getListOfArray(sp_hoadon, title);
     }
-    
+
     public List<Object[]> getHoaDon1(Date start, Date end) {
         String[] title = {"MAHD", "NGAYTHUE", "NGAYTT", "TONGTIEN", "TENLG", "TENKH", "TENNV"};
         return getListOfArray(sp_hoadon1, title, start, end);

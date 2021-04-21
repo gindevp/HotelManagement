@@ -12,9 +12,11 @@ import com.qlks.entity.NhanVien;
 import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
 import com.qlks.util.XImage;
+import java.awt.Window;
 import java.io.File;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
 /**
@@ -25,10 +27,20 @@ public class RegisterDialog extends javax.swing.JDialog {
 
     BoPhanDAO bpdao = new BoPhanDAO();
     NhanVienDAO nvdao = new NhanVienDAO();
+    JDialog another;
+    boolean modal;
 
     /**
      * Creates new form RegisterDialog
      */
+    public RegisterDialog(JDialog another, boolean modal) {
+        super(another, modal);
+        this.another = another;
+        this.modal = modal;
+        this.initComponents();
+        this.init();
+    }
+
     public RegisterDialog() {
         initComponents();
         this.init();

@@ -9,10 +9,20 @@ import com.qlks.dao.HoaDonDAO;
 import com.qlks.dao.ThongKeDAO;
 import com.qlks.util.FormatData;
 import com.qlks.util.Validator;
+import java.awt.BasicStroke;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.LineAndShapeRenderer;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -68,9 +78,16 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tblDoanhThu1 = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        cboNam2 = new javax.swing.JComboBox<>();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        pnlBieuDo = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblDoanhThu2 = new javax.swing.JTable();
+        cboNam3 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
 
         setClosable(true);
@@ -89,11 +106,11 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã Hóa Đơn", "Ngày Thuê ", "Ngày Thanh Toán", "Tổng Tiền", "Loại Hình Thuê", "Tên Khách Hàng", "Nhân Viên Thanh Toán"
+                "STT", "Mã Hóa Đơn", "Ngày Thuê ", "Ngày Thanh Toán", "Tổng Tiền", "Loại Hình Thuê", "Tên Khách Hàng", "Nhân Viên Thanh Toán"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -104,9 +121,12 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         tblHoaDon.setRowHeight(40);
         jScrollPane2.setViewportView(tblHoaDon);
         if (tblHoaDon.getColumnModel().getColumnCount() > 0) {
-            tblHoaDon.getColumnModel().getColumn(0).setMinWidth(80);
-            tblHoaDon.getColumnModel().getColumn(0).setPreferredWidth(80);
-            tblHoaDon.getColumnModel().getColumn(0).setMaxWidth(80);
+            tblHoaDon.getColumnModel().getColumn(0).setMinWidth(60);
+            tblHoaDon.getColumnModel().getColumn(0).setPreferredWidth(60);
+            tblHoaDon.getColumnModel().getColumn(0).setMaxWidth(60);
+            tblHoaDon.getColumnModel().getColumn(1).setMinWidth(100);
+            tblHoaDon.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tblHoaDon.getColumnModel().getColumn(1).setMaxWidth(100);
         }
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -321,39 +341,125 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDoanhThu1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tblDoanhThu1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Tháng", "Doanh Thu Phòng", "Doanh Thu Dịch Vụ", "Tổng Doanh Thu"
+                "Tháng", "Tổng Doanh Thu"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setFillsViewportHeight(true);
-        jScrollPane4.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        tblDoanhThu1.setFillsViewportHeight(true);
+        tblDoanhThu1.setRowHeight(40);
+        jScrollPane4.setViewportView(tblDoanhThu1);
+        if (tblDoanhThu1.getColumnModel().getColumnCount() > 0) {
+            tblDoanhThu1.getColumnModel().getColumn(0).setMinWidth(80);
+            tblDoanhThu1.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tblDoanhThu1.getColumnModel().getColumn(0).setMaxWidth(80);
         }
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel6.setText("Năm:");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel7.setText("Năm:");
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboNam2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNam2ActionPerformed(evt);
+            }
+        });
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnlBieuDo.setBackground(new java.awt.Color(255, 255, 255));
+        pnlBieuDo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout pnlBieuDoLayout = new javax.swing.GroupLayout(pnlBieuDo);
+        pnlBieuDo.setLayout(pnlBieuDoLayout);
+        pnlBieuDoLayout.setHorizontalGroup(
+            pnlBieuDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 973, Short.MAX_VALUE)
+        );
+        pnlBieuDoLayout.setVerticalGroup(
+            pnlBieuDoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlBieuDo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        tblDoanhThu2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        tblDoanhThu2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tháng", "Tổng Doanh Thu"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDoanhThu2.setFillsViewportHeight(true);
+        tblDoanhThu2.setRowHeight(40);
+        jScrollPane5.setViewportView(tblDoanhThu2);
+        if (tblDoanhThu2.getColumnModel().getColumnCount() > 0) {
+            tblDoanhThu2.getColumnModel().getColumn(0).setMinWidth(80);
+            tblDoanhThu2.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tblDoanhThu2.getColumnModel().getColumn(0).setMaxWidth(80);
+        }
+
+        cboNam3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboNam3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboNam3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNam3ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel8.setText("Năm:");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -362,24 +468,41 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1403, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cboNam2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cboNam3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboNam2, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboNam3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         tab.addTab("Doanh thu tổng", jPanel7);
@@ -446,7 +569,7 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
 
     private void cboNam1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNam1ActionPerformed
         if (cboNam1.getSelectedItem() != null) {
-            this.fillCboThangTopPhong();
+            this.fillCboThangTop();
         }
     }//GEN-LAST:event_cboNam1ActionPerformed
 
@@ -465,37 +588,56 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         this.fillTblHoaDon();
     }//GEN-LAST:event_btnRefreshHdActionPerformed
 
+    private void cboNam2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNam2ActionPerformed
+        if (cboNam2.getSelectedItem() != null) {
+            this.fillTblDoanhThu1();
+        }
+    }//GEN-LAST:event_cboNam2ActionPerformed
+
+    private void cboNam3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNam3ActionPerformed
+        if (cboNam3.getSelectedItem() != null) {
+            this.fillTblDoanhThu2();
+        }
+    }//GEN-LAST:event_cboNam3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRefreshHd;
     private javax.swing.JButton btnTimHd;
     private javax.swing.JComboBox<String> cboNam1;
+    private javax.swing.JComboBox<String> cboNam2;
+    private javax.swing.JComboBox<String> cboNam3;
     private javax.swing.JComboBox<String> cboThang1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane5;
     private com.toedter.calendar.JDateChooser jdcEnd;
     private com.toedter.calendar.JDateChooser jdcStart;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTongDv;
     private javax.swing.JLabel lblTongPhong;
+    private javax.swing.JPanel pnlBieuDo;
     private javax.swing.JTabbedPane tab;
+    private javax.swing.JTable tblDoanhThu1;
+    private javax.swing.JTable tblDoanhThu2;
     private javax.swing.JTable tblHoaDon;
     private javax.swing.JTable tblTopDv;
     private javax.swing.JTable tblTopPhong;
@@ -503,20 +645,46 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
 
     private void init() {
         this.fillTblHoaDon();
-        this.fillCboNamTopPhong();
-
+        this.fillCboNam();
+        this.createChart();
     }
 
-    private void fillCboNamTopPhong() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboNam1.getModel();
-        model.removeAllElements();
-        List<Object> list = hddao.selectYear();
-        for (Object i : list) {
-            model.addElement(i);
+    private void fillTblHoaDon() {
+        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
+        model.setRowCount(0);
+        List<Object[]> list = tkdao.getHoaDon();
+        int i = 1;
+        for (Object[] obj : list) {
+            model.addRow(new Object[]{
+                i,
+                obj[0],
+                obj[1],
+                obj[2],
+                FormatData.formatMoney(Double.parseDouble(obj[3].toString())),
+                obj[4],
+                obj[5],
+                obj[6]
+            });
+            i++;
         }
     }
 
-    private void fillCboThangTopPhong() {
+    private void fillCboNam() {
+        DefaultComboBoxModel model1 = (DefaultComboBoxModel) cboNam1.getModel();
+        model1.removeAllElements();
+        DefaultComboBoxModel model2 = (DefaultComboBoxModel) cboNam2.getModel();
+        model2.removeAllElements();
+        DefaultComboBoxModel model3 = (DefaultComboBoxModel) cboNam3.getModel();
+        model3.removeAllElements();
+        List<Object> list = hddao.selectYear();
+        for (Object i : list) {
+            model1.addElement(i);
+            model2.addElement(i);
+            model3.addElement(i);
+        }
+    }
+
+    private void fillCboThangTop() {
         Integer year = (Integer) cboNam1.getSelectedItem();
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboThang1.getModel();
         model.removeAllElements();
@@ -566,23 +734,6 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         lblTongDv.setText(FormatData.formatMoney(tong));
     }
 
-    private void fillTblHoaDon() {
-        DefaultTableModel model = (DefaultTableModel) tblHoaDon.getModel();
-        model.setRowCount(0);
-        List<Object[]> list = tkdao.getHoaDon();
-        for (Object[] obj : list) {
-            model.addRow(new Object[]{
-                obj[0],
-                obj[1],
-                obj[2],
-                FormatData.formatMoney(Double.parseDouble(obj[3].toString())),
-                obj[4],
-                obj[5],
-                obj[6]
-            });
-        }
-    }
-
     private void timHd() {
         if (Validator.checkSelectedDate(this, new String[]{"ngày bắt đầu!", "ngày kết thúc!"}, jdcStart, jdcEnd)
                 && Validator.checkDates(this, jdcStart, jdcEnd)) {
@@ -607,6 +758,106 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
                 obj[6]
             });
         }
+    }
+
+    private void fillTblDoanhThu1() {
+        DefaultTableModel model = (DefaultTableModel) tblDoanhThu1.getModel();
+        model.setRowCount(0);
+        Integer year = (Integer) cboNam2.getSelectedItem();
+        List<Object[]> list = tkdao.getDoanhThu(year);
+        for (Object[] obj : list) {
+            model.addRow(new Object[]{
+                obj[0],
+                FormatData.formatMoney(Double.parseDouble(obj[1].toString()))
+            });
+        }
+    }
+
+    private void fillTblDoanhThu2() {
+        DefaultTableModel model = (DefaultTableModel) tblDoanhThu2.getModel();
+        model.setRowCount(0);
+        Integer year = (Integer) cboNam3.getSelectedItem();
+        List<Object[]> list = tkdao.getDoanhThu(year);
+        for (Object[] obj : list) {
+            model.addRow(new Object[]{
+                obj[0],
+                FormatData.formatMoney(Double.parseDouble(obj[1].toString()))
+            });
+        }
+    }
+
+    private void createChart() {
+        DefaultCategoryDataset dataset = createDataset();
+        // Create chart  
+        JFreeChart chart = ChartFactory.createLineChart(
+                "BIỂU ĐỒ SO SÁNH TỔNG DOANH THU",
+                "Tháng",
+                "Doanh Thu",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                true
+        );
+
+        CategoryPlot plot = chart.getCategoryPlot();
+        LineAndShapeRenderer renderer = new LineAndShapeRenderer();
+
+        setRender(plot, renderer);
+
+        ChartPanel panel = new ChartPanel(chart);
+        pnlBieuDo.setLayout(new BorderLayout());
+        pnlBieuDo.add(panel, BorderLayout.CENTER);
+        pnlBieuDo.validate();
+    }
+
+    private DefaultCategoryDataset createDataset() {
+        List<Object> yearList = hddao.selectYear();
+        Integer yearNow = Integer.parseInt(yearList.get(0).toString());
+        Integer yearBefore = Integer.parseInt(yearList.get(1).toString());
+
+        List<Object[]> listNow = tkdao.getDoanhThu(yearNow);
+        List<Object[]> listBefore = tkdao.getDoanhThu(yearBefore);
+
+        String ser1 = yearNow.toString();
+        String ser2 = yearBefore.toString();
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        for (int i = 0; i < listNow.size(); i++) {
+            double value = Double.parseDouble(listNow.get(i)[1].toString());
+            String month = listNow.get(i)[0].toString();
+            dataset.setValue(value, ser1, month);
+        }
+
+        for (int i = 0; i < listNow.size(); i++) {
+            double value = Double.parseDouble(listBefore.get(i)[1].toString());
+            String month = listBefore.get(i)[0].toString();
+            dataset.setValue(value, ser2, month);
+        }
+
+        return dataset;
+    }
+
+    private void setRender(CategoryPlot plot, LineAndShapeRenderer renderer) {
+        plot.setOutlinePaint(Color.BLACK);
+        plot.setOutlineStroke(new BasicStroke(1.0f));
+
+        plot.setBackgroundPaint(Color.BLACK);
+
+// sets paint color for each series
+        renderer.setSeriesPaint(0, Color.RED);
+        renderer.setSeriesPaint(1, Color.GREEN);
+//        renderer.setSeriesPaint(2, Color.BLUE);
+//        renderer.setSeriesPaint(3, Color.YELLOW);
+
+// sets thickness for series (using strokes)
+        renderer.setSeriesStroke(0, new BasicStroke(4.0f));
+        renderer.setSeriesStroke(1, new BasicStroke(3.0f));
+//        renderer.setSeriesStroke(2, new BasicStroke(2.0f));
+//        renderer.setSeriesStroke(3, new BasicStroke(1.5f));
+
+        plot.setRenderer(renderer);
     }
 
 }
