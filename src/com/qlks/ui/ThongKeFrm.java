@@ -74,6 +74,7 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         lblTitle = new javax.swing.JLabel();
 
         setClosable(true);
+        setTitle("Tổng Hợp - Thống Kê");
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -88,7 +89,7 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Mã Hóa Đơn", "Ngày Thuê ", "Ngày Thanh Toán", "Tổng Tiền", "Loại Hình Thuê", "Tên Khách Hàng", "Nhân Viên  Thanh Toán"
+                "Mã Hóa Đơn", "Ngày Thuê ", "Ngày Thanh Toán", "Tổng Tiền", "Loại Hình Thuê", "Tên Khách Hàng", "Nhân Viên Thanh Toán"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -102,6 +103,11 @@ public class ThongKeFrm extends javax.swing.JInternalFrame {
         tblHoaDon.setFillsViewportHeight(true);
         tblHoaDon.setRowHeight(40);
         jScrollPane2.setViewportView(tblHoaDon);
+        if (tblHoaDon.getColumnModel().getColumnCount() > 0) {
+            tblHoaDon.getColumnModel().getColumn(0).setMinWidth(80);
+            tblHoaDon.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tblHoaDon.getColumnModel().getColumn(0).setMaxWidth(80);
+        }
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "TÌM KIẾM", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N

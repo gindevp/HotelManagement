@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
+    <Property name="title" type="java.lang.String" value="T&#x1ed5;ng H&#x1ee3;p - Th&#x1ed1;ng K&#xea;"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -167,12 +168,12 @@
                                 <Column editable="false" title="T&#x1ed5;ng Ti&#x1ec1;n" type="java.lang.Object"/>
                                 <Column editable="false" title="Lo&#x1ea1;i H&#xec;nh Thu&#xea;" type="java.lang.Object"/>
                                 <Column editable="false" title="T&#xea;n Kh&#xe1;ch H&#xe0;ng" type="java.lang.Object"/>
-                                <Column editable="false" title="Nh&#xe2;n Vi&#xea;n  Thanh To&#xe1;n" type="java.lang.Object"/>
+                                <Column editable="false" title="Nh&#xe2;n Vi&#xea;n Thanh To&#xe1;n" type="java.lang.Object"/>
                               </Table>
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="80" minWidth="80" prefWidth="80" resizable="true">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>

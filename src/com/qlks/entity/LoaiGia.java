@@ -45,6 +45,14 @@ public class LoaiGia {
     public String toString() {
         return this.ten; //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        LoaiGia lg = (LoaiGia) obj;
+        Integer a = new Integer(lg.getMa());
+        Integer b = new Integer(this.ma);
+        return a.equals(b); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     

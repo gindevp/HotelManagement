@@ -67,7 +67,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkSelectedDate(Component parent, String[] title, JDateChooser... args) {
+    public static boolean checkSelectedDate(Component parent, String[] title, com.toedter.calendar.JDateChooser... args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].getDate() == null) {
                 MsgBox.alert(parent, "Vui lòng chọn thời gian cho " + title[i]);
