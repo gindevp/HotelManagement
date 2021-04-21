@@ -15,6 +15,7 @@ import com.qlks.util.MsgBox;
 import com.qlks.util.Validator;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.Window;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
@@ -25,6 +26,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JRootPane;
+import javax.swing.SwingUtilities;
 
 public class LoginDialog extends javax.swing.JDialog {
 
@@ -462,9 +464,10 @@ public class LoginDialog extends javax.swing.JDialog {
     }
 
     private void openRegisterDialog() {
+        Window ancestor = SwingUtilities.getWindowAncestor(btnDangKy);
         LoginDialog.this.setVisible(false);
 //        LoginDialog.this.setOpacity(0);
-        RegisterDialog regis = new RegisterDialog();
+        RegisterDialog regis = new RegisterDialog(this, true);
         regis.setLocationRelativeTo(null);
         regis.setVisible(true);
     }

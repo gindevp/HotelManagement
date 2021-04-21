@@ -866,17 +866,12 @@ public class HomeFrm extends javax.swing.JFrame {
     private void openDoiTTNhanVien() {
         if (Auth.isLogin()) {
             XForm.openChildFrm(this, desMain, new ThongTinNhanVienFrm(desMain));
-
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
     }
 
-    private void openNhaCungCap() {
-    }
-
     private void openDichVuTienNghi() {
-
         if (Auth.isLogin()) {
             if (Auth.isRoomStaff() || Auth.isManager()) {
                 XForm.openChildFrm(this, desMain, new DichVuTienNghiFrm(desMain));
@@ -889,7 +884,6 @@ public class HomeFrm extends javax.swing.JFrame {
     }
 
     private void openKhachHang() {
-
         if (Auth.isLogin()) {
             if (Auth.isReceptionist() || Auth.isManager()) {
                 XForm.openChildFrm(this, desMain, new KhachHangFrm(desMain));
@@ -902,7 +896,6 @@ public class HomeFrm extends javax.swing.JFrame {
     }
 
     private void openPhong() {
-
         if (Auth.isLogin()) {
             if (Auth.isRoomStaff() || Auth.isManager()) {
                 XForm.openChildFrm(this, desMain, new PhongFrm(desMain));
@@ -928,6 +921,7 @@ public class HomeFrm extends javax.swing.JFrame {
     }
 
     private void openLogin() {
+        this.dispose();
         new LoginDialog(this, true).setVisible(true);
         this.showName();
     }
@@ -952,7 +946,7 @@ public class HomeFrm extends javax.swing.JFrame {
 
     private void openGia() {
         if (Auth.isLogin()) {
-            if (Auth.isAccountant() || Auth.isManager()) {
+            if (Auth.isManager()) {
                 XForm.openChildFrm(this, desMain, new GiaFrm(desMain));
             } else {
                 MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
@@ -963,6 +957,14 @@ public class HomeFrm extends javax.swing.JFrame {
     }
 
     private void openThongKe() {
-        XForm.openChildFrm(this, desMain, new ThongKeFrm());
+        if (Auth.isLogin()) {
+            if (Auth.isAccountant() || Auth.isManager()) {
+                XForm.openChildFrm(this, desMain, new ThongKeFrm());
+            } else {
+                MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
+            }
+        } else {
+            MsgBox.alert(this, "Vui lòng đăng nhập!");
+        }
     }
 }

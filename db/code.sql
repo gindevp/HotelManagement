@@ -570,7 +570,17 @@ end catch
 end
 
 exec sp_topdv 2021, 3
-
+------------------------------sp_sosanhdt
+if OBJECT_ID ('sp_sosanhdoanhthu') is not null
+	drop proc sp_sosanhdoanhthu
+go
+create proc sp_sosanhdoanhthu @year int
+as
+begin
+	select MONTH(ngaytt) as thang, sum(tongtien) as tong from HOADON
+	where YEAR(ngaytt) = @year
+	group by MONTH(ngaytt)
+end
 
 
 

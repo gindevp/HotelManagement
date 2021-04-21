@@ -25,38 +25,38 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
     private String updateSql = "update hoadon set ngaytt = getdate(), trangthai = 1, tongtien = ? where mahd = ?";
     private String updateWithoutNgayttSql = "update hoadon set tongtien = ?, trangthai = 1 where mahd = ?";
     private String deleteSql;
-    private String selectAll = "select * from hoadon";
+    private String selectAll = "select * from hoadon order by ngaytt desc";
     private String selectById = "select * from hoadon where mahd = ?";
     private String selectByLgKhNvSql = "select top 1 * from hoadon where malg = ? and makh = ? and manv = ? order by ngaythue desc";
-    
+
     private String selectDsThueSql = "select a.* from hoadon a join khachhang b "
             + "on a.makh = b.makh where trangthai = 0 and (b.tenkh like ? "
             + "or b.sdt like ? or b.cmnd like ?)";
 
     private String thanhtoanSql = "{call sp_thanhtoanhd(?,?)}";
-    
-    private String selectYearSql = "select distinct year(ngaytt) from hoadon where trangthai = 1";
+
+    private String selectYearSql = "select distinct year(ngaytt) from hoadon where trangthai = 1 order by year(ngaytt) desc";
     private String selectMonthByYearSql = "select distinct month(ngaytt) from hoadon where year(ngaytt) = ? and trangthai = 1";
     private String selectTongTienNowSql = "{call sp_tongtiennow(?, ?)}";
-    
+
     private String updatePhieuThueSql = "update hoadon set malg = ? where mahd = ?";
-    
-        public boolean updatePhieuThue(Integer maLg, Integer maHd) {
+
+    public boolean updatePhieuThue(Integer maLg, Integer maHd) {
         return XJdbc.update(updatePhieuThueSql, maLg, maHd);
     }
-    
+
     public Object selectTongTienNow(Integer maHd, Integer maLg) {
         return XJdbc.value(selectTongTienNowSql, maHd, maLg);
     }
-    
+
     public List<Object> selectYear() {
         return XJdbc.column(selectYearSql);
     }
-    
+
     public List<Object> selectMonthByYear(int year) {
         return XJdbc.column(selectMonthByYearSql, year);
     }
-    
+
     @Override
     public boolean insert(HoaDon entity) {
         return XJdbc.update(insertSql, entity.getNgayThanhToan(), entity.getMaLg(), entity.getMaKh(), entity.getMaNv());
@@ -65,7 +65,7 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
     public boolean insertWithoutNgayTt(HoaDon entity) {
         return XJdbc.update(insertWithoutNgayTtSql, entity.getMaLg(), entity.getMaKh(), entity.getMaNv());
     }
-    
+
     public boolean thanhToanHd(Integer maHd, Integer maLg) {
         return XJdbc.update(thanhtoanSql, maHd, maLg);
     }
