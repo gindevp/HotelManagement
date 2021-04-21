@@ -489,6 +489,7 @@ public class ThongTinNhanVienFrm extends javax.swing.JInternalFrame {
             if (nvdao.update(nhanVien)) {
                 MsgBox.alert(this, "Sửa thông tin thành công!");
                 this.clear();
+                Auth.user = nhanVien;
             } else {
                 MsgBox.alert(this, "Sửa thông tin thành công!");
             }

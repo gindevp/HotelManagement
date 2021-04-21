@@ -45,12 +45,14 @@ import com.itextpdf.layout.border.Border;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
-import com.itextpdf.layout.property.HorizontalAlignment;
 import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import com.qlks.dao.NhanVienDAO;
 import com.qlks.entity.NhanVien;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -996,7 +998,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtKeywordKeyReleased
 
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
-        this.thanhToan();
+        try {
+            this.thanhToan();
+        } catch (IOException ex) {
+            Logger.getLogger(DatPhongFrm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
     private void btnCapNhatPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatPhieuActionPerformed
@@ -1507,7 +1513,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         }
     }
 
-    private void thanhToan() {
+    private void thanhToan() throws IOException {
         if (MsgBox.confirm(this, "Xác nhận thanh toán?")) {
             Integer maHd = Integer.parseInt(tblDangThue.getValueAt(this.iDangThue, 0).toString());
             HoaDon hd = hddao.selectByID(maHd);
@@ -1605,7 +1611,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
 //        } catch (Exception e) {
 //        }
 //    }
-    private void exportBillToPDF(Integer maHD) {
+    private void exportBillToPDF(Integer maHD) throws IOException {
         //times
         int gioThue = -1;
         int gioTre_QuaDem = -1;
@@ -1648,11 +1654,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             case 1:
                 if (gioThue <= 2) {
                     for (int i = 0; i < listDGPhong.size(); i++) {
-                        listTienPhong.add(i, listDGPhong.get(i) * 2);
+                        listTienPhong.add(i, listDGPhong.get(i));
                     }
                 } else {
                     for (int i = 0; i < listDGPhong.size(); i++) {
-                        listTienPhong.add(i, 2 * listDGPhong.get(i) + (gioThue - 2) * 20000);
+                        listTienPhong.add(i, listDGPhong.get(i) + (gioThue - 2) * 20000);
                     }
                 }
                 break;
@@ -1837,6 +1843,16 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         document.add(totalMoney);
         document.close();
         System.out.println("PDF Created!");
+
+        ///Open after created
+        File file = new File("invoice.pdf");
+        if (file.toString().endsWith(".pdf")) {
+            Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + file);
+        } else {
+            Desktop desktop = Desktop.getDesktop();
+            desktop.open(file);
+        }
+
     }
 
     private String removeAccent(String s) {
