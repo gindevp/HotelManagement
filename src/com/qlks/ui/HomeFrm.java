@@ -941,7 +941,7 @@ public class HomeFrm extends javax.swing.JFrame {
     private void openThueTra() {
         if (Auth.isLogin()) {
             if (Auth.isReceptionist() || Auth.isManager()) {
-                XForm.openChildFrm(this, desMain, new DatPhongFrm(desMain));
+                XForm.openChildFrm(this, desMain, new DatPhongFrm());
             } else {
                 MsgBox.alert(this, "Bạn không được sử dụng chức năng này!");
             }

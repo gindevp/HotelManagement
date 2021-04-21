@@ -56,7 +56,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDesktopPane;
 
 /**
  *
@@ -87,13 +86,10 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private int iDangThue = -1;
     private boolean isSelectDate = true;
 
-    private JDesktopPane des;
-
     /**
      * Creates new form BoPhanFrm
      */
-    public DatPhongFrm(JDesktopPane des) {
-        this.des = des;
+    public DatPhongFrm() {
         initComponents();
         this.init();
     }
@@ -1848,6 +1844,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         document.close();
         System.out.println("PDF Created!");
 
+        ///Open after created
         File file = new File("invoice.pdf");
         if (file.toString().endsWith(".pdf")) {
             Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + file);
