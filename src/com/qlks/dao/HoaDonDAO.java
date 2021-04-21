@@ -35,8 +35,8 @@ public class HoaDonDAO extends ManageDAO<HoaDon, Integer> {
 
     private String thanhtoanSql = "{call sp_thanhtoanhd(?,?)}";
     
-    private String selectYearSql = "select distinct year(ngaytt) from hoadon";
-    private String selectMonthByYearSql = "select distinct month(ngaytt) from hoadon where year(ngaytt) = ?";
+    private String selectYearSql = "select distinct year(ngaytt) from hoadon where trangthai = 1";
+    private String selectMonthByYearSql = "select distinct month(ngaytt) from hoadon where year(ngaytt) = ? and trangthai = 1";
     private String selectTongTienNowSql = "{call sp_tongtiennow(?, ?)}";
     
     public Object selectTongTienNow(Integer maHd, Integer maLg) {

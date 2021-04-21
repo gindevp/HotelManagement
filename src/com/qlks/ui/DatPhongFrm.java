@@ -50,6 +50,8 @@ import com.itextpdf.layout.property.TextAlignment;
 import com.itextpdf.layout.property.VerticalAlignment;
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -1672,7 +1674,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         //Document create and setting
         String path = "invoice.pdf";
         PdfWriter pdfWriter = null;
-        pdfWriter = new PdfWriter(path);
+        try {
+            pdfWriter = new PdfWriter(path);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DatPhongFrm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         PdfDocument pdfDocument = new PdfDocument(pdfWriter);
         pdfDocument.setDefaultPageSize(PageSize.A4);
         Document document = new Document(pdfDocument);
