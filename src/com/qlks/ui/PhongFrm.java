@@ -311,6 +311,11 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         jLabel3.setText("Nhập Số phòng:");
 
         txtKeyword.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtKeyword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtKeywordKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -355,15 +360,13 @@ public class PhongFrm extends javax.swing.JInternalFrame {
                                 .addGap(214, 214, 214)))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(btnTienNghi, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtKeyword))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnTienNghi, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -530,6 +533,12 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cboLoaiGiaActionPerformed
 
+    private void txtKeywordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKeywordKeyReleased
+        if (cboLoaiPhong.getSelectedItem() != null) {
+            this.fillTable();
+        }
+    }//GEN-LAST:event_txtKeywordKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgrTrangThai;
@@ -588,9 +597,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         LoaiPhong loaiPhong = (LoaiPhong) cboLoaiPhong.getSelectedItem();
         List<LoaiPhongLoaiGia> list = lplgdao.selectByLp(loaiPhong.getMa());
         for (LoaiPhongLoaiGia item : list) {
-            System.out.println(item.getMaLg());
             LoaiGia lg = lgdao.selectByID(item.getMaLg());
-            System.out.println(lg);
             model.addElement(lg);
         }
     }
@@ -608,7 +615,8 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         LoaiPhong lp = (LoaiPhong) cboLoaiPhong.getSelectedItem();
         DefaultTableModel model = (DefaultTableModel) tbl.getModel();
         model.setRowCount(0);
-        List<Phong> list = pdao.selectByLoaiPhong(lp.getMa());
+
+        List<Phong> list = pdao.selectByKeyword(lp.getMa(), txtKeyword.getText().trim());
         list.forEach((item) -> {
             model.addRow(new Object[]{
                 item.getSoPhong(),

@@ -187,7 +187,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField1" max="32767" attributes="0"/>
+                                      <Component id="txtKeywordDV" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jScrollPane12" alignment="1" min="-2" pref="720" max="-2" attributes="0"/>
                               </Group>
@@ -202,7 +202,7 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jLabel3" max="32767" attributes="0"/>
-                                      <Component id="jTextField1" pref="40" max="32767" attributes="0"/>
+                                      <Component id="txtKeywordDV" pref="40" max="32767" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -541,12 +541,15 @@
                         <Property name="text" type="java.lang.String" value="Nh&#x1ead;p T&#xea;n D&#x1ecb;ch v&#x1ee5;:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField1">
+                    <Component class="javax.swing.JTextField" name="txtKeywordDV">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="16" style="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtKeywordDVKeyReleased"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -578,7 +581,7 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txtKeyword" max="32767" attributes="0"/>
+                                              <Component id="txtKeywordTN" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="jScrollPane13" alignment="1" min="-2" pref="720" max="-2" attributes="0"/>
                                       </Group>
@@ -616,7 +619,7 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txtKeyword" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="txtKeywordTN" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                           <Component id="jLabel4" alignment="3" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -846,12 +849,15 @@
                         <Property name="text" type="java.lang.String" value="Nh&#x1ead;p t&#xea;n ti&#x1ec7;n nghi:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="txtKeyword">
+                    <Component class="javax.swing.JTextField" name="txtKeywordTN">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="16" style="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtKeywordTNKeyReleased"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

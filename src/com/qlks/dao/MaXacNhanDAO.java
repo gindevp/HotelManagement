@@ -17,9 +17,9 @@ import java.util.List;
  */
 public class MaXacNhanDAO extends ManageDAO<MaXacNhan, Integer>{
     
-    String insertSql = "insert maxacnhan values (?, ?, default)";
+    private String insertSql = "insert maxacnhan values (?, ?, default)";
     
-    String selectAllSql = "select * from maxacnhan";
+    private String selectAllSql = "select * from maxacnhan";
 
     @Override
     public boolean insert(MaXacNhan entity) {

@@ -22,7 +22,7 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
     private String deleteSql = "delete from khachhang where makh = ?";
     private String selectAllSql = "select * from khachhang";
     private String selectAllSdt = "select * from khachhang where sdt = ?";
-    private String selectByKeywordSql = "select * from khachhang where tenkh like ?";
+    private String selectByKeywordSql = "select * from khachhang where (tenkh like ? or cmnd like ?)";
     private String selectAllCmnd = "select * from khachhang where cmnd = ?";
     private String selectByIdSql = "select * from khachhang where makh = ?";
 
@@ -55,7 +55,7 @@ public class KhachHangDAO extends ManageDAO<KhachHang, Integer> {
     }
 
     public List<KhachHang> selectByKeyword(String key) {
-        return selectBySql(selectByKeywordSql, "%" + key + "%");
+        return selectBySql(selectByKeywordSql, "%" + key + "%", "%" + key + "%");
     }
 
     @Override

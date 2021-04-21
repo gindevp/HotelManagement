@@ -16,26 +16,26 @@ import java.util.List;
  */
 public class PDFExportDAO {
 
-    String selectHDByIDSql = "select * from hoadon where maHD = ?";
+    private String selectHDByIDSql = "select * from hoadon where maHD = ?";
 
-    String selectTongGioThueSql = "select tongGioThue = DATEDIFF(HOUR, ngaythue, ngaytt) from hoadon where MAHD = ?";
-    String selectTongNgayThueSql = "tongNgayThue = DATEDIFF(day, ngaythue, ngaytt) from hoadon where MAHD = ?";
-    String selectTenLPSql = "select d.tenlp \n"
+    private String selectTongGioThueSql = "select tongGioThue = DATEDIFF(HOUR, ngaythue, ngaytt) from hoadon where MAHD = ?";
+    private String selectTongNgayThueSql = "tongNgayThue = DATEDIFF(day, ngaythue, ngaytt) from hoadon where MAHD = ?";
+    private String selectTenLPSql = "select d.tenlp \n"
             + "from hoadon a join hdphong b on b.MAHD = a.MAHD \n"
             + "join phong c on c.SOPHONG = b.SOPHONG \n"
             + "join loaiphong d on d.malp = c.malp\n"
             + "where b.MAHD = ?";
 
-    String selectGioTre_QuaDemSql = "select giotre_quadem = DATEPART(hour, ngaytt) from hoadon where MAHD = ?";
+    private String selectGioTre_QuaDemSql = "select giotre_quadem = DATEPART(hour, ngaytt) from hoadon where MAHD = ?";
 
-    String selectHDPhongSql = "select b.mahd, b.sophong, a.malg, e.tenlg, c.malp, dongia "
+    private String selectHDPhongSql = "select b.mahd, b.sophong, a.malg, e.tenlg, c.malp, dongia "
             + "from hoadon a join hdphong b on b.MAHD = a.MAHD "
             + "join phong c on c.SOPHONG = b.SOPHONG "
             + "join LOAIPHONG_LOAIGIA d on d.MALP = c.MALP and d.MALG = a.MALG "
             + "join loaigia e on e.MALG = a.MALG "
             + "where b.MAHD = ?";
 
-    String selectHDDVSql = "select c.mahd, c.madv, tendv, soluong, d.dongia, d.dongia*soluong as tong from hoadon a \n"
+    private String selectHDDVSql = "select c.mahd, c.madv, tendv, soluong, d.dongia, d.dongia*soluong as tong from hoadon a \n"
             + "join HDDICHVU c on c.MAHD = a.MAHD\n"
             + "join dichvu d on d.MADV = c.MADV\n"
             + "where c.MAHD = ?";

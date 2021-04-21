@@ -26,6 +26,8 @@ public class PhongDAO extends ManageDAO<Phong, String> {
     private String selectByLpAndSucChuaSql = "select * from phong where malp = ? and succhua >= ? and trangthai = 0";
     private String updateAfterChooseOrRemoveSql = "update phong set trangthai = ? where sophong = ?";
     private String selectIdsSql = "select sophong from phong";
+    private String selectByKeywordSql = "select * from phong where malp like ? and sophong like ?";
+
     @Override
     public boolean insert(Phong entity) {
         return XJdbc.update(insertSql, entity.getSoPhong(), entity.getSucChua(), entity.getMaLP());
@@ -66,6 +68,10 @@ public class PhongDAO extends ManageDAO<Phong, String> {
 
     public List<Phong> selectByLpAndSucChua(String lp, Integer sucChua) {
         return selectBySql(selectByLpAndSucChuaSql, lp, sucChua);
+    }
+
+    public List<Phong> selectByKeyword(String maLP, String key) {
+        return selectBySql(selectByKeywordSql, maLP, "%" + key + "%");
     }
 
     @Override

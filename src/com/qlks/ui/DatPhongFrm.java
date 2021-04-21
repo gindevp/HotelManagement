@@ -1636,11 +1636,11 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         gioTre_QuaDem = pdfdao.selecHour2(maHD);
         tongNgayThue = pdfdao.selecHour3(maHD);
         listSoPhong = pdfdao.selectPhong(maHD);
-        listDGPhong = pdfdao.selectDonGiaPhong(maHD);
         listTenLG = pdfdao.selectTenLG(maHD);
         listTenLP = pdfdao.selectTenLP(maHD);
         listSoLuong = pdfdao.selectSoLuong(maHD);
         listTenDV = pdfdao.selectTenDV(maHD);
+        listDGPhong = pdfdao.selectDonGiaPhong(maHD);
         listDGDV = pdfdao.selectDGDV(maHD);
         listTongTien = pdfdao.selectTongTienDV(maHD);
         listTongTienHD = pdfdao.selectTongTienHD(maHD);
@@ -1776,7 +1776,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                         allRoomTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add("- " + (removeAccent(listTenLG.get(i))) + ": " + gioThue + removeAccent(" giờ")).setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add(removeAccent(listTenLP.get(i)) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
-                        allRoomTbl.addCell(new Cell().add(listTienPhong.get(i) + " VND")
+                        allRoomTbl.addCell(new Cell().add(FormatData.formatMoney(listTienPhong.get(i)) + " VND")
                                 .setBorder(Border.NO_BORDER)
                                 .setTextAlignment(TextAlignment.RIGHT));
                     }
@@ -1786,7 +1786,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                         allRoomTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add("- " + (removeAccent(listTenLG.get(i))) + ": " + gioTre_QuaDem + removeAccent(" giờ")).setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add(removeAccent(listTenLP.get(i)) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
-                        allRoomTbl.addCell(new Cell().add(listTienPhong.get(i) + " VND")
+                        allRoomTbl.addCell(new Cell().add(FormatData.formatMoney(listTienPhong.get(i)) + " VND")
                                 .setBorder(Border.NO_BORDER)
                                 .setTextAlignment(TextAlignment.RIGHT));
                     }
@@ -1796,7 +1796,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                         allRoomTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add("- " + (removeAccent(listTenLG.get(i))) + ": " + tongNgayThue + removeAccent(" ngày")).setBorder(Border.NO_BORDER));
                         allRoomTbl.addCell(new Cell().add(removeAccent(listTenLP.get(i)) + " - " + listSoPhong.get(i)).setBorder(Border.NO_BORDER));
-                        allRoomTbl.addCell(new Cell().add(listTienPhong.get(i) + " VND")
+                        allRoomTbl.addCell(new Cell().add(FormatData.formatMoney(listTienPhong.get(i)) + " VND")
                                 .setBorder(Border.NO_BORDER)
                                 .setTextAlignment(TextAlignment.RIGHT));
                     }
@@ -1820,8 +1820,8 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 allServicesTbl.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
                 allServicesTbl.addCell(new Cell().add("- " + removeAccent(listTenDV.get(i)))
                         .setBorder(Border.NO_BORDER));
-                allServicesTbl.addCell(new Cell().add(listSoLuong.get(i) + " x " + listDGDV.get(i) + " VND").setBorder(Border.NO_BORDER));
-                allServicesTbl.addCell(new Cell().add(listTongTien.get(i) + " VND")
+                allServicesTbl.addCell(new Cell().add(listSoLuong.get(i) + " x " + FormatData.formatMoney(listDGDV.get(i)) + " VND").setBorder(Border.NO_BORDER));
+                allServicesTbl.addCell(new Cell().add(FormatData.formatMoney(listTongTien.get(i)) + " VND")
                         .setBorder(Border.NO_BORDER)
                         .setTextAlignment(TextAlignment.RIGHT));
             }
@@ -1835,12 +1835,13 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             totalMoney.addCell(new Cell().add("Total money: ").setBorder(Border.NO_BORDER));
             totalMoney.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
             totalMoney.addCell(new Cell().add("").setBorder(Border.NO_BORDER));
-            totalMoney.addCell(new Cell().add(listTongTienHD.get(0) + " VND")
+            totalMoney.addCell(new Cell().add(FormatData.formatMoney(listTongTienHD.get(0)) + " VND")
                     .setBorder(Border.NO_BORDER)
                     .setBold()
                     .setTextAlignment(TextAlignment.RIGHT));
         }
         document.add(totalMoney);
+
         document.close();
         System.out.println("PDF Created!");
 

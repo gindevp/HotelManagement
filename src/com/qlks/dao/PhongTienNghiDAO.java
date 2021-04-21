@@ -18,12 +18,12 @@ import java.util.List;
  */
 public class PhongTienNghiDAO extends ManageDAO<PhongTienNghi, Integer> {
 
-    String insertSql = "insert phong_tiennghi values (?, ?, ?, ?)";
-    String updateSql = "update phong_tiennghi set soluong = ?, tinhtrang = ? where id = ?";
-    String deleteSql = "delete from phong_tiennghi where id = ?";
-    String selectBySoPhong = "select * from PHONG_TIENNGHI where SOPHONG = ?";
-    String selectByIdSql = "select * from phong_tiennghi where id = ?";
-    String moTaPhongSql = "{call sp_motaphong(?)}";
+    private String insertSql = "insert phong_tiennghi values (?, ?, ?, ?)";
+    private String updateSql = "update phong_tiennghi set soluong = ?, tinhtrang = ? where id = ?";
+    private String deleteSql = "delete from phong_tiennghi where id = ?";
+    private String selectBySoPhong = "select * from PHONG_TIENNGHI where SOPHONG = ?";
+    private String selectByIdSql = "select * from phong_tiennghi where id = ?";
+    private String moTaPhongSql = "{call sp_motaphong(?)}";
 
     public List<Object> moTaPhong(String soPhong) {
         return XJdbc.column(moTaPhongSql, soPhong);

@@ -17,16 +17,16 @@ import java.util.List;
  */
 public class BoPhanDAO extends ManageDAO<BoPhan, String> {
 
-    String insertSql = "insert bophan values (?, ?)";
-    String updateSql = "update bophan set tenbp = ? where mabp = ?";
-    String deleteSql = "delete from bophan where mabp = ?";
+    private String insertSql = "insert bophan values (?, ?)";
+    private String updateSql = "update bophan set tenbp = ? where mabp = ?";
+    private String deleteSql = "delete from bophan where mabp = ?";
 
-    String selectAllSql = "select * from bophan";
-    String selectNotLikeSql = "select * from bophan where mabp not like 'ql'";
+    private String selectAllSql = "select * from bophan";
+    private String selectNotLikeSql = "select * from bophan where mabp not like 'ql'";
 
-    String selectByIdSql = "select * from bophan where mabp = ?";
-    String selectNameByIdSql = "select tenbp from bophan where mabp = ?";
-    String selectByKeywordSql = "select * from bophan where tenbp like ?";
+    private String selectByIdSql = "select * from bophan where mabp = ?";
+    private String selectNameByIdSql = "select tenbp from bophan where mabp = ?";
+    private String selectByKeywordSql = "select * from bophan where tenbp like ?";
 
     @Override
     public boolean insert(BoPhan entity) {

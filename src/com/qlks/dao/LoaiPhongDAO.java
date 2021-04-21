@@ -23,6 +23,7 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
     private String selectAllSql = "select * from loaiphong";
     private String selectByIdSql = "select * from loaiPhong where maLP = ?";
     private String selectByNameSql = "select * from loaiPhong where tenlp = ?";
+    private String selectByKeywordSql = "select * from loaiphong where tenlp like ?";
 
     @Override
     public boolean insert(LoaiPhong entity) {
@@ -52,6 +53,10 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
     public LoaiPhong selectByID(String key) {
         List<LoaiPhong> list = selectBySql(selectByIdSql, key);
         return list.size() > 0 ? list.get(0) : null;
+    }
+
+    public List<LoaiPhong> selectByKeyword(String key) {
+        return selectBySql(selectByKeywordSql, "%" + key + "%");
     }
 
     @Override
