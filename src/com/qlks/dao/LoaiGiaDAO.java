@@ -30,6 +30,8 @@ public class LoaiGiaDAO extends ManageDAO<LoaiGia, Integer> {
     private String selectTenSql = "select tenlg from loaigia";
     private String selectTenNotLikeSql = "select tenlg from loaigia where tenlg not like ?";
 
+    private String selectByKeywordSql = "select * from loaigia where tenlg like ?";
+
     @Override
     public boolean insert(LoaiGia entity) {
         return XJdbc.update(insertSql, entity.getTen());
@@ -71,6 +73,10 @@ public class LoaiGiaDAO extends ManageDAO<LoaiGia, Integer> {
 
     public List<String> selectTen(LoaiGia entity) {
         return selectColumn(selectTenNotLikeSql, entity.getTen());
+    }
+
+    public List<LoaiGia> selectByKeyword(String key) {
+        return selectBySql(selectByKeywordSql, "%" + key + "%");
     }
 
     @Override

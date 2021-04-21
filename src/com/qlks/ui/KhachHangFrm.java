@@ -258,7 +258,7 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel2.setText("Nhập tên KH cần tìm:");
+        jLabel2.setText("Nhập tên hoặc CMND KH cần tìm:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);

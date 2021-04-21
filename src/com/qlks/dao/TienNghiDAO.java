@@ -17,13 +17,14 @@ import java.util.List;
  */
 public class TienNghiDAO extends ManageDAO<TienNghi, Integer> {
 
-    String insertSql = "insert tiennghi values (?)";
-    String updateSql = "update tiennghi set tentn = ? where matn = ?";
-    String deleteSql = "delete from tiennghi where matn = ?";
-    String selectAllSql = "select * from tiennghi";
-    String selectByIdSql = "select * from tiennghi where matn = ? ";
-    String selectNameByIdSql = "select tentn from tiennghi where matn = ?";
-    String selectBySPSql = "select * from tiennghi where sophong = ?";
+    private String insertSql = "insert tiennghi values (?)";
+    private String updateSql = "update tiennghi set tentn = ? where matn = ?";
+    private String deleteSql = "delete from tiennghi where matn = ?";
+    private String selectAllSql = "select * from tiennghi";
+    private String selectByIdSql = "select * from tiennghi where matn = ? ";
+    private String selectNameByIdSql = "select tentn from tiennghi where matn = ?";
+    private String selectBySPSql = "select * from tiennghi where sophong = ?";
+    private String selectByKeywordSql = "select * from tiennghi where tentn like ?";
 
     @Override
     public boolean insert(TienNghi entity) {
@@ -57,6 +58,10 @@ public class TienNghiDAO extends ManageDAO<TienNghi, Integer> {
 
     public String selectNameById(Integer id) {
         return (String) XJdbc.value(selectNameByIdSql, id);
+    }
+    
+    public List<TienNghi> selectByKeyword(String key) {
+        return selectBySql(selectByKeywordSql, "%" + key + "%");
     }
 
     @Override

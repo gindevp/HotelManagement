@@ -23,6 +23,7 @@ public class DichVuDAO extends ManageDAO<DichVu, Integer> {
     private String selectAllSql = "select * from dichvu";
     private String selectEnableSql = "select * from dichvu where trangthai = 1";
     private String selectByIdSql = "select * from dichvu where madv = ?";
+    private String selectByKeywordSql = "select * from dichvu where tendv like ?";
 
     @Override
     public boolean insert(DichVu entity) {
@@ -46,6 +47,10 @@ public class DichVuDAO extends ManageDAO<DichVu, Integer> {
 
     public List<DichVu> selectEnable() {
         return selectBySql(selectEnableSql);
+    }
+
+    public List<DichVu> selectByKeyword(String key) {
+        return selectBySql(selectByKeywordSql, "%" + key + "%");
     }
 
     @Override

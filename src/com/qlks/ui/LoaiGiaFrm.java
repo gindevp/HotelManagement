@@ -213,6 +213,11 @@ public class LoaiGiaFrm extends javax.swing.JInternalFrame {
         jLabel2.setText("Nhập tên Loại giá:");
 
         txtKeyword.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtKeyword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtKeywordKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -329,7 +334,7 @@ public class LoaiGiaFrm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
         );
 
         pack();
@@ -378,6 +383,10 @@ public class LoaiGiaFrm extends javax.swing.JInternalFrame {
         this.openGia();
     }//GEN-LAST:event_btnPhongActionPerformed
 
+    private void txtKeywordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKeywordKeyReleased
+        this.fillTbl();
+    }//GEN-LAST:event_txtKeywordKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClean;
@@ -407,7 +416,7 @@ public class LoaiGiaFrm extends javax.swing.JInternalFrame {
     }
 
     private void fillTbl() {
-        List<LoaiGia> list = lgdao.selectAll();
+        List<LoaiGia> list = lgdao.selectByKeyword(txtKeyword.getText().trim());
         DefaultTableModel model = (DefaultTableModel) tbl.getModel();
         model.setRowCount(0);
         list.forEach((item) -> {

@@ -69,7 +69,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
         txtMoTa = new javax.swing.JTextArea();
         btnPhong = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtKeyword = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setClosable(true);
@@ -237,8 +237,13 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Nhập tên Loại phòng:");
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTextField1.setPreferredSize(new java.awt.Dimension(69, 40));
+        txtKeyword.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtKeyword.setPreferredSize(new java.awt.Dimension(69, 40));
+        txtKeyword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtKeywordKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -281,7 +286,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtKeyword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -296,7 +301,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -397,6 +402,10 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
         this.openPhong();
     }//GEN-LAST:event_btnPhongActionPerformed
 
+    private void txtKeywordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKeywordKeyReleased
+        this.fillTbl();
+    }//GEN-LAST:event_txtKeywordKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
@@ -417,8 +426,8 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbl;
+    private javax.swing.JTextField txtKeyword;
     private javax.swing.JTextField txtMa;
     private javax.swing.JTextArea txtMoTa;
     private javax.swing.JTextField txtTen;
@@ -430,7 +439,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
     }
 
     private void fillTbl() {
-        List<LoaiPhong> list = lpdao.selectAll();
+        List<LoaiPhong> list = lpdao.selectByKeyword(txtKeyword.getText().trim());
         DefaultTableModel model = (DefaultTableModel) tbl.getModel();
         model.setRowCount(0);
         list.forEach((item) -> {

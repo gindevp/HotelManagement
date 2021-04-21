@@ -74,7 +74,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         jScrollPane12 = new javax.swing.JScrollPane();
         tblDV = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtKeywordDV = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         txtTenTN = new javax.swing.JTextField();
         btnInsertTN = new javax.swing.JButton();
@@ -89,7 +89,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         jScrollPane13 = new javax.swing.JScrollPane();
         tblTN = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        txtKeyword = new javax.swing.JTextField();
+        txtKeywordTN = new javax.swing.JTextField();
 
         setClosable(true);
         setPreferredSize(new java.awt.Dimension(1500, 850));
@@ -262,7 +262,12 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setText("Nhập Tên Dịch vụ:");
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtKeywordDV.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtKeywordDV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtKeywordDVKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -305,7 +310,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
+                        .addComponent(txtKeywordDV))
                     .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -316,7 +321,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                        .addComponent(txtKeywordDV, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                     .addComponent(jLabel38))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,7 +484,12 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setText("Nhập tên tiện nghi:");
 
-        txtKeyword.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtKeywordTN.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtKeywordTN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtKeywordTNKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -497,7 +507,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtKeyword))
+                                .addComponent(txtKeywordTN))
                             .addComponent(jScrollPane13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addComponent(btnInsertTN, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -527,7 +537,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtKeywordTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -688,6 +698,14 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         this.insertTN();
     }//GEN-LAST:event_btnInsertTNActionPerformed
 
+    private void txtKeywordDVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKeywordDVKeyReleased
+        this.fillTableDV();
+    }//GEN-LAST:event_txtKeywordDVKeyReleased
+
+    private void txtKeywordTNKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtKeywordTNKeyReleased
+        this.fillTableTN();
+    }//GEN-LAST:event_txtKeywordTNKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCleanDV;
@@ -722,14 +740,14 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rdo0;
     private javax.swing.JRadioButton rdo1;
     private javax.swing.JTabbedPane tab;
     private javax.swing.JTable tblDV;
     private javax.swing.JTable tblTN;
     private javax.swing.JTextField txtDonGia;
-    private javax.swing.JTextField txtKeyword;
+    private javax.swing.JTextField txtKeywordDV;
+    private javax.swing.JTextField txtKeywordTN;
     private javax.swing.JTextArea txtMoTa;
     private javax.swing.JTextField txtTenDV;
     private javax.swing.JTextField txtTenTN;
@@ -745,7 +763,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
     private void fillTableDV() {
         DefaultTableModel model = (DefaultTableModel) tblDV.getModel();
         model.setRowCount(0);
-        List<DichVu> list = dvdao.selectAll();
+        List<DichVu> list = dvdao.selectByKeyword(txtKeywordDV.getText().trim());
         list.forEach((i) -> {
             model.addRow(new Object[]{
                 i.getMa(),
@@ -889,7 +907,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
     private void fillTableTN() {
         DefaultTableModel model = (DefaultTableModel) tblTN.getModel();
         model.setRowCount(0);
-        List<TienNghi> list = tndao.selectAll();
+        List<TienNghi> list = tndao.selectByKeyword(txtKeywordTN.getText());
         list.forEach((i) -> {
             model.addRow(new Object[]{
                 i.getMa(),

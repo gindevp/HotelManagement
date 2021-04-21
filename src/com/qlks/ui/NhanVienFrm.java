@@ -426,7 +426,7 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("Nhập tên Nhân Viên:");
+        jLabel16.setText("Nhập tên Nhân Viên hoặc Email:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
