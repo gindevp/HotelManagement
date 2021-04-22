@@ -10,6 +10,8 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Component;
 import java.util.Date;
 import java.util.List;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.swing.ButtonGroup;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
@@ -95,7 +97,7 @@ public class Validator {
     }
 
     public static boolean checkEmail(Component parent, JTextComponent... args) {
-        String reg = "^[a-zA-Z][\\w-]+@fpt.edu.vn$";
+        String reg = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         for (int i = 0; i < args.length; i++) {
             if (!args[i].getText().trim().matches(reg)) {
                 MsgBox.alert(parent, "Email không hợp lệ!");
@@ -107,7 +109,7 @@ public class Validator {
     }
 
     public static boolean checkEmail(Component parent, String... args) {
-        String reg = "^[a-zA-Z][\\w-]+@fpt.edu.vn$";
+        String reg = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         for (int i = 0; i < args.length; i++) {
             if (!args[i].trim().matches(reg)) {
                 MsgBox.alert(parent, "Email không hợp lệ!");
@@ -161,7 +163,7 @@ public class Validator {
             return true;
         }
     }
-    
+
     public static boolean checkDates(Component parent, JDateChooser start, JDateChooser end) {
         if (start.getDate().before(end.getDate())) {
             return true;
