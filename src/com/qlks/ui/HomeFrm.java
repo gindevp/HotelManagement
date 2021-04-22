@@ -99,7 +99,7 @@ public class HomeFrm extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/logo.jpg"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 195, 51));
+        jLabel1.setForeground(new java.awt.Color(220, 149, 59));
         jLabel1.setText("STARTUP HOTEL");
 
         lblThoiGian.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -261,7 +261,7 @@ public class HomeFrm extends javax.swing.JFrame {
         pnlNhaCungCapLayout.setHorizontalGroup(
             pnlNhaCungCapLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNhaCungCapLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(btnNCC, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlNhaCungCapLayout.setVerticalGroup(
@@ -572,12 +572,12 @@ public class HomeFrm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                    .addComponent(pnlNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                    .addComponent(pnlDV_TN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                    .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                    .addComponent(pnlPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                    .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(pnlKH, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                    .addComponent(pnlNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                    .addComponent(pnlDV_TN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                    .addComponent(pnlNhaCungCap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                    .addComponent(pnlPhong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                    .addComponent(pnlThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(pnlDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
@@ -802,6 +802,7 @@ public class HomeFrm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void init() {
+//        new SplashScreenDialog(this, true).setVisible(true);
         new LoginDialog(this, true).setVisible(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.showTime();

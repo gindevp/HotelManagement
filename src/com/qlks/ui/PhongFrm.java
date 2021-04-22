@@ -519,7 +519,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     private void cboLoaiPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLoaiPhongActionPerformed
         if (cboLoaiPhong.getSelectedItem() != null) {
             this.fillTable();
-            this.fillCboLoaiGia();
+            this.fillDonGia();
         }
     }//GEN-LAST:event_cboLoaiPhongActionPerformed
 
@@ -576,8 +576,8 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void init() {
+        this.fillCboLoaiGia();
         this.fillCboLoaiPhong();
-//        this.fillCboLoaiGia();
         this.fillTable();
         this.updateStatus();
     }
@@ -594,20 +594,21 @@ public class PhongFrm extends javax.swing.JInternalFrame {
     private void fillCboLoaiGia() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboLoaiGia.getModel();
         model.removeAllElements();
-        LoaiPhong loaiPhong = (LoaiPhong) cboLoaiPhong.getSelectedItem();
-        List<LoaiPhongLoaiGia> list = lplgdao.selectByLp(loaiPhong.getMa());
-        for (LoaiPhongLoaiGia item : list) {
-            LoaiGia lg = lgdao.selectByID(item.getMaLg());
-            model.addElement(lg);
+        List<LoaiGia> list = lgdao.selectAll();
+        for (LoaiGia item : list) {
+            model.addElement(item);
         }
     }
 
     private void fillDonGia() {
-        LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
-        LoaiPhong lp = (LoaiPhong) cboLoaiPhong.getSelectedItem();
-        if (lp != null && lg != null) {
-            LoaiPhongLoaiGia lplg = lplgdao.selectByLpAndLg(lp.getMa(), lg.getMa());
-            lblDonGia.setText(FormatData.formatMoney(lplg.getDonGia()));
+        try {
+            LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
+            LoaiPhong lp = (LoaiPhong) cboLoaiPhong.getSelectedItem();
+            if (lp != null && lg != null) {
+                LoaiPhongLoaiGia lplg = lplgdao.selectByLpAndLg(lp.getMa(), lg.getMa());
+                lblDonGia.setText(FormatData.formatMoney(lplg.getDonGia()));
+            }
+        } catch (Exception e) {
         }
     }
 

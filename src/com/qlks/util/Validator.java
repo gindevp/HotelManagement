@@ -54,7 +54,7 @@ public class Validator {
         for (int i = 0; i < args.length; i++) {
             try {
                 if (Double.parseDouble(args[i].getText().trim()) < 0) {
-                    MsgBox.alert(parent, title[i] + " phải lớn hơn 0!");
+                    MsgBox.alert(parent, title[i] + " không được âm!");
                     args[i].requestFocus();
                     return false;
                 }

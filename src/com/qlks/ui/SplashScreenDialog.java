@@ -5,12 +5,9 @@
  */
 package com.qlks.ui;
 
-import com.qlks.util.Auth;
-import com.qlks.util.MsgBox;
-import com.qlks.util.XImage;
-import java.util.Date;
-import javax.swing.ImageIcon;
-import javax.swing.JInternalFrame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 /**
  *
@@ -24,8 +21,7 @@ public class SplashScreenDialog extends javax.swing.JDialog {
     public SplashScreenDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        vip();
-//        new LoginDialog(this, modal);
+        this.init();
     }
 
     /**
@@ -37,27 +33,65 @@ public class SplashScreenDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel_inven1 = new javax.swing.JLabel();
+        pgbTienTrinh = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
-        jButton1.setText("jButton1");
+        jPanel1.setBackground(new java.awt.Color(37, 49, 62));
+
+        jLabel_inven1.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
+        jLabel_inven1.setForeground(new java.awt.Color(160, 117, 17));
+        jLabel_inven1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_inven1.setText("STARTUP HOTEL");
+
+        pgbTienTrinh.setBackground(new java.awt.Color(46, 62, 78));
+        pgbTienTrinh.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        pgbTienTrinh.setForeground(new java.awt.Color(46, 62, 78));
+        pgbTienTrinh.setBorderPainted(false);
+        pgbTienTrinh.setFocusable(false);
+        pgbTienTrinh.setRequestFocusEnabled(false);
+        pgbTienTrinh.setStringPainted(true);
+        pgbTienTrinh.setVerifyInputWhenFocusTarget(false);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/logo1.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_inven1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(pgbTienTrinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_inven1)
+                .addGap(129, 129, 129)
+                .addComponent(pgbTienTrinh, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jButton1)
-                .addContainerGap(253, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jButton1)
-                .addContainerGap(243, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -104,50 +138,26 @@ public class SplashScreenDialog extends javax.swing.JDialog {
             }
         });
     }
-    private void vip() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    private void openChildFrm(JInternalFrame frm) {
-        if (!Auth.isLogin()) {
-            MsgBox.alert(this, "Vui lòng đăng nhập");
-        } else {
-//            for (JInternalFrame frmItem : desMain.getAllFrames()) {
-//                frmItem.dispose();
-//            }
-//            frm.setLocation((desMain.getWidth() - frm.getWidth()) / 2,
-//                    (desMain.getHeight() - 20) / 2 - frm.getHeight() / 2 - 20);
-//            desMain.add(frm);
-            frm.setVisible(true);
-        }
-    }
-
-    private void openNhanVien() {
-//        this.openChildFrm(new NhanVienFrm());
-    }
-
-    private void showName() {
-        Date date = new Date();
-        int hour = date.getHours();
-        String mess = "";
-        String iconPath = "/com/qlks/icon/";
-        if (hour >= 1 && hour < 12) {
-            mess = "Good morning, ";
-            iconPath += "partly_cloudy_day_24px.png";
-        } else if (hour >= 12 && hour < 16) {
-            mess = "Good afternoon, ";
-            iconPath += "sun_24px.png";
-        } else if (hour >= 16 && hour < 21) {
-            mess = "Good evening, ";
-            iconPath += "sunset_24px.png";
-        } else {
-            mess = "Good night, ";
-            iconPath += "night_landscape_24px.png";
-        }
-//        lblName.setText(mess + Auth.user.getTen());
-//        lblName.setIcon(new ImageIcon(XImage.class.getResource(iconPath)));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel_inven1;
+    private javax.swing.JPanel jPanel1;
+    public javax.swing.JProgressBar pgbTienTrinh;
     // End of variables declaration//GEN-END:variables
+
+    private void init() {
+        setLocationRelativeTo(null);
+        new Timer(20, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int value = pgbTienTrinh.getValue();
+                if (value < pgbTienTrinh.getMaximum()) {
+                    pgbTienTrinh.setValue(++value);
+                } else {
+                    SplashScreenDialog.this.dispose();
+                }
+            }
+        }).start();
+    }
 }
