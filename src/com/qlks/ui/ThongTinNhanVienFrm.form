@@ -88,13 +88,13 @@
                           <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="827" max="-2" attributes="0"/>
-                              <Component id="lblTitle" pref="384" max="32767" attributes="0"/>
+                              <Component id="lblTitle" pref="617" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="501" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="627" max="-2" attributes="0"/>
                       <Component id="btnChange" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -107,9 +107,9 @@
                       <Component id="lblTitle" min="-2" pref="48" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="102" max="32767" attributes="0"/>
                       <Component id="btnChange" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -137,8 +137,8 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="txtDiaChi" min="-2" pref="350" max="-2" attributes="0"/>
@@ -148,32 +148,27 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtSdt" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel23" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel17" alignment="0" pref="350" max="32767" attributes="0"/>
-                                                  <Component id="txtMa" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="jLabel18" alignment="0" pref="350" max="32767" attributes="0"/>
-                                                  <Component id="txtTen" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtPass" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="jLabel19" alignment="0" pref="350" max="32767" attributes="0"/>
-                                              </Group>
+                                              <Component id="txtSdt" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                              <Component id="jLabel23" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtMa" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                              <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtTen" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                              <Component id="txtPass" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                              <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
                                               <Component id="cboBoPhan" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtEmail" alignment="1" max="32767" attributes="0"/>
                                               <Component id="jdcNgaySinh" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel21" alignment="0" max="32767" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="rdoNam" min="-2" pref="80" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="rdoNu" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  <Component id="rdoNam" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                                                  <Component id="rdoNu" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jLabel26" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel24" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
@@ -181,7 +176,7 @@
                                       </Group>
                                       <Component id="jLabel22" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="286" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="lblAnh" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel25" alignment="0" max="32767" attributes="0"/>
