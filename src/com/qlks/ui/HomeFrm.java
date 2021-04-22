@@ -802,7 +802,7 @@ public class HomeFrm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void init() {
-        new SplashScreenDialog(this, true).setVisible(true);
+//        new SplashScreenDialog(this, true).setVisible(true);
         new LoginDialog(this, true).setVisible(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.showTime();

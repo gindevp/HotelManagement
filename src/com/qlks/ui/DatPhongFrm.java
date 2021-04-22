@@ -933,8 +933,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
 
     private void btnTimPhongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimPhongActionPerformed
         if (cboLoaiGia.getSelectedItem() != null
-                && cboLoaiPhong.getSelectedItem() != null
-                && !txtNguoiLon.getText().isEmpty()) {
+                && cboLoaiPhong.getSelectedItem() != null) {
             this.timPhong();
         }
     }//GEN-LAST:event_btnTimPhongActionPerformed
@@ -1155,9 +1154,15 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }
 
     private void timPhong() {
-        if (Validator.checkBlack(this, new String[]{"Số người lớn", "Số trẻ em"}, txtNguoiLon, txtTreEm)
-                && Validator.checkPosNum(this, new String[]{"Số người lớn", "Số trẻ em"}, txtNguoiLon, txtTreEm)) {
-            this.fillTblDanhSach();
+        if (txtTreEm.getText().trim().isEmpty()) {
+            if (Validator.checkBlack(this, new String[]{"Số người lớn"}, txtNguoiLon)
+                    && Validator.checkPosNum(this, new String[]{"Số người lớn"}, txtNguoiLon)) {
+                this.fillTblDanhSach();
+            }
+        } else {
+            if (Validator.checkPosNum(this, new String[]{"Số người lớn", "Số trẻ em"}, txtNguoiLon, txtTreEm)) {
+                this.fillTblDangThue();;
+            }
         }
     }
 
