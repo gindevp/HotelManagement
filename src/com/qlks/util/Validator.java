@@ -10,8 +10,6 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Component;
 import java.util.Date;
 import java.util.List;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 import javax.swing.ButtonGroup;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
