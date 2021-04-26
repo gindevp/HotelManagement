@@ -718,7 +718,8 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         NhanVien nhanVien = null;
         String[] title = new String[]{"Mã nhân viên", "Tên nhân viên", "Password", "Sdt", "Địa chỉ", "Email"};
         if (Validator.checkBlack(this, title, txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
-                && Validator.checkPhoneNum(txtSdt)
+                && Validator.isExists(this, txtMa, nvdao.selectMaNV(), title[0])
+                && Validator.checkPhoneNum(this, txtSdt)
                 && Validator.isExists(this, txtSdt, nvdao.selectSdt(), title[3])
                 && Validator.checkSelectedDob(this, jdcNgaySinh)
                 && Validator.checkSelectedBgr(this, bgrGioiTinh, "Giới tính")
@@ -746,7 +747,7 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         NhanVien nv1 = nvdao.selectByID((tbl.getValueAt(this.index, 0).toString()));
         String[] title = new String[]{"Mã nhân viên", "Tên nhân viên", "Password", "Sdt", "Địa chỉ", "Email"};
         if (Validator.checkBlack(this, title, txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
-                && Validator.checkPhoneNum(txtSdt)
+                && Validator.checkPhoneNum(this, txtSdt)
                 && Validator.isExists(this, txtSdt, nvdao.selectSdt1(nv1.getSdt()), title[3])
                 && Validator.checkSelectedDob(this, jdcNgaySinh)
                 && Validator.checkSelectedBgr(this, bgrGioiTinh, "Giới tính")

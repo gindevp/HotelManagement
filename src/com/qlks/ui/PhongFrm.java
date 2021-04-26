@@ -680,7 +680,7 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         String[] title = new String[]{"Số phòng", "Sức chứa"};
         String[] titleNum = new String[]{"Sức chứa"};
         if (Validator.checkBlack(this, title, txtSo, txtSucChua)
-                && Validator.checkPosNum(this, titleNum, txtSucChua)) {
+                && Validator.checkPosNumNotIsZero(this, titleNum, txtSucChua)) {
             p = new Phong(
                     txtSo.getText().trim(),
                     Integer.parseInt(txtSucChua.getText().trim()),

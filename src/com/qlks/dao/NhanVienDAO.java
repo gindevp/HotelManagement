@@ -29,6 +29,8 @@ public class NhanVienDAO extends ManageDAO<NhanVien, String> {
     private String selectByEmailSql = "select * from nhanvien where manv = ? and email = ?";
     private String selectByKeyword = "select * from nhanvien where (tennv like ? or email like ?)";
 
+    private String selectMaSql = "select manv from nhanvien";
+    
     private String selectEmailSql = "select email from nhanvien";
     private String selectEmailSql1 = "select email from nhanvien where email not like ?";
 
@@ -80,6 +82,10 @@ public class NhanVienDAO extends ManageDAO<NhanVien, String> {
         return list;
     }
 
+    public List<String> selectMaNV() {
+        return selectColumn(selectMaSql);
+    }
+    
     public List<String> selectEmail() {
         return selectColumn(selectEmailSql);
     }

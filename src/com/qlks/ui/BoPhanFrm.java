@@ -449,8 +449,9 @@ public class BoPhanFrm extends javax.swing.JInternalFrame {
 
     private BoPhan getForm() {
         BoPhan boPhan = null;
-        String[] title = new String[] {"Mã bộ phận", "Tên bộ phận"};
-        if (Validator.checkBlack(this, title, txtMa, txtTen)) {
+        String[] title = new String[]{"Mã bộ phận", "Tên bộ phận"};
+        if (Validator.checkBlack(this, title, txtMa, txtTen)
+                && Validator.isExists(this, txtMa, bpdao.selectMaBP(), title[0])) {
             boPhan = new BoPhan(txtMa.getText().trim(), txtTen.getText().trim());
         }
         return boPhan;
