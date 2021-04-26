@@ -486,7 +486,7 @@ public class LoaiGiaFrm extends javax.swing.JInternalFrame {
     }
 
     private void insert() {
-        LoaiGia lg = getFormUpdate();
+        LoaiGia lg = getForm();
         if (lg != null) {
             if (lgdao.insert(lg)) {
                 MsgBox.alert(null, "Thêm thành công!");

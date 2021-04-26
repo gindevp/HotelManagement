@@ -28,6 +28,8 @@ public class BoPhanDAO extends ManageDAO<BoPhan, String> {
     private String selectNameByIdSql = "select tenbp from bophan where mabp = ?";
     private String selectByKeywordSql = "select * from bophan where tenbp like ?";
 
+    private String selectMaSql = "select mabp from bophan";
+    
     @Override
     public boolean insert(BoPhan entity) {
         return XJdbc.update(insertSql, entity.getMa(), entity.getTen());
@@ -64,6 +66,23 @@ public class BoPhanDAO extends ManageDAO<BoPhan, String> {
 
     public List<BoPhan> selectByKeyword(String key) {
         return selectBySql(selectByKeywordSql, "%" + key + "%");
+    }
+
+    public List<String> selectMaBP() {
+        return selectColumn(selectMaSql);
+    }
+
+    public List<String> selectColumn(String sql, Object... args) {
+        List<String> list = new ArrayList<>();
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                String item = rs.getString(1);
+                list.add(item);
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
 
     @Override

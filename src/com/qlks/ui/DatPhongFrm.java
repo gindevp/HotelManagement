@@ -1279,7 +1279,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         KhachHang kh = null;
         String[] title = new String[]{"Tên khách hàng", "CMND", "SDT", "Địa Chỉ", "Quốc tịch"};
         if (Validator.checkBlack(this, title, txtTen, txtCmnd, txtSdt, txtDiaChi, txtQuocTich)
-                && Validator.checkIdentityCard(txtCmnd)
+                && Validator.checkIdentityCard(this, txtCmnd)
                 && Validator.isExists(this, txtCmnd, khdao.selectCmnd(), "CMND")
                 && Validator.checkPhoneNum(this, txtSdt)
                 && Validator.isExists(this, txtSdt, khdao.selectSdt(), "SDT")) {

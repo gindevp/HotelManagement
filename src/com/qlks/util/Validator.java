@@ -67,6 +67,27 @@ public class Validator {
         return true;
     }
 
+    public static boolean checkPosNumNotIsZero(Component parent, String[] title, JTextComponent... args) {
+        for (int i = 0; i < args.length; i++) {
+            try {
+                if (Double.parseDouble(args[i].getText().trim()) < 0) {
+                    MsgBox.alert(parent, title[i] + " không được âm!");
+                    args[i].requestFocus();
+                    return false;
+                } else if (Double.parseDouble(args[i].getText().trim()) == 0) {
+                    MsgBox.alert(parent, title[i] + " phải lớn hơn 0!");
+                    args[i].requestFocus();
+                    return false;
+                }
+            } catch (Exception e) {
+                MsgBox.alert(parent, "Giá trị " + title[i] + " không hợp lệ!");
+                args[i].requestFocus();
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static boolean checkSelectedDate(Component parent, String[] title, com.toedter.calendar.JDateChooser... args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].getDate() == null) {
@@ -118,7 +139,7 @@ public class Validator {
     }
 
     public static boolean checkPhoneNum(Component parent, JTextComponent... args) {
-        String reg = "^0\\d{9}";
+        String reg = "(84|0[3|5|7|8|9])+([0-9]{8})";
         for (int i = 0; i < args.length; i++) {
             if (!args[i].getText().trim().matches(reg)) {
                 MsgBox.alert(parent, "SDT không hợp lệ!");
