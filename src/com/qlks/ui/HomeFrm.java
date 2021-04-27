@@ -804,6 +804,7 @@ public class HomeFrm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void init() {
+        this.setIconImage(XImage.getAppIcon());
         if (index == 0) {
             new SplashScreenDialog(this, true).setVisible(true);
         }
@@ -927,7 +928,7 @@ public class HomeFrm extends javax.swing.JFrame {
 
     private void openLogin() {
         this.dispose();
-        new HomeFrm(1).setVisible(true);
+        new HomeFrm(69).setVisible(true);
     }
 
     private void exit() {

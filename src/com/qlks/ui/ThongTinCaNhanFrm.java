@@ -450,7 +450,9 @@ public class ThongTinCaNhanFrm extends javax.swing.JInternalFrame {
         txtDiaChi.setText(nhanVien.getDiaChi());
         txtSdt.setText(nhanVien.getSdt());
         txtEmail.setText(nhanVien.getEmail());
-        lblAnh.setIcon(XImage.read(nhanVien.getAnh(), lblAnh));
+        if (nhanVien.getAnh() != null) {
+            lblAnh.setIcon(XImage.read(nhanVien.getAnh(), lblAnh));
+        }
         lblAnh.setToolTipText(nhanVien.getAnh());
         BoPhan boPhan = bpdao.selectByID(nhanVien.getMaBoPhan());
         if (boPhan != null) {

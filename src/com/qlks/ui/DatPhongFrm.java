@@ -1282,7 +1282,8 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 && Validator.checkIdentityCard(this, txtCmnd)
                 && Validator.isExists(this, txtCmnd, khdao.selectCmnd(), "CMND")
                 && Validator.checkPhoneNum(this, txtSdt)
-                && Validator.isExists(this, txtSdt, khdao.selectSdt(), "SDT")) {
+                && Validator.isExists(this, txtSdt, khdao.selectSdt(), "SDT")
+                && Validator.checkSelectedBgr(this, bgrGioiTinh, "Giới tính")) {
             String ten = txtTen.getText().trim();
             String cmnd = txtCmnd.getText().trim();
             String sdt = txtSdt.getText().trim();

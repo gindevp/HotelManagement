@@ -780,7 +780,9 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         txtDiaChi.setText(nhanVien.getDiaChi());
         txtSdt.setText(nhanVien.getSdt());
         txtEmail.setText(nhanVien.getEmail());
-        lblAnh.setIcon(XImage.read(nhanVien.getAnh(), lblAnh));
+        if (nhanVien.getAnh() != null) {
+            lblAnh.setIcon(XImage.read(nhanVien.getAnh(), lblAnh));
+        }
         lblAnh.setToolTipText(nhanVien.getAnh());
         BoPhan boPhan = bpdao.selectByID(nhanVien.getMaBoPhan());
         if (boPhan != null) {
@@ -844,13 +846,16 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         } else {
             if (MsgBox.confirm(this, "Bạn có chắc muốn xóa?")) {
                 String ma = tbl.getValueAt(this.index, 0).toString();
-                if (nvdao.delete(ma)) {
-                    MsgBox.alert(this, "Xóa thành công!");
-                    this.fillTbl();
-                    this.clear();
-                    tab.setSelectedIndex(1);
+                if (Auth.user.getMa().equalsIgnoreCase(ma)) {
+                    MsgBox.alert(this, "Không được xóa chính mình!");
                 } else {
-                    MsgBox.alert(this, "Xóa không thành công!");
+                    if (nvdao.delete(ma)) {
+                        MsgBox.alert(this, "Xóa thành công!");
+                        this.fillTbl();
+                        this.clear();
+                    } else {
+                        MsgBox.alert(this, "Xóa không thành công!");
+                    }
                 }
             }
         }

@@ -534,7 +534,9 @@ public class RegisterDialog extends javax.swing.JDialog {
         txtDiaChiDK.setText(nhanVien.getDiaChi());
         txtSdtDK.setText(nhanVien.getSdt());
         txtEmailDK.setText(nhanVien.getEmail());
-        lblAnhDK.setIcon(XImage.read(nhanVien.getAnh(), lblAnhDK));
+        if (nhanVien.getAnh() != null) {
+            lblAnhDK.setIcon(XImage.read(nhanVien.getAnh(), lblAnhDK));
+        }
         lblAnhDK.setToolTipText(nhanVien.getAnh());
         BoPhan boPhan = bpdao.selectByID(nhanVien.getMaBoPhan());
         if (boPhan != null) {

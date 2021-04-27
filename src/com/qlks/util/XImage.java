@@ -25,7 +25,7 @@ public class XImage {
 
     //gan logo vao cac form hien ra
     public static Image getAppIcon() {
-        URL url = XImage.class.getResource("/com/sof204/icons/fpt.png");
+        URL url = XImage.class.getResource("/com/qlks/icon/apple_48px.png");
         return new ImageIcon(url).getImage();
     }
 
@@ -48,13 +48,16 @@ public class XImage {
     public static ImageIcon read(String fileName, JLabel lbl) {
         try {
             File path = new File("img", fileName);
-
-            return new ImageIcon(new ImageIcon(path.getAbsolutePath())
-                    .getImage()
-                    .getScaledInstance(
-                            lbl.getWidth(),
-                            lbl.getHeight(),
-                            Image.SCALE_AREA_AVERAGING));
+            if (lbl.getWidth() > 0 && lbl.getHeight() > 0) {
+                return new ImageIcon(new ImageIcon(path.getAbsolutePath())
+                        .getImage()
+                        .getScaledInstance(
+                                lbl.getWidth(),
+                                lbl.getHeight(),
+                                Image.SCALE_AREA_AVERAGING));
+            } else {
+                return null;
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
