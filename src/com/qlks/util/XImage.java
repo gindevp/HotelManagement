@@ -45,20 +45,21 @@ public class XImage {
         }
     }
 
-
     public static ImageIcon read(String fileName, JLabel lbl) {
         try {
             File path = new File("img", fileName);
+
             return new ImageIcon(new ImageIcon(path.getAbsolutePath())
                     .getImage()
                     .getScaledInstance(
                             lbl.getWidth(),
                             lbl.getHeight(),
                             Image.SCALE_AREA_AVERAGING));
+
         } catch (Exception e) {
+            e.printStackTrace();
             return null;
         }
     }
-    
 
 }

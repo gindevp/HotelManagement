@@ -298,7 +298,9 @@ public class LoginDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDangKyActionPerformed
 
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
-        this.dispose();
+        if (MsgBox.confirm(this, "Bạn có chắc muốn thoát?")) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_lblCloseMouseClicked
 
     private void chkShowPassItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_chkShowPassItemStateChanged
@@ -466,7 +468,6 @@ public class LoginDialog extends javax.swing.JDialog {
     private void openRegisterDialog() {
         Window ancestor = SwingUtilities.getWindowAncestor(btnDangKy);
         LoginDialog.this.setVisible(false);
-//        LoginDialog.this.setOpacity(0);
         RegisterDialog regis = new RegisterDialog(this, true);
         regis.setLocationRelativeTo(null);
         regis.setVisible(true);

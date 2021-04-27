@@ -92,6 +92,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         txtKeywordTN = new javax.swing.JTextField();
 
         setClosable(true);
+        setTitle("Quản Lý Dịch vụ - tiện nghi");
         setPreferredSize(new java.awt.Dimension(1500, 850));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));

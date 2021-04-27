@@ -792,17 +792,11 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cboBoPhan.getModel();
         model.removeAllElements();
 
-        if (Auth.isManager()) {
-            List<BoPhan> list = bpdao.selectAll();
-            list.forEach((i) -> {
-                model.addElement(i);
-            });
-        } else {
-            List<BoPhan> list = bpdao.selectNotLikeSql();
-            list.forEach((i) -> {
-                model.addElement(i);
-            });
-        }
+        List<BoPhan> list = bpdao.selectAll();
+        list.forEach((i) -> {
+            model.addElement(i);
+        });
+
     }
 
     private void chooseImage() {
@@ -835,6 +829,9 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
                 MsgBox.alert(this, "Sửa thành công!");
                 this.fillTbl();
                 this.clear();
+                if (nhanVien.getMa().equalsIgnoreCase(Auth.user.getMa())) {
+                    Auth.user = nhanVien;;
+                }
             } else {
                 MsgBox.alert(this, "Sửa thành công!");
             }

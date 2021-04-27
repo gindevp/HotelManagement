@@ -27,11 +27,13 @@ public class HomeFrm extends javax.swing.JFrame {
 
     Color bgColor = new Color(46, 62, 78);
     Color changeColor = new Color(153, 204, 255);
+    private int index;
 
     /**
      * Creates new form managerHome
      */
-    public HomeFrm() {
+    public HomeFrm(int index) {
+        this.index = index;
         initComponents();
         this.init();
     }
@@ -604,7 +606,7 @@ public class HomeFrm extends javax.swing.JFrame {
                 .addComponent(pnlKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlDangXuat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                     .addComponent(pnlThoat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
@@ -612,7 +614,7 @@ public class HomeFrm extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 940));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, 930));
 
         javax.swing.GroupLayout desMainLayout = new javax.swing.GroupLayout(desMain);
         desMain.setLayout(desMainLayout);
@@ -763,7 +765,7 @@ public class HomeFrm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HomeFrm().setVisible(true);
+                new HomeFrm(0).setVisible(true);
             }
         });
     }
@@ -802,7 +804,9 @@ public class HomeFrm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void init() {
-//        new SplashScreenDialog(this, true).setVisible(true);
+        if (index == 0) {
+            new SplashScreenDialog(this, true).setVisible(true);
+        }
         new LoginDialog(this, true).setVisible(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.showTime();
@@ -866,7 +870,7 @@ public class HomeFrm extends javax.swing.JFrame {
 
     private void openDoiTTNhanVien() {
         if (Auth.isLogin()) {
-            XForm.openChildFrm(this, desMain, new ThongTinNhanVienFrm(desMain));
+            XForm.openChildFrm(this, desMain, new ThongTinCaNhanFrm(desMain));
         } else {
             MsgBox.alert(this, "Vui lòng đăng nhập!");
         }
@@ -923,8 +927,7 @@ public class HomeFrm extends javax.swing.JFrame {
 
     private void openLogin() {
         this.dispose();
-        new LoginDialog(this, true).setVisible(true);
-        this.showName();
+        new HomeFrm(1).setVisible(true);
     }
 
     private void exit() {

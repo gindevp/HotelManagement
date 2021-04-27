@@ -482,7 +482,7 @@ public class RegisterDialog extends javax.swing.JDialog {
 
     private void openLogin() {
         RegisterDialog.this.setVisible(false);
-        HomeFrm home = new HomeFrm();
+        HomeFrm home = new HomeFrm(1);
         home.setVisible(true);
     }
 
