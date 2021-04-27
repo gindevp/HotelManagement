@@ -25,6 +25,8 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
     private String selectByNameSql = "select * from loaiPhong where tenlp = ?";
     private String selectByKeywordSql = "select * from loaiphong where tenlp like ?";
 
+    private String selectMaSql = "select malp from loaiphong";
+
     @Override
     public boolean insert(LoaiPhong entity) {
         return XJdbc.update(insertSql, entity.getMa(), entity.getTen(), entity.getMoTa());
@@ -57,6 +59,23 @@ public class LoaiPhongDAO extends ManageDAO<LoaiPhong, String> {
 
     public List<LoaiPhong> selectByKeyword(String key) {
         return selectBySql(selectByKeywordSql, "%" + key + "%");
+    }
+
+    public List<String> selectMaLP() {
+        return selectColumn(selectMaSql);
+    }
+
+    public List<String> selectColumn(String sql, Object... args) {
+        List<String> list = new ArrayList<>();
+        try (
+                ResultSet rs = XJdbc.query(sql, args);) {
+            while (rs.next()) {
+                String item = rs.getString(1);
+                list.add(item);
+            }
+        } catch (Exception e) {
+        }
+        return list;
     }
 
     @Override
