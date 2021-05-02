@@ -374,7 +374,7 @@ public class LoginDialog extends javax.swing.JDialog {
 
     private String login() {
         String[] title = new String[]{"Tên đăng nhập", "Mật khẩu"};
-        if (Validator.checkBlack(this, title, edtTenDangNhap, edtMatKhau)) {
+        if (Validator.isBlack(this, title, edtTenDangNhap, edtMatKhau)) {
             String user = edtTenDangNhap.getText().trim();
             String pass = String.valueOf(edtMatKhau.getText().trim());
             NhanVien nhanVien = nvdao.selectByID(user);

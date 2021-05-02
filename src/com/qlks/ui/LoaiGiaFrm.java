@@ -452,7 +452,7 @@ public class LoaiGiaFrm extends javax.swing.JInternalFrame {
     private LoaiGia getForm() {
         LoaiGia lg = null;
         String[] title = new String[]{"Tên loại giá"};
-        if (Validator.checkBlack(this, title, txtTen)
+        if (Validator.isBlack(this, title, txtTen)
                 && Validator.isExists(this, txtTen, lgdao.selectTen(), title[0])) {
             lg = new LoaiGia(
                     txtTen.getText().trim()
@@ -469,7 +469,7 @@ public class LoaiGiaFrm extends javax.swing.JInternalFrame {
         lg1 = lgdao.selectByID(id);
 
         String[] title = new String[]{"Mã", "Tên loại giá"};
-        if (Validator.checkBlack(this, title, txtTen)
+        if (Validator.isBlack(this, title, txtTen)
                 && Validator.isExists(this, txtTen, lgdao.selectTen(lg1), title[1])) {
             List<String> gia = lgdao.selectTen(lg1);
             System.out.println(gia.get(0) + "1");

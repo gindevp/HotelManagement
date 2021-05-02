@@ -717,13 +717,13 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
     private NhanVien getForm() {
         NhanVien nhanVien = null;
         String[] title = new String[]{"Mã nhân viên", "Tên nhân viên", "Password", "Sdt", "Địa chỉ", "Email"};
-        if (Validator.checkBlack(this, title, txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
+        if (Validator.isBlack(this, title, txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
                 && Validator.isExists(this, txtMa, nvdao.selectMaNV(), title[0])
-                && Validator.checkPhoneNum(this, txtSdt)
+                && Validator.isPhoneNum(this, txtSdt)
                 && Validator.isExists(this, txtSdt, nvdao.selectSdt(), title[3])
-                && Validator.checkSelectedDob(this, jdcNgaySinh)
-                && Validator.checkSelectedBgr(this, bgrGioiTinh, "Giới tính")
-                && Validator.checkEmail(this, txtEmail)
+                && Validator.isDob(this, jdcNgaySinh)
+                && Validator.isSelectedButtonGroup(this, bgrGioiTinh, "Giới tính")
+                && Validator.isEmail(this, txtEmail)
                 && Validator.isExists(this, txtEmail, nvdao.selectEmail(), title[5])) {
             BoPhan boPhan = (BoPhan) cboBoPhan.getSelectedItem();
             nhanVien = new NhanVien(
@@ -746,12 +746,12 @@ public class NhanVienFrm extends javax.swing.JInternalFrame {
         NhanVien nhanVien = null;
         NhanVien nv1 = nvdao.selectByID((tbl.getValueAt(this.index, 0).toString()));
         String[] title = new String[]{"Mã nhân viên", "Tên nhân viên", "Password", "Sdt", "Địa chỉ", "Email"};
-        if (Validator.checkBlack(this, title, txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
-                && Validator.checkPhoneNum(this, txtSdt)
+        if (Validator.isBlack(this, title, txtMa, txtTen, txtPass, txtSdt, txtDiaChi, txtEmail)
+                && Validator.isPhoneNum(this, txtSdt)
                 && Validator.isExists(this, txtSdt, nvdao.selectSdt1(nv1.getSdt()), title[3])
-                && Validator.checkSelectedDob(this, jdcNgaySinh)
-                && Validator.checkSelectedBgr(this, bgrGioiTinh, "Giới tính")
-                && Validator.checkEmail(this, txtEmail)
+                && Validator.isDob(this, jdcNgaySinh)
+                && Validator.isSelectedButtonGroup(this, bgrGioiTinh, "Giới tính")
+                && Validator.isEmail(this, txtEmail)
                 && Validator.isExists(this, txtEmail, nvdao.selectEmail1(nv1.getEmail()), title[5])) {
             BoPhan boPhan = (BoPhan) cboBoPhan.getSelectedItem();
             nhanVien = new NhanVien(

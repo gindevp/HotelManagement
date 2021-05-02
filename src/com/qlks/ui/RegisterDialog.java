@@ -66,29 +66,29 @@ public class RegisterDialog extends javax.swing.JDialog {
         lblTitle = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        txtMaDK = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        txtTenDK = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        rdoNamDK = new javax.swing.JRadioButton();
-        rdoNuDK = new javax.swing.JRadioButton();
+        rdoFemale = new javax.swing.JRadioButton();
+        rdoMale = new javax.swing.JRadioButton();
         jLabel21 = new javax.swing.JLabel();
-        txtDiaChiDK = new javax.swing.JTextField();
+        txtAddress = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        txtSdtDK = new javax.swing.JTextField();
+        txtPhone = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        jdcNgaySinhDK = new com.toedter.calendar.JDateChooser();
+        jdcDob = new com.toedter.calendar.JDateChooser();
         txtEmailDK = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        cboBoPhanDK = new javax.swing.JComboBox<>();
-        btnDangKy = new javax.swing.JButton();
-        txtPassDK = new javax.swing.JTextField();
+        cboDepartment = new javax.swing.JComboBox<>();
+        btnRegister = new javax.swing.JButton();
+        txtPass = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        lblAnhDK = new javax.swing.JLabel();
-        btnXoaAnhDK = new javax.swing.JButton();
-        btnChonAnhDK = new javax.swing.JButton();
+        lblAvt = new javax.swing.JLabel();
+        btnRemoveAvt = new javax.swing.JButton();
+        btnChooseAvt = new javax.swing.JButton();
         btnOpenLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -109,12 +109,12 @@ public class RegisterDialog extends javax.swing.JDialog {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel17.setText("Mã Nhân Viên:");
 
-        txtMaDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtId.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel18.setText("Tên Nhân Viên:");
 
-        txtTenDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel19.setText("Password:");
@@ -122,29 +122,29 @@ public class RegisterDialog extends javax.swing.JDialog {
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel20.setText("Ngày Sinh:");
 
-        rdoNamDK.setBackground(new java.awt.Color(255, 255, 255));
-        rdoNamDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        rdoNamDK.setSelected(true);
-        rdoNamDK.setText("Nam");
+        rdoFemale.setBackground(new java.awt.Color(255, 255, 255));
+        rdoFemale.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        rdoFemale.setSelected(true);
+        rdoFemale.setText("Nam");
 
-        rdoNuDK.setBackground(new java.awt.Color(255, 255, 255));
-        rdoNuDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        rdoNuDK.setText("Nữ");
+        rdoMale.setBackground(new java.awt.Color(255, 255, 255));
+        rdoMale.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        rdoMale.setText("Nữ");
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel21.setText("Giới Tính:");
 
-        txtDiaChiDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtAddress.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel22.setText("Đia Chỉ:");
 
-        txtSdtDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtPhone.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel23.setText("SDT:");
 
-        jdcNgaySinhDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jdcDob.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         txtEmailDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
@@ -154,43 +154,43 @@ public class RegisterDialog extends javax.swing.JDialog {
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel25.setText("Ảnh:");
 
-        cboBoPhanDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cboBoPhanDK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboDepartment.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        cboDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnDangKy.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnDangKy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/registration_24px.png"))); // NOI18N
-        btnDangKy.setText("Đăng ký");
-        btnDangKy.addActionListener(new java.awt.event.ActionListener() {
+        btnRegister.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/registration_24px.png"))); // NOI18N
+        btnRegister.setText("Đăng ký");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangKyActionPerformed(evt);
+                btnRegisterActionPerformed(evt);
             }
         });
 
-        txtPassDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtPass.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel26.setText("Bộ Phận");
 
-        lblAnhDK.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        lblAnhDK.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblAvt.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblAvt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAnhDKMouseClicked(evt);
+                lblAvtMouseClicked(evt);
             }
         });
 
-        btnXoaAnhDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnXoaAnhDK.setText("Xóa");
-        btnXoaAnhDK.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveAvt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnRemoveAvt.setText("Xóa");
+        btnRemoveAvt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaAnhDKActionPerformed(evt);
+                btnRemoveAvtActionPerformed(evt);
             }
         });
 
-        btnChonAnhDK.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnChonAnhDK.setText("Chọn");
-        btnChonAnhDK.addActionListener(new java.awt.event.ActionListener() {
+        btnChooseAvt.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnChooseAvt.setText("Chọn");
+        btnChooseAvt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChonAnhDKActionPerformed(evt);
+                btnChooseAvtActionPerformed(evt);
             }
         });
 
@@ -202,46 +202,46 @@ public class RegisterDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtSdtDK)
+                        .addComponent(txtPhone)
                         .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                        .addComponent(txtMaDK))
+                        .addComponent(txtId))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                        .addComponent(txtTenDK))
+                        .addComponent(txtName))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtPassDK)
+                        .addComponent(txtPass)
                         .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtDiaChiDK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(110, 110, 110)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cboBoPhanDK, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cboDepartment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtEmailDK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                    .addComponent(jdcNgaySinhDK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jdcDob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(rdoNamDK, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rdoFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rdoNuDK, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(rdoMale, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblAnhDK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAvt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnChonAnhDK, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnChooseAvt, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                        .addComponent(btnXoaAnhDK, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnRemoveAvt, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(501, 501, 501))
         );
         jPanel6Layout.setVerticalGroup(
@@ -253,7 +253,7 @@ public class RegisterDialog extends javax.swing.JDialog {
                         .addGap(14, 14, 14)
                         .addComponent(jLabel25)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblAnhDK, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblAvt, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
@@ -261,44 +261,44 @@ public class RegisterDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jdcNgaySinhDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jdcDob, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel21)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(rdoNamDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rdoNuDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(rdoFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(rdoMale, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(txtMaDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTenDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel19)
                                     .addComponent(jLabel26))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtPassDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboBoPhanDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel23)
                                     .addComponent(jLabel24))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtSdtDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(txtEmailDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnChonAnhDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnXoaAnhDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btnChooseAvt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnRemoveAvt, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel22)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDiaChiDK, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(19, 19, 19)
-                .addComponent(btnDangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -372,21 +372,21 @@ public class RegisterDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangKyActionPerformed
-        this.registration();
-    }//GEN-LAST:event_btnDangKyActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        this.register();
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void lblAnhDKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnhDKMouseClicked
-        this.chooseImageDK();
-    }//GEN-LAST:event_lblAnhDKMouseClicked
+    private void lblAvtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAvtMouseClicked
+        this.chooseAvt();
+    }//GEN-LAST:event_lblAvtMouseClicked
 
-    private void btnXoaAnhDKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaAnhDKActionPerformed
-        this.removeImageDK();
-    }//GEN-LAST:event_btnXoaAnhDKActionPerformed
+    private void btnRemoveAvtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveAvtActionPerformed
+        this.removeAvt();
+    }//GEN-LAST:event_btnRemoveAvtActionPerformed
 
-    private void btnChonAnhDKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonAnhDKActionPerformed
-        this.chooseImageDK();
-    }//GEN-LAST:event_btnChonAnhDKActionPerformed
+    private void btnChooseAvtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseAvtActionPerformed
+        this.chooseAvt();
+    }//GEN-LAST:event_btnChooseAvtActionPerformed
 
     private void btnOpenLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenLoginActionPerformed
         this.openLogin();
@@ -435,11 +435,11 @@ public class RegisterDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnChonAnhDK;
-    private javax.swing.JButton btnDangKy;
+    private javax.swing.JButton btnChooseAvt;
     private javax.swing.JButton btnOpenLogin;
-    private javax.swing.JButton btnXoaAnhDK;
-    private javax.swing.JComboBox<String> cboBoPhanDK;
+    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnRemoveAvt;
+    private javax.swing.JComboBox<String> cboDepartment;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -453,17 +453,17 @@ public class RegisterDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private com.toedter.calendar.JDateChooser jdcNgaySinhDK;
-    private javax.swing.JLabel lblAnhDK;
+    private com.toedter.calendar.JDateChooser jdcDob;
+    private javax.swing.JLabel lblAvt;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JRadioButton rdoNamDK;
-    private javax.swing.JRadioButton rdoNuDK;
-    private javax.swing.JTextField txtDiaChiDK;
+    private javax.swing.JRadioButton rdoFemale;
+    private javax.swing.JRadioButton rdoMale;
+    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtEmailDK;
-    private javax.swing.JTextField txtMaDK;
-    private javax.swing.JTextField txtPassDK;
-    private javax.swing.JTextField txtSdtDK;
-    private javax.swing.JTextField txtTenDK;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPass;
+    private javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
 
     private void init() {
@@ -471,7 +471,7 @@ public class RegisterDialog extends javax.swing.JDialog {
     }
 
     private void fillCbo() {
-        DefaultComboBoxModel model = (DefaultComboBoxModel) cboBoPhanDK.getModel();
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboDepartment.getModel();
         model.removeAllElements();
 
         List<BoPhan> list = bpdao.selectNotLikeSql();
@@ -486,7 +486,7 @@ public class RegisterDialog extends javax.swing.JDialog {
         home.setVisible(true);
     }
 
-    private void registration() {
+    private void register() {
         NhanVien nhanVien = getFormRegistration();
         if (nhanVien != null) {
             if (nvdao.insert(nhanVien)) {
@@ -501,23 +501,23 @@ public class RegisterDialog extends javax.swing.JDialog {
     private NhanVien getFormRegistration() {
         NhanVien nhanVien = null;
         String[] title = new String[]{"Mã nhân viên", "Tên nhân viên", "Password", "Sdt", "Địa chỉ", "Email"};
-        if (Validator.checkBlack(this, title, txtMaDK, txtTenDK, txtPassDK, txtSdtDK, txtDiaChiDK, txtEmailDK)
-                && Validator.checkPhoneNum(txtSdtDK)
-                && Validator.isExists(this, txtSdtDK, nvdao.selectSdt(), title[3])
-                && Validator.checkSelectedDob(this, jdcNgaySinhDK)
-                && Validator.checkEmail(this, txtEmailDK)
+        if (Validator.isBlack(this, title, txtId, txtName, txtPass, txtPhone, txtAddress, txtEmailDK)
+                && Validator.isPhoneNum(txtPhone)
+                && Validator.isExists(this, txtPhone, nvdao.selectSdt(), title[3])
+                && Validator.isDob(this, jdcDob)
+                && Validator.isEmail(this, txtEmailDK)
                 && Validator.isExists(this, txtEmailDK, nvdao.selectEmail(), title[5])) {
-            BoPhan boPhan = (BoPhan) cboBoPhanDK.getSelectedItem();
+            BoPhan boPhan = (BoPhan) cboDepartment.getSelectedItem();
             nhanVien = new NhanVien(
-                    txtMaDK.getText().trim(),
-                    txtTenDK.getText().trim(),
-                    txtPassDK.getText().trim(),
-                    jdcNgaySinhDK.getDate(),
-                    rdoNamDK.isSelected() ? true : false,
-                    txtDiaChiDK.getText().trim(),
-                    txtSdtDK.getText().trim(),
+                    txtId.getText().trim(),
+                    txtName.getText().trim(),
+                    txtPass.getText().trim(),
+                    jdcDob.getDate(),
+                    rdoFemale.isSelected() ? true : false,
+                    txtAddress.getText().trim(),
+                    txtPhone.getText().trim(),
                     txtEmailDK.getText().trim(),
-                    lblAnhDK.getToolTipText() == null ? "" : lblAnhDK.getToolTipText(),
+                    lblAvt.getToolTipText() == null ? "" : lblAvt.getToolTipText(),
                     boPhan.getMa()
             );
         }
@@ -525,22 +525,22 @@ public class RegisterDialog extends javax.swing.JDialog {
     }
 
     private void setForm(NhanVien nhanVien) {
-        txtMaDK.setText(nhanVien.getMa());
-        txtTenDK.setText(nhanVien.getTen());
-        txtPassDK.setText(nhanVien.getPass());
-        jdcNgaySinhDK.setDate(nhanVien.getNs());
-        rdoNamDK.setSelected(nhanVien.isGt());
-        rdoNuDK.setSelected(!nhanVien.isGt());
-        txtDiaChiDK.setText(nhanVien.getDiaChi());
-        txtSdtDK.setText(nhanVien.getSdt());
+        txtId.setText(nhanVien.getMa());
+        txtName.setText(nhanVien.getTen());
+        txtPass.setText(nhanVien.getPass());
+        jdcDob.setDate(nhanVien.getNs());
+        rdoFemale.setSelected(nhanVien.isGt());
+        rdoMale.setSelected(!nhanVien.isGt());
+        txtAddress.setText(nhanVien.getDiaChi());
+        txtPhone.setText(nhanVien.getSdt());
         txtEmailDK.setText(nhanVien.getEmail());
         if (nhanVien.getAnh() != null) {
-            lblAnhDK.setIcon(XImage.read(nhanVien.getAnh(), lblAnhDK));
+            lblAvt.setIcon(XImage.read(nhanVien.getAnh(), lblAvt));
         }
-        lblAnhDK.setToolTipText(nhanVien.getAnh());
+        lblAvt.setToolTipText(nhanVien.getAnh());
         BoPhan boPhan = bpdao.selectByID(nhanVien.getMaBoPhan());
         if (boPhan != null) {
-            cboBoPhanDK.setSelectedItem(boPhan);
+            cboDepartment.setSelectedItem(boPhan);
         }
     }
 
@@ -548,18 +548,18 @@ public class RegisterDialog extends javax.swing.JDialog {
         this.setForm(new NhanVien());
     }
 
-    private void chooseImageDK() {
+    private void chooseAvt() {
         JFileChooser chooser = new JFileChooser();
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             File file = chooser.getSelectedFile();
             XImage.save(file);
-            lblAnhDK.setToolTipText(file.getName());
-            lblAnhDK.setIcon(XImage.read(file.getName(), lblAnhDK));
+            lblAvt.setToolTipText(file.getName());
+            lblAvt.setIcon(XImage.read(file.getName(), lblAvt));
         }
     }
 
-    private void removeImageDK() {
-        lblAnhDK.setToolTipText(null);
-        lblAnhDK.setIcon(null);
+    private void removeAvt() {
+        lblAvt.setToolTipText(null);
+        lblAvt.setIcon(null);
     }
 }

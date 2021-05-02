@@ -679,8 +679,8 @@ public class PhongFrm extends javax.swing.JInternalFrame {
         LoaiPhong lp = (LoaiPhong) cboLoaiPhong.getSelectedItem();
         String[] title = new String[]{"Số phòng", "Sức chứa"};
         String[] titleNum = new String[]{"Sức chứa"};
-        if (Validator.checkBlack(this, title, txtSo, txtSucChua)
-                && Validator.checkPosNumNotIsZero(this, titleNum, txtSucChua)) {
+        if (Validator.isBlack(this, title, txtSo, txtSucChua)
+                && Validator.isPosNumNotIsZero(this, titleNum, txtSucChua)) {
             p = new Phong(
                     txtSo.getText().trim(),
                     Integer.parseInt(txtSucChua.getText().trim()),

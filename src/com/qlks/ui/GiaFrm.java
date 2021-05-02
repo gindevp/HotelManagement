@@ -489,8 +489,8 @@ public class GiaFrm extends javax.swing.JInternalFrame {
 
     private LoaiPhongLoaiGia getForm() {
         LoaiPhongLoaiGia lplg = null;
-        if (Validator.checkBlack(this, new String[]{"Đơn giá"}, txtDonGia)
-                && Validator.checkPosNumNotIsZero(this, new String[]{"Đơn giá"}, txtDonGia)) {
+        if (Validator.isBlack(this, new String[]{"Đơn giá"}, txtDonGia)
+                && Validator.isPosNumNotIsZero(this, new String[]{"Đơn giá"}, txtDonGia)) {
             LoaiPhong loaiPhong = (LoaiPhong) cboLoaiPhong.getSelectedItem();
             LoaiGia loaiGia = (LoaiGia) cboLoaiGia.getSelectedItem();
             double donGia = Double.parseDouble(txtDonGia.getText().trim());

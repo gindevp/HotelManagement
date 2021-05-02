@@ -557,10 +557,10 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
     private KhachHang getForm() {
         KhachHang kh = null;
         String[] title = new String[]{"Tên khách hàng", "CMND", "SDT", "Địa Chỉ", "Quốc tịch"};
-        if (Validator.checkBlack(this, title, txtTenKH, txtCMND, txtSDT, txtDiaChi, txtQuocTich)
-                && Validator.checkIdentityCard(this, txtCMND)
+        if (Validator.isBlack(this, title, txtTenKH, txtCMND, txtSDT, txtDiaChi, txtQuocTich)
+                && Validator.isIdentityCard(this, txtCMND)
                 && Validator.isExists(this, txtCMND, khdao.selectCmnd(), title[1])
-                && Validator.checkPhoneNum(this, txtSDT)
+                && Validator.isPhoneNum(this, txtSDT)
                 && Validator.isExists(this, txtSDT, khdao.selectSdt(), title[2])) {
             String ten = txtTenKH.getText().trim();
             String cmnd = txtCMND.getText().trim();
@@ -581,10 +581,10 @@ public class KhachHangFrm extends javax.swing.JInternalFrame {
         kh1 = khdao.selectByID(id);
 
         String[] title = new String[]{"Tên khách hàng", "CMND", "SDT", "Địa Chỉ", "Quốc tịch"};
-        if (Validator.checkBlack(this, title, txtTenKH, txtCMND, txtSDT, txtDiaChi, txtQuocTich)
-                && Validator.checkIdentityCard(this, txtCMND)
+        if (Validator.isBlack(this, title, txtTenKH, txtCMND, txtSDT, txtDiaChi, txtQuocTich)
+                && Validator.isIdentityCard(this, txtCMND)
                 && Validator.isExists(this, txtCMND, khdao.selectCmnd(kh1), title[1])
-                && Validator.checkPhoneNum(this, txtSDT)
+                && Validator.isPhoneNum(this, txtSDT)
                 && Validator.isExists(this, txtSDT, khdao.selectSdt(kh1), title[2])) {
             String ten = txtTenKH.getText().trim();
             String cmnd = txtCMND.getText().trim();

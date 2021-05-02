@@ -155,7 +155,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="tblHoaDon">
+                        <Component class="javax.swing.JTable" name="tblInvoice">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="16" style="0"/>
@@ -255,9 +255,9 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jdcEnd" min="-2" pref="240" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnTimHd" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Component id="btnFindInvoice" min="-2" pref="120" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnRefreshHd" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="btnViewAll" min="-2" pref="160" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -271,8 +271,8 @@
                                       <Component id="jdcStart" max="32767" attributes="0"/>
                                       <Component id="jLabel3" max="32767" attributes="0"/>
                                       <Component id="jdcEnd" max="32767" attributes="0"/>
-                                      <Component id="btnTimHd" max="32767" attributes="0"/>
-                                      <Component id="btnRefreshHd" max="32767" attributes="0"/>
+                                      <Component id="btnFindInvoice" max="32767" attributes="0"/>
+                                      <Component id="btnViewAll" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="24" max="32767" attributes="0"/>
                               </Group>
@@ -300,7 +300,7 @@
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="jdcEnd">
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnTimHd">
+                        <Component class="javax.swing.JButton" name="btnFindInvoice">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="16" style="0"/>
@@ -311,10 +311,10 @@
                             <Property name="text" type="java.lang.String" value="T&#xec;m"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimHdActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindInvoiceActionPerformed"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnRefreshHd">
+                        <Component class="javax.swing.JButton" name="btnViewAll">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="16" style="0"/>
@@ -325,7 +325,7 @@
                             <Property name="text" type="java.lang.String" value="Xem To&#xe0;n B&#x1ed9;"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRefreshHdActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewAllActionPerformed"/>
                           </Events>
                         </Component>
                       </SubComponents>
@@ -355,11 +355,11 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel1" min="-2" pref="46" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cboNam1" min="-2" pref="308" max="-2" attributes="0"/>
+                                      <Component id="cboYear1" min="-2" pref="308" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="cboThang1" min="-2" pref="308" max="-2" attributes="0"/>
+                                      <Component id="cboMonth1" min="-2" pref="308" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -367,7 +367,7 @@
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="lblTongPhong" min="-2" pref="170" max="-2" attributes="0"/>
+                                              <Component id="lblTotalRoom" min="-2" pref="170" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
@@ -376,7 +376,7 @@
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="lblTongDv" min="-2" pref="170" max="-2" attributes="0"/>
+                                              <Component id="lblTotalService" min="-2" pref="170" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -391,8 +391,8 @@
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel1" max="32767" attributes="0"/>
-                                  <Component id="cboNam1" min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="cboThang1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="cboYear1" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="cboMonth1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                                   <Component id="jLabel2" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -403,9 +403,9 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jLabel5" pref="40" max="32767" attributes="0"/>
-                                  <Component id="lblTongPhong" max="32767" attributes="0"/>
+                                  <Component id="lblTotalRoom" max="32767" attributes="0"/>
                                   <Component id="jLabel4" max="32767" attributes="0"/>
-                                  <Component id="lblTongDv" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblTotalService" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -420,7 +420,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="tblTopPhong">
+                        <Component class="javax.swing.JTable" name="tblTopRoom">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="16" style="0"/>
@@ -468,7 +468,7 @@
                         <Property name="text" type="java.lang.String" value="N&#x103;m"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="cboNam1">
+                    <Component class="javax.swing.JComboBox" name="cboYear1">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="16" style="0"/>
@@ -483,7 +483,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboNam1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboYear1ActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -497,7 +497,7 @@
                         <Property name="text" type="java.lang.String" value="Th&#xe1;ng:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="cboThang1">
+                    <Component class="javax.swing.JComboBox" name="cboMonth1">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="16" style="0"/>
@@ -512,7 +512,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboThang1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboMonth1ActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -525,7 +525,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="tblTopDv">
+                        <Component class="javax.swing.JTable" name="tblTopService">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="16" style="0"/>
@@ -565,7 +565,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="lblTongPhong">
+                    <Component class="javax.swing.JLabel" name="lblTotalRoom">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="22" style="1"/>
@@ -586,7 +586,7 @@
                         <Property name="text" type="java.lang.String" value="T&#x1ed5;ng:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblTongDv">
+                    <Component class="javax.swing.JLabel" name="lblTotalService">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="22" style="1"/>
@@ -634,7 +634,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cboNam2" max="32767" attributes="0"/>
+                                          <Component id="cboYear2" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -642,7 +642,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cboNam3" max="32767" attributes="0"/>
+                                          <Component id="cboYear3" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -661,14 +661,14 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel7" max="32767" attributes="0"/>
-                                          <Component id="cboNam2" pref="40" max="32767" attributes="0"/>
+                                          <Component id="cboYear2" pref="40" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="jScrollPane4" min="-2" pref="260" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cboNam3" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="cboYear3" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jScrollPane5" min="-2" pref="260" max="-2" attributes="0"/>
@@ -687,7 +687,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="tblDoanhThu1">
+                        <Component class="javax.swing.JTable" name="tblRevenue1">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="16" style="0"/>
@@ -729,7 +729,7 @@
                         <Property name="text" type="java.lang.String" value="N&#x103;m:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="cboNam2">
+                    <Component class="javax.swing.JComboBox" name="cboYear2">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="16" style="0"/>
@@ -744,7 +744,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboNam2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboYear2ActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -786,19 +786,19 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="pnlBieuDo" max="32767" attributes="0"/>
+                                      <Component id="pnlChart" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="pnlBieuDo" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="pnlChart" alignment="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Container class="javax.swing.JPanel" name="pnlBieuDo">
+                            <Container class="javax.swing.JPanel" name="pnlChart">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -834,7 +834,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTable" name="tblDoanhThu2">
+                        <Component class="javax.swing.JTable" name="tblRevenue2">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="16" style="0"/>
@@ -868,7 +868,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JComboBox" name="cboNam3">
+                    <Component class="javax.swing.JComboBox" name="cboYear3">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="16" style="0"/>
@@ -883,7 +883,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboNam3ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboYear3ActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

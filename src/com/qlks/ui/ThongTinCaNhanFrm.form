@@ -141,33 +141,33 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="txtDiaChi" min="-2" pref="350" max="-2" attributes="0"/>
+                                  <Component id="txtAddress" min="-2" pref="350" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtSdt" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                              <Component id="txtPhone" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                               <Component id="jLabel23" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtMa" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                              <Component id="txtId" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                               <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtTen" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                              <Component id="txtName" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                               <Component id="txtPass" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                               <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="cboBoPhan" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="cboDepartment" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtEmail" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="jdcNgaySinh" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jdcDob" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel21" alignment="0" max="32767" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="rdoNam" max="32767" attributes="0"/>
+                                                  <Component id="rdoFemale" max="32767" attributes="0"/>
                                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                                  <Component id="rdoNu" max="32767" attributes="0"/>
+                                                  <Component id="rdoMale" max="32767" attributes="0"/>
                                                   <EmptySpace min="-2" pref="190" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jLabel26" alignment="0" max="32767" attributes="0"/>
@@ -182,11 +182,11 @@
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="1" attributes="0">
-                                                  <Component id="btnChonAnh" min="-2" pref="96" max="-2" attributes="0"/>
+                                                  <Component id="btnChooseAvt" min="-2" pref="96" max="-2" attributes="0"/>
                                                   <EmptySpace pref="28" max="32767" attributes="0"/>
-                                                  <Component id="btnXoaAnh" min="-2" pref="96" max="-2" attributes="0"/>
+                                                  <Component id="btnRemoveAvt" min="-2" pref="96" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="lblAnh" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblAvt" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -206,11 +206,11 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtMa" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="txtId" min="-2" pref="40" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtTen" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="txtName" min="-2" pref="40" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -218,23 +218,23 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="txtSdt" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="txtPhone" min="-2" pref="40" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jdcNgaySinh" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="jdcDob" min="-2" pref="40" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="rdoNam" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                              <Component id="rdoNu" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                              <Component id="rdoFemale" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                              <Component id="rdoMale" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cboBoPhan" min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="cboDepartment" min="-2" pref="40" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
@@ -247,17 +247,17 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblAnh" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="lblAvt" min="-2" pref="254" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnXoaAnh" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-                                      <Component id="btnChonAnh" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="btnRemoveAvt" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="btnChooseAvt" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtDiaChi" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="txtAddress" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -272,7 +272,7 @@
                     <Property name="text" type="java.lang.String" value="M&#xe3; Nh&#xe2;n Vi&#xea;n:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMa">
+                <Component class="javax.swing.JTextField" name="txtId">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -288,7 +288,7 @@
                     <Property name="text" type="java.lang.String" value="T&#xea;n Nh&#xe2;n Vi&#xea;n:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtTen">
+                <Component class="javax.swing.JTextField" name="txtName">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="0"/>
@@ -311,7 +311,7 @@
                     <Property name="text" type="java.lang.String" value="Ng&#xe0;y Sinh:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoNam">
+                <Component class="javax.swing.JRadioButton" name="rdoFemale">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -326,7 +326,7 @@
                     <Property name="text" type="java.lang.String" value="Nam"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="rdoNu">
+                <Component class="javax.swing.JRadioButton" name="rdoMale">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -348,7 +348,7 @@
                     <Property name="text" type="java.lang.String" value="Gi&#x1edb;i T&#xed;nh:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtDiaChi">
+                <Component class="javax.swing.JTextField" name="txtAddress">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="0"/>
@@ -363,7 +363,7 @@
                     <Property name="text" type="java.lang.String" value="&#x110;ia Ch&#x1ec9;:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSdt">
+                <Component class="javax.swing.JTextField" name="txtPhone">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="0"/>
@@ -378,7 +378,7 @@
                     <Property name="text" type="java.lang.String" value="SDT:"/>
                   </Properties>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="jdcNgaySinh">
+                <Component class="com.toedter.calendar.JDateChooser" name="jdcDob">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="0"/>
@@ -408,7 +408,7 @@
                     <Property name="text" type="java.lang.String" value="&#x1ea2;nh:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cboBoPhan">
+                <Component class="javax.swing.JComboBox" name="cboDepartment">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="0"/>
@@ -442,7 +442,7 @@
                     <Property name="text" type="java.lang.String" value="B&#x1ed9; Ph&#x1ead;n"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnXoaAnh">
+                <Component class="javax.swing.JButton" name="btnRemoveAvt">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="0"/>
@@ -450,10 +450,10 @@
                     <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaAnhActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoveAvtActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnChonAnh">
+                <Component class="javax.swing.JButton" name="btnChooseAvt">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="16" style="0"/>
@@ -461,10 +461,10 @@
                     <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChonAnhActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChooseAvtActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblAnh">
+                <Component class="javax.swing.JLabel" name="lblAvt">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">

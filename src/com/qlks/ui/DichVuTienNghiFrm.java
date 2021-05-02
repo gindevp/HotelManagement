@@ -816,8 +816,8 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
         DichVu dv = null;
         String[] title = new String[]{"Tên dịch vụ", "Đơn giá", "Mô tả"};
         String[] titleNum = new String[]{"Đon giá"};
-        if (Validator.checkBlack(this, title, txtTenDV, txtDonGia, txtMoTa)
-                && Validator.checkPosNum(this, titleNum, txtDonGia)) {
+        if (Validator.isBlack(this, title, txtTenDV, txtDonGia, txtMoTa)
+                && Validator.isPosNum(this, titleNum, txtDonGia)) {
             String ten = txtTenDV.getText().trim();
             double gia = Double.parseDouble(txtDonGia.getText());
             String moTa = txtMoTa.getText().trim();
@@ -952,7 +952,7 @@ public class DichVuTienNghiFrm extends javax.swing.JInternalFrame {
     private TienNghi getFormTN() {
         TienNghi tn = null;
         String[] title = new String[]{"Tên tiện nghi"};
-        if (Validator.checkBlack(this, title, txtTenTN)) {
+        if (Validator.isBlack(this, title, txtTenTN)) {
             String ten = txtTenTN.getText().trim();
 
             tn = new TienNghi(ten);

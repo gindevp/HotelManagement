@@ -22,10 +22,10 @@ public class Validator {
 
     KhachHangDAO khdao = new KhachHangDAO();
 
-    public static boolean checkBlack(Component parent, String[] title, JTextComponent... args) {
+    public static boolean isBlack(Component parent, String[] comName, JTextComponent... args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].getText().trim().isEmpty()) {
-                MsgBox.alert(parent, "Không được để trống " + title[i] + "!");
+                MsgBox.alert(parent, "Không được để trống " + comName[i] + "!");
                 args[i].requestFocus();
                 return false;
             }
@@ -33,9 +33,9 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkSelectedBgr(Component parent, ButtonGroup b, String s) {
+    public static boolean isSelectedButtonGroup(Component parent, ButtonGroup b, String mess) {
         if (b.getSelection() == null) {
-            MsgBox.alert(parent, "Chưa chọn " + s);
+            MsgBox.alert(parent, "Chưa chọn " + mess);
             return false;
         }
         return b.getSelection() != null;
@@ -50,7 +50,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkPosNum(Component parent, String[] title, JTextComponent... args) {
+    public static boolean isPosNum(Component parent, String[] title, JTextComponent... args) {
         for (int i = 0; i < args.length; i++) {
             try {
                 if (Double.parseDouble(args[i].getText().trim()) <= 0) {
@@ -67,7 +67,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkPosNumNotIsZero(Component parent, String[] title, JTextComponent... args) {
+    public static boolean isPosNumNotIsZero(Component parent, String[] title, JTextComponent... args) {
         for (int i = 0; i < args.length; i++) {
             try {
                 if (Double.parseDouble(args[i].getText().trim()) < 0) {
@@ -88,7 +88,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkSelectedDate(Component parent, String[] title, com.toedter.calendar.JDateChooser... args) {
+    public static boolean isSelectedDate(Component parent, String[] title, com.toedter.calendar.JDateChooser... args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].getDate() == null) {
                 MsgBox.alert(parent, "Vui lòng chọn thời gian cho " + title[i]);
@@ -99,7 +99,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkSelectedDob(Component parent, JDateChooser... args) {
+    public static boolean isDob(Component parent, JDateChooser... args) {
         for (int i = 0; i < args.length; i++) {
             if (args[i].getDate() == null) {
                 MsgBox.alert(parent, "Vui lòng chọn ngày sinh!");
@@ -115,7 +115,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkEmail(Component parent, JTextComponent... args) {
+    public static boolean isEmail(Component parent, JTextComponent... args) {
         String reg = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         for (int i = 0; i < args.length; i++) {
             if (!args[i].getText().trim().matches(reg)) {
@@ -127,7 +127,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkEmail(Component parent, String... args) {
+    public static boolean isEmail(Component parent, String... args) {
         String reg = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         for (int i = 0; i < args.length; i++) {
             if (!args[i].trim().matches(reg)) {
@@ -138,7 +138,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkPhoneNum(Component parent, JTextComponent... args) {
+    public static boolean isPhoneNum(Component parent, JTextComponent... args) {
         String reg = "(84|0[3|5|7|8|9])+([0-9]{8})";
         for (int i = 0; i < args.length; i++) {
             if (!args[i].getText().trim().matches(reg)) {
@@ -150,7 +150,7 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkIdentityCard(Component parent, JTextComponent... args) {
+    public static boolean isIdentityCard(Component parent, JTextComponent... args) {
         String reg9 = "\\d{9}";
         String reg12 = "\\d{12}";
         for (int i = 0; i < args.length; i++) {
@@ -166,11 +166,11 @@ public class Validator {
         return true;
     }
 
-    public static boolean checkAfterNow(Component parent, JDateChooser d1, Date d2, int task) {
+    public static boolean isAfterNow(Component parent, JDateChooser d1, Date d2, int task) {
         if (d1.getDate().before(d2)) {
             if (task == 1) {
 //                MsgBox.alert(parent, "Vui lòng chọn ngày khai giảng sau ngày tạo!");
-                MsgBox.alert(parent, "Vui lòng chọn ngày trả phòng sau hôm nay!");
+                MsgBox.alert(parent, "Vui lòng chọn ngày bắt đầu nhỏ hơn ngày kết thúc!");
             }
             d1.requestFocus();
             return false;
@@ -183,7 +183,7 @@ public class Validator {
         }
     }
 
-    public static boolean checkDates(Component parent, JDateChooser start, JDateChooser end) {
+    public static boolean isAfterNow(Component parent, JDateChooser start, JDateChooser end) {
         if (start.getDate().before(end.getDate())) {
             return true;
         } else {
@@ -192,7 +192,7 @@ public class Validator {
         }
     }
 
-    public static boolean checkMark(Component parent, String s) {
+    public static boolean isMark(Component parent, String s) {
         try {
             if (!s.equalsIgnoreCase("0.0")) {
                 double mark = Double.parseDouble(s);
@@ -211,16 +211,6 @@ public class Validator {
             if (item.equals(value.getText().trim())) {
                 MsgBox.alert(parent, title + " đã tồn tại");
                 value.requestFocus();
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static boolean isExists(Component parent, String value, List<String> data, String title) {
-        for (Object item : data) {
-            if (item.equals(value.trim())) {
-                MsgBox.alert(parent, title + " đã tồn tại");
                 return false;
             }
         }

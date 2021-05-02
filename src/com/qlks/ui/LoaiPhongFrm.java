@@ -468,7 +468,7 @@ public class LoaiPhongFrm extends javax.swing.JInternalFrame {
     private LoaiPhong getForm() {
         LoaiPhong lp = null;
         String[] title = new String[]{"Mã loại phòng", "Tên loại phòng", "Mô tả"};
-        if (Validator.checkBlack(this, title, txtMa, txtTen, txtMoTa)
+        if (Validator.isBlack(this, title, txtMa, txtTen, txtMoTa)
                 && Validator.isExists(this, txtMa, lpdao.selectMaLP(), title[0])) {
             lp = new LoaiPhong(
                     txtMa.getText().trim(),
