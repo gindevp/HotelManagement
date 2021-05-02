@@ -160,9 +160,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
         lblTongDv = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         cboLoaiGia = new javax.swing.JComboBox<>();
-        lblNgayTra = new javax.swing.JLabel();
-        jdcNgayTra = new com.toedter.calendar.JDateChooser();
-        chk = new javax.swing.JCheckBox();
         btnCapNhatPhieu = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -702,15 +699,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             }
         });
 
-        lblNgayTra.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lblNgayTra.setText("Ngày dự kiến trả phòng:");
-
-        jdcNgayTra.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        chk.setBackground(new java.awt.Color(255, 255, 255));
-        chk.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        chk.setText("Chưa biết");
-
         btnCapNhatPhieu.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnCapNhatPhieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlks/icon/edit_24px.png"))); // NOI18N
         btnCapNhatPhieu.setText("CẬP NHẬT PHIẾU THUÊ");
@@ -728,19 +716,10 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(lblNgayTra)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jdcNgayTra, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(chk, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboLoaiGia, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(124, 124, 124))
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboLoaiGia, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 297, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)))
@@ -760,21 +739,16 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cboLoaiGia, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(chk, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLapPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCapNhatPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jdcNgayTra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblNgayTra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLapPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCapNhatPhieu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         tabs.addTab("Đặt Phòng", jPanel6);
@@ -998,7 +972,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             this.fillTblDanhSach();
             this.fillTblDaChon();
         }
-        this.checkJdcNgayTra();
+//        this.checkJdcNgayTra();
     }//GEN-LAST:event_cboLoaiGiaActionPerformed
 
     private void tblDangThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDangThueMouseClicked
@@ -1059,7 +1033,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cboDichVu;
     private javax.swing.JComboBox<String> cboLoaiGia;
     private javax.swing.JComboBox<String> cboLoaiPhong;
-    private javax.swing.JCheckBox chk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1092,9 +1065,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private com.toedter.calendar.JDateChooser jdcNgayTra;
     private javax.swing.JLabel lblGiaDv;
-    private javax.swing.JLabel lblNgayTra;
     private javax.swing.JLabel lblTongDv;
     private javax.swing.JRadioButton rdoNam;
     private javax.swing.JRadioButton rdoNu;
@@ -1422,75 +1393,73 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }
 
     private void datPhong() {
-        if (this.checkSelectDate()) {
-            if (MsgBox.confirm(this, "Xác nhận đặt phòng?")) {
-                HoaDon hd = null;
-                LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
-                Integer maLg = lg.getMa();
-                Integer maKH = Integer.parseInt(txtMaKh.getText().trim().toString());
-                String maNv = Auth.user.getMa();
-                //neu chon thue theo ngay va biet truoc ngay tra phong
-                if (maLg == 3 && jdcNgayTra.getDate() != null) {
-                    Timestamp ngayTt = new Timestamp(jdcNgayTra.getDate().getTime());
-                    hd = new HoaDon(ngayTt, maLg, maKH, maNv);
-                    if (hddao.insert(hd)) {
-                        System.out.println("create Hd success");
-                        MsgBox.alert(this, "Lập phiếu thuê thành công!");
-                        this.createHDPhong(maLg, maKH, maNv);
-                        this.createHDDichVu(maLg, maKH, maNv);
-                        this.clearForm();
-                        this.fillTblDangThue();
-                    } else {
-                        System.out.println("Lập phiếu thuê không thành công!");
-                    }
-                } else {
-                    hd = new HoaDon(maLg, maKH, maNv);
-                    if (hddao.insertWithoutNgayTt(hd)) {
-                        System.out.println("create Hd1 success");
-                        MsgBox.alert(this, "Lập phiếu thuê thành công!");
-                        this.createHDPhong(maLg, maKH, maNv);
-                        this.createHDDichVu(maLg, maKH, maNv);
-                        this.clearForm();
-                        this.fillTblDangThue();
-                    } else {
-                        System.out.println("Lập phiếu thuê không thành công!");
-                    }
-                }
+//        if (this.checkSelectDate()) {
+        if (MsgBox.confirm(this, "Xác nhận đặt phòng?")) {
+            HoaDon hd = null;
+            LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
+            Integer maLg = lg.getMa();
+            Integer maKH = Integer.parseInt(txtMaKh.getText().trim().toString());
+            String maNv = Auth.user.getMa();
+            //neu chon thue theo ngay va biet truoc ngay tra phong
+//                if (maLg == 3 && jdcNgayTra.getDate() != null) {
+//                    Timestamp ngayTt = new Timestamp(jdcNgayTra.getDate().getTime());
+//                    hd = new HoaDon(ngayTt, maLg, maKH, maNv);
+//                    if (hddao.insert(hd)) {
+//                        System.out.println("create Hd success");
+//                        MsgBox.alert(this, "Lập phiếu thuê thành công!");
+//                        this.createHDPhong(maLg, maKH, maNv);
+//                        this.createHDDichVu(maLg, maKH, maNv);
+//                        this.clearForm();
+//                        this.fillTblDangThue();
+//                    } else {
+//                        System.out.println("Lập phiếu thuê không thành công!");
+//                    }
+//                } else {
+            hd = new HoaDon(maLg, maKH, maNv);
+            if (hddao.insertWithoutNgayTt(hd)) {
+                System.out.println("create Hd1 success");
+                MsgBox.alert(this, "Lập phiếu thuê thành công!");
+                this.createHDPhong(maLg, maKH, maNv);
+                this.createHDDichVu(maLg, maKH, maNv);
                 this.clearForm();
-            }
-        }
-    }
-
-    private void checkJdcNgayTra() {
-        LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
-        if (lg != null) {
-            if (lg.getMa() == 3) {
-                jdcNgayTra.setEnabled(true);
-                chk.setEnabled(true);
+                this.fillTblDangThue();
             } else {
-                jdcNgayTra.setEnabled(false);
-                chk.setEnabled(false);
+                System.out.println("Lập phiếu thuê không thành công!");
             }
+//                }
+            this.clearForm();
         }
+//        }
     }
 
-    private boolean checkSelectDate() {
-        if (chk.isEnabled()) {
-            if (!chk.isSelected()) {
-                if (Validator.checkSelectedDate(DatPhongFrm.this, new String[]{"ngày trả!"}, jdcNgayTra)
-                        && Validator.checkAfterNow(DatPhongFrm.this, jdcNgayTra, new Date(), 1)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return true;
-            }
-        } else {
-            return true;
-        }
-    }
-
+//    private void checkJdcNgayTra() {
+//        LoaiGia lg = (LoaiGia) cboLoaiGia.getSelectedItem();
+//        if (lg != null) {
+//            if (lg.getMa() == 3) {
+//                jdcNgayTra.setEnabled(true);
+//                chk.setEnabled(true);
+//            } else {
+//                jdcNgayTra.setEnabled(false);
+//                chk.setEnabled(false);
+//            }
+//        }
+//    }
+//    private boolean checkSelectDate() {
+//        if (chk.isEnabled()) {
+//            if (!chk.isSelected()) {
+//                if (Validator.checkSelectedDate(DatPhongFrm.this, new String[]{"ngày trả!"}, jdcNgayTra)
+//                        && Validator.checkAfterNow(DatPhongFrm.this, jdcNgayTra, new Date(), 1)) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            } else {
+//                return true;
+//            }
+//        } else {
+//            return true;
+//        }
+//    }
     private void createHDPhong(Integer maLg, Integer maKH, String maNv) {
         HoaDon hd = hddao.selectByLgKhNv(maLg, maKH, maNv);
         Integer maHd = hd.getMa();
@@ -1526,7 +1495,6 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             Integer maKh = hd.getMaKh();
             KhachHang kh = khdao.selectByID(maKh);
             LoaiGia lg = lgdao.selectByID(hd.getMaLg());
-            System.out.println(hd.getMa() + "" + hd.getMaLg());
             double tongTien = Double.parseDouble(hddao.selectTongTienNow(hd.getMa(), hd.getMaLg()).toString());
             NhanVien nv = nvdao.selectByID(hd.getMaNv());
             model.addRow(new Object[]{
