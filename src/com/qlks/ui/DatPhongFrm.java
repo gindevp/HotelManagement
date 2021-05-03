@@ -906,10 +906,7 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFindRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindRoomActionPerformed
-        if (cboPriceType.getSelectedItem() != null
-                && cboRoomType.getSelectedItem() != null) {
-            this.findRoom();
-        }
+        this.findRoom();
     }//GEN-LAST:event_btnFindRoomActionPerformed
 
     private void tblRoomListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRoomListMouseClicked
@@ -1122,7 +1119,8 @@ public class DatPhongFrm extends javax.swing.JInternalFrame {
             }
         } else {
             if (Validator.isPosNum(this, new String[]{"Số người lớn", "Số trẻ em"}, txtAdult, txtChild)) {
-                this.fillTblRentalList();;
+//                this.fillTblRentalList();
+                this.fillTblRoomList();
             }
         }
     }

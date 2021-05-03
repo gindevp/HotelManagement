@@ -53,7 +53,7 @@ public class Validator {
     public static boolean isPosNum(Component parent, String[] title, JTextComponent... args) {
         for (int i = 0; i < args.length; i++) {
             try {
-                if (Double.parseDouble(args[i].getText().trim()) <= 0) {
+                if (Double.parseDouble(args[i].getText().trim()) < 0) {
                     MsgBox.alert(parent, title[i] + " phải lớn hơn 0!");
                     args[i].requestFocus();
                     return false;
