@@ -417,6 +417,7 @@ public class ThongTinCaNhanFrm extends javax.swing.JInternalFrame {
         String[] title = new String[]{"Mã nhân viên", "Tên nhân viên", "Password", "Sdt", "Địa chỉ", "Email"};
 
         if (Validator.isBlack(this, title, txtId, txtName, txtPass, txtPhone, txtAddress, txtEmail)
+                && Validator.isExists(this, txtId, nvdao.selectMaNV(), "Mã nhân viên")
                 && Validator.isPhoneNum(txtPhone)
                 && Validator.isExists(this, txtPhone, nvdao.selectSdt1(nv1.getSdt()), title[3])
                 && Validator.isDob(this, jdcDob)
