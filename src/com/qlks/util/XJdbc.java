@@ -28,32 +28,39 @@ public class XJdbc {
 
     static {
         try {
-            Class.forName(driver);
+            // Nạp driver
+            Class.forName(driver);          
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(XJdbc.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    // Trả về câu lệnh SQL hoàn chỉnh
     public static PreparedStatement getStmt(String sql, Object... args) throws SQLException {
-        Connection con = DriverManager.getConnection(url, user, pass);
+        // Tạo connection 
+        Connection con = DriverManager.getConnection(url, user, pass); 
+        // Tạo pstmt và thực hiện call hoặc stmt
         PreparedStatement ps;
         if (sql.trim().startsWith("{")) {
             ps = con.prepareCall(sql);
         } else {
             ps = con.prepareStatement(sql);
         }
+        // Thực hiện gán tham số cho sql
         for (int i = 0; i < args.length; i++) {
             ps.setObject(i + 1, args[i]);
         }
-        return ps;
+        return ps;  // Trả về câu lệnh SQL hoàn chỉnh
     }
 
+    // Trả về kết quả sau khi querry
     public static ResultSet query(String sql, Object... args) throws SQLException {
         PreparedStatement ps = getStmt(sql, args);
         return ps.executeQuery();
     }
 
-    public static Object value(String sql, Object... args) {
+    // Trả về kết quả 1 record
+    public static Object value(String sql, Object... args) {        
         try (ResultSet rs = XJdbc.query(sql, args);) {
             if (rs.next()) {
                 return rs.getObject(1);
@@ -64,6 +71,7 @@ public class XJdbc {
         return null;
     }
 
+    // Trả về kết quả sau khi querry
     public static boolean update(String sql, Object... args) {
         try (PreparedStatement ps = getStmt(sql, args)) {
             return ps.executeUpdate() > 0;
@@ -72,7 +80,7 @@ public class XJdbc {
             return false;
         }
     }
-
+    // Trả về kết quả 1 cột 
     public static List<Object> column(String sql, Object... args) {
         List<Object> list = new ArrayList<>();
         try (ResultSet rs = XJdbc.query(sql, args);) {
